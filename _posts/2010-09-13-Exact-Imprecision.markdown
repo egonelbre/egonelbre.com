@@ -8,16 +8,16 @@ title: Exact Imprecision
 
 Sometimes you need nicely packable floating point values.
 I started thinking about this problem after reading 
-Iñigo Quílez’s article [storing floating point in 4k](http://www.iquilezles.org/www/articles/float4k/float4k.htm). 
+IÃ±igo QuÃ­lez's article [storing floating point in 4k](http://www.iquilezles.org/www/articles/float4k/float4k.htm). 
 The problem is that using full floating point precision 
 makes the code less compressable.
 
-For example 1.9f will be translated to hex 0×3ff33333 
-whereas it would be much better to use 0×3ff30000. 
+For example 1.9f will be translated to hex 0Ã—3ff33333 
+whereas it would be much better to use 0Ã—3ff30000. 
 If there are a lot of values ending with zeros then 
 they can be compressed quite efficiently.
 
-Iñigo Quílez’s idea was to precalculate and define each 
+IÃ±igo QuÃ­lez's idea was to precalculate and define each 
 value from 0.00 to 1.99 that give an exact hex number 
 in a header file and then use the defined values. 
 This method can get a little long when you would 
@@ -26,15 +26,15 @@ try this with more values.
 My idea was to do the calculation at compile time 
 with macros.
 
-First thing I tried was the most obvious – convert the floating 
-point value to it’s IEEE format, mask out the values and then 
+First thing I tried was the most obvious - convert the floating 
+point value to it's IEEE format, mask out the values and then 
 convert it back. Unfortunately this ended with problems as gcc 
-doesn’t let you convert float to int that easily. First I had 
+doesn't let you convert float to int that easily. First I had 
 to get the address of the value then convert it to void, then 
-to int pointer then to int and then mask it out — then get 
+to int pointer then to int and then mask it out - then get 
 address, void, float pointer, float. Problem is that during 
-compile-time we don’t know where the value is and therefore we 
-have to use a temporary variable. Basically I didn’t find a way 
+compile-time we don't know where the value is and therefore we 
+have to use a temporary variable. Basically I didn't find a way 
 that compiler could optimize it out.
 
 Then the second thing I tried was using multiplication, masking and division:
@@ -59,5 +59,7 @@ Anyway download the file imprecision.h.
     #define P5(x) _P(x,4096.0f)
     #define P(x) P4(x)
 
-P4 won’t use more than 4 nybbles of hex values and the 
-same goes for the others. So it’s easy to use with different precisions.
+P4 won't use more than 4 nybbles of hex values and the 
+same goes for the others. So it's easy to use with different precisions.
+
+

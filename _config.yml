@@ -1,4 +1,9 @@
-safe: true
-source: egonelbre.github.com
-lsi: false
+auto: true
+server: true
+
+destination: _site
 pygments: true
+
+lsi: false
+
+safe: true
