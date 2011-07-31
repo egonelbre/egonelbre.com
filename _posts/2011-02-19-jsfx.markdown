@@ -14,7 +14,7 @@ for sound effect generation. It needs WAV
 support from browser to work. Take a look, 
 have fun and build on it.
 
-* [demo](http://egonelbre.com/js/jsfx/)
+* [demo](/js/jsfx/)
 * [github](http://github.com/egonelbre/jsfx)
 
 Some things people used for it:

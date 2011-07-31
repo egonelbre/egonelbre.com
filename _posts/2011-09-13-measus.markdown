@@ -20,28 +20,32 @@ Also testing only one run is useless so you want to
 run each test 10 times. To do this testing you’ll need 
 to create a setup file:
 
-    $iterations = 10;
+{% highlight perl %}
 
-    @programs = (
-        "grep => grep -c PAT FILE",
-        "brute-force => ./bf PAT FILE",
-        "shift-or => ./sor PAT FILE",
-        "kmp => ./kmp PAT FILE",
-    );
+$iterations = 10;
 
-    @patterns = (
-        "aaaa",
-        "bbbb",
-        "ababba",
-    );
+@programs = (
+    "grep => grep -c PAT FILE",
+    "brute-force => ./bf PAT FILE",
+    "shift-or => ./sor PAT FILE",
+    "kmp => ./kmp PAT FILE",
+);
 
-    @files = (
-        "abc 16MB => ../data/abc.txt",
-        "b* 16MB => ../data/bbb.txt",
-    );
+@patterns = (
+    "aaaa",
+    "bbbb",
+    "ababba",
+);
+
+@files = (
+    "abc 16MB => ../data/abc.txt",
+    "b* 16MB => ../data/bbb.txt",
+);
+
+{% endhighlight %}
 
 Then you can run it with:
 
-    ./measus.pl log_tabdelim.pl setup.pl
+<pre class="terminal"><code>./measus.pl log_tabdelim.pl setup.pl</code></pre>
 
 Download from here: [measus.tar.gz](/files/measus.tar.gz)

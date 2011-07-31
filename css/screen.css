@@ -103,6 +103,9 @@ ul.posts {
     }
 
     .site .title a.extra {
+        -moz-transition: 0.1s linear;
+        -webkit-transition: 0.1s linear;
+        transition: 0.1s linear;
         color: #aaa;
         text-decoration: none;
         margin-left: 1em;
@@ -113,7 +116,14 @@ ul.posts {
     }
 
     .site .meta {
+        -moz-transition: 0.1s linear;
+        -webkit-transition: 0.1s linear;
+        transition: 0.1s linear;
         color: #aaa;
+    }
+    
+    .site .meta:hover{
+        color: #444;
     }
 
     .site .footer {
