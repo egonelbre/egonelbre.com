@@ -6,6 +6,8 @@ title: Exact Imprecision
 {{ page.title }}
 ================
 
+<p class="meta">13 september 2011</p>
+
 Sometimes you need nicely packable floating point values.
 I started thinking about this problem after reading 
 Iñigo Quílez's article [storing floating point in 4k](http://www.iquilezles.org/www/articles/float4k/float4k.htm). 
