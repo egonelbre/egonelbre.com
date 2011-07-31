@@ -1,6 +1,7 @@
 ---
 layout: post
 title: measus
+category: code
 ---
 
 {{ page.title }}
@@ -14,7 +15,7 @@ multiple programs over different files and arguments.
 For example you have programs brute-force, shift-or, 
 kmp and grep. You want to test pattern searching with 
 patterns “aaaa”, “bbbb”, “ababba”. Also you want to 
-test with differemt files “abc.txt” and “bbb.txt”. 
+test with different files “abc.txt” and “bbb.txt”. 
 Also testing only one run is useless so you want to 
 run each test 10 times. To do this testing you’ll need 
 to create a setup file:

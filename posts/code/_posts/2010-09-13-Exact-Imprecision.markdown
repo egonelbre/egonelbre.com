@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Exact Imprecision
+category: code
 ---
 
 {{ page.title }}

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: jsfx - sound generation
+category: code
 ---
 
 {{ page.title }}
