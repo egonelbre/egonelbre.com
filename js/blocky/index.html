@@ -1,0 +1,19 @@
+---
+layout: default
+title: blocky
+category: code
+---
+<p>
+<code>
+  arrow keys - move | a - pick up block | z - put down block | x - jump | 1-9 - select block type <br />
+</code>
+</p>
+<canvas id="c"></canvas> 
+<script> 
+  var b = document.body;
+  var c = document.getElementsByTagName('canvas')[0];
+  var a = c.getContext('2d');
+  document.body.clientWidth; // fix bug in webkit: http://qfox.nl/weblog/218
+</script> 
+<script src="crushed.js">
+ </script>

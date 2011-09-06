@@ -1,0 +1,240 @@
+// canvas setup
+var d=document,
+    canvas = document.getElementById("canvas"),
+    c=canvas,
+    W=1200,H=700;
+    c.width = W,
+    c.height = H,
+    c = c.getContext("2d");
+
+// Math function aliases
+var cos=Math.cos,
+    sin=Math.sin,
+    abs=Math.abs,
+    sqrt=Math.sqrt,
+    sgn=function(val) { return val >= 0 ? 1 : -1 },
+    atan2=Math.atan2,
+    rand=Math.random;
+
+M = [W/2,H/2];
+TAU = 2*Math.PI;
+
+function Joint(rot, len, wid, children){
+    this.color = "#000";
+    this.rot = rot || 0.0;
+    this.rotlim = [-1,1];
+    this.rotspeed = 0.007;
+    this.weloc  = [0,0];
+    this.len   = len || 1.0;
+    this.wid   = wid || 0.2;
+    this.children = children || [];
+}
+
+Joint.prototype.Draw = function(c, wloc, wrot){
+    wrot = wrot % TAU;
+    
+    c.fillStyle = this.color;
+    c.beginPath();
+    c.moveTo(wloc[0], wloc[1]);
+    
+    var arot = wrot + this.rot,
+        srot = 0.7,
+        erot = 0.02,
+        len  = this.len,
+        wid  = this.wid,
+        nloc = [wloc[0] + cos(arot) * len,   wloc[1] - sin(arot) * len];
+    
+    c.lineTo( wloc[0] + cos(arot - srot) * wid, wloc[1] - sin(arot - srot) * wid);
+    c.lineTo( wloc[0] + cos(arot - erot) * len, wloc[1] - sin(arot - erot) * len);
+    c.lineTo( nloc[0], nloc[1] );
+    c.lineTo( wloc[0] + cos(arot + erot) * len, wloc[1] - sin(arot + erot) * len);
+    c.lineTo( wloc[0] + cos(arot + srot) * wid, wloc[1] - sin(arot + srot) * wid);
+    c.lineTo( wloc[0], wloc[1]);
+    
+    c.closePath();
+    c.fill();
+    
+    this.weloc = nloc;
+    
+    for(var i = this.children.length; i--;)
+        this.children[i].Draw(c, nloc, arot);
+}
+
+Joint.prototype._IK = function( wloc, wrot, tloc ){
+    wrot = wrot % TAU;
+    var arot = wrot + this.rot,
+        len  = this.len,
+        nloc = [wloc[0] + cos(arot) * len,   wloc[1] - sin(arot) * len],
+        eloc = nloc;
+        
+    for(var i = this.children.length; i--;){
+        var end = this.children[i]._IK( nloc, arot, tloc );
+        eloc[0] += end[0];
+        eloc[1] += end[1];
+    }
+    
+    eloc[0] /= this.children.length + 1;
+    eloc[1] /= this.children.length + 1;
+    
+    var erot = atan2( eloc[1] - wloc[1], eloc[0] - wloc[0] ),
+        trot = atan2( tloc[1] - wloc[1], tloc[0] - wloc[0] ),
+        diff = atan2(sin(trot - erot), cos(trot - erot));
+    
+    var maxspeed = this.rotspeed * difficulty;
+    
+    if( abs(diff) > this.rotspeed )
+        diff = sgn(diff) * this.rotspeed;
+    
+    var nrot = this.rot - diff,
+         lim = this.rotlim;
+    nrot = nrot;
+    nrot = nrot < lim[0] ? lim[0] : nrot > lim[1] ? lim[1] : nrot;
+    this.rot = nrot;
+    arot = wrot + this.rot;
+    nloc = [wloc[0] + cos(arot) * len,   wloc[1] - sin(arot) * len];
+    return nloc;
+}
+
+Joint.prototype.IK = function( wloc, wrot, tar ){
+    this._IK(wloc, wrot, tar);
+}
+
+heads  = [];
+eaters = [];
+
+coins  = [];
+points = 0;
+highscore = 0;
+difficulty = 1;
+
+for(var j = 2; j--; ){
+    var dir = j == 1 ? -1 : 1;
+    var cur = new Joint(0, 30, 30);
+    cur.color = "#f42";
+    heads.push( cur );
+    for(var i = 8; i--; ){
+        cur = new Joint(dir, 80 - i * 5, 13 - i, [cur]);
+        cur.color = "hsla(90,60%,30%,1.0)"
+    }    
+    cur.rot = TAU/4 + dir * TAU/8;
+    cur.rotlim = [-TAU, TAU];
+    eaters.push(cur);
+}
+
+eaters[0].loc = [300, H-20];
+eaters[1].loc = [900, H-20];
+
+render = function(){
+    // Background
+    c.fillStyle="#efe";
+    c.fillRect(0,0,W,H);
+    c.fillStyle="#000";
+    c.strokeStyle="#000";
+
+    // physics
+    for(var i = eaters.length; i--;)
+        eaters[i].IK( eaters[i].loc, 0, M );
+    // collision
+    
+    var hit = false;
+    for(var i = heads.length; i--; ){
+        var e = heads[i].weloc;
+        var d1 = e[0] - M[0],
+            d2 = e[1] - M[1],
+            diff = sqrt(d1*d1 + d2*d2);
+        if( diff < 20 ){
+            hit = true;
+            break;
+        }
+    }
+    
+    var collected = 0;
+    
+    for( var i = coins.length; i--; ){
+        var loc = coins[i].loc;
+        var d1 = loc[0] - M[0],
+            d2 = loc[1] - M[1],
+            diff = sqrt(d1*d1 + d2*d2);
+        if( diff < 20 ){
+            collected++;
+            coins.splice(i,1);
+        }
+    }
+    
+    // logic
+    points += collected;
+    if( highscore < points )
+        highscore = points;
+    if( hit ){
+        points -= 1;
+        if( points <= 0 ){
+            points = 0;
+            coins = [];
+        }
+    }
+    difficulty = 1 + points / 50;
+    
+    if( coins.length == 0 ){
+        var mul = 0.01 + points / 30;
+        var inc = mul*TAU/30;
+        for(var i = 0.0; i < mul*TAU; i += inc){
+            var x = 30 + (W - 40) * (i / (mul*TAU));
+            var y = sin(i);
+            coins.push( {loc:[x, y*100 + 400]} );
+        }
+    }
+    
+    // flowers
+    for(var i = eaters.length; i--;)
+        eaters[i].Draw(c, eaters[i].loc, 0, M );
+    
+    // coins
+    c.strokeStyle = "hsla(30,100%,50%,1.0)";
+    c.fillStyle = "hsla(60,100%,60%,1.0)";
+    for(var i = coins.length; i--;){
+        var loc = coins[i].loc;
+        c.beginPath();
+        c.arc( loc[0], loc[1], 10, 0, TAU, true );
+        c.closePath();
+        c.fill();
+        c.stroke();
+    }
+    
+    // mouse
+    c.fillStyle = hit ? "#f83" :  "#8f3";
+    c.beginPath();
+    c.arc( M[0], M[1], 10, 0, TAU, true );
+    c.closePath();
+    c.fill();
+    
+    if( hit ) {
+        c.fillStyle = "#f88";
+        c.fillRect(0,0,W,H);
+    }
+    
+    // hud
+    c.fillStyle = "#afa";
+    c.fillRect(0,0,W,100);
+
+    c.fillStyle = "#000";
+    c.font = "20pt Georgia";
+    c.fillText( "POINTS : " + points, W/2 - 80, 60);
+    c.font = "10pt Georgia";
+    c.fillText( "HIGHSCORE : " + highscore, W - 200, 60);
+}
+
+window.requestAnimFrame = 
+    window.requestAnimationFrame       || 
+    window.webkitRequestAnimationFrame || 
+    window.mozRequestAnimationFrame    || 
+    window.oRequestAnimationFrame      || 
+    window.msRequestAnimationFrame     || 
+    function(callback, element){ window.setTimeout(callback, 1000 / 60); };
+
+off = [canvas.offsetLeft, canvas.offsetTop];
+canvas.onmousemove = function(e){ M = [ e.clientX - off[0], e.pageY - off[1]];};
+
+(function _animation_loop_(){
+    render();
+    requestAnimFrame(_animation_loop_);
+})();
