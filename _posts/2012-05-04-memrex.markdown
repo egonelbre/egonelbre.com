@@ -85,4 +85,4 @@ your subexpressions and what exactly you want to match.
 (also i wasn't too much worried about speed.)
 
 now go make it a proper thing in your language, i'm too
-lazy for it.
+lazy to do it myself.
