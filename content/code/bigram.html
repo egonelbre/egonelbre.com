@@ -1,0 +1,310 @@
++++
+date = "2012-07-02T12:00:00+03:00"
+title = "Bigram"
+tags = ["js", "parsing"]
++++
+<p>an experiment with parsing</p>
+<!--more-->
+<style>
+    .post {
+        max-width: none;
+        width: 800px;
+        padding: 0;
+    }
+</style>
+
+<style>
+/* global */
+
+* {
+  -webkit-transition: all 0.1s linear;
+}
+
+/* input area */
+
+textarea {
+	font: 1em 'andale mono', 'lucida console', monospace; 
+	line-height: 1.5;
+	width  : 99%;
+	height : 250px;
+	border : 1px #888 solid;
+	border-radius : 5px;
+	padding : 5px;
+}
+
+table, tr, tbody, td {
+	background : inherit !important;
+}
+
+table { margin : 5px 0px; }
+
+/* buttons */
+
+buttons {
+	padding-left : 20px;
+}
+
+button {
+	background : #fff;
+	border : 1px solid #888;
+	border-radius : 3px;
+	padding: 5px 15px;
+	margin: 0px 5px;
+}
+
+button:hover {
+	background : #ffd;
+}
+
+button:active {
+	background : #dfd;
+	-webkit-transition: all 0s linear;
+}
+
+/* slider */
+
+input[type='range'] {
+    -webkit-appearance: none !important;
+    height:5px;
+    background : #ccc;
+    border: 1px solid #888;
+    border-radius: 3px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none !important;
+    height:20px;
+    width:10px;
+    background: #eee;
+    border: 1px solid #888;
+    border-radius: 3px;
+}
+
+/* visualization container */
+
+viz {
+	display : block;
+	background: #eee;
+	border : 1px solid #888;
+	border-radius : 3px;
+	margin: 10px 3px;
+	min-height: 500px;
+}
+</style>
+
+
+<script src="/lib/d3.v2.js"></script>
+
+<table id="main">
+	<tr> <th> Input <th> Rules
+	<tr> <td> <textarea id="input"></textarea>
+		 <td> <textarea id="rules"></textarea>		
+</table>
+
+<buttons>
+	<button id="parse">Parse</button>
+	<button id="animate">Animate</button>
+	Speed : <input id="animation-speed" type="range"></input>
+</buttons>
+
+<viz id="viz"></viz>
+
+<style>
+	.node circle {
+		fill: #fff;
+		stroke: steelblue;
+  		stroke-width: 1.5px;
+	}
+
+	.node text {
+		font: 15px Courier, monospace;
+		font-weight: bolder;
+	}
+
+	path.link {
+		fill : none;
+  		stroke : #ccc;
+  		stroke-width : 3px;
+	}
+</style>
+
+<script>
+// speed of animations
+var speed = 300;
+var size = {x: 794, y: 496};
+var root = {},
+	animation = null;
+
+function invalidLink(d){
+	var from = d.source.data,
+		to = d.target.data,
+		valid = (from.left == to) || (from.right == to) || (from.scope == to);
+	return !valid;
+}
+
+function getName(d){
+	return d.data.token;
+}
+
+function linkColor(d){
+	var from = d.source.data,
+		to = d.target.data;
+	if(from.left == to)
+		return "#844";
+	if(from.scope == to)
+		return "#484";
+	if(from.right == to)
+		return "#448";
+	return "#ccc";
+}
+
+</script>
+
+<script src="/lib/bigram/viz.js"></script>
+<script src="/lib/bigram/bigram.js"></script>
+<script src="/lib/bigram/animation.js"></script>
+<div id="def-rules" style="display:none">leftToRight = false;
+prefix = "ltr";
+postfix = "rtl";
+
+tokens = {
+    "="  : [7],
+    "==" : [6],
+    "+"  : [5], "-" : [5],
+    "*"  : [4], "/" : [4],
+    "!"  : [1, prefix], "~" : [1, prefix],
+    "^"  : [1],
+    " "  : [-1],
+    "(" : [0, next], ")" : [0, "<"]
+};
+
+for(var i = 0; i < 10; i += 1) tokens[i] = [0];
+
+// each token is defined such [priority, param]
+//   if param is a function it will be used to enter a scope
+//   if param is "<" it will end a scope
+//   if param is "ltr"/"rtl" the token will be processed as such
+
+// this function gets our next token from input
+// this returns
+//   name : name of the token
+//   ltr  : should this token be in left to right order
+//   priority : priority of the token
+//   scope : which scope should this token enter
+//   exit : should this token end current scope
+
+function next(root, input){
+    var token = input.shift(),
+        action = tokens[token];
+    if(typeof action === "undefined" ){
+        return {
+            name : token,
+            ltr : leftToRight,
+            priority : 0,
+        };
+    }
+
+    var priority, param;
+
+    if( action instanceof Array ){
+        priority = parseFloat(action[0]);
+        param = action[1];
+    } else {
+        priority = parseFloat(action);
+        param = undefined;
+    }
+
+    if(typeof param === "function"){
+        return {
+            name : token,
+            ltr : leftToRight,
+            priority : priority,
+            scope : param
+        };
+    } else if (param === "<"){
+        return {
+            name : token,
+            ltr : leftToRight,
+            priority : priority,
+            exit : true
+        };
+    }
+
+    var ltr = leftToRight;
+    if(param === "ltr"){
+        ltr = true;
+    } else if (param === "rtl") {
+        ltr = false;
+    }
+
+    return {
+        name : token,
+        priority : priority,
+        ltr : ltr
+    };
+}
+
+// the last row should say what is
+// the first scope parser
+next;
+</div>
+<script>
+
+$ = function(id){
+	return document.querySelector("#" + id);
+};
+
+var timer = setInterval(update, speed*1.2);
+function update(){
+	updateViz();
+	if(animation !== null){
+		if(!animation.step())
+			animation = null;
+	}
+}
+
+var defRules = document.getElementById("def-rules");
+
+var example = {
+	input : "1 + 3 * 4 - 14 * ( 15 - 7 ) * 5",
+	rules : defRules.innerText
+};
+
+$("input").value = example.input;
+$("rules").value = example.rules;
+
+$("parse").addEventListener("click", function(x){
+	animation = null;
+	
+	var input = $("input").value.replace("\n", " "),
+		rules = $("rules").value;
+
+	var next = eval(rules);
+	root = parse(next, input.split(""));
+});
+
+$("animate").addEventListener("click", function(x){
+	animation = null;
+
+	var input = $("input").value.replace("\n", " "),
+		rules = $("rules").value;
+	var next = eval(rules);
+	animation = new Animation(next, input.split(""));
+	root = animation.roots[0];
+});
+
+var speedSlider = $("animation-speed");
+speedSlider.min = 100;
+speedSlider.max = 1500;
+speedSlider.value = speed;
+speedSlider.step = 100;
+
+speedSlider.addEventListener("change", function(){
+	clearInterval(timer);
+	speed = speedSlider.value;
+	timer = setInterval(update, speed*1.2);
+});
+
+$("parse").click();
+
+</script>

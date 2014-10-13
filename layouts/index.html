@@ -1,0 +1,57 @@
+{{ $baseurl := .Site.BaseUrl }}
+{{ template "chrome/head.html" . }}
+{{ template "chrome/header.html" . }}
+
+<div class="page-title">
+	<h2>blog</h2>
+</div>
+<div class="listing">
+	{{ range first 5 (where .Data.Pages "Section" "blog") }}
+	<article>
+		<h1><a href="{{.RelPermalink}}">{{.Title}}</a></h1>
+		{{partial "date.html" .Date }}
+		<div class="post-tags">
+			{{ range .Params.tags }}<a tabindex="-1" href="{{$baseurl}}/tags/{{.|urlize}}">{{.}}</a>{{ end }}
+		</div>
+		<div class="clear"></div>
+		<div class="summary">{{ .Summary }}</div>
+	</article>	
+	{{ end }}
+</div>
+
+<div class="page-title">
+	<h2>code</h2>
+</div>
+<div class="listing">
+	{{ range first 5 (where .Data.Pages "Section" "code") }}
+	<article>
+		<h1><a href="{{.RelPermalink}}">{{.Title}}</a></h1>
+		{{partial "date.html" .Date }}
+		<div class="post-tags">
+			{{ range .Params.tags }}<a tabindex="-1" href="{{$baseurl}}/tags/{{.|urlize}}">{{.}}</a>{{ end }}
+		</div>
+		<div class="clear"></div>
+		<div class="summary">{{ .Summary }}</div>
+	</article>	
+	{{ end }}
+</div>
+
+<div class="page-title">
+	<h2>projects</h2>
+</div>
+<div class="listing">
+	{{ range first 5 (where .Data.Pages "Section" "project") }}
+	<article>
+		<h1><a href="{{.RelPermalink}}">{{.Title}}</a></h1>
+		{{partial "date.html" .Date }}
+		<div class="post-tags">
+			{{ range .Params.tags }}<a tabindex="-1" href="{{$baseurl}}/tags/{{.|urlize}}">{{.}}</a>{{ end }}
+		</div>
+		<div class="clear"></div>
+		<div class="summary">{{ .Summary }}</div>
+	</article>	
+	{{ end }}
+</div>
+
+
+{{ template "chrome/foot.html" . }}

@@ -1,0 +1,18 @@
+{{ $baseurl := .Site.BaseUrl }}
+{{ template "chrome/head.html" . }}
+{{ template "chrome/header.html" . }}
+
+<div class="page-title">
+	<h1>{{.Title}}</h1>
+</div>
+
+<div class="listing">
+	{{ range $key,$value := .Data.Index.ByCount }}
+	<article>
+		<h1><a href="{{ $baseurl }}/tags/{{ $value.Name | urlize }}"> {{ $value.Name }} </a> [{{ $value.Count }}]</h1>
+		<div class="clear"></div>
+	</article>
+	{{ end }}
+</div>
+
+{{ template "chrome/foot.html" . }}

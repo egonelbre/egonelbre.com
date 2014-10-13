@@ -1,0 +1,242 @@
++++
+date = "2012-10-24T12:00:00+03:00"
+title = "Self-Organizing Map"
+tags = ["js", "data-mining"]
++++
+
+<p>A visualization of a <a href="http://en.wikipedia.org/wiki/Self-organizing_map">Self-Organizing Map</a>.</p>
+
+<!--more-->
+<style>
+    .post {
+        max-width: none;
+        width: 640px;
+        padding: 0;
+    }
+</style>
+
+<div>
+<button onclick="doStep()">Step</button>
+<button onclick="run()">Run</button>
+<button onclick="stop()">Stop</button>
+<button onclick="reset()">Reset</button>
+</div>
+
+<div style="margin-bottom:20px;">
+<input id="data" value="200"></input>
+<input id="nodes" value="50"></input>
+<input id="range" value="10"></input>
+</div>
+
+<canvas id="canvas"></canvas>
+
+<script>
+var size = {x: 640, y:480};
+var canvas = document.getElementById("canvas");
+canvas.width = size.x;
+canvas.height = size.y;
+var TAU = Math.PI*2;
+var draw = canvas.getContext("2d");
+
+var stepInterval = 0;
+var state = {
+	data : [], 
+	nodes : [],
+	buckets : [],
+	lastData : 0,
+	lastNodes: 0, 
+	rate : 1.0, 
+	range: 10,
+	tick : 0 };
+
+function clone(obj){
+	var res = {};
+	for(var i in obj)
+		if(typeof(obj[i]) == "object")
+			res[i] = clone(obj[i])
+		else
+			res[i] = obj[i];
+	return res;
+}
+
+function stop(){
+	clearInterval(stepInterval);
+}
+
+function inputValue(inp){
+	return parseInt(document.getElementById(inp).value);
+}
+
+function reset(){
+	state.tick = 0;
+	state.rate = 1;
+	state.data = generateData(inputValue("data"), 3, 255);
+	state.nodes = generateData(inputValue("nodes"), 3, 255);
+	state.range = inputValue("range");
+	recalcBuckets();
+	render(state);
+}
+function run(){
+	stop();
+	stepInterval = setInterval(doStep, 33);
+}
+
+function toRgba(v){
+	return "rgba(" + (v[0]|0) + "," + (v[1]|0) + "," + (v[2]|0) + ", 0.8)" ;
+}
+
+function renderDataArray(data, x,y,w,h, chosen){
+	var dx = w / data.length,
+		cx = x + chosen * dx;
+	for(var i = 0; i < data.length; i += 1){
+		var v = data[i];
+		draw.fillStyle = toRgba(v);
+		draw.fillRect(x,y,dx,h);
+		x += dx;
+	}
+
+	draw.fillStyle = "rgba(255,0,0,0.5)";
+	draw.lineWidth = 2;
+	draw.beginPath();
+	draw.fillRect(cx-2, y-4, dx+4, 8);
+	draw.stroke();
+}
+
+function renderBuckets(buckets, x,y,w,h){
+	var mxBuckets = 1;
+	for(var i = 0; i < buckets.length; i += 1)
+		mxBuckets = Math.max(mxBuckets, buckets[i].length);
+
+	var dx = w / buckets.length,
+		dy = h / mxBuckets;
+	for(var i = 0; i < buckets.length; i += 1){
+		var bucket = buckets[i],
+			ty = y;
+		for(k = 0; k < bucket.length; k += 1){
+			var v = bucket[k];
+			draw.fillStyle = toRgba(v);
+			draw.fillRect(x,ty,dx,dy);
+			ty += dy;
+		}
+		x += dx;
+	}
+}
+
+function render(state){
+	var background = "#222",
+		foreground = "#ddd";
+
+	//draw.fillStyle = background;
+	draw.fillStyle = "rgba(32,32,32,0.5)";
+	draw.fillRect(0,0,size.x,size.y);
+
+	draw.save();
+
+	var margin = 20,
+		padding = 20,
+		height = (size.y - margin * 2 - padding) / 3,
+		width = size.x - margin * 2;
+
+	renderDataArray(state.data, 
+		margin, margin, width, height, state.lastData);
+	renderDataArray(state.nodes, 
+		margin, margin + height + padding, width, height, state.lastNodes);
+	renderBuckets(state.buckets, 
+		margin, margin + height * 2 + 2 * padding, width, height - padding);
+
+	draw.fillStyle = foreground;
+
+	draw.font = "15px monospace";
+	draw.fillText("rate: " + state.rate.toFixed(4), margin, size.y - 35);
+	draw.fillText("step: " + state.tick, margin, size.y - 20);
+
+	draw.restore();
+}
+
+function update(state){
+	state.rate *= 0.999;
+	state.tick += 1;
+	recalcBuckets();
+	updatestate(state.nodes, state.data, dist, updater, state.rate, state.range);
+}
+
+function doStep(){
+	update(state);
+	render(state);
+}
+
+function generateData(len, size, max){
+	var res = [];
+	for(var i = 0; i < len; i += 1){
+		var row = [];
+		for(var k = 0; k < size; k += 1){
+			row[k] = Math.random() * max;
+		}
+		res[i] = row;
+	}
+	return res;
+}
+
+function findMin(nodes, value, dist){
+	var minDist = Infinity,	minIdx = 0;
+	for(var i = 0; i < nodes.length; i += 1){
+		var d = dist(nodes[i], value);
+		if( d < minDist ){ minDist = d; minIdx = i;	}
+	}
+	return minIdx;
+}
+
+function dist(a, b){
+	var r = 0;
+	for(var i = 0; i < a.length; i += 1){
+		var df = a[i] - b[i]; r += df*df;
+	}
+	return Math.sqrt(r);
+}
+
+
+function updater(node, value, dist, di, rate){
+	for(var i = 0; i < node.length; i += 1){
+		var df = node[i] - value[i];
+		node[i] -= df * Math.pow(rate, Math.abs(di*2.4) + 1);
+	}
+}
+
+function updatestate(nodes, data, dist, updater, rate, range){
+	var di = Math.random()*data.length | 0,
+		value = data[di],
+		mi = findMin(nodes, value, dist);
+
+	state.lastNodes = mi;
+	state.lastData = di;
+
+	var bottom = Math.max(mi - range, 0),
+		top = Math.min(mi + range, nodes.length-1);
+
+	for(var i = bottom; i <= top; i += 1){
+		updater(nodes[i], value, dist, i - di, rate);
+	}
+	return nodes;
+};
+
+
+function recalcBuckets(){
+	var data = state.data,
+		nodes = state.nodes,
+		buckets = [];
+
+	for(var i = 0; i < nodes.length; i += 1)
+		buckets[i] = [];
+
+	for(var i = 0; i < data.length; i += 1){
+		var value = data[i],
+			bi = findMin(nodes, value, dist);
+		buckets[bi].push(value);
+	}
+
+	state.buckets = buckets;
+}
+
+reset();
+
+</script>

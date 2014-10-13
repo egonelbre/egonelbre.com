@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{ .Title }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{{ template "chrome/includes.html" . }}
+	<link rel="shortcut icon" href="/favicon.png"> 
+	<link rel="canonical" href="{{ .Permalink }}">
+	<link href="{{ .Site.BaseUrl }}/index.xml" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">    
+</head>
+<body>

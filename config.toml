@@ -1,0 +1,9 @@
+baseurl = "http://egonelbre.com"
+languageCode = "en-us"
+title = "Egon Elbre"
+canonifyurls = true
+
+[permalinks]
+	blog = "/blog/:title/"
+	code = "/code/:title/"
+	project = "/project/:title/"
