@@ -22,7 +22,13 @@ h1, h2, h3, h4, h5, h6 {
 /* Site Elements */
 
 #site-header-bg {
-	background: #B4DD6C;
+	background-color: #B4DD6C;
+}
+
+#site-header-separator {
+	width: 100%;
+	height: 8px;
+	background: url('./spike.png') top repeat-x;
 }
 
 #site-header {
