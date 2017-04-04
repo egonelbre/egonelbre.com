@@ -4,7 +4,7 @@ title = "K-Means"
 tags = ["js", "data-mining"]
 +++
 
-<p>A visualization of a <a href="http://en.wikipedia.org/wiki/K-means_clustering">K-means clustering</a>.</p>
+A visualization of a <a href="http://en.wikipedia.org/wiki/K-means_clustering">K-means clustering</a>.
 
 <!--more-->
 <style>

@@ -1,7 +1,7 @@
-baseurl = "http://egonelbre.com"
+baseURL = "http://egonelbre.com"
 languageCode = "en-us"
 title = "Egon Elbre"
-canonifyurls = true
+canonifyURLs = false
 
 [permalinks]
 	blog = "/blog/:title/"

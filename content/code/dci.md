@@ -4,9 +4,11 @@ title = "JavaScript DCI"
 tags = ["js", "dci"]
 aliases = ["/js/dci/"]
 +++
-<p>a proof of concept implementation of DCI</p>
+
+a proof of concept implementation of DCI
 
 <!--more-->
+
 <style>
     .post {
         max-width: none;

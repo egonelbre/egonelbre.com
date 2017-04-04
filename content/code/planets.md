@@ -4,9 +4,10 @@ title = "Planets"
 tags = ["js", "game", "physics", "experiment"]
 +++
 
-<p>An experiment with moving gravitational points.</p>
+An experiment with moving gravitational points.
 
 <!--more-->
+
 <style>
     .post {
         max-width: none;

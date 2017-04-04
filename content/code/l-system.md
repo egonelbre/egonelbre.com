@@ -4,9 +4,10 @@ title = "L-system"
 tags = ["js", "l-system", "experiment"]
 +++
 
-<p>Experimenting with Linden Meyer Systems.</p>
+Experimenting with Linden Meyer Systems.
 
 <!--more-->
+
 <style>
     .post {
         max-width: none;

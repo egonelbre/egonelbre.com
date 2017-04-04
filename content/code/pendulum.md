@@ -4,7 +4,8 @@ title = "Pendulum"
 tags = ["js", "game", "physics", "experiment"]
 +++
 
-<p>Physics simulation with an elastic band. Press Ctrl+R after centered on the screen.</p>
+Physics simulation with an elastic band. Press Ctrl+R after centered on the screen.
+
 <!--more-->
 <canvas id="view"></canvas>
 

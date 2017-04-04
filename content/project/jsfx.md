@@ -4,7 +4,8 @@ tags = ["js", "jsfx"]
 aliases = ["/js/jsfx/"]
 +++
 
-<p>See <a href="http://www.github.com/egonelbre/jsfx">github</a> for more information.</p>
+See <a href="http://www.github.com/egonelbre/jsfx">github</a> for more information.
+
 <!--more-->
 
 <div id="button-panel">

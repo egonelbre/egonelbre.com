@@ -4,9 +4,10 @@ title = "DBSCAN"
 tags = ["js", "data-mining"]
 +++
 
-<p>A visualization of a <a href="http://en.wikipedia.org/wiki/DBSCAN">DBSCAN algorithm</a>.</p>
+A visualization of a <a href="http://en.wikipedia.org/wiki/DBSCAN">DBSCAN algorithm</a>.
 
 <!--more-->
+
 <style>
     .post {
         max-width: none;

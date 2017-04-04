@@ -4,9 +4,10 @@ title = "K-Medoids"
 tags = ["js", "data-mining"]
 +++
 
-<p>A visualization of a <a href="http://en.wikipedia.org/wiki/K-medoids">K-medoids clustering</a>.</p>
+A visualization of a <a href="http://en.wikipedia.org/wiki/K-medoids">K-medoids clustering</a>.
 
 <!--more-->
+
 <style>
     .post {
         max-width: none;

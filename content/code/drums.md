@@ -4,7 +4,7 @@ title = "Drums"
 tags = ["js", "jsfx", "experiment"]
 +++
 
-<p>A simple drum set implemented with <a href="/js/jsfx">jsfx</a></p>
+A simple drum set implemented with <a href="/js/jsfx">jsfx</a>
 
 <!--more-->
 

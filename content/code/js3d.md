@@ -4,9 +4,10 @@ title = "js3d"
 tags = ["js", "experiment"]
 +++
 
-<p>An experiment with 3D rendering on a 2D Canvas.</p>
+An experiment with 3D rendering on a 2D Canvas.
 
 <!--more-->
+
 <style>
     .post {
         max-width: none;

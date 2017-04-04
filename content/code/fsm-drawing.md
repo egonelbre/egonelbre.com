@@ -4,7 +4,7 @@ title = "FSM Line Drawing"
 tags = ["js", "fsm", "experiment"]
 +++
 
-<p>Simple finite state machine used to implement a drawing tool.</p>
+Simple finite state machine used to implement a drawing tool.
 
 <!--more-->
 

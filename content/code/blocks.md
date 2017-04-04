@@ -3,8 +3,11 @@ date = "2011-06-09T12:00:00+03:00"
 title = "Blocky"
 tags = ["js", "js1k"]
 +++
-<p>an experiment with blocks</p>
+
+an experiment with blocks
+
 <!--more-->
+
 <code>
   arrow keys - move | a - pick up block | z - put down block | x - jump | 1-9 - select block type <br />
 </code>

@@ -4,9 +4,10 @@ title = "Flowers"
 tags = ["js", "ik", "game", "experiment"]
 +++
 
-<p>Experimenting with IK resolvers.</p>
+Experimenting with IK resolvers.
 
 <!--more-->
+
 <style>
     .post {
         max-width: none;

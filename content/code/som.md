@@ -4,9 +4,10 @@ title = "Self-Organizing Map"
 tags = ["js", "data-mining"]
 +++
 
-<p>A visualization of a <a href="http://en.wikipedia.org/wiki/Self-organizing_map">Self-Organizing Map</a>.</p>
+A visualization of a <a href="http://en.wikipedia.org/wiki/Self-organizing_map">Self-Organizing Map</a>.
 
 <!--more-->
+
 <style>
     .post {
         max-width: none;

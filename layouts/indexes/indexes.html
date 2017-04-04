@@ -1,4 +1,3 @@
-{{ $baseurl := .Site.BaseUrl }}
 {{ template "chrome/head.html" . }}
 {{ template "chrome/header.html" . }}
 
@@ -9,7 +8,7 @@
 <div class="listing">
 	{{ range $key,$value := .Data.Index.ByCount }}
 	<article>
-		<h1><a href="{{ $baseurl }}/tags/{{ $value.Name | urlize }}"> {{ $value.Name }} </a> [{{ $value.Count }}]</h1>
+		<h1><a href="/tags/{{ $value.Name | urlize }}"> {{ $value.Name }} </a> [{{ $value.Count }}]</h1>
 		<div class="clear"></div>
 	</article>
 	{{ end }}

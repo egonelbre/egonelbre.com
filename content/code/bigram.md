@@ -3,8 +3,11 @@ date = "2012-07-02T12:00:00+03:00"
 title = "Bigram"
 tags = ["js", "parsing"]
 +++
-<p>an experiment with parsing</p>
+
+an experiment with parsing
+
 <!--more-->
+
 <style>
     .post {
         max-width: none;

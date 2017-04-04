@@ -1,4 +1,3 @@
-{{ $baseurl := .Site.BaseUrl }}
 {{ template "chrome/head.html" . }}
 {{ template "chrome/header.html" . }}
 
@@ -12,7 +11,7 @@
 		<h1><a href="{{.RelPermalink}}">{{.Title}}</a></h1>
 		{{partial "date.html" .Date }}
 		<div class="post-tags">
-			{{ range .Params.tags }}<a tabindex="-1" href="{{$baseurl}}/tags/{{.|urlize}}">{{.}}</a>{{ end }}
+			{{ range .Params.tags }}<a tabindex="-1" href="/tags/{{.|urlize}}">{{.}}</a>{{ end }}
 		</div>
 		<div class="clear"></div>
 		<div class="summary">{{ .Summary }}</div>
