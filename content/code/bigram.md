@@ -1,8 +1,8 @@
-+++
-date = "2012-07-02T12:00:00+03:00"
-title = "Bigram"
-tags = ["js", "parsing"]
-+++
+---
+date: "2012-07-02T12:00:00+03:00"
+title: "Bigram"
+tags: ["js", "parsing"]
+---
 
 an experiment with parsing
 

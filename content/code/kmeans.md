@@ -1,8 +1,8 @@
-+++
-date = "2012-10-24T12:00:00+03:00"
-title = "K-Means"
-tags = ["js", "data-mining"]
-+++
+---
+date: "2012-10-24T12:00:00+03:00"
+title: "K-Means"
+tags: ["js", "data-mining"]
+---
 
 A visualization of a <a href="http://en.wikipedia.org/wiki/K-means_clustering">K-means clustering</a>.
 

@@ -1,8 +1,8 @@
-+++
-date = "2011-06-09T12:00:00+03:00"
-title = "js3d"
-tags = ["js", "experiment"]
-+++
+---
+date: "2011-06-09T12:00:00+03:00"
+title: "js3d"
+tags: ["js", "experiment"]
+---
 
 An experiment with 3D rendering on a 2D Canvas.
 

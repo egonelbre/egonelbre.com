@@ -1,8 +1,8 @@
-+++
-date = "2011-09-13T12:00:00+03:00"
-title = "measus"
-tags = ["perl", "code"]
-+++
+---
+date: "2011-09-13T12:00:00+03:00"
+title: "measus"
+tags: ["perl", "code"]
+---
 
 Measus is a perl script that automates speed testing 
 multiple programs over different files and arguments.

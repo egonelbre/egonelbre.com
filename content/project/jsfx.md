@@ -1,8 +1,8 @@
-+++
-title = "jsfx"
-tags = ["js", "jsfx"]
-aliases = ["/js/jsfx/"]
-+++
+---
+title: "jsfx"
+tags: ["js", "jsfx"]
+aliases: ["/js/jsfx/"]
+---
 
 See <a href="http://www.github.com/egonelbre/jsfx">github</a> for more information.
 

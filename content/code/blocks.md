@@ -1,8 +1,8 @@
-+++
-date = "2011-06-09T12:00:00+03:00"
-title = "Blocky"
-tags = ["js", "js1k"]
-+++
+---
+date: "2011-06-09T12:00:00+03:00"
+title: "Blocky"
+tags: ["js", "js1k"]
+---
 
 an experiment with blocks
 

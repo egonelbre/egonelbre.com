@@ -1,8 +1,8 @@
-+++
-date = "2012-09-30T12:00:00+03:00"
-title = "L-system"
-tags = ["js", "l-system", "experiment"]
-+++
+---
+date: "2012-09-30T12:00:00+03:00"
+title: "L-system"
+tags: ["js", "l-system", "experiment"]
+---
 
 Experimenting with Linden Meyer Systems.
 
@@ -359,7 +359,7 @@ LSystem.prototype.render = function(c, start, time){
                     vartype = matches[2] || "",
                     varop   = matches[3],
                     num  = parseFloat( matches[4] ),
-                    validate = false,
+                    validate: false,
                     idx = 0;
                 
                 switch( vartype ){

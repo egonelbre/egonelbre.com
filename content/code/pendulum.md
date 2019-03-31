@@ -1,8 +1,8 @@
-+++
-date = "2013-03-02T12:00:00+03:00"
-title = "Pendulum"
-tags = ["js", "game", "physics", "experiment"]
-+++
+---
+date: "2013-03-02T12:00:00+03:00"
+title: "Pendulum"
+tags: ["js", "game", "physics", "experiment"]
+---
 
 Physics simulation with an elastic band. Press Ctrl+R after centered on the screen.
 

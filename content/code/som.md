@@ -1,8 +1,8 @@
-+++
-date = "2012-10-24T12:00:00+03:00"
-title = "Self-Organizing Map"
-tags = ["js", "data-mining"]
-+++
+---
+date: "2012-10-24T12:00:00+03:00"
+title: "Self-Organizing Map"
+tags: ["js", "data-mining"]
+---
 
 A visualization of a <a href="http://en.wikipedia.org/wiki/Self-organizing_map">Self-Organizing Map</a>.
 

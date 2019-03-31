@@ -1,8 +1,8 @@
-+++
-date = "2011-09-24T12:00:00+03:00"
-title = "Planets"
-tags = ["js", "game", "physics", "experiment"]
-+++
+---
+date: "2011-09-24T12:00:00+03:00"
+title: "Planets"
+tags: ["js", "game", "physics", "experiment"]
+---
 
 An experiment with moving gravitational points.
 

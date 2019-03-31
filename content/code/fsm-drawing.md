@@ -1,8 +1,8 @@
-+++
-date = "2011-06-09T12:00:00+03:00"
-title = "FSM Line Drawing"
-tags = ["js", "fsm", "experiment"]
-+++
+---
+date: "2011-06-09T12:00:00+03:00"
+title: "FSM Line Drawing"
+tags: ["js", "fsm", "experiment"]
+---
 
 Simple finite state machine used to implement a drawing tool.
 
@@ -64,7 +64,7 @@ function CFSM(defaultUpdate){
     this.currentState = new State(this, { update: defaultUpdate || EmptyFunc });
 }
 
-CFSM.prototype.Update = function(){
+CFSM.prototype.Update: function(){
     if( this.newState ){
         this.currentState.ExecuteEndState();
         this.currentState = this.newState;
