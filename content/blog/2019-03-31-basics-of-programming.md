@@ -8,7 +8,7 @@ date: 2019-03-31T11:51:02.268Z
 ---
 In the simplest terms programmer is a problem solver. There are some things that make reaching solution easier, some that make it harder. Programming can also create quite extreme emotional states - therefore to understand the whole picture we must take it into account.
 
-<!-- more -->
+<!--more-->
 
 Here's how these things work together:
 
