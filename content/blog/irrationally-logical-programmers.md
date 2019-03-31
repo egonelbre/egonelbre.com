@@ -1,9 +1,9 @@
-+++
-draft = true
-date = "2014-10-12T12:00:00+03:00"
-title = "Irrationally Logical Programmers"
-tags = ["dev", "psych"]
-+++
+---
+draft: true
+date: "2014-10-12T12:00:00+03:00"
+title: "Irrationally Logical Programmers"
+tags: ["dev", "psychology"]
+---
 
 It's interesting how we perceive the world and make decisions in the world, even in the presence of evidence that something is bad.
 

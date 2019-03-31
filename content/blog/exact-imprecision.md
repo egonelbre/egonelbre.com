@@ -1,8 +1,8 @@
-+++
-date = "2011-02-19T12:00:00+03:00"
-title = "Exact Imprecision"
-tags = ["C", "experiment"]
-+++
+---
+date: "2011-02-19T12:00:00+03:00"
+title: "Exact Imprecision"
+tags: ["C", "experiment"]
+---
 
 Sometimes you need nicely packable floating point values.
 I started thinking about this problem after reading 
