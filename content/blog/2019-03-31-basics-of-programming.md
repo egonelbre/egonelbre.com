@@ -1,7 +1,7 @@
 ---
 title: Basics of programming
 subtitle: A Model of Problem Solving
-draft: true
+draft: false
 tags:
   - psychology
 date: 2019-03-31T11:51:02.268Z
