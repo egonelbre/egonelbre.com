@@ -14,6 +14,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: true }
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Aliases", name: "aliases", widget: "list", required: false}
@@ -28,6 +29,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: true }
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Aliases", name: "aliases", widget: "list", required: false}
@@ -41,6 +43,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: true }
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Aliases", name: "aliases", widget: "list", required: false}
