@@ -2,7 +2,7 @@
 date: "2015-12-27T12:00:00+03:00"
 title: "Relearning Design Patterns"
 summary: Design Patterns and what they were meant to be.
-tags: ["Design Patterns"]
+tags: ["Software Concepts"]
 reviewers: ["Reena Purret"]
 ---
 

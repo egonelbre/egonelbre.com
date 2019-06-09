@@ -3,7 +3,7 @@
 
 <div class="center">
 	<article>
-		<h1>Recent Articles</h1>
+		<h1>Writing</h1>
 
 		{{ $paginator := .Paginate (where .Pages "Params.hidden" "ne" true) }}
 		<ul class="toc">
@@ -15,9 +15,6 @@
 			</li>
 			{{ end }}
 		</ul>
-
-		<h2>About Me</h2>
-		<p>I'm Egon, a software engineer from Tartu, Estonia. I'm highly interested in understanding foundational principle of software development and been investigating it for 10 years informally. I strongly believe that there are many aspects missing in software development practice today.</p>
 	</article>
 </div>
 

@@ -4,6 +4,8 @@ title = "Egon Elbre"
 canonifyURLs = false
 theme = "clean"
 
+paginate = 40
+
 [permalinks]
 	blog = "/blog/:title/"
 	code = "/code/:title/"
