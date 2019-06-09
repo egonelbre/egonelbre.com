@@ -1,10 +1,7 @@
 ---
 title: "About"
-menu: "main"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, iste fugiat temporibus eligendi eveniet ratione optio ab consequatur itaque repudiandae dolore debitis perferendis dicta et hic ipsa nostrum recusandae facere.
+I'm Egon, a software engineer from Tartu, Estonia. I'm highly interested in understanding foundational principle of software development and been investigating it for 10 years informally. I strongly believe that there are many aspects missing in software development practice today.
 
-## sub
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, aliquam, iste culpa explicabo accusamus voluptate facere alias rem vero in pariatur perspiciatis sit nam maiores tenetur quas dolor animi nesciunt.
+On my free time I like to [play around with music](https://soundcloud.com/egon-elbre/), [draw](https://gallery.egonelbre.com/) and dance.
