@@ -1,5 +1,5 @@
 ---
-date: "2015-09-23T12:00:00+03:00"
+date: "2016-09-23T12:00:00+03:00"
 title: "Debugging and Improving Life"
 summary: "Ideas and perspectives that have helped me."
 tags: ["Psychology"]
