@@ -1,0 +1,21 @@
+{{ partial "header" . }}
+{{ partial "nav" . }}
+
+<div class="center">
+	<article>
+		<h1>Recent Articles</h1>
+
+		{{ $paginator := .Paginate (where .Pages "Params.hidden" "ne" true) }}
+		<ul class="toc">
+			{{ range sort .Paginator.Pages }}
+			<li>
+				<a href="{{ .Permalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}
+				{{ if (not .Date.IsZero) }}<span class="toc-date">{{.Date.Format "Jan 2006"}}</span>{{ end }}
+				<div class="toc-summary">{{ .Summary | plainify | safeHTML }}</div>
+			</li>
+			{{ end }}
+		</ul>
+	</article>
+</div>
+
+{{ partial "footer" . }}

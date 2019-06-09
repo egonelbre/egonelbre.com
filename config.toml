@@ -2,6 +2,7 @@ baseURL = "http://egonelbre.com"
 languageCode = "en-us"
 title = "Egon Elbre"
 canonifyURLs = false
+theme = "clean"
 
 [permalinks]
 	blog = "/blog/:title/"

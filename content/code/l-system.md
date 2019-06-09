@@ -1,7 +1,7 @@
 ---
 date: "2012-09-30T12:00:00+03:00"
-title: "L-system"
-tags: ["js", "l-system", "experiment"]
+title: "L-System"
+tags: ["JavaScript", "L-System", "Experiment"]
 ---
 
 Experimenting with Linden Meyer Systems.

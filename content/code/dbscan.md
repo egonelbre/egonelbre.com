@@ -1,7 +1,7 @@
 ---
 date: "2012-10-24T12:00:00+03:00"
 title: "DBSCAN"
-tags: ["js", "data-mining"]
+tags: ["JavaScript", "Data Mining"]
 ---
 
 A visualization of a <a href="http://en.wikipedia.org/wiki/DBSCAN">DBSCAN algorithm</a>.

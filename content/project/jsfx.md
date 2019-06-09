@@ -1,12 +1,12 @@
 ---
+date: "2011-01-22T12:00:00+03:00"
 title: "jsfx"
-tags: ["js", "jsfx"]
+summary: "A tool for generating sound effects."
+tags: ["JavaScript"]
 aliases: ["/js/jsfx/"]
 ---
 
 See <a href="http://www.github.com/egonelbre/jsfx">github</a> for more information.
-
-<!--more-->
 
 <div id="button-panel">
     <div id="sample-generators" class="button-set"></div>

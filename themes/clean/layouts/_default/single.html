@@ -1,0 +1,18 @@
+{{ partial "header" . }}
+{{ partial "nav" . }}
+
+<div class="center">
+	<article>
+		<h1 class="title">{{ .Title }}</h1>
+		{{with .Params.subtitle}}<h2>{{.}}</h2>{{end}}
+		<div class="content">
+			{{.Content}}
+		</div>
+		<footer>
+			{{ if .Params.tags }}<div class="tags">{{ partial "tags" .Params.tags }}</div>{{ end }}
+			{{ if (not .Date.IsZero) }}<div class="date">{{.Date.Format "Jan 2006"}}</div>{{ end }}
+		</footer>
+	</article>
+</div>
+
+{{ partial "footer" . }}

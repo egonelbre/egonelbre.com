@@ -1,0 +1,27 @@
+name = "Clean"
+license = "MIT"
+licenselink = "https://github.com/egonelbre/egonelbre.com"
+description = "Minimal Theme"
+homepage = "https://egonelbre.com"
+tags = [
+  "blog",
+  "minimal",
+  "minimalist",
+  "responsive"
+]
+features = [
+  "accessibility",
+  "comments",
+  "cover-image",
+  "favicon",
+  "multilingual",
+  "pagination",
+  "shortcodes",
+  "single-column",
+  "social-menu",
+  "syntax-highlighting",
+]
+
+[author]
+  name = "Egon Elbre"
+  homepage = "https://egonelbre.com"

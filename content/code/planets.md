@@ -1,7 +1,7 @@
 ---
 date: "2011-09-24T12:00:00+03:00"
 title: "Planets"
-tags: ["js", "game", "physics", "experiment"]
+tags: ["JavaScript", "Game", "Physics", "Experiment"]
 ---
 
 An experiment with moving gravitational points.

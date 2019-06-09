@@ -1,7 +1,7 @@
 ---
 date: "2011-06-09T12:00:00+03:00"
 title: "FSM Line Drawing"
-tags: ["js", "fsm", "experiment"]
+tags: ["JavaScript", "Experiment"]
 ---
 
 Simple finite state machine used to implement a drawing tool.

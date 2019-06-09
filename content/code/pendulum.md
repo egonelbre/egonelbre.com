@@ -1,7 +1,7 @@
 ---
 date: "2013-03-02T12:00:00+03:00"
 title: "Pendulum"
-tags: ["js", "game", "physics", "experiment"]
+tags: ["JavaScript", "Game", "Physics", "Experiment"]
 ---
 
 Physics simulation with an elastic band. Press Ctrl+R after centered on the screen.

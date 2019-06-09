@@ -1,7 +1,7 @@
 ---
 date: "2011-06-09T12:00:00+03:00"
 title: "Drums"
-tags: ["js", "jsfx", "experiment"]
+tags: ["JavaScript", "Experiment"]
 ---
 
 A simple drum set implemented with <a href="/js/jsfx">jsfx</a>

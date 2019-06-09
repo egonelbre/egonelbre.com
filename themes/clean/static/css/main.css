@@ -1,0 +1,123 @@
+html {
+	font-family: serif;
+	font-weight: 100;
+	color: #333;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+header, h1, h2, h3, h4, h5, h6, .header {
+	font-family: sans-serif;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.center {
+	max-width: 48rem;
+	margin: 0 auto;
+	padding: 0.5rem;
+}
+.clear {
+	clear: both;
+}
+
+header.main {
+	color: #555;
+	padding: 0.2em 0;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 2em;
+}
+
+footer.main {
+	color: #555;
+	padding: 0.2em 0;
+	margin-top: 2em;
+	border-top: 1px solid #eee;
+}
+
+header.main h1 {
+	float: left;
+	margin: 0;
+	line-height: 1rem;
+	font-weight: 100;
+}
+
+h1.index-title {
+	font-weight: 100;
+}
+
+header.main a {
+	display: block;
+	color: inherit;
+	padding: 1rem;
+	font-size: 1rem;
+	line-height: 1rem;
+}
+
+header.main nav {
+	float: right;
+}
+
+header.main nav a {
+	display: inline-block;	
+	margin-right: 0.5em;
+}
+
+header.main a:hover {
+	background: rgba(0,0,0,0.1);
+}
+
+article {
+	padding: 1rem;
+}
+
+article h1 {
+	font-size: 2em;
+	font-weight: 100;
+	letter-spacing: 0.02em;
+}
+
+article h2 {
+	margin-top: 2em;
+	font-size: 1.6em;
+	font-weight: 100;
+}
+
+article .date {
+	color: #666;
+	font-style: italic;
+}
+
+article .tags {
+	color: #666;
+	font-style: italic;
+}
+
+article p {
+	line-height: 1.5em;
+	font-size: 1.2em;
+	font-weight: 100;
+}
+
+.toc { 
+	list-style: none;
+	font-size: 1.2em;
+	margin: 0;
+	padding: 0;
+}
+
+.toc li {
+	margin: 0;
+	margin-bottom: 1em;
+}
+
+.toc-date {
+	font-size: 0.7em;
+	font-weight: 800;
+	color: #999
+}
+
+.toc li .toc-summary {
+	margin-left: 1em;
+}

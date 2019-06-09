@@ -1,7 +1,7 @@
 ---
 date: "2011-06-09T12:00:00+03:00"
 title: "Blocky"
-tags: ["js", "js1k"]
+tags: ["JavaScript", "JS1K"]
 ---
 
 an experiment with blocks

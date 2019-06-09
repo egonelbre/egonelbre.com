@@ -1,7 +1,7 @@
 ---
 date: "2011-06-09T12:00:00+03:00"
 title: "Flowers"
-tags: ["js", "ik", "game", "experiment"]
+tags: ["JavaScript", "Physics", "Game", "Experiment"]
 ---
 
 Experimenting with IK resolvers.
