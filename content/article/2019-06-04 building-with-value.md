@@ -13,7 +13,7 @@ Beginners often overwhelm their brain with decisions and things they need to do.
 The most important part of programming is that you cannot do everything at once. The human mind is very limited in how much it can process at a time. To combat this limitation, we need to build things piece-by-piece to ensure that everything will fit together nicely.
 
 > Speaking as a builder, if you start something, you must have a vision of the thing which arises from your instinct about preserving and enhancing what is there… If you’re working correctly, the feeling doesn’t wander about.  
->    
+>    
 > -- Christopher Alexander
 
 The question is -- how do we pick the pieces we develop? How do we ensure that our mind and feeling doesn’t wander around?
@@ -74,7 +74,7 @@ _However, it’s hard to describe “The Fundamental Differentiating Process” 
 
 _The following is a simplification of the “Fundamental Process” combined with concepts from “The Timeless Way of Building”. It loses some of its generality and beauty in favor of pragmatic concerns. While the following is very useful, it’s not the whole story._
 
-### Structure Follows Value
+### Structure Follows Value
 
 We dedicated a lot of time explaining what Value is and why it is important. To ensure that we build something of value, we need to understand the value it provides and how it provides it. The better we can distinguish value, the better we can make decisions.
 
@@ -120,7 +120,7 @@ If we try to break the previously discovered “Value” into 2–4 changes, we 
 
 _Spiking in software development has its roots in_ [_Extreme Programming_](http://www.extremeprogramming.org/rules/spike.html) _for getting a feel for and understanding whether we are on the right track and notice potential problems. The spiking idea comes from architecture, where architects would put spikes into the ground to get a better feeling of the building and the environment._
 
-### Gradual Stiffening & Cleanup
+### Gradual Stiffening & Cleanup
 
 Once the spikes roughly fit and integrate with the rest of the system, we can start making the draft changes. We begin to implement methods, rough out testing, update documents, and so on.
 
@@ -136,7 +136,7 @@ This could even result in us moving our spikes or going back to evaluate what is
 
 Gradual Stiffening and Cleanup happen together. One is about improving things, and the other is about observing the wholeness and fixing small mistakes.
 
-### Putting it all together
+### Putting it all together
 
 It might not be easy to comprehend this without practical examples, but the best analogy might be Drawing.
 

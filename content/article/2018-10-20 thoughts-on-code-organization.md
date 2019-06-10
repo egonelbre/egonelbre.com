@@ -6,11 +6,11 @@ tags: ["Software Concepts"]
 reviewers: ["Taavi Kivisik"]
 ---
 
-There are many ways code could be structured. I was pondering a lot what is the best way. I rather reached an unsatisfying conclusion — depending on the situation one could be better than some other. Structuring code means to slice up the program in different ways for better comprehension.
+There are many ways code could be structured. I was pondering a lot what is the best way. I rather reached an unsatisfying conclusion  --  depending on the situation one could be better than some other. Structuring code means to slice up the program in different ways for better comprehension.
 
 One of my major insights was:
 
-> When the code-base is less than 30,000 lines of code, then code organization isn’t a big hindrance in getting work done.
+> When the code-base is less than 30,000 lines of code, then code organization isn’t a big hindrance in getting work done.
 
 This number also suggests that you cannot draw any significant conclusions from code-bases that have less than 30K LOC (lines of code).
 
@@ -29,7 +29,7 @@ It would be wrong to conclude that organizing everything alphabetically is the r
 
 When organizing we need to think:
 
-> **Where is the value in a specific order?**
+> **Where is the value in a specific order?**
 
 One important implication of this is, that when we make something easier, something else becomes more difficult. The code structure should cater to our problems and needs.
 
@@ -61,8 +61,8 @@ It’s important to notice that it’s about “understanding” and “clarity�
 
 In most cases we also need to consider ease-of-learning the organization. Complicated approaches can become an overhead when trying to modify artifacts. A simplistic approach may not give useful benefits. More on that later.
 
-![[Smalltalk-76 Code Browser](https://github.com/livingcomputermuseum/ContrAlto)](https://cdn-images-1.medium.com/max/800/1*5BJKIF4GeuNZYYKO_yt-Fw.png)
-[Smalltalk-76 Code Browser](https://github.com/livingcomputermuseum/ContrAlto)
+![[Smalltalk-76 Code Browser](https://github.com/livingcomputermuseum/ContrAlto)](https://cdn-images-1.medium.com/max/800/1*5BJKIF4GeuNZYYKO_yt-Fw.png)
+[Smalltalk-76 Code Browser](https://github.com/livingcomputermuseum/ContrAlto)
 
 ## Code
 
@@ -93,7 +93,7 @@ You can recognize Java by its structure `lib`, `src/main/java`, `src/main/resour
 
 I’m not talking about the specific content that these folders have, but just the names. It could be `library`, instead of `lib`; it could be `mdl` or `models` instead of `model`. Keeping consistency can help a lot with understandability.
 
-> Familiarity is a useful feature as it helps us understand new things quicker by relying on what we know already.
+> Familiarity is a useful feature as it helps us understand new things quicker by relying on what we know already.
 
 My own rule is that when I cannot argue for more than 5% better results by naming it some particular way, then I will use the canonical approach; because the hit from non-familiarity (see [principle of least astonishment](https://en.wikipedia.org/wiki/Principle_of_least_astonishment)) when other programmers read it, is bigger.
 
@@ -113,9 +113,9 @@ This clear separation might end up with more lines of code compared to using thi
 
 ![](https://cdn-images-1.medium.com/max/800/1*804r9bt-BKfRfAiHT8vuLA.png)
 
-## Group by Team
+## Group by Team
 
-> “organizations which design systems … are constrained to produce designs which are copies of the communication structures of these organizations.”  
+> “organizations which design systems … are constrained to produce designs which are copies of the communication structures of these organizations.”  
 > \- M. Conway
 
 Grouping by team makes it clearer when coordination between teams is needed. For example `ui`, `backend` and `db` need expertise from different teams. Hence, it becomes more obvious who is responsible for which part of the codebase.
@@ -126,7 +126,7 @@ A change in the model often propagates through all of the groups. This increases
 
 ![](https://cdn-images-1.medium.com/max/800/1*fb9sApi2Ws51aZUCJTZibQ.png)
 
-## Group by Use
+## Group by Use
 
 A grouping that focuses on usability is “group things that are used together”. Sometimes it is difficult to define a single clear grouping other than these things are used together.
 
@@ -170,11 +170,11 @@ The classification problem can also happen with inheritance. [“Evolve Your Hie
 
 ![](https://cdn-images-1.medium.com/max/800/1*s8sc8Y1UoeyAhYS-S4bVjw.png)
 
-## Group by Feature
+## Group by Feature
 
 Instead of thinking in terms of classification we can also think of features that work together.
 
-For example, you would end up with ideas `blog`, `admin`, `user`, `comment`, `feed` for a blog site. You still might have models and views, but in these folders (`blog/model` , `blog/view` etc).
+For example, you would end up with ideas `blog`, `admin`, `user`, `comment`, `feed` for a blog site. You still might have models and views, but in these folders (`blog/model` , `blog/view` etc).
 
 This organization makes it much clearer what the software does and how it’s built. It also shows how different things communicate. It places less importance on technical considerations and more on the value proposal of the whole system.
 
@@ -190,7 +190,7 @@ This approach also has problems when prototyping, when you are still figuring ou
 
 ![](https://cdn-images-1.medium.com/max/800/1*vs27c3QQKgXAhw2VkJvUPQ.png)
 
-## Group by Value
+## Group by Value
 
 In all of the previous groupings we have discussed pros and cons of different approaches. “Group by Value” can be seen as an mix of all them.
 
@@ -212,6 +212,6 @@ Grouping by value requires a good understanding of why and how your software is 
 
 I try to think less about organizing code and more about organizing ideas about the software. Then again, it’s about finding a good balance between different approaches. There is no “right way”, but they do give more clarity to different aspects of a project.
 
-> “Just organizing things” doesn’t necessarily create value.
+> “Just organizing things” doesn’t necessarily create value.
 
 The question is, which organization gives the most value to you?

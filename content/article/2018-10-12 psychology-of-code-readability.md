@@ -22,8 +22,8 @@ But some would still confidently say that they can handle problems involving mor
 
 _Dates and phone-numbers are good examples of this:_
 
-![two levels of chunking a date](https://cdn-images-1.medium.com/max/800/1*8AE8bk1PtPx8M712yih12Q.png)
-two levels of chunking a date
+![two levels of chunking a date](https://cdn-images-1.medium.com/max/800/1*8AE8bk1PtPx8M712yih12Q.png)
+two levels of chunking a date
 
 From these **chunks** we build up our **long term memory**. I like to imagine it as a large web of consisting many chunks, chunk sequences and groupings.
 
@@ -34,8 +34,8 @@ You might guess from this image that moving from one place to another in memory 
 
 You might think this is the same thing as working memory limit, however there is a slight difference. **Working memory capacity** talks how big our focusing area is, the **focus/locus of attention** say that we can only do that when there is a place in our brain that contains the ideas.
 
-![focus of attention and working memory capacity](https://cdn-images-1.medium.com/max/800/1*bMZ9zPHDsaIi1JuC2rGC6Q.png)
-focus of attention and working memory capacity
+![focus of attention and working memory capacity](https://cdn-images-1.medium.com/max/800/1*bMZ9zPHDsaIi1JuC2rGC6Q.png)
+focus of attention and working memory capacity
 
 The **focus and locus of attention** are important to know, because [switching cost](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3197943/) is significant. It is even slower when we need to create new **chunks** and **groupings**. It also goes the other way, the more familiar something is the less time it takes to make it our focus.
 
@@ -61,7 +61,7 @@ Our brains need to do more work when dealing with **abstractions**.
 
 When ideas are **similar** their chunks are related and linked in our brains in a similar way. This leads to our brain being unable to “rebuild the contexts properly” because we are **uncertain** which chunk is the right one. _Example: I and 1; O and 0._
 
-**Ambiguity** is another source for **uncertainty**. When a thing is ambiguous then there are multiple interpretations for the same thing. Homonyms are the best example of this property. _Example: Crane — the bird or the machine._
+**Ambiguity** is another source for **uncertainty**. When a thing is ambiguous then there are multiple interpretations for the same thing. Homonyms are the best example of this property. _Example: Crane  --  the bird or the machine._
 
 **Uncertainty** causes us to slow down. It might be a few milliseconds, but that can be enough to disrupt our state of flow or make us use more working memory than necessary.
 
@@ -79,9 +79,9 @@ I’m going to use the term **_programming artifact_**. By that I mean everythin
 
 Here are a few recommendations, rules-of-thumb and paradigms analyzed in the context of psychology. By no means is this an exhaustive list or even a guide on what exactly to do. Probably there are many places where the analysis could be better, but this is more about showing how we can gain deeper insight into code readability by using psychology.
 
-## Scope of a name
+## Scope of a name
 
-> Length is not a virtue in a name; clarity of expression **is**. — Rob Pike
+> Length is not a virtue in a name; clarity of expression **is**.  --  Rob Pike
 
 Let’s take a simple `for` loop:
 
@@ -111,7 +111,7 @@ In example **D.** without namespaces, then the call becomes ambiguous, you might
 
 It’s important to mention that, if all of code is dealing with strings it will be quite easy to assume that `IndexOf` is some string related function. In such cases, even the `strings` part might be too noisy. For example: `int16.Add(a, b)` compared to `a + b`, would be much harder to read.
 
-## State of a variable
+## State of a variable
 
 With variables it would be easy to conclude that “modification is bad, because it makes harder to track what is happening”. But, lets take these examples:
 
@@ -267,7 +267,7 @@ In the first version when we read the “Do Something” part we understand it o
 
 The second version is somewhat nicer. We have lost the necessity to keep multiple “contexts” in our head, but can focus instead of a single context that is setup and verified by multiple checks in the beginning.
 
-## Rules of thumb
+## Rules of thumb
 
 One of the usual recommendations is “don’t have global variables”. But, when a variable is set during startup and never changed again, is that a problem? The problem isn’t in the “variableness” or “globalness” of something, but rather in how it affects our capability to understand code. When something is modified at a distance then we cannot build a contained model of it. The “globalness” of course clutters the namespace (depending on the language) and means there are more places it can be accessed from. Of course there are many other things that have same properties, such as “Singleton”. So, why is it considered better than a global variable?
 

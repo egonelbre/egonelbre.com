@@ -112,7 +112,7 @@ func ParseFields(r io.Reader) (map[string]Field, error) {
 
 There are other packages that could be more performant, but it’s not a vital part and we can always switch it out later if needed.
 
-Now the question is, how do we write the code. Just writing `fields["Alpha"].Add(fields["Beta"])` , wouldn’t work since we only handle things that have specific type.
+Now the question is, how do we write the code. Just writing `fields["Alpha"].Add(fields["Beta"])` , wouldn’t work since we only handle things that have specific type.
 
 ## Type-Switch
 

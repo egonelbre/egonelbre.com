@@ -46,7 +46,7 @@ So, we managed to make the code over 10x slower.
 
 Also, did you notice the bug? It’s probably the second most common non-obvious mistake after a data-race.
 
-### Atomic Contains and Add
+### Atomic Contains and Add
 
 Effectively, the bug is here.
 
@@ -71,7 +71,7 @@ The fix is to replace `Contains` and `Add` with a single atomic `TryAdd`.
 
 Here we ensure that `true` is only returned once per unique `node`.
 
-### Using only channels
+### Using only channels
 
 I got a question in Reddit for the previous post:
 
@@ -80,7 +80,7 @@ I got a question in Reddit for the previous post:
 > ```
 > for {
 >     select {
->         case node := <- ch: // Send all children on channel
+>         case node := <- ch: // Send all children on channel
 >             // do work on node default
 >             // nothing left in queue break
 >     }
@@ -97,8 +97,8 @@ Anyways, the code will look like this:
 
 Unfortunately, we had to throw out our sorting optimization. Let’s see how it does:
 
-![i7–2820QM with -B](https://cdn-images-1.medium.com/max/800/1*LGW0pRffbVMViTfxBuLFSg.png)
-i7–2820QM with -B
+![i7–2820QM with -B](https://cdn-images-1.medium.com/max/800/1*LGW0pRffbVMViTfxBuLFSg.png)
+i7–2820QM with -B
 
 _I have only measurement for the Windows computer, because I implemented this after all other measurements._
 
@@ -146,8 +146,8 @@ Here we also have a convenience method `Write` that allows to make our code easi
 
 However, we now have another problem. We might end-up with gaps in our write buffer. But, we can make one node id “special” denoting it’s empty. Putting all of this together:
 
-![_Unrolling removed for clarity_](https://cdn-images-1.medium.com/max/800/1*3jz-oBp8gLgPS2YEllshdQ.png)
-_Unrolling removed for clarity_
+![_Unrolling removed for clarity_](https://cdn-images-1.medium.com/max/800/1*3jz-oBp8gLgPS2YEllshdQ.png)
+_Unrolling removed for clarity_
 
 When we make the `Sentinel = ^graph.Node(0)` it will be larger than any other node, so when we sort the array, all of them will end-up as last nodes.
 
@@ -201,7 +201,7 @@ By the way, there might be other possibilities with writing a broken “sort”,
 
 _Reminder: while optimizing I did many fewer measurements than seen on the results table. I focused on i7–2820QM with -B on 8 cores._
 
-## Fetch buckets early
+## Fetch buckets early
 
 One extremely useful technique for coming up with ideas is taking a break.
 
@@ -219,8 +219,8 @@ The adjustment to bit-vector looks like:
 
 Of course there are many ways to load the buckets early:
 
-![early2 and earlyR](https://cdn-images-1.medium.com/max/800/1*SgbhZa23mBAJnqQuKSqiGA.png)
-early2 and earlyR
+![early2 and earlyR](https://cdn-images-1.medium.com/max/800/1*SgbhZa23mBAJnqQuKSqiGA.png)
+early2 and earlyR
 
 The results were the following:
 
@@ -234,8 +234,8 @@ This idea seemed good, so I also tried it with the single-core version, but that
 
 I also lamented that I was running out of ideas regarding what to do with the bit vector in the #performance channel. [Damian](https://twitter.com/dgryski) mentioned that he thought about multilevel bitmaps.
 
-![inlined single core version of TryAdd](https://cdn-images-1.medium.com/max/800/1*J3SZdaPa-KVxhoCaPFSmKQ.png)
-inlined single core version of TryAdd
+![inlined single core version of TryAdd](https://cdn-images-1.medium.com/max/800/1*J3SZdaPa-KVxhoCaPFSmKQ.png)
+inlined single core version of TryAdd
 
 Notice here that we are doing a lot of shifts, whereas the `set[bucket]` might be completely full and we could shave off a few computations.
 
@@ -257,20 +257,20 @@ Unfortunately this made things slower about 10%. _And, yes, I tried placing the 
 
 While in this case it didn’t help, discussing ideas with people can be very useful. They can straight up give you a better solution or the discussion itself gives you new insight that eventually leads to an improvement.
 
-## Long live workers
+## Long live workers
 
 One thing that I was bothered in the previous parallel implementation was that on each level we are spawning new goroutines. Maybe by avoiding them we can shave off some additional acycles?
 
 I knew from my Master’s thesis that taking this approach was going to be annoying.
 
-### One thread to rule them all
+### One thread to rule them all
 
 First idea was to have a “controlling thread” that workers communicated with and then scheduled the phases.
 
 ![rough pseudo-code](https://cdn-images-1.medium.com/max/800/1*VIE_dbUkuMm66iEKygOk7A.png)
 rough pseudo-code
 
-However the synchronization with channels, `sync.WaitGroup`s became a nightmare to write. _You can try to get it working, but I gave up :P._
+However the synchronization with channels, `sync.WaitGroup`s became a nightmare to write. _You can try to get it working, but I gave up :P._
 
 ### One WaitGroup
 

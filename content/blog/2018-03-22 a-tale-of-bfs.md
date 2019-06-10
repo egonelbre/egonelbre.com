@@ -107,7 +107,7 @@ Let’s say you don’t know much about optimizing and don’t have intuition, t
 6. _Keep the second best solution around, just in case_
 7. goto 1.
 
-Knowledge helps you come up with solutions and hypotheses. Experience helps you iterate faster and identify the most promising roads faster. The most important part is — **you will have ideas that will fail**. Luckily, people will see only the successes. _Except when you are going to write them up in a blog post for everyone to see_.
+Knowledge helps you come up with solutions and hypotheses. Experience helps you iterate faster and identify the most promising roads faster. The most important part is  --  **you will have ideas that will fail**. Luckily, people will see only the successes. _Except when you are going to write them up in a blog post for everyone to see_.
 
 The common things to do are:
 
@@ -157,7 +157,7 @@ Hmm… absolutely nothing. Except on the big machine, where it made things worse
 
 When we are not getting any performance gain, this means that the bottleneck is not in bounds checks.
 
-### Try the tip
+### Try the tip
 
 Try the latest version of your compiler. In some cases, waiting 6 months for the next release might be sufficient to make your code faster. Using the tip, made the code ~10% faster.
 
@@ -188,7 +188,7 @@ The problem is that while we did make less memory accesses, they were slower. `v
 ![Cache is a limited resource.](https://cdn-images-1.medium.com/max/800/1*DyQUVfnS6L5-W32TjF3aSg.png)
 Cache is a limited resource.
 
-This also highlights an important thing about optimizing — it is highly dependent on the data. We cannot win in all scenarios. Try to use representative data for your problem, otherwise you will come to the wrong conclusions.
+This also highlights an important thing about optimizing  --  it is highly dependent on the data. We cannot win in all scenarios. Try to use representative data for your problem, otherwise you will come to the wrong conclusions.
 
 ## Loading faster
 
@@ -224,8 +224,8 @@ So, just throwing in a `sort.Slice` only made 1% difference, but that actually m
 
 After that our code looks like this:
 
-![Note that we are able to use currentLevel as a scratch buffer.](https://cdn-images-1.medium.com/max/800/1*Z6O49cCz2iaFuhddgLb3Nw.png)
-Note that we are able to use currentLevel as a scratch buffer.
+![Note that we are able to use currentLevel as a scratch buffer.](https://cdn-images-1.medium.com/max/800/1*Z6O49cCz2iaFuhddgLb3Nw.png)
+Note that we are able to use currentLevel as a scratch buffer.
 
 Keeping data sorted or even almost sorted can have many benefits: faster data accesses, better branching and better data compression.
 
@@ -265,7 +265,7 @@ Maybe we can skip most of those IsSet altogether by collecting together all neig
 
 This ended up horribly, because on each level we have 10x more neighbors, and sorting that takes significantly more time. For a very sparse graph, it might be a better idea.
 
-### Cuckoo and Bloom Filter
+### Cuckoo and Bloom Filter
 
 One common solution when checking something is slow, is to put a cuckoo or bloom filter in front of it.
 
@@ -290,7 +290,7 @@ There are of course many ways to unroll. You could pick 8 at a time and then do 
 
 For my Windows computer the best results were for unrolling 4 at a time, so I rolled with that solution.
 
-## Noise in the Machines
+## Noise in the Machines
 
 While Seth Bromberger was testing the last result on the big machine, he noticed a huge difference between runs on the big machine:
 
@@ -315,9 +315,9 @@ Seth then thought maybe forcing into a particular core would avoid some of the p
 
 Armed with `taskset` Seth managed to get a consistent result.
 
-Whereas I managed to find a link to [http://perf.readthedocs.io/en/latest/system.html#numa](http://perf.readthedocs.io/en/latest/system.html#numa) — which says that on some machines, depending on which core you are running on, the memory access speed will be different.
+Whereas I managed to find a link to [http://perf.readthedocs.io/en/latest/system.html#numa](http://perf.readthedocs.io/en/latest/system.html#numa)  --  which says that on some machines, depending on which core you are running on, the memory access speed will be different.
 
-Lesson learned — sometimes the core you are running on makes your code significantly slower.
+Lesson learned  --  sometimes the core you are running on makes your code significantly slower.
 
 ---
 

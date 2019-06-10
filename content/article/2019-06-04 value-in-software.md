@@ -75,7 +75,7 @@ Understanding what we create and why it is valuable to people is essential to ma
 
 ![](https://cdn-images-1.medium.com/max/800/1*GvemT6J72JHLfknyt6uCNg.png)
 
-#### Outside the box
+#### Outside the box
 
 We should have a bigger view and understand that we can get the same value from multiple solutions. Engineering is about understanding these different solutions and picking the most appropriate one.
 

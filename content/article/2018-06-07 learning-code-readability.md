@@ -30,7 +30,7 @@ controller            - view
     - post
 ```
 
-_You can replace MVC with whatever you are familiar with or whatever you are currently working on._
+_You can replace MVC with whatever you are familiar with or whatever you are currently working on._
 
 Improving your code writing and analysis skills is mostly about two things:
 
@@ -39,7 +39,7 @@ Improving your code writing and analysis skills is mostly about two things:
 
 Both are pretty obvious. I will recommend a lot of things, it’s definitely not necessary to do all of them, pick what you enjoy.
 
-## Read books and articles
+## Read books and articles
 
 Books are the jump-start to finding out different ways of writing code. Articles are the place where you find information about a specific subject.
 
@@ -93,7 +93,7 @@ There are many blog posts in how to do good code-reviews, but the short version 
 
 Read more here: [Smart Bear -- Best Practice for Code Review](https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/), [Code Review Best Practices](https://medium.com/palantir/code-review-best-practices-19e02780015f), [10 Principles of a Good Code Review](https://dev.to/codemouse92/10-principles-of-a-good-code-review-2eg).
 
-## Ask for reviews
+## Ask for reviews
 
 Let’s say you don’t have anyone to review your code. Popular language communities have a place for newbies. Even if you are a seasoned programmer, I suggest posting your code when you are learning a new language.
 
@@ -129,7 +129,7 @@ Count it as a separate solution when it has different pros/cons list from others
 
 The goal is not to find as many solutions as possible, but rather to explore the design space as widely as possible.
 
-## Exercise: Cut the Red Wire
+## Exercise: Cut the Red Wire
 
 It’s interesting to notice how our tools end up influencing how we write code and how we offload our mental activity to tools. IDE-s being a shining example of this.
 

@@ -47,7 +47,7 @@ _I try my best to be historically accurate and communicate the ideas, but since 
 
 There were two central motivations for OOP:
 
-> The large scale one was to find a better module scheme for complex systems involving hiding of details, and the small scale one was to find a more flexible version of assignment, and then to try to eliminate it altogether. As with most new ideas, it originally happened in isolated fits and starts.   
+> The large scale one was to find a better module scheme for complex systems involving hiding of details, and the small scale one was to find a more flexible version of assignment, and then to try to eliminate it altogether. As with most new ideas, it originally happened in isolated fits and starts.   
 > -- [Early History of Smalltalk](http://worrydream.com/EarlyHistoryOfSmalltalk/#p4)
 
 It’s interesting to think that most of our current “OO” languages are just filled with assignments.
@@ -107,7 +107,7 @@ These deep ideas eventually were reduced into sound-bites such as “objects mus
 
 Basically, the paradigm was lost, but the implementation stayed. People came from their procedural background and started to write classes and their mental-models stayed the same. Over time the “implementation” became the standard and Object Oriented thinking became about Classes and Inheritance.
 
-OO became this amalgamation of different ideas from Kay, Nygaard, Simula, Smalltalk, Java, ADT-s, C++ … and much much more… [It’s not suprising that noone can agree on a definition](http://c2.com/cgi/wiki?DefinitionsForOo).
+OO became this amalgamation of different ideas from Kay, Nygaard, Simula, Smalltalk, Java, ADT-s, C++ … and much much more… [It’s not suprising that noone can agree on a definition](http://c2.com/cgi/wiki?DefinitionsForOo).
 
 It helps to get back on track and see what OO was trying to achieve.
 
@@ -125,7 +125,7 @@ Such tools enable people, without any extensive programming knowledge, to build 
 
 {{< youtube code="6LBvemFE5ks" title="Hack_Switch Gameplay" >}}
 
-## It is not done
+## It is not done
 
 Now it might look like OO is set in stone, but there are still people trying to improve it, _for better or worse_. Once you stop seeing as “Java” and “Smalltalk” as the pinnacle of OO, there can be lots of improvements to them.
 

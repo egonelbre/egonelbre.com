@@ -24,7 +24,7 @@ We’ll continue with the example from the previous post, an Issue Tracker.
 3.  Gradual Stiffening: we incrementally build up the changes,
 4.  Cleanup: and observe the wholeness and try to notice any small mistakes.
 
-## Structure Follows Value
+## Structure Follows Value
 
 Here is our first important question. “What provides most Value in an Issue Tracker that we can implement right now?”
 
@@ -179,7 +179,7 @@ expect := Info{
 }
 ```
 
-I mixed up two things: the method is called `Close` , and the resulting status is `Done`. Because I made a mistake while writing this, it suggests to me that the code is not clear enough, but I’m not sure how to improve it. It probably isn’t that important, so I’ll mark it as a **TODO** and move on to other things:
+I mixed up two things: the method is called `Close` , and the resulting status is `Done`. Because I made a mistake while writing this, it suggests to me that the code is not clear enough, but I’m not sure how to improve it. It probably isn’t that important, so I’ll mark it as a **TODO** and move on to other things:
 
 ```
 const (  

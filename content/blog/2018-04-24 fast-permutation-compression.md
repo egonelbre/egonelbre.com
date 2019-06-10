@@ -40,7 +40,7 @@ func PackBase12(perm Permutation) uint64 {
 }
 ```
 
-This will end up using `log2(12^12) = 43.0195 bits` . We know that there are exactly `12!` permutations. This would mean that in the perfect world, we could pack all of this into `log2(12!)=28.835bits`.
+This will end up using `log2(12^12) = 43.0195 bits` . We know that there are exactly `12!` permutations. This would mean that in the perfect world, we could pack all of this into `log2(12!)=28.835bits`.
 
 Some basic permutation theory gives us that we can assign a unique index to each permutation and convert it to and back. One of such numbering is [Lehmer code](https://en.wikipedia.org/wiki/Lehmer_code).
 
@@ -187,4 +187,4 @@ BenchmarkShuffle        69.2 ns/op
 BenchmarkShuffleUnroll  39.2 ns/op
 ```
 
-His best approach is doing a [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) in reverse, which is brilliant. We can think of permuting an array `[0, 1, 2, 3 .. 11]` as picking random number and eliminating them. By finding the “random” numbers used to generate that we get a sequence, where each “maximum random” is smaller than the previous. So maximally we can only get a sequence `[11, 10, 9, 8 .. 0]`. We can convert that into a number using [factoriadics](https://en.wikipedia.org/wiki/Factorial_number_system) (each element multiplied by the factorial).
+His best approach is doing a [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) in reverse, which is brilliant. We can think of permuting an array `[0, 1, 2, 3 .. 11]` as picking random number and eliminating them. By finding the “random” numbers used to generate that we get a sequence, where each “maximum random” is smaller than the previous. So maximally we can only get a sequence `[11, 10, 9, 8 .. 0]`. We can convert that into a number using [factoriadics](https://en.wikipedia.org/wiki/Factorial_number_system) (each element multiplied by the factorial).

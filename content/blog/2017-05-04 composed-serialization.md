@@ -227,7 +227,7 @@ func (d *asnSignerInfo) marshaler() ber.Marshaler {
 
 [https://github.com/egonelbre/exp/tree/master/ber](https://github.com/egonelbre/exp/tree/master/ber)
 
-## Build your own
+## Build your own
 
 This approach gives us a easy way to write different DSL-s for marshaling data. You could imagine this being used for binary protocols or handling multiple formats with a single spec type.
 
