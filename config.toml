@@ -7,7 +7,7 @@ theme = "clean"
 paginate = 40
 
 [permalinks]
-	article = "/article/:title/"
-	blog = "/blog/:title/"
+	article = "/:title/"
+	blog = "/:title/"
+	project = "/:title/"
 	code = "/code/:title/"
-	project = "/project/:title/"
