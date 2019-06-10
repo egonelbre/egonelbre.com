@@ -19,11 +19,11 @@ Now we’re past the disclaimer. So, you know OO already? Right? Let’s start w
 
 > _What are your opinions on Piaget’s theories?_
 
-If you do know Piaget and how he’s related to OO -- awesome. Anyways, when not… here’s my story about learning about OO.
+If you do know Piaget and how he’s related to OO -- awesome. Anyways, when not ... here’s my story about learning about OO.
 
 ## First introduction
 
-I learned my “first objects” from university OOP course, well almost, I also read about them independently before… it was the usual:
+I learned my “first objects” from university OOP course, well almost, I also read about them independently before ... it was the usual:
 
 1.  Encapsulation
 2.  Inheritance
@@ -41,7 +41,7 @@ Over time I’ve realised that it’s hard to understand a fundamental concept w
 
 Definitions can give awful impressions, to the extent that they can hinder understanding of the concept. Big ideas aren’t clear definitions. They start from a bunch of fuzzy ideas and that are incrementally transformed into something more refined and clearer. After the “big idea” is published, it gets mistranslated and mistreated, like a 40 year-long “Telephone Game”.
 
-_I try my best to be historically accurate and communicate the ideas, but since there’s a lot of it, I’m bound to make mistakes… So, corrections are always welcome._
+_I try my best to be historically accurate and communicate the ideas, but since there’s a lot of it, I’m bound to make mistakes ... So, corrections are always welcome._
 
 ### The Vision
 
@@ -80,7 +80,7 @@ Kay also was aware of human mental models as a vital part of programming. He tri
 
 > The first is that knowledge, particularly in the young child, is retained as a series of operation models, each of which is somewhat ad hoc and need not be logically consistent with the others. (They are essentially algorithms and strategies rather than logical axioms, predicates and theorems.) It is much later in development that logical is used and even then through extralogical strategies.
 
-> … Another point which will be important later on is that language does not seem the mistress of thought but rather the handmaiden, in that there is considerable evidence by Piaget and others that such thinking is nonverbal and iconic.
+>  ... Another point which will be important later on is that language does not seem the mistress of thought but rather the handmaiden, in that there is considerable evidence by Piaget and others that such thinking is nonverbal and iconic.
 
 > -- [“A Personal Computer for Children of All Ages“, Alan Kay 1972](http://mprove.de/diplom/gui/kay72.html)
 
@@ -107,7 +107,7 @@ These deep ideas eventually were reduced into sound-bites such as “objects mus
 
 Basically, the paradigm was lost, but the implementation stayed. People came from their procedural background and started to write classes and their mental-models stayed the same. Over time the “implementation” became the standard and Object Oriented thinking became about Classes and Inheritance.
 
-OO became this amalgamation of different ideas from Kay, Nygaard, Simula, Smalltalk, Java, ADT-s, C++ … and much much more… [It’s not suprising that noone can agree on a definition](http://c2.com/cgi/wiki?DefinitionsForOo).
+OO became this amalgamation of different ideas from Kay, Nygaard, Simula, Smalltalk, Java, ADT-s, C++  ... and much much more ... [It’s not suprising that noone can agree on a definition](http://c2.com/cgi/wiki?DefinitionsForOo).
 
 It helps to get back on track and see what OO was trying to achieve.
 
@@ -119,7 +119,7 @@ Implementation of Object Oriented Paradigm doesn’t have to be a language eithe
 
 {{< fig src="oop-unreal-engine.jpeg" title="Unreal Engine" >}}
 
-You place objects in the scene and make them interact. They might hold some state and you can modify their behaviour… It’s much closer to the OO vision than many class-oriented languages. It could have been written in C and the Editor would still be Object Oriented. _Sure, it is not general-purpose OO._
+You place objects in the scene and make them interact. They might hold some state and you can modify their behaviour ... It’s much closer to the OO vision than many class-oriented languages. It could have been written in C and the Editor would still be Object Oriented. _Sure, it is not general-purpose OO._
 
 Such tools enable people, without any extensive programming knowledge, to build awesome things. As an example, game built by five 3D artists in a few days:
 

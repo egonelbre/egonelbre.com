@@ -32,15 +32,15 @@ In some cases, the depression is not psychological or related to your daily habi
 
 ## You are Biased
 
-I guess it’s one of the things you must keep in mind through depression and other intense feelings. You are biased and your brain does not work well and it’s almost impossible to accurately see reality…
+I guess it’s one of the things you must keep in mind through depression and other intense feelings. You are biased and your brain does not work well and it’s almost impossible to accurately see reality ...
 
-All the negative emotions, like “I’m not good enough”, “I cannot go further” are just byproducts of psychological issues. However, I’m not saying the feelings and thoughts aren’t real. Yes, they are very real… but they still are biased.
+All the negative emotions, like “I’m not good enough”, “I cannot go further” are just byproducts of psychological issues. However, I’m not saying the feelings and thoughts aren’t real. Yes, they are very real ... but they still are biased.
 
 Yes, “You can go further”, even if your feelings say otherwise. Try to use logic to derive what is happening; it’s not completely accurate, but probably better than your feelings are telling you. Before analyzing, it helps to ground yourself -- games work quite effectively here.
 
 The common [cognitive distortions](https://en.wikipedia.org/wiki/Cognitive_distortion) are very well discussed on Wikipedia. Read them, understand them and stand in guard.
 
-Similarly, don’t direct your bad emotions towards others, they are not at fault. We all are responsible for our own emotions, no one can adjust them unless we let them… Although, in practice, it’s easier said than done.
+Similarly, don’t direct your bad emotions towards others, they are not at fault. We all are responsible for our own emotions, no one can adjust them unless we let them ... Although, in practice, it’s easier said than done.
 
 ## Cycles of emotions
 
@@ -72,9 +72,9 @@ The “good” and “bad” can be intermingled and everything is connected. Fo
 How can you figure out the cycles.
 
 1. Try to get yourself in a decent shape -- no sleep deprivation, not in highly depressive state. If needed, use anti-depressants.
-1. Be comfortable with pain -- i.e. no drinking, no TV, no sex, no food… no nothing that could be part of the cycle. It’s hard to see the whole picture while being controlled by the cycles.
+1. Be comfortable with pain -- i.e. no drinking, no TV, no sex, no food ... no nothing that could be part of the cycle. It’s hard to see the whole picture while being controlled by the cycles.
 1. Sit in silence for 1–2 hours doing nothing -- this includes no music, TV, or anything that your mind could use to escape.
-1. Then start with the most obvious things, start drawing them out. Note that you should draw all the cycles that are in your life, not just the good or bad ones. Common things (or lack of them) that should be noted are “food”, “alcohol”, “friends”, “family”, “work”, “hobbies”, “sleep”, “common activities”, “relaxing”, “talking with people”, “social media”, “aimless browsing”…
+1. Then start with the most obvious things, start drawing them out. Note that you should draw all the cycles that are in your life, not just the good or bad ones. Common things (or lack of them) that should be noted are “food”, “alcohol”, “friends”, “family”, “work”, “hobbies”, “sleep”, “common activities”, “relaxing”, “talking with people”, “social media”, “aimless browsing” ...
 1. Take your time, you probably cannot do this in a single day, because you haven’t been paying attention all of your habits. Try to build this diagram over time-- occasionally restart from scratch if necessary.
 
 This was the easier part.
@@ -136,17 +136,17 @@ I should still highlight the “Physical” part here. Regular exercise can be a
 
 [Self esteem](https://www.youtube.com/watch?v=wC9S_fFMnaU), and its cousins self-doubt, [impostor syndrome](https://www.youtube.com/watch?v=eqhUHyVpAwE), can be very destructive in person’s life. It is the thing that can be the root of many bad habits.
 
-*One of the major causes of stress in my life was lack of self-esteem… to the extent that I built up my own worth in terms of how people close to me saw me. This of course is not a good approach, since we cannot control other peoples actions. When those people act against us, intentionally or unintentionally, the self-worth can easily crumble.*
+*One of the major causes of stress in my life was lack of self-esteem ... to the extent that I built up my own worth in terms of how people close to me saw me. This of course is not a good approach, since we cannot control other peoples actions. When those people act against us, intentionally or unintentionally, the self-worth can easily crumble.*
 
 Fixing self-esteem/self-doubt is about coming to terms with your own self. By comparing ourselves to an unachievable moving standard, we are never able to catch it. As such, it often helps to focus on the every-day process and progress rather than the current result compared to the end-goal.
 
-Freeing yourself from the “Impostor Syndrome” is about realizing that every other person in the world shares similar feelings. They have their own self-doubts, needs, wishes, hopes and goals. Unfortunately, we don’t see other person’s inner feelings and how they affect that person…
+Freeing yourself from the “Impostor Syndrome” is about realizing that every other person in the world shares similar feelings. They have their own self-doubts, needs, wishes, hopes and goals. Unfortunately, we don’t see other person’s inner feelings and how they affect that person ...
 
 *I like to imagine every person being pulled by big invisible hands in several directions, since it is the way our feelings works.*
 
 It helps to think that everyone who was great at something was, at some point in life, terrible at it. Even now they might be terrible at some things. Or might have ideas how to improve themselves at that thing...
 
-*At some point I was so ashamed and afraid of being found out as a bad-piano-player, while I was improvising [music such as this](https://soundcloud.com/egon-elbre/moonlight-sea). I’ve also had similar feelings about my drawings. Eventually, when I accepted and fully embraced that I have always ways to improve, I stopped constantly comparing myself to the greats. Once I stopped comparing myself to unachievable ideals, I started seeing how my music affected people… I realized I don’t have to be perfect; sometimes the imperfections can even give more character to the music. I still can hear my mistakes and know how I can improve, but they are not bringing me down.*
+*At some point I was so ashamed and afraid of being found out as a bad-piano-player, while I was improvising [music such as this](https://soundcloud.com/egon-elbre/moonlight-sea). I’ve also had similar feelings about my drawings. Eventually, when I accepted and fully embraced that I have always ways to improve, I stopped constantly comparing myself to the greats. Once I stopped comparing myself to unachievable ideals, I started seeing how my music affected people ... I realized I don’t have to be perfect; sometimes the imperfections can even give more character to the music. I still can hear my mistakes and know how I can improve, but they are not bringing me down.*
 
 In a sense, stop trying to evaluate your worth against other people’s accomplishments or your own ideals. You are here and now, and you are always making the best decisions you can at this very moment, with your current knowledge.
 
@@ -170,11 +170,11 @@ For me, I realized there were few ideas:
 * He taught me something valuable.
 * He created something beautiful.
 
-*I’m not sure how to merge them into a single whole and how to make it read beautifully… but I guess, the exact wording is less important than the actual meaning.*
+*I’m not sure how to merge them into a single whole and how to make it read beautifully ... but I guess, the exact wording is less important than the actual meaning.*
 
 *As such, I stopped feeling guilty about “wasting time” in forums answering random people’s questions. Teaching is something I truly enjoy, so until I go back to university or school to teach; it’s probably a good substitute.*
 
-Finding purpose may not be easy and may take time, but when you do… your life starts to make more sense.
+Finding purpose may not be easy and may take time, but when you do ... your life starts to make more sense.
 
 ---
 

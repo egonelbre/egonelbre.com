@@ -115,7 +115,7 @@ This clear separation might end up with more lines of code compared to using thi
 
 ## Group by Team
 
-> “organizations which design systems … are constrained to produce designs which are copies of the communication structures of these organizations.”  
+> “organizations which design systems  ... are constrained to produce designs which are copies of the communication structures of these organizations.”  
 > \- M. Conway
 
 Grouping by team makes it clearer when coordination between teams is needed. For example `ui`, `backend` and `db` need expertise from different teams. Hence, it becomes more obvious who is responsible for which part of the codebase.

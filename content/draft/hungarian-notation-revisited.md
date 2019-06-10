@@ -3,7 +3,7 @@ draft: true
 title: Hungarian Notation Revisited
 description: >-
   Hungarian notation is one of those things that has gotten a bad rap, because
-  the common use has diverged quite a lot from the ideas that…
+  the common use has diverged quite a lot from the ideas that ...
 date: ""
 tags: []
 ---

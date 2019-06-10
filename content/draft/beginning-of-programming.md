@@ -81,7 +81,7 @@ So what are the programming skills that are the main drivers of movement? What i
 
 The first important insight about computers is that
 
-> Computers are stupid… very, very stupid.
+> Computers are stupid ... very, very stupid.
 
 This insight may feel weird if a person moves from using computers to programming. The computer seems intelligent to a user, we use language to convey instructions to the computer and it also looks like it can understand. Now with AI, even more so.
 

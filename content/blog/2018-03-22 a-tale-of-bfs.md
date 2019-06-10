@@ -153,7 +153,7 @@ Let’s see what it does:
 
 ![](https://cdn-images-1.medium.com/max/800/1*eixvbk8-rbyHRGuuIMfOIw.png)
 
-Hmm… absolutely nothing. Except on the big machine, where it made things worse. I have no clue why, except guessing it’s machine noise.
+Hmm ... absolutely nothing. Except on the big machine, where it made things worse. I have no clue why, except guessing it’s machine noise.
 
 When we are not getting any performance gain, this means that the bottleneck is not in bounds checks.
 
@@ -165,7 +165,7 @@ Try the latest version of your compiler. In some cases, waiting 6 months for the
 
 In some cases it’s possible to completely disable GC and run that in production. However, even if it’s not, measurements from disabling GC can give an indication how much benefit you may gain from optimizing for GC.
 
-In this case there aren’t many allocations in the core-loop, so we can effectively disable them… mainly to reduce noisiness of results. Sometimes, it would be even possible to use this approach in production.
+In this case there aren’t many allocations in the core-loop, so we can effectively disable them ... mainly to reduce noisiness of results. Sometimes, it would be even possible to use this approach in production.
 
 ## Reusing level
 
@@ -177,7 +177,7 @@ And, the results speak for themselves:
 
 ![](https://cdn-images-1.medium.com/max/800/1*Dwzv2mOZ-Ad9RL-2t704Og.png)
 
-Yay, ~10% improvement… hmm… kind of:
+Yay, ~10% improvement ... hmm ... kind of:
 
 ![](https://cdn-images-1.medium.com/max/800/1*0px6qftOnu7uaR1CnmQQpg.png)
 
@@ -214,11 +214,11 @@ One way to make accesses predictable, is to sort the data. While we can still mi
 
 ![](https://cdn-images-1.medium.com/max/800/1*Cum4iAFOn8V30-uOlsmrEw.png)
 
-So, just throwing in a `sort.Slice` only made 1% difference, but that actually made me optimistic, because I knew that the default sorting is not great for tight loops. So a quick search and switch over to a version with hardcoded `uint32` gives us…
+So, just throwing in a `sort.Slice` only made 1% difference, but that actually made me optimistic, because I knew that the default sorting is not great for tight loops. So a quick search and switch over to a version with hardcoded `uint32` gives us ...
 
 ![](https://cdn-images-1.medium.com/max/800/1*HnSHXjQekvndhrScRsSLkA.png)
 
-~20% improvement. After posting the improvement results, [Damian Gryski](https://twitter.com/dgryski) reminded me of Radix sort… so that gave another boost.
+~20% improvement. After posting the improvement results, [Damian Gryski](https://twitter.com/dgryski) reminded me of Radix sort ... so that gave another boost.
 
 ![](https://cdn-images-1.medium.com/max/800/1*PWjJ3jCg1asUAOJ59BuUnA.png)
 
@@ -255,7 +255,7 @@ One thought would be to fuse IsSet and Set into a single method. One approach wo
 
 ![](https://cdn-images-1.medium.com/max/800/1*6hziwZZQGXs1vasKn72NqA.png)
 
-I guessed that the version without the if, would be faster, but… nope. I reasoned that the version with “if” is faster, because then the computer doesn’t have to later move the changed value back into main memory.
+I guessed that the version without the if, would be faster, but ... nope. I reasoned that the version with “if” is faster, because then the computer doesn’t have to later move the changed value back into main memory.
 
 ![](https://cdn-images-1.medium.com/max/800/1*_Pb-d1kL0apUjdls0kaFlg.png)
 
@@ -327,6 +327,6 @@ So we went from 50 seconds to 25 seconds. Which beat their C++ version, at that 
 
 ![](https://cdn-images-1.medium.com/max/800/1*zpydMHsCWrOopySqB5dodA.png)
 
-While this may look like a lot of work, in reality… I spent more time writing this whole post than doing these improvements.
+While this may look like a lot of work, in reality ... I spent more time writing this whole post than doing these improvements.
 
 For the second part take a look at [A Tale of BFS: Going Parallel](/blog/a-tale-of-bfs-going-parallel) where we get that big graph down to ~3.6 seconds.

@@ -46,7 +46,7 @@ No point to focus nor grouping.
 
 I really want to believe that this is a joke.
 
-You probably won’t make this mistake… although.
+You probably won’t make this mistake ... although.
 
 **Notifications**
 
@@ -88,10 +88,10 @@ Someone working at a counter.
 These create a subtask that we need to orient ourselves.
 
 [**What research is there suggesting modal dialogs are disruptive?**  
-_Generally speaking, disruptions and distractions negatively affect human performance, a common finding in cognitive…_ux.stackexchange.com](https://ux.stackexchange.com/questions/12637/what-research-is-there-suggesting-modal-dialogs-are-disruptive/15056 "https://ux.stackexchange.com/questions/12637/what-research-is-there-suggesting-modal-dialogs-are-disruptive/15056")[](https://ux.stackexchange.com/questions/12637/what-research-is-there-suggesting-modal-dialogs-are-disruptive/15056)
+_Generally speaking, disruptions and distractions negatively affect human performance, a common finding in cognitive ..._ux.stackexchange.com](https://ux.stackexchange.com/questions/12637/what-research-is-there-suggesting-modal-dialogs-are-disruptive/15056 "https://ux.stackexchange.com/questions/12637/what-research-is-there-suggesting-modal-dialogs-are-disruptive/15056")[](https://ux.stackexchange.com/questions/12637/what-research-is-there-suggesting-modal-dialogs-are-disruptive/15056)
 
 [**Modal & Nonmodal Dialogs: When (& When Not) to Use Them**  
-_To better understand the difference between modal and nonmodal dialogs, let's look at what the terms "dialog" and…_www.nngroup.com](https://www.nngroup.com/articles/modal-nonmodal-dialog/ "https://www.nngroup.com/articles/modal-nonmodal-dialog/")[](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
+_To better understand the difference between modal and nonmodal dialogs, let's look at what the terms "dialog" and ..._www.nngroup.com](https://www.nngroup.com/articles/modal-nonmodal-dialog/ "https://www.nngroup.com/articles/modal-nonmodal-dialog/")[](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
 
 Measurable effects:
 
@@ -122,11 +122,11 @@ Don’t require people to remember stuff they don’t have to.
 Obviously has to be balanced with distracting attention.
 
 [**Placeholders in Form Fields Are Harmful**  
-_In-context descriptions or hints can help clarify what goes inside each form field, and therefore improve completion…_www.nngroup.com](https://www.nngroup.com/articles/form-design-placeholders/ "https://www.nngroup.com/articles/form-design-placeholders/")[](https://www.nngroup.com/articles/form-design-placeholders/)
+_In-context descriptions or hints can help clarify what goes inside each form field, and therefore improve completion ..._www.nngroup.com](https://www.nngroup.com/articles/form-design-placeholders/ "https://www.nngroup.com/articles/form-design-placeholders/")[](https://www.nngroup.com/articles/form-design-placeholders/)
 
 ### Learnability
 
-Doesn’t necessarily mean easy-to-learn…
+Doesn’t necessarily mean easy-to-learn ...
 
 Sometimes making something learnable or efficient means making the learning harder.
 
@@ -171,7 +171,7 @@ Warnings don’t help, we habituate and still make mistakes.
 When we are afraid, we lose our ability to rely on habits.
 
 [**Never Use a Warning When you Mean Undo**  
-_Are our web apps as smart as they should be? By failing to account for habituation (the tendency, when presented with a…_alistapart.com](https://alistapart.com/article/neveruseawarning "https://alistapart.com/article/neveruseawarning")[](https://alistapart.com/article/neveruseawarning)
+_Are our web apps as smart as they should be? By failing to account for habituation (the tendency, when presented with a ..._alistapart.com](https://alistapart.com/article/neveruseawarning "https://alistapart.com/article/neveruseawarning")[](https://alistapart.com/article/neveruseawarning)
 
 **Monotony**
 
@@ -242,7 +242,7 @@ Enticed into beauty
 On average participants spent **22% more time** (i.e., slower task performance) looking at the pages with weak signifiers.
 
 [**Flat UI Elements Attract Less Attention and Cause Uncertainty**  
-_The popularity of flat design in digital interfaces has coincided with a scarcity of signifiers. Many modern UIs have…_www.nngroup.com](https://www.nngroup.com/articles/flat-ui-less-attention-cause-uncertainty/ "https://www.nngroup.com/articles/flat-ui-less-attention-cause-uncertainty/")[](https://www.nngroup.com/articles/flat-ui-less-attention-cause-uncertainty/)
+_The popularity of flat design in digital interfaces has coincided with a scarcity of signifiers. Many modern UIs have ..._www.nngroup.com](https://www.nngroup.com/articles/flat-ui-less-attention-cause-uncertainty/ "https://www.nngroup.com/articles/flat-ui-less-attention-cause-uncertainty/")[](https://www.nngroup.com/articles/flat-ui-less-attention-cause-uncertainty/)
 
 Lack of signifiers means people:
 
@@ -261,7 +261,7 @@ Lack of signifiers means people:
 Use the **5-second rule**: if it takes you more than 5 seconds to think of an appropriate icon for something, it is unlikely that an icon can effectively communicate that meaning.
 
 [**Icon Usability**  
-_In addition to conveying brand personality through color and style, icons must first and foremost communicate meaning…_www.nngroup.com](https://www.nngroup.com/articles/icon-usability/ "https://www.nngroup.com/articles/icon-usability/")[](https://www.nngroup.com/articles/icon-usability/)
+_In addition to conveying brand personality through color and style, icons must first and foremost communicate meaning ..._www.nngroup.com](https://www.nngroup.com/articles/icon-usability/ "https://www.nngroup.com/articles/icon-usability/")[](https://www.nngroup.com/articles/icon-usability/)
 
 > Humans are not perfect, but humane interfaces accommodate for that.
 

@@ -119,7 +119,7 @@ What am I supposed to do with this? Does this framework solve any real problems 
 
 If you build your library using facilitated examples, then, how do you know that it will work in the real-world? There can be lots of little details that need to be taken account when writing real-world code.
 
-Also… real-world examples can help with your design, a lot. You will notice pieces that can be simplified or removed completely.
+Also ... real-world examples can help with your design, a lot. You will notice pieces that can be simplified or removed completely.
 
 Quick short references for examples are fine as long as you have a real-world application demonstrating its use.
 
@@ -134,7 +134,7 @@ Few real-world things that you could show: Hotel Booking, ToDo List, Issue Track
 
 > First a disclaimer: I mean no disrespect to people involved in the linked examples. Whether their arguments are valid is a separate discussion and it is not meant as a comment on those ideas. I only tried to highlight that the examples can be improved.
 
-I know, finding small real-world examples is difficult, it’s much easier to throw something together, rather than to think things through. When you feel that facilitated examples bring out your thoughts out clearer… ensure that you have real-world examples to back them.
+I know, finding small real-world examples is difficult, it’s much easier to throw something together, rather than to think things through. When you feel that facilitated examples bring out your thoughts out clearer ... ensure that you have real-world examples to back them.
 
 I know it is a tall order to get rid of all “facilitated examples”, hell, even I used them here to illustrate the points better.
 

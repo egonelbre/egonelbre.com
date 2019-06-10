@@ -119,7 +119,7 @@ This is where GoF book severely falls short, it doesn’t guide you how to creat
 
 This is what a Pattern Language is, a directed set of Patterns which guides you to design something wonderful and of value. Each pattern deeply depending on what you want to create and what you value. It might seem like a fluffy idea, but take a look at the boid rules again -- they are not fluffy, they are concrete, but give arise to complex behavior.
 
-Imagine a code repository over time, first one file, then two, then some folders are added, then more code … at the same time, all those decisions, which things to add, were guided by patterns and each decision made by people. Each iteration more useful and more valuable than the previous. If you can imagine that, then you understand what patterns should do. _We’ll leave what software design patterns should look like for another time._
+Imagine a code repository over time, first one file, then two, then some folders are added, then more code  ... at the same time, all those decisions, which things to add, were guided by patterns and each decision made by people. Each iteration more useful and more valuable than the previous. If you can imagine that, then you understand what patterns should do. _We’ll leave what software design patterns should look like for another time._
 
 You might be asking -- if patterns are such a good idea, why doesn’t everybody use it? Well the answer to that is complicated, but most use it... they just don’t know it.
 

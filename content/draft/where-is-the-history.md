@@ -18,9 +18,9 @@ TODO: GoF
 
 All of my own problems in trying to understand things were all due to one thing — superficial understanding. It’s easy to get stuck in the easy ideas. We learn the definitions, but never learn how they came to be. We only criticize the implementation, but ignore the vision. We may not even have noticed that _vision_ and _paradigm_ existed. This means, every next person learning will see watered down content.
 
-_This of course is not limited to languages. You can see similar things in Design Patterns, Lean, Agile, Scrum, DDD… With regards to Agile and OO there is also a great talk_ [_“How Agile and OO have lost their way together”_](https://www.youtube.com/watch?v=DOyNfmqwR98) _by James Coplien._
+_This of course is not limited to languages. You can see similar things in Design Patterns, Lean, Agile, Scrum, DDD ... With regards to Agile and OO there is also a great talk_ [_“How Agile and OO have lost their way together”_](https://www.youtube.com/watch?v=DOyNfmqwR98) _by James Coplien._
 
-The main problem isn’t in the “condensing of ideas” but rather that, people learn the “next pop thing”, but repeat same mistakes in paradigms, models and goals. It might have different syntax, but the forces making code unmaintainable are the same. So they will realize that the “next pop thing” creates also terrible code… and start the “next next pop thing”.
+The main problem isn’t in the “condensing of ideas” but rather that, people learn the “next pop thing”, but repeat same mistakes in paradigms, models and goals. It might have different syntax, but the forces making code unmaintainable are the same. So they will realize that the “next pop thing” creates also terrible code ... and start the “next next pop thing”.
 
 We need to understand what exactly creates the issues”
 

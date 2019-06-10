@@ -78,7 +78,7 @@ func (column *Column) Spec() soap.Spec {
 
 Defining how to marshal our structures.
 
-This looks quite nice already… but we still need to implement the `soap` package.
+This looks quite nice already ... but we still need to implement the `soap` package.
 
 ```
 package soap
@@ -235,7 +235,7 @@ General rule for implementing the spec structure.
 
 **_Use a pointer to the type you want to capture._**
 
-For example, `soap.TagSpec` didn’t want to capture the input… hence it doesn’t contain pointers. `soap.StringSpec` wanted to capture a `string` and so the spec contained a `*string`. So, if you want to capture a `*UserInfo` then the spec type for it should contain `**UserInfo`.
+For example, `soap.TagSpec` didn’t want to capture the input ... hence it doesn’t contain pointers. `soap.StringSpec` wanted to capture a `string` and so the spec contained a `*string`. So, if you want to capture a `*UserInfo` then the spec type for it should contain `**UserInfo`.
 
 _PS: The examples here were meant to be as a proof of concepts. You really should handle errors properly, with meaningful messages and depending on your application your result will vary._
 

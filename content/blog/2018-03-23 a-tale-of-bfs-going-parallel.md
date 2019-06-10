@@ -28,7 +28,7 @@ First thing that needed updating was the `visited` bit-vector.
 
 ![](https://cdn-images-1.medium.com/max/800/1*AulJ98zfIpwZsB7SN8e02g.png)
 
-Contains loads the current state of bucket using `atomic.LoadUint32`. `Add` finds the location where to save the value with `atomic.StoreUint32` and since there are multiple cores writing there simultaneously, it may not succeed the first try… hence it will retry until either the bit becomes set or it succeeds.
+Contains loads the current state of bucket using `atomic.LoadUint32`. `Add` finds the location where to save the value with `atomic.StoreUint32` and since there are multiple cores writing there simultaneously, it may not succeed the first try ... hence it will retry until either the bit becomes set or it succeeds.
 
 It’s useful to do things in blocks and we can use channels to send the blocks to each goroutine:
 
@@ -59,7 +59,7 @@ race condition
 
 This is something that the Go race-detector cannot detect. Although we access things atomically we still get a race condition.
 
-You might think, “so what… it probably won’t cause a panic.” Except, this thing can indeed cause a panic. Well, at least theoretically.
+You might think, “so what ... it probably won’t cause a panic.” Except, this thing can indeed cause a panic. Well, at least theoretically.
 
 ![](https://cdn-images-1.medium.com/max/800/1*wHOBjOigYKLP-MnWdEZhCA.png)
 
@@ -181,7 +181,7 @@ Remember that we used the sorting to optimize our cache accesses. Maybe it’s s
 
 ![](https://cdn-images-1.medium.com/max/800/1*NewObRFBDCtowh23nQQ7tw.png)
 
-Of course, now we can end up with the sentinels in the middle of our read buffer… but we can just skip them in all places.
+Of course, now we can end up with the sentinels in the middle of our read buffer ... but we can just skip them in all places.
 
 ![](https://cdn-images-1.medium.com/max/800/1*2s8LubTH-SN9SI8EhbeLwA.png)
 
@@ -205,7 +205,7 @@ _Reminder: while optimizing I did many fewer measurements than seen on the resul
 
 One extremely useful technique for coming up with ideas is taking a break.
 
-While I was walking around in Tartu. I was thinking, “We are still stalling on accessing data and visiting data… maybe the processor isn’t properly [pipe-lining these accesses](https://en.wikipedia.org/wiki/Instruction_pipelining)?” I would like the processor to start getting the values before actually using them. In principle, we would like to ask the processor to start fetching things before we actually use them.
+While I was walking around in Tartu. I was thinking, “We are still stalling on accessing data and visiting data ... maybe the processor isn’t properly [pipe-lining these accesses](https://en.wikipedia.org/wiki/Instruction_pipelining)?” I would like the processor to start getting the values before actually using them. In principle, we would like to ask the processor to start fetching things before we actually use them.
 
 ![](https://cdn-images-1.medium.com/max/800/1*WkUAFl-Cf9kiuu2KCi2ViA.png)
 
@@ -226,7 +226,7 @@ The results were the following:
 
 ![](https://cdn-images-1.medium.com/max/800/1*8UFU0hBOBBIbWf--AvKxbA.png)
 
-We got a minor speed-up on the smaller machines… however for the Xeon E5–2670, it was ~1.5x speed-up.
+We got a minor speed-up on the smaller machines ... however for the Xeon E5–2670, it was ~1.5x speed-up.
 
 This idea seemed good, so I also tried it with the single-core version, but that change made things slower (about 10%). My guess is that in the single-core case the `visited` data is not being removed from the cache, because there are no other writes to it. However for the many-core version, there is much more write contention, so it’s more helpful try to load things earlier.
 
@@ -274,7 +274,7 @@ However the synchronization with channels, `sync.WaitGroup`s became a nightmare 
 
 ### One WaitGroup
 
-So the next idea was to use a more shared control… i.e. there is no “controlling” thread.
+So the next idea was to use a more shared control ... i.e. there is no “controlling” thread.
 
 Hmm, a light-switch might be useful. What’s a light-switch? It’s one of several common idioms in parallel computations. The problem that it solves is to clean-up or finish a parallel computation.
 
@@ -288,7 +288,7 @@ Now to implement we can use a `sync.WaitGroup`.
 
 ![](https://cdn-images-1.medium.com/max/800/1*vTtV2FW6fhypixPEA0oLBw.png)
 
-Well… that resulted in this:
+Well ... that resulted in this:
 
 sync: WaitGroup misuse: Add called concurrently with Wait
 
@@ -316,7 +316,7 @@ But I wouldn’t recommend this, as it can completely lock Go code. _(I’ve ens
 
 ![](https://cdn-images-1.medium.com/max/800/1*Md-srM0TKDKYF80D0D7_Vg.png)
 
-And this made things even worse. Oh, well… you cannot win with all of your experiments.
+And this made things even worse. Oh, well ... you cannot win with all of your experiments.
 
 ## Summary
 

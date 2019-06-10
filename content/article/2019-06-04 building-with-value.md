@@ -12,7 +12,7 @@ Beginners often overwhelm their brain with decisions and things they need to do.
 
 The most important part of programming is that you cannot do everything at once. The human mind is very limited in how much it can process at a time. To combat this limitation, we need to build things piece-by-piece to ensure that everything will fit together nicely.
 
-> Speaking as a builder, if you start something, you must have a vision of the thing which arises from your instinct about preserving and enhancing what is there… If you’re working correctly, the feeling doesn’t wander about.  
+> Speaking as a builder, if you start something, you must have a vision of the thing which arises from your instinct about preserving and enhancing what is there ... If you’re working correctly, the feeling doesn’t wander about.  
 >    
 > -- Christopher Alexander
 

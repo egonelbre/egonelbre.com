@@ -59,7 +59,7 @@ Now that we have separated _paradigm_ from _implementation_ it’s interesting t
 
 I think that the main issue is that the _question itself is based on a wrong premise_. It still assumes that _“paradigmness”_ is an inherent property of a language. When we separate them then the ideas will be much easier to understand.
 
-It’s better to ask “How well does Go support Object Orientation?”. To the causal observer these questions might look the same… but let’s also ask “How well does Go support functional programming?”, or “How well does Go support logic programming?”…
+It’s better to ask “How well does Go support Object Orientation?”. To the causal observer these questions might look the same ... but let’s also ask “How well does Go support functional programming?”, or “How well does Go support logic programming?” ...
 
 These are much more interesting questions  --  these questions require to understand what is the “paradigmatic way of thinking.”
 
@@ -88,7 +88,7 @@ When we take into account the customers, business people, end-users, domain expe
 ![domain expert  --  developer  --  language](https://cdn-images-1.medium.com/max/800/1*jvhkGjeG_NCDjzgwirzaOQ.png)
 domain expert  --  developer  --  language
 
-We don’t have to just worry about how we think, but also [how we communicate how we think](https://en.wikipedia.org/wiki/Communication), how others think, how they talk about their thoughts, how I interpret their thoughts, how I represent my ideas etc…
+We don’t have to just worry about how we think, but also [how we communicate how we think](https://en.wikipedia.org/wiki/Communication), how others think, how they talk about their thoughts, how I interpret their thoughts, how I represent my ideas etc ...
 
 _Trying to smooth the translating between different mental-models gives arise to different ways of designing software (e.g. DDD)._
 

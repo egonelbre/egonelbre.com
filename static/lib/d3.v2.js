@@ -3623,7 +3623,7 @@ function d3_svg_lineMonotoneTangents(points) {
   // 1. Compute the slopes of the secant lines between successive points.
   // 2. Initialize the tangents at every point as the average of the secants.
 
-  // Then, for each segment…
+  // Then, for each segment ...
   while (++i < j) {
     d = d3_svg_lineSlope(points[i], points[i + 1]);
 
@@ -5009,14 +5009,14 @@ d3.layout.chord = function() {
       k += x;
     }
 
-    // Sort groups…
+    // Sort groups ...
     if (sortGroups) {
       groupIndex.sort(function(a, b) {
         return sortGroups(groupSums[a], groupSums[b]);
       });
     }
 
-    // Sort subgroups…
+    // Sort subgroups ...
     if (sortSubgroups) {
       subgroupIndex.forEach(function(d, i) {
         d.sort(function(a, b) {
@@ -5652,7 +5652,7 @@ d3.layout.stack = function() {
     series = d3.permute(series, orders);
     points = d3.permute(points, orders);
 
-    // Compute the baseline…
+    // Compute the baseline ...
     var offsets = offset.call(stack, points, index);
 
     // And propagate it to other series.
@@ -7855,7 +7855,7 @@ d3.geom = {};
  * @param grid a two-input function(x, y) that returns true for values
  * inside the contour and false for values outside the contour.
  * @param start an optional starting point [x, y] on the grid.
- * @returns polygon [[x1, y1], [x2, y2], …]
+ * @returns polygon [[x1, y1], [x2, y2],  ...]
  */
 d3.geom.contour = function(grid, start) {
   var s = start || d3_geom_contourStart(grid), // starting point
@@ -7931,8 +7931,8 @@ function d3_geom_contourStart(grid) {
  * Leiserson, and Rivest's Introduction to Algorithms. The running time of
  * this algorithm is O(n log n), where n is the number of input points.
  *
- * @param vertices [[x1, y1], [x2, y2], …]
- * @returns polygon [[x1, y1], [x2, y2], …]
+ * @param vertices [[x1, y1], [x2, y2],  ...]
+ * @returns polygon [[x1, y1], [x2, y2],  ...]
  */
 d3.geom.hull = function(vertices) {
   if (vertices.length < 3) return [];
@@ -8128,8 +8128,8 @@ function d3_geom_polygonIntersect(c, d, a, b) {
 // computing the tessellation.
 
 /**
- * @param vertices [[x1, y1], [x2, y2], …]
- * @returns polygons [[[x1, y1], [x2, y2], …], …]
+ * @param vertices [[x1, y1], [x2, y2],  ...]
+ * @returns polygons [[[x1, y1], [x2, y2],  ...],  ...]
  */
 d3.geom.voronoi = function(vertices) {
   var polygons = vertices.map(function() { return []; });
@@ -8521,8 +8521,8 @@ function d3_voronoi_tessellate(vertices, callback) {
   }
 }
 /**
-* @param vertices [[x1, y1], [x2, y2], …]
-* @returns triangles [[[x1, y1], [x2, y2], [x3, y3]], …]
+* @param vertices [[x1, y1], [x2, y2],  ...]
+* @returns triangles [[[x1, y1], [x2, y2], [x3, y3]],  ...]
  */
 d3.geom.delaunay = function(vertices) {
   var edges = vertices.map(function() { return []; }),

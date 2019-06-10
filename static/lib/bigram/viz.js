@@ -20,7 +20,7 @@ function updateViz(){
 	// Compute the new tree layout. We'll stash the old layout in the data.
 	var nodes = tree(root);
 
-	// Update the nodes…
+	// Update the nodes ...
 	var node = vis.selectAll("g.node")
 	  .data(nodes, nodeId);
 
