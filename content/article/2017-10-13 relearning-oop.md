@@ -11,7 +11,7 @@ _Before continuing, it is recommended to read_ [_“Paradigm is not the Implemen
 
 There is a lot of talk about how [OOP is bad](https://www.reddit.com/r/oopisbad/). It’s not that I disagree with the statements; what bothers me, is the imprecision when people discuss the drawbacks. Often there is “inheritance is bad” without analysis, why it’s bad, what are the forces at play. _And I do not mean here “look how terrible this code is”._
 
-Now the issue in that isn’t criticism of OO, but rather that the lessons are not properly learned — effectively moving from one issue to another. “Inheritance hell” becomes “callback hell” and “polymorphism” becomes “ad hoc polymorphism”.
+Now the issue in that isn’t criticism of OO, but rather that the lessons are not properly learned -- effectively moving from one issue to another. “Inheritance hell” becomes “callback hell” and “polymorphism” becomes “ad hoc polymorphism”.
 
 I really don’t care that much whether OO “survives” the criticisms or not, but I do care that our understanding about software development improves.
 
@@ -19,7 +19,7 @@ Now we’re past the disclaimer. So, you know OO already? Right? Let’s start w
 
 > _What are your opinions on Piaget’s theories?_
 
-If you do know Piaget and how he’s related to OO — awesome. Anyways, when not… here’s my story about learning about OO.
+If you do know Piaget and how he’s related to OO -- awesome. Anyways, when not… here’s my story about learning about OO.
 
 ## First introduction
 
@@ -48,11 +48,11 @@ _I try my best to be historically accurate and communicate the ideas, but since 
 There were two central motivations for OOP:
 
 > The large scale one was to find a better module scheme for complex systems involving hiding of details, and the small scale one was to find a more flexible version of assignment, and then to try to eliminate it altogether. As with most new ideas, it originally happened in isolated fits and starts.   
-> — [Early History of Smalltalk](http://worrydream.com/EarlyHistoryOfSmalltalk/#p4)
+> -- [Early History of Smalltalk](http://worrydream.com/EarlyHistoryOfSmalltalk/#p4)
 
 It’s interesting to think that most of our current “OO” languages are just filled with assignments.
 
-There were multiple inspirations for OOP. One of the first was [“Sketchpad: A man-machine graphical communication system” by Ivan Sutherland](https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.pdf). It had the primitive resemblance to an OO system. You were manipulating real things on the screen, even constraints between things had visual representation. Internally it had “master drawings” and “instance drawings” — which quite well match the idea of “objects” and “prototypes”.
+There were multiple inspirations for OOP. One of the first was [“Sketchpad: A man-machine graphical communication system” by Ivan Sutherland](https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.pdf). It had the primitive resemblance to an OO system. You were manipulating real things on the screen, even constraints between things had visual representation. Internally it had “master drawings” and “instance drawings” -- which quite well match the idea of “objects” and “prototypes”.
 
 {{< youtube code="6orsmFndx_o" title="Sketchpad Demo" >}}
 
@@ -60,7 +60,7 @@ The other inspiration was [Simula by Ole-Johan Dahl and Kristen Nygaard](https:/
 
 These advancements gave Kay an insight and confidence that it must be something important. He envisioned those as a general idea of “recursive computers”:
 
-> For the first time I thought of the whole as the entire computer and wondered why anyone would want to divide it up into weaker things called data structures and procedures. Why not divide it up into little computers, as time sharing was starting to? But not in dozens. Why not thousands of them, each simulating a useful structure? — Alan Kay
+> For the first time I thought of the whole as the entire computer and wondered why anyone would want to divide it up into weaker things called data structures and procedures. Why not divide it up into little computers, as time sharing was starting to? But not in dozens. Why not thousands of them, each simulating a useful structure? -- Alan Kay
 
 The humane side of object orientation came from Doug Engelbart, what he called “personal computing”. Engelbart was trying to “augment human intellect”, so that the computer isn’t just a tool, but rather an extension of your life.
 
@@ -72,7 +72,7 @@ Engelbart’s vision to extend the human mental models into the computer became 
 
 > We feel that a child is a “verb” rather than a “noun”, an actor rather than an object; he is not a scaled-up pigeon or rat; he is trying to acquire a model of his surrounding environment in order to deal with it; his theories are “practical” notions of how to get from idea A to idea B rather than “consistent” branches of formal logic, etc. We would like to hook into his current modes of thought in order to influence him rather than just trying to replace his model with one of our own.
 
-> — [“A Personal Computer for Children of All Ages“, Alan Kay 1972](http://mprove.de/diplom/gui/kay72.html)
+> -- [“A Personal Computer for Children of All Ages“, Alan Kay 1972](http://mprove.de/diplom/gui/kay72.html)
 
 Kay also was aware of human mental models as a vital part of programming. He tried to include [Piaget’s Stages of Cognitive Development](http://www.simplypsychology.org/piaget.html) into the paradigm.
 
@@ -82,7 +82,7 @@ Kay also was aware of human mental models as a vital part of programming. He tri
 
 > … Another point which will be important later on is that language does not seem the mistress of thought but rather the handmaiden, in that there is considerable evidence by Piaget and others that such thinking is nonverbal and iconic.
 
-> — [“A Personal Computer for Children of All Ages“, Alan Kay 1972](http://mprove.de/diplom/gui/kay72.html)
+> -- [“A Personal Computer for Children of All Ages“, Alan Kay 1972](http://mprove.de/diplom/gui/kay72.html)
 
 So in a crude way, OO was based on two principles:
 
@@ -91,7 +91,7 @@ So in a crude way, OO was based on two principles:
 
 ### The implementations
 
-All of these ideas lead to a first implementation — [Smalltalk](https://en.wikipedia.org/wiki/Smalltalk) system. I call it a system, because Smalltalk is more than just the language, it’s a whole environment that is built on those ideas.
+All of these ideas lead to a first implementation -- [Smalltalk](https://en.wikipedia.org/wiki/Smalltalk) system. I call it a system, because Smalltalk is more than just the language, it’s a whole environment that is built on those ideas.
 
 However when people got hold of Smalltalk they saw the new ideas, but instead of adapting, they brought their habits from Simula and FORTRAN. The focus became Abstract Data Types, not communicating things and building a humane mental model.
 
@@ -129,7 +129,7 @@ Such tools enable people, without any extensive programming knowledge, to build 
 
 Now it might look like OO is set in stone, but there are still people trying to improve it, _for better or worse_. Once you stop seeing as “Java” and “Smalltalk” as the pinnacle of OO, there can be lots of improvements to them.
 
-> However, I am no big fan of Smalltalk either, even though it compares very favourably with most programming systems today (I don’t like any of them, and I don’t think any of them are suitable for the real programming problems of today, whether for systems or for end-users). — [Alan Kay](http://www.computerworld.com.au/article/352182/z_programming_languages_smalltalk-80/)
+> However, I am no big fan of Smalltalk either, even though it compares very favourably with most programming systems today (I don’t like any of them, and I don’t think any of them are suitable for the real programming problems of today, whether for systems or for end-users). -- [Alan Kay](http://www.computerworld.com.au/article/352182/z_programming_languages_smalltalk-80/)
 
 So, how could we improve:
 

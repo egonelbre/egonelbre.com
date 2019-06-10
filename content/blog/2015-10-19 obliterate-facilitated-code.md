@@ -49,7 +49,7 @@ var x~5 = 2;
 return x~6 + x~5;
 ```
 
-No one in their right mind would believe this is a good _feature_. Technically the argument is sound — the second version does look better. However, it is based on a wrong premise — that you have variables consisting of only single letters multiple times. Once we try to put this into a real world context, we will have a harder time of showing that this _feature_ is valuable.
+No one in their right mind would believe this is a good _feature_. Technically the argument is sound -- the second version does look better. However, it is based on a wrong premise -- that you have variables consisting of only single letters multiple times. Once we try to put this into a real world context, we will have a harder time of showing that this _feature_ is valuable.
 
 By using facilitated code we hide the premise and all the design process that lead to the solution. We could have made a mistake in our design process, we could have had better starting code, we may have forgotten some important detail that makes the solution useless. When you eliminate the premise, you eliminate practicality of the solutions.
 
@@ -95,7 +95,7 @@ public class Thingerer {
 
 Has anyone actually needed to write that code in production?
 
-I’ve seen many such explanations, for inheritance, traits, monads, design patterns, flux... All of them miss the important point of the solution — the design process that lead to that design decision. We skip learning why it was necessary in the first place. Without real-world examples it’s even harder to derive the reasoning.
+I’ve seen many such explanations, for inheritance, traits, monads, design patterns, flux... All of them miss the important point of the solution -- the design process that lead to that design decision. We skip learning why it was necessary in the first place. Without real-world examples it’s even harder to derive the reasoning.
 
 If you ever wondered why people end up with `AbstractFactoryBuilders`, then this is the main reason. Patterns are learned without learning the design decisions that lead to that solution.
 

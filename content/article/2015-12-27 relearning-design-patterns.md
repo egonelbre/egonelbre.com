@@ -40,7 +40,7 @@ Since now we have multiple rules, we can talk about a rule system, where rules c
 
 {{< fig src="/images/l-system-example.jpeg" title="Dragon trees / Wikipedia" >}}
 
-It allows us to describe an infinite set of plants by selecting the right rules. And all the rules are simple — _“When X then do Y and Z; When Y then do Z and X”_. By repeatedly applying the rules we create very complex structures.
+It allows us to describe an infinite set of plants by selecting the right rules. And all the rules are simple -- _“When X then do Y and Z; When Y then do Z and X”_. By repeatedly applying the rules we create very complex structures.
 
 Of course, such rule-based systems are not restricted to structures, we can do something similar for behavior.
 
@@ -56,7 +56,7 @@ Of course, such rule-based systems are not restricted to structures, we can do s
 
 Try to imagine what the result will be.
 
-{{< youtube code="86iQiV3-3IA" title="Craig Reynolds — Original 1986 Boids simulation" >}}
+{{< youtube code="86iQiV3-3IA" title="Craig Reynolds -- Original 1986 Boids simulation" >}}
 
 It is fascinating how closely they can mimick flocks of animals. We get very complicated and smart behavior with few simple rules.
 
@@ -67,7 +67,7 @@ Of course all of these are quite artificial, very rigid. What if we let people a
 Now we are quite close to [Design Patterns](https://en.wikipedia.org/wiki/Design_pattern). Instead of having strict rules to follow, we shall have patterns:
 
 > ... pattern describes a problem that occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice.
-> — Christopher Alexander
+> -- Christopher Alexander
 
 Just to give a short gist of [what a pattern looks like](http://www.patternlanguage.com/apl/aplsample/apl159/apl159.htm):
 
@@ -89,15 +89,15 @@ Then we have a suggestion.
 
 We have analysis of the problem and reasons why light from two sides is essential.
 
-> [...] And finally, if a room simply has to be more than eight feet deep, but cannot have light from two sides — then the problem can be solved by making the ceiling very high, by painting the walls very white, and by putting great high windows in the wall, set into very deep reveals, deep enough to offset the glare. Elizabethan dining halls and living rooms in Georgian mansions were often built like this. Remember, though, that it is very hard to make it work.
+> [...] And finally, if a room simply has to be more than eight feet deep, but cannot have light from two sides -- then the problem can be solved by making the ceiling very high, by painting the walls very white, and by putting great high windows in the wall, set into very deep reveals, deep enough to offset the glare. Elizabethan dining halls and living rooms in Georgian mansions were often built like this. Remember, though, that it is very hard to make it work.
 
 We have in-depth analysis of alternative solutions and where it has been used.
 
-> [...] Don’t let this pattern make your plans too wild — otherwise you will destroy the simplicity of POSITIVE OUTDOOR SPACE (106), and you will have a terrible time roofing the building — ROOF LAYOUT (209). [...]
+> [...] Don’t let this pattern make your plans too wild -- otherwise you will destroy the simplicity of POSITIVE OUTDOOR SPACE (106), and you will have a terrible time roofing the building -- ROOF LAYOUT (209). [...]
 
 And we have “links” to other patterns and what should be considered when combining multiple of them.
 
-> Place the individual windows to look onto something beautiful — WINDOWS OVERLOOKING LIFE (192), NATURAL DOORS AND WINDOWS (221); and make one of the windows in the room a special one, so that a place gathers itself around it — WINDOW PLACE (180). Use DEEP REVEALS (223) and FILTERED LIGHT (238). [...]
+> Place the individual windows to look onto something beautiful -- WINDOWS OVERLOOKING LIFE (192), NATURAL DOORS AND WINDOWS (221); and make one of the windows in the room a special one, so that a place gathers itself around it -- WINDOW PLACE (180). Use DEEP REVEALS (223) and FILTERED LIGHT (238). [...]
 
 We also have “links” to other patterns that should be implemented next.
 
@@ -111,17 +111,17 @@ This is one mistake GoF book made, it took “repeating boilerplate code” and 
 
 ## A Pattern Language
 
-We don’t just want a single pattern that is profound and useful — we want a system of patterns where they support each other and naturally flow into each other. By following one pattern to another the act of designing becomes directed and clear.
+We don’t just want a single pattern that is profound and useful -- we want a system of patterns where they support each other and naturally flow into each other. By following one pattern to another the act of designing becomes directed and clear.
 
 Think about it. We saw how three rules could make a flock of birds. We saw how an L-System was able to create plants. What patterns would be necessary to build houses, towns, cities or entire countries? Not just any house, a house that is nice to live in, a house that makes you feel more energetic. How about a community that encourages working together? This is the content of [A Pattern Language: Towns, Buildings, Construction](https://en.wikipedia.org/wiki/A_Pattern_Language). Each pattern refined and researched.
 
 This is where GoF book severely falls short, it doesn’t guide you how to create a whole. By using GoF alone, we would end up with OOM (object-oriented masturbation). _NOTE: so you won’t misunderstand me, GoF book is a nice idioms book, however not a good patterns book._
 
-This is what a Pattern Language is, a directed set of Patterns which guides you to design something wonderful and of value. Each pattern deeply depending on what you want to create and what you value. It might seem like a fluffy idea, but take a look at the boid rules again — they are not fluffy, they are concrete, but give arise to complex behavior.
+This is what a Pattern Language is, a directed set of Patterns which guides you to design something wonderful and of value. Each pattern deeply depending on what you want to create and what you value. It might seem like a fluffy idea, but take a look at the boid rules again -- they are not fluffy, they are concrete, but give arise to complex behavior.
 
 Imagine a code repository over time, first one file, then two, then some folders are added, then more code … at the same time, all those decisions, which things to add, were guided by patterns and each decision made by people. Each iteration more useful and more valuable than the previous. If you can imagine that, then you understand what patterns should do. _We’ll leave what software design patterns should look like for another time._
 
-You might be asking — if patterns are such a good idea, why doesn’t everybody use it? Well the answer to that is complicated, but most use it... they just don’t know it.
+You might be asking -- if patterns are such a good idea, why doesn’t everybody use it? Well the answer to that is complicated, but most use it... they just don’t know it.
 
 
 

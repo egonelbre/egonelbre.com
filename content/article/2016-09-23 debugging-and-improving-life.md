@@ -36,7 +36,7 @@ I guess it’s one of the things you must keep in mind through depression and ot
 
 All the negative emotions, like “I’m not good enough”, “I cannot go further” are just byproducts of psychological issues. However, I’m not saying the feelings and thoughts aren’t real. Yes, they are very real… but they still are biased.
 
-Yes, “You can go further”, even if your feelings say otherwise. Try to use logic to derive what is happening; it’s not completely accurate, but probably better than your feelings are telling you. Before analyzing, it helps to ground yourself — games work quite effectively here.
+Yes, “You can go further”, even if your feelings say otherwise. Try to use logic to derive what is happening; it’s not completely accurate, but probably better than your feelings are telling you. Before analyzing, it helps to ground yourself -- games work quite effectively here.
 
 The common [cognitive distortions](https://en.wikipedia.org/wiki/Cognitive_distortion) are very well discussed on Wikipedia. Read them, understand them and stand in guard.
 
@@ -71,11 +71,11 @@ The “good” and “bad” can be intermingled and everything is connected. Fo
 
 How can you figure out the cycles.
 
-1. Try to get yourself in a decent shape — no sleep deprivation, not in highly depressive state. If needed, use anti-depressants.
-1. Be comfortable with pain — i.e. no drinking, no TV, no sex, no food… no nothing that could be part of the cycle. It’s hard to see the whole picture while being controlled by the cycles.
-1. Sit in silence for 1–2 hours doing nothing — this includes no music, TV, or anything that your mind could use to escape.
+1. Try to get yourself in a decent shape -- no sleep deprivation, not in highly depressive state. If needed, use anti-depressants.
+1. Be comfortable with pain -- i.e. no drinking, no TV, no sex, no food… no nothing that could be part of the cycle. It’s hard to see the whole picture while being controlled by the cycles.
+1. Sit in silence for 1–2 hours doing nothing -- this includes no music, TV, or anything that your mind could use to escape.
 1. Then start with the most obvious things, start drawing them out. Note that you should draw all the cycles that are in your life, not just the good or bad ones. Common things (or lack of them) that should be noted are “food”, “alcohol”, “friends”, “family”, “work”, “hobbies”, “sleep”, “common activities”, “relaxing”, “talking with people”, “social media”, “aimless browsing”…
-1. Take your time, you probably cannot do this in a single day, because you haven’t been paying attention all of your habits. Try to build this diagram over time— occasionally restart from scratch if necessary.
+1. Take your time, you probably cannot do this in a single day, because you haven’t been paying attention all of your habits. Try to build this diagram over time-- occasionally restart from scratch if necessary.
 
 This was the easier part.
 
@@ -87,21 +87,21 @@ Each of those small cycles has a particular purpose in your life. Drinking coffe
 
 A very good book on how each of these habits work is “The Power of Habit: Why We Do What We Do in Life and Business” by Charles Duhigg. It discusses 3 distinct parts in each habit:
 
-1. cue — something that triggers the behavior,
-1. routine — the action that you actually do, and
-1. reward — the result of your routine.
+1. cue -- something that triggers the behavior,
+1. routine -- the action that you actually do, and
+1. reward -- the result of your routine.
 
 It’s important to realize that each of those steps is affected and affects emotions and our internal state. Understanding the pieces helps to figure out what and how to optimally change things.
 
 ## Changing Habits
 
-When it comes changing your habits, the first instinct is to just throw it all out together and change all the bad behaviors at once — this is a bad idea for several reasons:
+When it comes changing your habits, the first instinct is to just throw it all out together and change all the bad behaviors at once -- this is a bad idea for several reasons:
 
 1. You cannot create a stable system by destroying another system. Destroying means that you won’t build a new system, but it would happen automatically. If you want to move towards a better system, you must transform towards it.
 1. Large changes are really taxing on your will-power and it’s almost impossible to stay on course.
 1. Every local change in the system will cause smaller changes throughout the system. This means that some things might automatically correct them, some new good or bad behaviors may surface. So, a too big of a change may be over-kill.
 
-*However, it is possible to use forceful changes: for example by removing memories that cause intense emotions. Such force acts cause the system to go into an unstable state, with unknown results — either something new will emerge or, more likely, old habits will come back. Forceful changes cause a lot of unintended changes — many things are strongly connected in memory. For example, good memories might be blurred together with bad memories. As such, the process is seeing part of your life die. Movie “Eternal Sunshine of the Spotless Mind” comes very close to explaining the feeling, although the whole process is less precise.*
+*However, it is possible to use forceful changes: for example by removing memories that cause intense emotions. Such force acts cause the system to go into an unstable state, with unknown results -- either something new will emerge or, more likely, old habits will come back. Forceful changes cause a lot of unintended changes -- many things are strongly connected in memory. For example, good memories might be blurred together with bad memories. As such, the process is seeing part of your life die. Movie “Eternal Sunshine of the Spotless Mind” comes very close to explaining the feeling, although the whole process is less precise.*
 
 *Now the other forceful change is to shock the system. Essentially, make a big change in your life. This will cause a new system to be formed, but as previously stated, this could be either better or worse. But it does bring out differences from previous system. By combining best of both it would be possible to create a new stable system. In a sense it helps to get a perspective in life.*
 
@@ -111,7 +111,7 @@ The replacement should be a natural fit to replace the previous activity. The cu
 
 To change the habit, it must be held in place with will-power for at least ~21 days; more is even better. “How to Change a Habit” by Scott H. Young is an excellent and clear guide on how to do it.
 
-Always... always... have backup plans for cases when you are not able to hold the habit in place. For example “when I accidentally drink alcohol, this is what I will do to remedy the consequences and get myself on track”. You may never need them, but when you do, you probably won’t be able to think up a good way to get on track — in such an emotional state it’s difficult to figure out what to do. Having a backup plan means you can avoid further regression.
+Always... always... have backup plans for cases when you are not able to hold the habit in place. For example “when I accidentally drink alcohol, this is what I will do to remedy the consequences and get myself on track”. You may never need them, but when you do, you probably won’t be able to think up a good way to get on track -- in such an emotional state it’s difficult to figure out what to do. Having a backup plan means you can avoid further regression.
 
 ## Balance
 
@@ -196,11 +196,11 @@ Every week a little better and every year better. There will be worse days there
 
 Now I’m not saying these are the best books for you, people vary... but these books have decent amount of actual research backing them, compared to the usual “self-help” books.
 
-* [“The Power of Habit: Why We Do What We Do in Life and Business” by Charles Duhigg](http://charlesduhigg.com/the-power-of-habit/) — to understand how habits form.
-* [“How to Change a Habit” by Scott H. Young](https://www.scotthyoung.com/blog/sales-pages/how-to-change-a-habit/) — a good guide on how to change habits.
-* [“The Charisma Myth” by Olivia Fox Cabane](https://www.amazon.com/Charisma-Myth-Science-Personal-Magnetism/dp/1591845947) — overcoming social communication issues.
-* [“Inner Bonding: Becoming a Loving Adult to Your Inner Child” by Margaret Paul”](https://www.amazon.com/Inner-Bonding-Becoming-Loving-Adult/dp/0062507109) —how to process emotions.
-* [“The Power of Full Engagement” by Jim Loehr and Tony Schwartz](https://www.amazon.com/Power-Full-Engagement-Managing-Performance/dp/0743226755) — how to create and figure out a balanced habit system.
-* [“The Power of Story” by Jim Loehr](https://www.amazon.com/Power-Story-Change-Destiny-Business/dp/0743294688) — to figure out your purpose in life.
-* [“Night School” by Richard Wiseman](https://www.amazon.com/Night-School-Wake-power-sleep/dp/149735644X) — if you have sleeping problems.
-* [School of Life](https://www.youtube.com/user/schooloflifechannel) — general discussions about hard to understand topics in life and feelings.
+* [“The Power of Habit: Why We Do What We Do in Life and Business” by Charles Duhigg](http://charlesduhigg.com/the-power-of-habit/) -- to understand how habits form.
+* [“How to Change a Habit” by Scott H. Young](https://www.scotthyoung.com/blog/sales-pages/how-to-change-a-habit/) -- a good guide on how to change habits.
+* [“The Charisma Myth” by Olivia Fox Cabane](https://www.amazon.com/Charisma-Myth-Science-Personal-Magnetism/dp/1591845947) -- overcoming social communication issues.
+* [“Inner Bonding: Becoming a Loving Adult to Your Inner Child” by Margaret Paul”](https://www.amazon.com/Inner-Bonding-Becoming-Loving-Adult/dp/0062507109) --how to process emotions.
+* [“The Power of Full Engagement” by Jim Loehr and Tony Schwartz](https://www.amazon.com/Power-Full-Engagement-Managing-Performance/dp/0743226755) -- how to create and figure out a balanced habit system.
+* [“The Power of Story” by Jim Loehr](https://www.amazon.com/Power-Story-Change-Destiny-Business/dp/0743294688) -- to figure out your purpose in life.
+* [“Night School” by Richard Wiseman](https://www.amazon.com/Night-School-Wake-power-sleep/dp/149735644X) -- if you have sleeping problems.
+* [School of Life](https://www.youtube.com/user/schooloflifechannel) -- general discussions about hard to understand topics in life and feelings.

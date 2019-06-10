@@ -43,7 +43,7 @@ Our brains need to do more work when dealing with abstractions.
 
 When ideas are similar their chunks are related and linked in our brains in a similar way. This leads to our brain being unable to “rebuild the contexts properly” because we are uncertain which chunk is the right one. Example: I and 1; O and 0.
 
-Ambiguity is another source for uncertainty. When a thing is ambiguous then there are multiple interpretations for the same thing. Homonyms are the best example of this property. Example: Crane — the bird or the machine.
+Ambiguity is another source for uncertainty. When a thing is ambiguous then there are multiple interpretations for the same thing. Homonyms are the best example of this property. Example: Crane -- the bird or the machine.
 
 Uncertainty causes us to slow down. It might be a few milliseconds, but that can be enough to disrupt our state of flow or make us use more working memory than necessary.
 

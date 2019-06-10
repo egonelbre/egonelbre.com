@@ -61,7 +61,7 @@ See those comments “_channel.mu must be held_”. The more complicated the log
 
 Also, in some languages you don’t have a race or static checker so an easy fix is to implement a method that fails when the Mutex is not properly held. The fixed code would look like this:
 
-So how do we implement it? Easy — track who owns the lock:
+So how do we implement it? Easy -- track who owns the lock:
 
 ```
 package example
@@ -113,6 +113,6 @@ The code isn’t completely correct (a brief period where “MustOwn” panics w
 
 There’s also the question of, what do we do when we want to Lock and then give the mutex to another thread without Unlocking. The problem can be solved by implementing a “Take” method that changes the owner.
 
-The implementation is not limited to Go and can easily be re-implemented in C, D or Delphi — whatever languages you need to use.
+The implementation is not limited to Go and can easily be re-implemented in C, D or Delphi -- whatever languages you need to use.
 
 That’s it. Hopefully it helps someone.
