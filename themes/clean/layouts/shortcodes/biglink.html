@@ -1,0 +1,5 @@
+<figure {{ with .Get "class" }}class="{{.}}"{{ end }}>
+    {{ with .Get "link"}}<a href="{{.}}">{{ end }}
+        <div class="biglink">{{.Get "title"}}</div>
+    {{ if .Get "link"}}</a>{{ end }}
+</figure>
