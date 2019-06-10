@@ -140,7 +140,7 @@ I should still highlight the “Physical” part here. Regular exercise can be a
 
 Fixing self-esteem/self-doubt is about coming to terms with your own self. By comparing ourselves to an unachievable moving standard, we are never able to catch it. As such, it often helps to focus on the every-day process and progress rather than the current result compared to the end-goal.
 
-Freeing yourself from the “Impostor Syndrome” is about realizing that every other person in the world shares similar feelings. They have their own self-doubts, needs, wishes, hopes and goals. Unfortunately, we don’t see other person’s inner feelings and how they affect that person ...
+Freeing yourself from the “Imposter Syndrome” is about realizing that every other person in the world shares similar feelings. They have their own self-doubts, needs, wishes, hopes and goals. Unfortunately, we don’t see other person’s inner feelings and how they affect that person ...
 
 *I like to imagine every person being pulled by big invisible hands in several directions, since it is the way our feelings works.*
 
