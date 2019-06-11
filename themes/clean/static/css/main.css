@@ -43,7 +43,7 @@ footer.main {
 header.main h1 {
 	float: left;
 	margin: 0;
-	line-height: 1rem;
+	line-height: 0.8rem;
 	font-weight: 100;
 }
 
@@ -54,9 +54,9 @@ h1.index-title {
 header.main a {
 	display: block;
 	color: inherit;
-	padding: 1rem;
-	font-size: 1rem;
-	line-height: 1rem;
+	padding: 0.8rem;
+	font-size: 0.8rem;
+	line-height: 0.8rem;
 }
 
 header.main nav {
@@ -77,14 +77,14 @@ article {
 }
 
 article h1 {
-	font-size: 2em;
+	font-size: 1.6em;
 	font-weight: 100;
 	letter-spacing: 0.02em;
 }
 
 article h2 {
 	margin-top: 2em;
-	font-size: 1.6em;
+	font-size: 1.4 em;
 	font-weight: 100;
 }
 
@@ -127,16 +127,21 @@ article p {
 	font-size: 0.9em;
 	line-height: 1.2em;
 	overflow-x: auto;
-	background-color: #f4f4f4;
+
+	border: 1px solid;
+	border-color: #ddd #ddd #ccc;
 	border-radius: 3px;
-	box-shadow: 1px 1px 5px #ddd;
-	border: 1px solid #fff;
 
 	padding: 0.2em;
 	margin: 1em 0;
 }
+.codetitle {
+	font-size: 0.9em;
+	margin-top: -1em;
+	text-align: center;
+}
+
 .chroma {
-	background-color: #f4f4f4;
 	min-width: 2.3em;
 }
 
@@ -151,6 +156,7 @@ blockquote {
 	margin-left: 0;
 	margin-block-start: 0;
 	margin-block-end: 0;
+
 	padding-left: 2em;
 	padding-right: 2em;
 }

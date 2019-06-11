@@ -11,7 +11,7 @@ One of the annoying issues when handling bad or legacy data-formats, is getting 
 
 Let’s see the problem in action, here’s a “simple” response from a SOAP endpoint:
 
-``` xml title=test
+``` xml caption=test
 <Envelope xmlns:s='http://schemas.xmlsoap.org/soap/envelope/'>
   <Body>
     <GetAllColumnsResponse xmlns='http://zzz.com/'>
@@ -36,7 +36,7 @@ Let’s see the problem in action, here’s a “simple” response from a SOAP 
 </Envelope>
 ```
 
-SOAP \*some data redacted
+{{< codetitle caption="SOAP, with some data redacted." >}}
 
 So, how do we handle this mess?
 
@@ -76,7 +76,7 @@ func (column *Column) Spec() soap.Spec {
 }
 ```
 
-Defining how to marshal our structures.
+{{< codetitle caption="Defining how to marshal our structures." >}}
 
 This looks quite nice already ... but we still need to implement the `soap` package.
 
@@ -111,8 +111,12 @@ func (node *Node) Encode() ([]byte, error) {
 	return xml.MarshalIndent(node, "", "\t")
 }
 ```
+{{< codetitle caption="Implementing the core." >}}
 
-Implementing the core.
+
+Here we define a `Node` for parsing arbitrary xml structures. We have `Spec` types that can encode and decode from this `Node` structure. _Strictly speaking_ `_Node_` _isn’t actually required. We could just as well implement the Spec types as Marshalers. In this case having a separate Node tree made things easier._
+
+Here are two types `TagSpec` and `StringSpec`. One for walking the `Node` tree and the other for marshaling a string.
 
 ``` go
 package soap
@@ -184,11 +188,7 @@ func (spec *StringSpec) Decode(node *Node) {
 }
 ```
 
-Here we define a `Node` for parsing arbitrary xml structures. We have `Spec` types that can encode and decode from this `Node` structure. _Strictly speaking_ `_Node_` _isn’t actually required. We could just as well implement the Spec types as Marshalers. In this case having a separate Node tree made things easier._
-
-Here are two types `TagSpec` and `StringSpec`. One for walking the `Node` tree and the other for marshaling a string.
-
-Implementing basic types.
+{{< codetitle caption="Implementing basic types.">}}
 
 We have `TagSpec` for pattern matching on names and `StringSpec` parsing into a string. Notice how the `StringSpec` writes to a string pointer, rather than a string.
 
@@ -200,7 +200,7 @@ var response AllColumnsResponse
 response.Spec().Decode(node)
 ```
 
-[https://github.com/egonelbre/exp/tree/master/spec](https://github.com/egonelbre/exp/tree/master/spec)
+{{< codetitle caption="full code" link="https://github.com/egonelbre/exp/tree/master/spec" >}}
 
 The basic idea is to create a separate spec structure that has pointers to the target structure and then let the “spec” type handle all the marshaling/parsing, but write the result into the “target” structure.
 
@@ -225,15 +225,15 @@ func (d *asnSignerInfo) marshaler() ber.Marshaler {
 }
 ```
 
-[https://github.com/egonelbre/exp/tree/master/ber](https://github.com/egonelbre/exp/tree/master/ber)
+{{< codetitle caption="full code" link="https://github.com/egonelbre/exp/tree/master/ber" >}}
 
 ## Build your own
 
 This approach gives us a easy way to write different DSL-s for marshaling data. You could imagine this being used for binary protocols or handling multiple formats with a single spec type.
 
-General rule for implementing the spec structure.
+General rule for implementing the spec structure:
 
-**_Use a pointer to the type you want to capture._**
+> **Use a pointer to the type you want to capture.**
 
 For example, `soap.TagSpec` didn’t want to capture the input ... hence it doesn’t contain pointers. `soap.StringSpec` wanted to capture a `string` and so the spec contained a `*string`. So, if you want to capture a `*UserInfo` then the spec type for it should contain `**UserInfo`.
 
