@@ -14,7 +14,7 @@ In the simplest terms programmer is a problem solver. There are some things that
 
 Here’s how these things work together:
 
-![](https://cdn-images-1.medium.com/max/800/0*QodyBk7eoE3d1QSp.png)
+{{< fig src="/_images/programming-model-01.png" >}}
 
 Let’s call the things that affect programmer forces and give them some names:
 
@@ -59,7 +59,7 @@ The problem with friction is that it makes people feel stressed and stupid —
 
 Let us consider what happens if a person “cheats” while learning.
 
-![](https://cdn-images-1.medium.com/max/800/0*uATsVeBYmF6O4xIZ.png)
+{{< fig src="/_images/ programming-model-02.png" >}}
 
 Imagine you are solving sudoku and at stage 2, where you hit your first difficult problem, someone else comes and solves the sudoku for you. This would mean that you won’t feel the “high” and are less likely to try solving sudoku again. The perceived reward has also decreased. More importantly, you fail to learn the skills required to overcome obstacles 2 and 3.
 
@@ -89,23 +89,29 @@ As humans, we have a lot of assumptions about things. For example when I say “
 
 When we do the same thing in some programming language:
 
+```
 elephant = "pink"
+```
 
 We still read the code “elephant is pink”, but the actual underlying context is totally different. The `elephant` isn’t an animal anymore, it’s a reference in memory, and “=” is not a descriptive term, but an assignment. “pink” is not a color anymore but just a string. Computer language is different from natural language since everything has a single well-defined meaning, usually at least.
 
 To make this concept more understandable let’s consider this program:
 
+```
 y = 60;  
 x = y;  
 y = 30;  
 x?
+```
 
 What is the value of `x` at the end? Here are the options:
 
+```
 1.  `x == 60`
 2.  `x == 30`
 3.  `y = 30` is a mistake
 4.  something else
+```
 
 If you are a good programmer you probably realized that the correct answer is “all of the above”.
 
@@ -115,7 +121,9 @@ None of these behaviors is “wrong” (remember computers are stupid and they d
 
 In the same way, if we have a program drawing a rectangle on the screen, then making a new variable and writing:
 
+```
 y = 50
+```
 
 Doesn’t make the rectangle move to that position. It must be used together with everything else to make it work. We need to make things interact before they have an effect on other things.
 
@@ -129,7 +137,9 @@ Let’s consider the code for “box moving from left to right”. How to turn t
 
 We start by specifying:
 
+```
 // box moving from left to right and back
+```
 
 Here we should be asking questions, what is “box”, “moving”, “left”, “right”, “back”. What do we mean by “box is moving”.
 
@@ -137,12 +147,15 @@ By “box is moving” we mean that we can see the “box” change its position
 
 What do we mean by “change its position”? It is just a change in the “x” coordinate. How much do we need to change? Let’s worry about that exact detail later. So moving would look like:
 
+```
 // when update {  
 //              box.x = box.x + 10  
 // }
+```
 
 Now, what do we mean by “left to right and back”? From “left to right” means that we start from coordinate “0” and move until the width of the screen, at which point we should go back. Which means that if our box x coordinate has reached the width of the screen we should start moving back:
 
+```
 // left = 0;  
 // right = screen.width;  
 // box.x = left;  
@@ -150,9 +163,11 @@ Now, what do we mean by “left to right and back”? From “left to right” m
 //    box.x = box.x + 10  
 //    when box.x reach right start moving back  
 // }
+```
 
 What do we mean by “reach”? This means that when “box.x > right”. What do we mean by “moving back”? This means that we should start moving in the opposite direction. We need to change the “+10” to “-10” — we change it if it’s a variable:
 
+```
 // speed = 10;  
 // left = 0;  
 // right = screen.width;  
@@ -162,9 +177,11 @@ What do we mean by “reach”? This means that when “box.x > right”. What d
 //    when box.x > right  
 //              speed = -10  
 // }
+```
 
 Converting this into actual code is mostly research how a language exactly works, but here’s one possible interpretation:
 
+```
 var speed = 10,  
         left = 0,  
         right = screen.width;
@@ -178,6 +195,7 @@ function update(){
                 speed = -10;  
         }  
 }
+```
 
 As we can see we didn’t start writing in the programming language from the start. It may look like many programmers start from writing in a programming language — in reality, they just do the first parts in their head and translate the result into code.
 
@@ -195,6 +213,7 @@ The correct way would be to analyze the code — maybe try changing some par
 
 After studying the code we finally notice that when the box reaches the left side it doesn’t turn around again. If we now consider our initial vague idea “box moving from left to right and back”, we see that we did not specify that it should start moving right again. Here is another important insight bugs aren’t always in the code they can be in the specification and in our head. Maybe we didn’t anticipate some corner cases, maybe we didn’t specify the behavior explicitly enough. In this case, the solution is simple, just add this extra condition:
 
+```
 var speed = 10,  
         left = 0,  
         right = screen.width;
@@ -211,6 +230,7 @@ function update(){
                 speed = 10;  
         }  
 }
+```
 
 Understanding the system and how it behaves and having intuition is important, otherwise, we will be making changes without being able to predict the consequences.
 
@@ -256,6 +276,7 @@ Next rather simple way to handle complexity is by setting limitations, using a c
 
 One example would be:
 
+```
 x = 4;  
 y = (++x)\*x;
 
@@ -263,11 +284,13 @@ y = (++x)\*x;
 x = 4;  
 x += 1;  
 y = x\*x;
+```
 
 If we use inconsistent style our code will become hard to read similarly to a book that is written in different languages and in mid-sentence goes over to a poem. Keeping a consistent style is easy and has great benefits.
 
 When we use idioms we can start to intuitively reason about code. If you’ve had a lot of experience in C-style for loops then some of these will feel more natural than others:
 
+```
 for( i = 0; i <= length-1; i += 1) {  
         ...  
 }
@@ -283,6 +306,7 @@ for( i = 0; length > i; i++ ) {
 for( i = 0; length-1 >= i; i = i + 1 ) {  
         ...  
 }
+```
 
 Although all of them say the same thing our intuition will say “this feels weird”. If our intuition tells us that our code is wrong, although it is correct, it would be better to rewrite code such that it feels correct.
 
