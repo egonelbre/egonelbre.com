@@ -46,7 +46,7 @@ Some basic permutation theory gives us that we can assign a unique index to each
 
 I found one description of the algorithm for converting a permutation to code from here [https://www.researchgate.net/figure/The-Lehmer-code-A-complete-translation-from-permutation-to-decimal-by-way-of-the_fig1_230831447](https://www.researchgate.net/figure/The-Lehmer-code-A-complete-translation-from-permutation-to-decimal-by-way-of-the_fig1_230831447)
 
-{{< fig src="images/lehmer-code.jpg" >}}
+{{< fig src="/_images/lehmer-code.jpg" >}}
 
 _We can imagine this as reducing the problem at each stage to a smaller problem. At first there are `12!` possibilities for using the index. We know that for permutation of size 11, there are `11!` of them. This means when we partition the permutations into 12 equal chunks, based on some criteria, figure out which chunk it belongs to and then multiply that by `11!` then we get our first reduction. Each next step won’t spill over to the next partition, because they are smaller than `11!`._
 

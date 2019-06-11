@@ -5,7 +5,7 @@ summary: Example on how to develop software with little effort.
 tags: ["Go", "Software Concepts"]
 ---
 
-{{< fig src="building-with-value-example-a-tree.png" >}}
+{{< fig src="/_images/building-with-value-example-a-tree.png" >}}
 
 Previously I described a process for developing software while trying to provide as much value and create understanding as early as possible.
 

@@ -7,7 +7,7 @@ tags: ["Go", "Concurrency", "Debugging"]
 
 One of the problems I’ve encountered few times is avoiding mistakes with threaded programs and locks.
 
-{{< fig src="/images/asserting-locks.png" >}}
+{{< fig src="/_images/asserting-locks.png" >}}
 
 _Whether you should be using locks is a different discussion. There are plenty of places where other approaches, such as channels, can be much easier to read and understand._
 
