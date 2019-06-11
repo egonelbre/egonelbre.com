@@ -11,7 +11,7 @@ One of the annoying issues when handling bad or legacy data-formats, is getting 
 
 Let’s see the problem in action, here’s a “simple” response from a SOAP endpoint:
 
-```
+``` xml title=test
 <Envelope xmlns:s='http://schemas.xmlsoap.org/soap/envelope/'>
   <Body>
     <GetAllColumnsResponse xmlns='http://zzz.com/'>
@@ -42,7 +42,7 @@ So, how do we handle this mess?
 
 Obviously we need to somehow reflect this structure in our code:
 
-```
+``` go
 type AllColumnsResponse struct {
 	Columns []Column `json:"columns"`
 }
@@ -80,7 +80,7 @@ Defining how to marshal our structures.
 
 This looks quite nice already ... but we still need to implement the `soap` package.
 
-```
+``` go
 package soap
 
 import "encoding/xml"
@@ -114,7 +114,7 @@ func (node *Node) Encode() ([]byte, error) {
 
 Implementing the core.
 
-```
+``` go
 package soap
 
 type TagSpec struct {
@@ -194,7 +194,7 @@ We have `TagSpec` for pattern matching on names and `StringSpec` parsing into a 
 
 Finally to wire all of this together:
 
-```
+``` go
 node, _ := soap.Parse([]byte(data))
 var response AllColumnsResponse
 response.Spec().Decode(node)
@@ -208,7 +208,7 @@ The basic idea is to create a separate spec structure that has pointers to the t
 
 This of course can be made to handle very complicated structures:
 
-```
+``` go
 func (d *asnSignerInfo) marshaler() ber.Marshaler {
 	return ber.Sequence{
 		ber.Check{ber.Universal, ber.TagInteger, ber.Int64{&d.Version}},
@@ -245,7 +245,7 @@ Spec types give a nice way of handling different complicated formats at the cost
 
 As a final exercise you can try writing a nested handler:
 
-```
+``` go
 // From:
 func (response *AllColumnsResponse) Spec() soap.Spec {
 	return soap.Tag("Envelope",

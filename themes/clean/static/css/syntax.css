@@ -5,18 +5,18 @@
 /* LineHighlight */ .chroma .hl { display: block; width: 100%;background-color: #ffffcc }
 /* LineNumbersTable */ .chroma .lnt { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
 /* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
-/* Keyword */ .chroma .k { font-weight: bold }
-/* KeywordConstant */ .chroma .kc { font-weight: bold }
-/* KeywordDeclaration */ .chroma .kd { font-weight: bold }
-/* KeywordNamespace */ .chroma .kn { font-weight: bold }
+/* Keyword */ .chroma .k { font-weight: normal }
+/* KeywordConstant */ .chroma .kc { font-weight: normal }
+/* KeywordDeclaration */ .chroma .kd { font-weight: normal }
+/* KeywordNamespace */ .chroma .kn { font-weight: normal }
 /* KeywordPseudo */ .chroma .kp {  }
-/* KeywordReserved */ .chroma .kr { font-weight: bold }
+/* KeywordReserved */ .chroma .kr { font-weight: normal }
 /* KeywordType */ .chroma .kt {  }
-/* NameClass */ .chroma .nc { font-weight: bold }
-/* NameEntity */ .chroma .ni { font-weight: bold }
-/* NameException */ .chroma .ne { font-weight: bold }
-/* NameNamespace */ .chroma .nn { font-weight: bold }
-/* NameTag */ .chroma .nt { font-weight: bold }
+/* NameClass */ .chroma .nc { font-weight: normal }
+/* NameEntity */ .chroma .ni { font-weight: normal }
+/* NameException */ .chroma .ne { font-weight: normal }
+/* NameNamespace */ .chroma .nn { font-weight: normal }
+/* NameTag */ .chroma .nt { font-weight: normal }
 /* LiteralString */ .chroma .s { font-style: italic }
 /* LiteralStringAffix */ .chroma .sa { font-style: italic }
 /* LiteralStringBacktick */ .chroma .sb { font-style: italic }
@@ -24,14 +24,14 @@
 /* LiteralStringDelimiter */ .chroma .dl { font-style: italic }
 /* LiteralStringDoc */ .chroma .sd { font-style: italic }
 /* LiteralStringDouble */ .chroma .s2 { font-style: italic }
-/* LiteralStringEscape */ .chroma .se { font-weight: bold; font-style: italic }
+/* LiteralStringEscape */ .chroma .se { font-weight: normal; font-style: italic }
 /* LiteralStringHeredoc */ .chroma .sh { font-style: italic }
-/* LiteralStringInterpol */ .chroma .si { font-weight: bold; font-style: italic }
+/* LiteralStringInterpol */ .chroma .si { font-weight: normal; font-style: italic }
 /* LiteralStringOther */ .chroma .sx { font-style: italic }
 /* LiteralStringRegex */ .chroma .sr { font-style: italic }
 /* LiteralStringSingle */ .chroma .s1 { font-style: italic }
 /* LiteralStringSymbol */ .chroma .ss { font-style: italic }
-/* OperatorWord */ .chroma .ow { font-weight: bold }
+/* OperatorWord */ .chroma .ow { font-weight: normal }
 /* Comment */ .chroma .c { font-style: italic }
 /* CommentHashbang */ .chroma .ch { font-style: italic }
 /* CommentMultiline */ .chroma .cm { font-style: italic }
@@ -40,7 +40,7 @@
 /* CommentPreproc */ .chroma .cp {  }
 /* CommentPreprocFile */ .chroma .cpf {  }
 /* GenericEmph */ .chroma .ge { font-style: italic }
-/* GenericHeading */ .chroma .gh { font-weight: bold }
-/* GenericPrompt */ .chroma .gp { font-weight: bold }
-/* GenericStrong */ .chroma .gs { font-weight: bold }
-/* GenericSubheading */ .chroma .gu { font-weight: bold }
+/* GenericHeading */ .chroma .gh { font-weight: normal }
+/* GenericPrompt */ .chroma .gp { font-weight: normal }
+/* GenericStrong */ .chroma .gs { font-weight: normal }
+/* GenericSubheading */ .chroma .gu { font-weight: normal }

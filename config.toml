@@ -9,6 +9,7 @@ paginate = 40
 pygmentsCodefencesGuessSyntax = true
 pygmentsCodeFences = true
 pygmentsUseClasses = true
+pygmentsoptions = "linenos=true"
 
 [permalinks]
 	article = "/:title/"

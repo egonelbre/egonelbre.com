@@ -37,12 +37,13 @@ It’s hard to come up with a solution for a problem that you don’t know. Be s
 
 This happens when people argue for a specific solution. They try to show their solution in the best light possible:
 
-```
+``` javascript
 // You know how good it would be to have a feature to eliminate
 // duplicate letters in variables. Let me show you an example:
 var xxxxxx = 1;
 var xxxxx = 2;
 return xxxxxx + xxxxx;
+
 // It would be much more readable with:
 var x~6 = 1;
 var x~5 = 2;
@@ -63,7 +64,7 @@ Facilitated code makes more difficult to analyse the solution. It’s also not a
 
 Way too often we try to take shortcuts when learning things:
 
-```
+``` java
 // Let's learn inheritance:
 
 public class Animal {
@@ -110,7 +111,7 @@ Show real-world examples and explain the domain. Stop assuming that you don’t 
 
 When browsing frameworks I often encounter:
 
-```
+``` go
 services.Register("BunnyFactory", &bunny.Factory{})
 bunnies := services.Get("BunnyFactory").(Factory)
 ```

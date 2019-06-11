@@ -7,9 +7,9 @@ tags: ["Software Development", "Efficiency"]
 
 I think one of the features that I currently wouldn’t be able to live without is multiple cursors. Just a few examples of what you can do with them:
 
-{{< fig src="/_images/multicursors - example 1.webm" >}}
+{{< webm src="/_images/multicursors - example 1.webm" >}}
 
-{{< fig src="/_images/multicursors - example 2.webm" >}}
+{{< webm src="/_images/multicursors - example 2.webm" >}}
 
 Of course these are just examples, once you have used them in practice you will understand their power better.
 

@@ -123,16 +123,21 @@ article p {
 	margin-left: 1em;
 }
 
-.chroma {
-	padding: 1em;
+.highlight {
+	font-size: 0.9em;
+	line-height: 1.2em;
 	overflow-x: auto;
-	background-color: #eee;
-	
-	border: 1px solid #fff;
+	background-color: #f4f4f4;
 	border-radius: 3px;
-	box-shadow: 1px 1px 5px rgba(0,0,0,0.18);
+	box-shadow: 1px 1px 5px #ddd;
+	border: 1px solid #fff;
 
-	line-height: 1.2rem;
+	padding: 0.2em;
+	margin: 1em 0;
+}
+.chroma {
+	background-color: #f4f4f4;
+	min-width: 2.3em;
 }
 
 p code {
@@ -148,4 +153,17 @@ blockquote {
 	margin-block-end: 0;
 	padding-left: 2em;
 	padding-right: 2em;
+}
+
+figure {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	display: flex;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+figure > img, figure > video {
+	margin: auto;
 }

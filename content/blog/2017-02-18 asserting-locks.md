@@ -13,7 +13,7 @@ _Whether you should be using locks is a different discussion. There are plenty o
 
 A basic example of my problem can be seen below:
 
-```
+``` go
 package example
 
 import (
@@ -63,7 +63,7 @@ Also, in some languages you don’t have a race or static checker so an easy fix
 
 So how do we implement it? Easy -- track who owns the lock:
 
-```
+``` go
 package example
 
 import (
