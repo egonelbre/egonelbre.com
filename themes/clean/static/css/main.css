@@ -1,6 +1,9 @@
 html {
 	font-family: serif;
 	font-weight: 100;
+	font-size: 1.2em;
+	line-height: 1.5em;
+
 	color: #333;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -15,7 +18,7 @@ body {
 }
 
 .center {
-	max-width: 48rem;
+	max-width: 44rem;
 	margin: 0 auto;
 	padding: 0.5rem;
 }
@@ -96,21 +99,18 @@ article .tags {
 }
 
 article p {
-	line-height: 1.5em;
-	font-size: 1.2em;
 	font-weight: 100;
 }
 
 .toc { 
 	list-style: none;
-	font-size: 1.2em;
 	margin: 0;
 	padding: 0;
 }
 
 .toc li {
 	margin: 0;
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
 }
 
 .toc-date {
@@ -121,4 +121,31 @@ article p {
 
 .toc li .toc-summary {
 	margin-left: 1em;
+}
+
+.chroma {
+	padding: 1em;
+	overflow-x: auto;
+	background-color: #eee;
+	
+	border: 1px solid #fff;
+	border-radius: 3px;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.18);
+
+	line-height: 1.2rem;
+}
+
+p code {
+	background-color: #eee;
+	border-radius: 3px;
+	padding: 3px 0.5em;
+}
+
+blockquote {
+	border-left: 0.4em solid #eee;
+	margin-left: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	padding-left: 2em;
+	padding-right: 2em;
 }

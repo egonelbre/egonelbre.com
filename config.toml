@@ -6,6 +6,10 @@ theme = "clean"
 
 paginate = 40
 
+pygmentsCodefencesGuessSyntax = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
 [permalinks]
 	article = "/:title/"
 	blog = "/:title/"

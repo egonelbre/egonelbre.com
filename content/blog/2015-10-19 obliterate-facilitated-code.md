@@ -9,7 +9,7 @@ One of the things that has been annoying me is facilitated code. You know all th
 
 You cannot make any reasonable decisions or arguments with those examples nor can you learn new things from them. They rarely serve good purpose.
 
-Let’s examine the common cases.
+Let’s examine some of the common cases.
 
 
 
@@ -28,8 +28,8 @@ You may think _“But I know what is sufficient information to solve the problem
 
 It’s hard to come up with a solution for a problem that you don’t know. Be sure that you give sufficient information to people to help you. If you don’t have a good idea on what is sufficient, see [How To Ask](https://github.com/golang/go/wiki/howtoask).
 
-* real-world examples: [persistent sequence](https://groups.google.com/forum/#!msg/golang-nuts/otnhVwA1Mw0/_EjZQczExbUJ)
-* how it should be: [avoid import cycles](https://groups.google.com/forum/#!msg/golang-nuts/mgsLIZGGID4/9k720SsPyrIJ)
+* Real-World Examples: [persistent sequence](https://groups.google.com/forum/#!msg/golang-nuts/otnhVwA1Mw0/_EjZQczExbUJ)
+* How It Should Be: [avoid import cycles](https://groups.google.com/forum/#!msg/golang-nuts/mgsLIZGGID4/9k720SsPyrIJ)
 
 
 
@@ -55,7 +55,7 @@ By using facilitated code we hide the premise and all the design process that le
 
 Facilitated code makes more difficult to analyse the solution. It’s also not always obvious whether the solution translates to real-world. Let’s start with real-world problems when proposing solutions.
 
-* real-world examples: [arguing for tuples](https://groups.google.com/forum/#!topic/golang-nuts/lFU2bNGVtJU/discussion), [first-class cancellation](https://groups.google.com/forum/#!msg/golang-nuts/TQ5TdJEBamY/UWKKfDec5qYJ), [error handling and repetition](https://groups.google.com/forum/#!topic/golang-nuts/68J-mLCC1JI/discussion)
+* Real-World Examples: [arguing for tuples](https://groups.google.com/forum/#!topic/golang-nuts/lFU2bNGVtJU/discussion), [first-class cancellation](https://groups.google.com/forum/#!msg/golang-nuts/TQ5TdJEBamY/UWKKfDec5qYJ), [error handling and repetition](https://groups.google.com/forum/#!topic/golang-nuts/68J-mLCC1JI/discussion)
 
 
 
@@ -101,8 +101,8 @@ If you ever wondered why people end up with `AbstractFactoryBuilders`, then this
 
 Show real-world examples and explain the domain. Stop assuming that you don’t have time to explain the full complexity of the domains. Find a simpler domain, if you need to. If you don’t have time to explain the full complexity of domain, explain parts of it and ensure that you actually understand the full complexity yourself.
 
-* real-world examples: [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern), [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization), [inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html).
-* how it should be: [Game Programming Patterns](https://gameprogrammingpatterns.com/), [Game Programming Gems](http://www.satori.org/game-programming-gems/), [The Architecture of Open Source Appliactions](http://aosabook.org/en/index.html)
+* Real-World Examples: [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern), [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization), [inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html).
+* How It Should Be: [Game Programming Patterns](https://gameprogrammingpatterns.com/), [Game Programming Gems](http://www.satori.org/game-programming-gems/), [The Architecture of Open Source Appliactions](http://aosabook.org/en/index.html)
 
 
 
@@ -125,16 +125,18 @@ Quick short references for examples are fine as long as you have a real-world ap
 
 Few real-world things that you could show: Hotel Booking, ToDo List, Issue Tracker, Twitter (or similar), Chat, Reddit
 
-* real-world examples: [goldi](https://github.com/fgrosse/goldi/blob/8bb09dd2be1b6e592353f4a02532860835d771fa/README.md#usage)
-* how it should be: [Revel: Booking](https://github.com/revel/examples), [TodoMVC](http://todomvc.com/)
+* Real-World Examples: [goldi](https://github.com/fgrosse/goldi/blob/8bb09dd2be1b6e592353f4a02532860835d771fa/README.md#usage)
+* How It Should Be: [Revel: Booking](https://github.com/revel/examples), [TodoMVC](http://todomvc.com/)
 
 
 
 ## Finally
 
-> First a disclaimer: I mean no disrespect to people involved in the linked examples. Whether their arguments are valid is a separate discussion and it is not meant as a comment on those ideas. I only tried to highlight that the examples can be improved.
+> First a disclaimer:
+>
+> I mean no disrespect to people involved in the linked examples. Whether their arguments are valid is a separate discussion and it is not meant as a comment on those ideas. I only tried to highlight that the questions can be improved.
 
-I know, finding small real-world examples is difficult, it’s much easier to throw something together, rather than to think things through. When you feel that facilitated examples bring out your thoughts out clearer ... ensure that you have real-world examples to back them.
+I know, finding small real-world examples is difficult, it’s much easier to throw something together, rather than to think things through. When you feel that facilitated examples bring out your thoughts out clearer, ensure that you have real-world examples to back them.
 
 I know it is a tall order to get rid of all “facilitated examples”, hell, even I used them here to illustrate the points better.
 
