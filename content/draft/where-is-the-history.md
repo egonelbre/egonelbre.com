@@ -14,7 +14,7 @@ TODO: Physics of software
 
 TODO: GoF
 
-#### Superficiality of discussion
+## Superficiality of discussion
 
 All of my own problems in trying to understand things were all due to one thing — superficial understanding. It’s easy to get stuck in the easy ideas. We learn the definitions, but never learn how they came to be. We only criticize the implementation, but ignore the vision. We may not even have noticed that _vision_ and _paradigm_ existed. This means, every next person learning will see watered down content.
 
@@ -37,7 +37,7 @@ I’m not saying that you will like something after learning it in depth. You mi
 
 Maybe we can figure out [better ways of thinking](http://worrydream.com/MediaForThinkingTheUnthinkable/note.html), create [better tools](http://handmade.network/) and create [better languages](http://witheve.com/). Eventually, we might even figure out how to write valuable software every single time.
 
-#### Trying to improve the state-of-art
+## Trying to improve the state-of-art
 
 In the end with regards to programming we should figure out:
 

@@ -5,7 +5,7 @@ summary: Understanding what is valuable.
 tags: ["Software Concepts"]
 ---
 
-![](https://cdn-images-1.medium.com/max/800/1*aWeRJmdnURGR5pMeF8C87w.png)
+{{< fig src="/_images/value/seedling.png" >}}
 
 Why do we write programs in the first place? It’s easy to get lost in the technological details, but this is not the primary goal. This might sound obvious but, **w_e need to provide value to people._**
 
@@ -15,9 +15,10 @@ Why do we write programs in the first place? It’s easy to get lost in the tech
 
 Understanding _Value_ helps us understand why we are doing things in the first place. If you are not creating something of value, then you are creating waste.
 
-![](https://cdn-images-1.medium.com/max/800/1*ihnErpp_FRDD9zhu3yfz8w.png)
 
-#### Valuable
+{{< fig src="/_images/value/tree.png" >}}
+
+## Valuable
 
 To understand _Value,_ we must first understand why do we call things Valuable.
 
@@ -31,9 +32,10 @@ The definition is not rocket science:
 
 We know and feel when something is valuable to us, and we can empathize when something is valuable to someone else.
 
-![](https://cdn-images-1.medium.com/max/800/1*8F6-YwId2g1FQwkWejnIRw.png)
 
-#### The Context
+{{< fig src="/_images/value/context.png" >}}
+
+## The Context
 
 However, understanding Value is not that easy. We must always bear in mind that the value of something possesses is tied to the context.
 
@@ -55,9 +57,9 @@ The goal of “logging in” is to protect value, rather than to be of value. If
 
 It’s never as simple as _“Does something have value?”_ because we need to take the context into account.
 
-![](https://cdn-images-1.medium.com/max/800/1*H41mdS4tKs4ibxZ8C_1JSw.png)
+{{< fig src="/_images/value/looking.png" >}}
 
-#### Evaluator
+## Evaluator
 
 You should also have noticed that Value will also depend on who is doing the evaluating. We have to keep in mind that there is always an evaluator when looking at value.
 
@@ -73,9 +75,9 @@ How is the box valuable to the end-user, how will they use it? Does he hold very
 
 Understanding what we create and why it is valuable to people is essential to making the right decisions.
 
-![](https://cdn-images-1.medium.com/max/800/1*GvemT6J72JHLfknyt6uCNg.png)
+{{< fig src="/_images/value/tree-swing.png" >}}
 
-#### Outside the box
+## Outside the box
 
 We should have a bigger view and understand that we can get the same value from multiple solutions. Engineering is about understanding these different solutions and picking the most appropriate one.
 
@@ -87,4 +89,4 @@ Understanding Value should be at the core of our decision making. It helps to gi
 
 In the next blog post, we’ll take a look at how we put this understanding into practice.
 
-{{< biglink link="/article/building-with-value" title="Building With Value" >}}
+{{< biglink link="/building-with-value" title="Building With Value" >}}

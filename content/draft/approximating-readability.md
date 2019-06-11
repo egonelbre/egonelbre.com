@@ -17,7 +17,7 @@ All of the following assumes you are familiar with previous posts and familiar w
 3.  [What Is a Layer?](https://medium.com/@egonelbre/what-is-a-layer-948bb1a26b5d)
 4.  Thoughts on Code Organization
 
-#### Goals
+## Goals
 
 There are few things that a good code readability metric should do:
 
@@ -45,7 +45,7 @@ When we disallow coding specific rules and get similar results, it means we have
 
 The following approach definitely does not capture all the ideals outlined. Consider it as a first draft.
 
-#### Reader skill
+## Reader skill
 
 We have to understand that there are multiple people readers that could be reading the code. If we would take the metric relative to the person “who knows nothing”, then we would have to start by analyzing complexity of reading letters.
 
@@ -61,13 +61,13 @@ In essence take a set of code-bases that represent the things that most people w
 
 \[EXAMPLE\]
 
-#### Direct and Indirect
+## Direct and Indirect
 
 We also can make a difference between local and system metric. For example even though all of your methods might be under five lines of code the system itself could be extremely hard to follow. We should be able to measure both.
 
-#### Confusion
+## Confusion
 
-#### Idioms
+## Idioms
 
 familiarity / idioms
 
@@ -75,7 +75,7 @@ mining familiarity
 
 pattern recognition
 
-#### Working Memory
+## Working Memory
 
 locality
 
@@ -85,4 +85,4 @@ context stacking
 
 distance
 
-#### Mental Models
+## Mental Models

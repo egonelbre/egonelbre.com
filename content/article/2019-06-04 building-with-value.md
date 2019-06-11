@@ -5,8 +5,7 @@ summary: How to use value as primary driver for developing.
 tags: ["Software Concepts"]
 ---
 
-
-![](https://cdn-images-1.medium.com/max/800/1*GvemT6J72JHLfknyt6uCNg.png)
+{{< fig src="/_images/value/tree-swing.png" >}}
 
 Beginners often overwhelm their brain with decisions and things they need to do. Which usually turns into a mess of trying to implement everything at once. Alternatively, programmers end up making very short-sighted decisions that end up becoming problematic later.
 
@@ -22,7 +21,7 @@ The question is -- how do we pick the pieces we develop? How do we ensure that o
 
 I covered some of the aspects of understanding value already in Value in Software.
 
-{{< biglink link="/article/value-in-software" title="Value in Software" >}}
+{{< biglink link="/value-in-software" title="Value in Software" >}}
 
 When we are starting out writing some software, there is so much we could implement. There are also so many ways we could organize and implement things. This overwhelming amount of concerns can quickly push people into Analysis Paralysis.
 
@@ -82,23 +81,23 @@ We dedicated a lot of time explaining what Value is and why it is important. To 
 
 When we roughly know what we are building, then we can find the next step by trying to eliminating things. We can visualize the project as a graph of dependencies and associations:
 
-![](https://cdn-images-1.medium.com/max/800/1*wVm90DABBpgcv74Skey3wA.png)
+{{< fig src="/_images/value/decomposition-01.png" >}}
 
 We ignore things we cannot implement right now, can mock out, can achieve with other means or live without. Implementing data repositories don’t make sense without actually knowing what we need to store so that we can cross them out:
 
-![](https://cdn-images-1.medium.com/max/800/1*Hy5BYEME7ciTfgLAxBc3AQ.png)
+{{< fig src="/_images/value/decomposition-02.png" >}}
 
 Since Projects without Issues are less valuable than Issues themselves, we can cross it out.
 
-![](https://cdn-images-1.medium.com/max/800/1*PYGoTNiriD_Jrdy9yefMow.png)
+{{< fig src="/_images/value/decomposition-03.png" >}}
 
 Since we can use Issues without Users and tracking Issues are more valuable than tracking Users, we can cross out users.
 
-![](https://cdn-images-1.medium.com/max/800/1*x7EUJiNTRRUk9hbGwGGK8g.png)
+{{< fig src="/_images/value/decomposition-04.png" >}}
 
 Since View requires the existence of an Issue, we can also cross it out.
 
-![](https://cdn-images-1.medium.com/max/800/1*ectTjcNgeMH2tOn4tBUeoA.png)
+{{< fig src="/_images/value/decomposition-05.png" >}}
 
 Of course, different people may reach different conclusions on what is the most valuable thing, but it’s more consistent than inconsistent. If you are in doubt, ask another person what would they rather have “Issues” or “Issues View.”
 
@@ -155,4 +154,4 @@ This skill of being aware of value and wholeness takes time to develop, but the 
 
 In the next article, we’ll take a look at how one iteration of this process might look like:
 
-{{< biglink link="/blog/building-with-value-an-example" title="Building With Value: An Example" >}}
+{{< biglink link="/building-with-value-an-example" title="Building With Value: An Example" >}}

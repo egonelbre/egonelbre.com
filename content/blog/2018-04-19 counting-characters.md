@@ -63,8 +63,7 @@ Output:
    3       1       1       1       3       3       1       1       "㈎"
    5       2       1       1       1       1       1       1       "ẛ̣"
 ```
-
-[https://play.golang.org/p/X6k-\_9uy2ec](https://play.golang.org/p/X6k-_9uy2ec)
+{{< codetitle caption="play.golang.org/p/X6k-\_9uy2ec" link="https://play.golang.org/p/X6k-\_9uy2ec">}}
 
 _I’m aware that some of these give the same answer, but usually you want to do something else with the string, not just count the characters._
 
@@ -84,8 +83,7 @@ func main() {
 	// Output: x̆oll̆eh
 }
 ```
-
-[https://play.golang.org/p/W49YBTiQ060](https://play.golang.org/p/W49YBTiQ060)
+{{< codetitle caption="play.golang.org/p/W49YBTiQ060" link="https://play.golang.org/p/W49YBTiQ060">}}
 
 As an exercise, try implementing a string reverse that does the right thing with “hĕllŏ”, “ﬃ”, “㈎” and “你好”.
 

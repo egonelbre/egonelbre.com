@@ -17,7 +17,7 @@ _Code at_ [_https://github.com/egonelbre/db-demo/tree/master/00\_yolo_](https://
 
 This is the version, that takes the least effort. This approach can be described as “throw everything together”.
 
-```
+``` go
 db, err := sql.Open("postgres", "user=dbdemo password=dbdemo dbname=dbdemo sslmode=disable")
 if err != nil {
 	log.Fatal(err)
@@ -64,8 +64,7 @@ http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 	ShowCommentsPage(w, comments)
 })
 ```
-
-[https://github.com/egonelbre/db-demo/blob/master/00\_yolo/main.go](https://github.com/egonelbre/db-demo/blob/master/00_yolo/main.go)
+{{< codetitle caption="00_yolo/main.go" link="https://github.com/egonelbre/db-demo/blob/master/00_yolo/main.go" >}}
 
 Everything in this file is mingled together and quite hard to follow. Any longer than this and it becomes unmaintainable.
 
@@ -77,9 +76,7 @@ _Code at_ [_https://github.com/egonelbre/db-demo/tree/master/01\_funcs_](https:/
 
 The first step towards separating HTTP from data storage is to use functions. We create functions for different interactions and then provide the database connection as the first parameter.
 
-[https://github.com/egonelbre/db-demo/blob/master/01\_funcs/main.go](https://github.com/egonelbre/db-demo/blob/master/01_funcs/main.go)
-
-```
+``` go
 func listComments(db *sql.DB) ([]Comment, error) {
 	rows, err := db.Query(`SELECT "User", "Comment" FROM Comments`)
 	if err != nil {
@@ -130,6 +127,7 @@ func main() {
 
 }
 ```
+{{< codetitle caption="01_funcs/main.go" link="https://github.com/egonelbre/db-demo/blob/master/01_funcs/main.go" >}}
 
 We could also separate these functions into a separate folder. Regardless the database methods are harder to find, especially when there are many such functions.
 
@@ -139,7 +137,7 @@ _Code at_ [_https://github.com/egonelbre/db-demo/tree/master/02\_repo_](https://
 
 Instead of keeping separate functions we can attach them to a type.
 
-```
+``` go
 commentsRepo, err := NewComments("user=dbdemo password=dbdemo dbname=dbdemo sslmode=disable")
 if err != nil {
 	log.Fatal(err)
@@ -160,12 +158,11 @@ http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 	ShowCommentsPage(w, comments)
 })
 ```
-
-[https://github.com/egonelbre/db-demo/blob/master/02\_repo/main.go](https://github.com/egonelbre/db-demo/blob/master/02_repo/main.go)
+{{< codetitle caption="02_repo/main.go" link="https://github.com/egonelbre/db-demo/blob/master/02_repo/main.go" >}}
 
 Where the comments repository looks like:
 
-```
+``` go
 type Comments struct {
 	db *sql.DB
 }
@@ -193,8 +190,7 @@ func (repo *Comments) List() ([]Comment, error) {
 	return comments, nil
 }
 ```
-
-[https://github.com/egonelbre/db-demo/blob/master/02\_repo/comments.go](https://github.com/egonelbre/db-demo/blob/master/02_repo/comments.go)
+{{< codetitle caption="02_repo/comments.go" link="https://github.com/egonelbre/db-demo/blob/master/02_repo/comments.go" >}}
 
 This keeps the comment related database interactions in a single place.
 
@@ -204,7 +200,7 @@ _Code at_ [_https://github.com/egonelbre/db-demo/tree/master/03\_server_](https:
 
 Before we refactor the database more, we need to make the server clearer. The endpoint wiring in main didn’t look that nice. Instead let’s try this:
 
-```
+``` go
 comments, err := NewComments("user=dbdemo password=dbdemo dbname=dbdemo sslmode=disable")
 if err != nil {
 	log.Fatal(err)
@@ -217,12 +213,11 @@ if err := http.ListenAndServe(":8080", server); err != nil {
 	log.Fatal(err)
 }
 ```
-
-[https://github.com/egonelbre/db-demo/blob/master/03\_server/main.go](https://github.com/egonelbre/db-demo/blob/master/03_server/main.go)
+{{< codetitle caption="03_server/main.go" link="https://github.com/egonelbre/db-demo/blob/master/03_server/main.go" >}}
 
 The `Server` looks like this:
 
-```
+``` go
 type Server struct {
 	comments *Comments
 }
@@ -253,8 +248,7 @@ func (server *Server) HandleList(w http.ResponseWriter, r *http.Request) {
 	ShowCommentsPage(w, comments)
 }
 ```
-
-[https://github.com/egonelbre/db-demo/blob/master/03\_server/server.go](https://github.com/egonelbre/db-demo/blob/master/03_server/server.go)
+{{< codetitle caption="03_server/server.go" link="https://github.com/egonelbre/db-demo/blob/master/03_server/server.go" >}}
 
 We have removed the global `Comments` repository and added it as a field to Server. Also, `Server` has become much easier to test.
 
@@ -264,7 +258,7 @@ _Code at_ [_https://github.com/egonelbre/db-demo/tree/master/04\_interface_](htt
 
 It’s usually nice not to depend on the database implementation directly as it means we have to use specific database implementation for testing. By separating the `Comments` implementation and interface we make clearer our requirements and how we fulfill those requirements.
 
-```
+``` go
 type Comments interface {
 	Add(user, comment string) error
 	List() ([]Comment, error)
@@ -280,8 +274,7 @@ func NewServer(comments Comments) *Server {
 	}
 }
 ```
-
-[https://github.com/egonelbre/db-demo/blob/master/04\_interface/site/server.go](https://github.com/egonelbre/db-demo/blob/master/04_interface/site/server.go#L5)
+{{< codetitle caption="04_interface/server.go" link="https://github.com/egonelbre/db-demo/blob/master/04_interface/server.go" >}}
 
 Since we wanted to separate them, the folder structure needs to change as well:
 
@@ -305,7 +298,7 @@ The other approach is to create a separate implementation and pass them as argum
 
 We can also use hierarchical interfaces:
 
-```
+``` go
 type DB interface {
 	Comments() Comments
 }
@@ -334,12 +327,11 @@ func (server *Server) HandleList(w http.ResponseWriter, r *http.Request) {
 	ShowCommentsPage(w, comments)
 }
 ```
-
-[https://github.com/egonelbre/db-demo/blob/master/05\_scope/site/server.go](https://github.com/egonelbre/db-demo/blob/master/05_scope/site/server.go#L5)
+{{< codetitle caption="05_scope/site/server.go" link="https://github.com/egonelbre/db-demo/blob/master/05_scope/site/server.go" >}}
 
 It might look that this is too complicated and unclear why this is beneficial. Let’s take a look at when we have more than one repository and have added basic access control:
 
-```
+``` go
 type DB interface {
 	Auth() Auth
 	Users(id user.ID) Users

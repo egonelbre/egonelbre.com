@@ -5,11 +5,11 @@ summary: Example on how to develop software with little effort.
 tags: ["Go", "Software Concepts"]
 ---
 
-{{< fig src="/_images/building-with-value-example-a-tree.png" >}}
+{{< fig src="/_images/value/basic-tree.png" >}}
 
 Previously I described a process for developing software while trying to provide as much value and create understanding as early as possible.
 
-{{< biglink link="/article/building-with-value" title="Building with Value" >}}
+{{< biglink link="/building-with-value" title="Building with Value" >}}
 
 How would one iteration of this process look like?
 

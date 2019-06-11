@@ -30,18 +30,15 @@ There are plenty of places to screw-up in assembly, but following the code and w
 
 The main difficulty is in translating our thoughts into assembly. When change is required, then we need to reverse-engineer some of the thoughts from assembly, modify our ideas and re-translate them into assembly.
 
-![translating our thoughts into assembly](https://cdn-images-1.medium.com/max/800/1*32L7vFWOKXr1ozDchUDP1A.png)
-translating our thoughts into assembly
+{{< fig src="/_images/paradigm-not-implementation/translating-to-assembly.png" caption="Translating our thoughts into assembly." >}}
 
 There is a significant difference how we think and how the machine operates. The first languages, _assembly among them_, were designed to make this translation into machine code easier. They replaced few registers with “unlimited” amount of variables that helped to remember what was where, so you could use _lineBuffer_ instead of _0x000180F4_.
 
-![translating our thoughts into a higher level language](https://cdn-images-1.medium.com/max/800/1*ojorwNamTDOK8hjUtn7-NQ.png)
-translating our thoughts into a higher level language
+{{< fig src="/_images/paradigm-not-implementation/translating-to-higher.png" caption="Translating our thoughts into a higher level language." >}}
 
 This smoothed the gap between humans and computers. However with the increase of program size there are still problems. There are so many different thoughts and ideas, we have to start organizing our thoughts. This is where the “paradigm” comes in:
 
-![translating from our mental model to a language](https://cdn-images-1.medium.com/max/800/1*Qx6yorYJ2xGMlRKSpwb1jw.png)
-translating from our mental model to a language
+{{< fig src="/_images/paradigm-not-implementation/translation-via-mental-model.png" caption="Translating from our mental model to a language." >}}
 
 Initially it probably happened informally, people started to draw diagrams of code. Over-time these concepts came more rigorous and defined in such classics as [“On the criteria to be used in decomposing systems into modules” by David Parnas](http://repository.cmu.edu/cgi/viewcontent.cgi?article=2979&context=compsci).
 
@@ -63,8 +60,7 @@ It’s better to ask “How well does Go support Object Orientation?”. To the 
 
 These are much more interesting questions  --  these questions require to understand what is the “paradigmatic way of thinking.”
 
-![how hard is the translation from our mental model to the language](https://cdn-images-1.medium.com/max/800/1*3O_jI685iuh433-QmxsRHw.png)
-how hard is the translation from our mental model to the language
+{{< fig src="/_images/paradigm-not-implementation/cost-of-translation.png" caption="Cost of translating from our mental-model." >}}
 
 Basically, we are asking “How difficult is to translate the paradigm into a particular implementation.” or “How well the language code represents our mental model”.
 
@@ -76,8 +72,7 @@ _It is true that some languages were designed in some paradigm in mind, but due 
 
 There’s also an interesting case, when our mental model doesn’t match the “language paradigm”. For example, when you are writing high-performance code, you are required to model what the machine does:
 
-![our mental model may not match the language we are using](https://cdn-images-1.medium.com/max/800/1*bCxf6kdQniGlwQjwqpVkhQ.png)
-our mental model may not match the language we are using
+{{< fig src="/_images/paradigm-not-implementation/mismatch-of-paradigm.png" caption="Our mental model may not match the language we are using." >}}
 
 Our language has made implementing things more complicated. Now we need to model the machine, then translate into high-level language and then also try to guess what the high-level code translates into.
 
@@ -85,8 +80,7 @@ You will see similar mismatches when you try to use a functional language with i
 
 When we take into account the customers, business people, end-users, domain experts, programmers, front-end developers, back-end developers, then the picture gets even more complicated:
 
-![domain expert  --  developer  --  language](https://cdn-images-1.medium.com/max/800/1*jvhkGjeG_NCDjzgwirzaOQ.png)
-domain expert  --  developer  --  language
+{{< fig src="/_images/paradigm-not-implementation/multiple-people.png" caption="domain expert -- developer -- language" >}}
 
 We don’t have to just worry about how we think, but also [how we communicate how we think](https://en.wikipedia.org/wiki/Communication), how others think, how they talk about their thoughts, how I interpret their thoughts, how I represent my ideas etc ...
 

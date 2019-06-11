@@ -10,8 +10,8 @@ X explained how we can get significant benefits from being deliberate in making 
 
 By breaking down the
 
-#### Add / Delete
+## Add / Delete
 
-#### Contain / Uncontain
+## Contain / Uncontain
 
-#### Join / Split
+## Join / Split

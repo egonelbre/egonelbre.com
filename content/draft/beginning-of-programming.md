@@ -8,7 +8,7 @@ tags: []
 
 There are many things I would have liked to be said explicitly while I was learning to program. Here are these fundamental understandings that anyone programming should know and anyone experienced knows, but cannot explain.
 
-#### A model of problem-solving
+## A model of problem-solving
 
 In the simplest terms programmer is a problem solver. There are some things that make reaching a solution easier, some that make it harder. Programming can also create quite extreme emotional states — therefore to understand the whole picture we must take it into account.
 
@@ -77,7 +77,7 @@ So what are the programming skills that are the main drivers of movement? What i
 
 > “The most important skill is how to acquire skills and knowledge effectively. Everything else can be acquired effectively.”
 
-### Meaning of things
+## Meaning of things
 
 The first important insight about computers is that
 
@@ -121,7 +121,7 @@ Doesn’t make the rectangle move to that position. It must be used together wit
 
 Programmers need this capability of understanding their assumptions and misconceptions to understand the program better. They also must correct misconceptions to match the actual context.
 
-### Making things concrete
+## Making things concrete
 
 The most visible thing about programming is writing programs. Since computers are very, very stupid we need to get from our vague idea to the actual implementation. We need to explain every single detail until there is no thought required to follow the instructions.
 
@@ -183,7 +183,7 @@ As we can see we didn’t start writing in the programming language from the sta
 
 There are other ways of explaining things to the computer, but for beginners, this is enough. The whole process is quite easy if the programming language is taken out.
 
-### Programs do what they do
+## Programs do what they do
 
 If we run the previous code we will discover that it didn’t work the way it supposed to. The box moves to the right and then back and then off the screen. That is a bug.
 
@@ -214,7 +214,7 @@ function update(){
 
 Understanding the system and how it behaves and having intuition is important, otherwise, we will be making changes without being able to predict the consequences.
 
-### Reaching the goal
+## Reaching the goal
 
 One misconception about great problem solvers is that they know the solution to any problem. Actually, they know how to solve the problem. So what’s the difference?
 
@@ -238,7 +238,7 @@ Making goal more approachable can also be done by studying similar problems. If 
 
 > Great programs, algorithms, solutions, ideas don’t just spring into life by a magical wish, they start as a seed and are slowly grown until one day a blossom appears. Seeing a master produce a flower from his hands in a blink of an eye, is not because he wished for it, but because he has a garden he cares for.
 
-### Limits
+## Limits
 
 As humans, we have several limitations in our processing power. [We can hold in our head at most 4±1 things at once.](https://medium.com/@egonelbre/psychology-of-code-readability-d23b1ff1258a) We can only remember some finite amount and we aren’t infinitely fast. So, if we just keep adding things to our code we will reach this limit quite quickly and we won’t be able to reason about our code. If the code isn’t in our capabilities there is a large risk of introducing bugs.
 
@@ -306,7 +306,7 @@ Finally, when making things simpler it’s also necessary to have a good underst
 > Using simplicity is easy.  
 > Making simplicity is hard.
 
-### Summary
+## Summary
 
 [HtDP](http://www.htdp.org/) gives a nice summary of programming:
 

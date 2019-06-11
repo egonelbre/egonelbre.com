@@ -97,21 +97,21 @@ r += z * min!
 Bit-parallel search is a good way to find that index. Bit-parallel is easier to show in an example, let’s take a permutation `[1,2,3,0]` and lets search for number `2`.
 
 ```
-01.  decimal               1    2    3    0  
-02.                        ---- ---- ---- ----  
-03.  packed                0001 0010 0011 0000  
-04.  mask                  1101 1101 1101 1101  
-05.    
-06.  f1 := packed ^ mask   1101 1111 1110 1101  
-07.  f2 := f1 >> 2           11 0111 1111 1111  
-08.  f3 := f1 & f2         0001 0111 1110 1101  
-09.  f4 := f3 >> 1          000 1011 1111 0110  
-10.  f5 := f4 & f3         0000 0001 1110 0100  
-11.    
-12.  f5 := f4 & f3         0000 0001 1110 0100  
-13.  onemask                  1    1    1    1  
-14.  s := f5 & onemask     0000 0001 0000 0000  
-15.                                  .... ....
+decimal               1    2    3    0  
+                      ---- ---- ---- ----  
+packed                0001 0010 0011 0000  
+mask                  1101 1101 1101 1101  
+  
+f1 := packed ^ mask   1101 1111 1110 1101  
+f2 := f1 >> 2           11 0111 1111 1111  
+f3 := f1 & f2         0001 0111 1110 1101  
+f4 := f3 >> 1          000 1011 1111 0110  
+f5 := f4 & f3         0000 0001 1110 0100  
+  
+f5 := f4 & f3         0000 0001 1110 0100  
+onemask                  1    1    1    1  
+s := f5 & onemask     0000 0001 0000 0000  
+                                .... ....
 ```
 
 At step 03 we see the bit representation of that packed sequence. First we need a mask to detect number `2` at all positions at the same time. We can use the complement of number `2` and use xor for that. This leaves us with a result where only the matching nybble contains all ones. This can be seen as the result `f1`.
