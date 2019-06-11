@@ -10,8 +10,7 @@ _This is the first part of optimizing Breadth First Search. All of the code for 
 
 Breadth First Search is one of those fundamental graphs algorithms and also is foundation to many other problems. The basic idea is to move through a graph starting from a source node and visit everything one layer at a time.
 
-![Breadth-First Traversal](https://cdn-images-1.medium.com/max/800/1*edoEmM90erbPQMAtm0KB_A.png)
-Breadth-First Traversal
+{{< fig src="/_images/a-tale-of-bfs/breadth-first-traversal.png" caption="Breadth-First Traversal" >}}
 
 So, [Seth Bromberger](http://www.bromberger.com/) posted a question in Go slack #performance channel:
 
@@ -43,7 +42,7 @@ func (graph *Graph) Neighbors(n Node) []Node {
 }
 ```
 
-![](https://cdn-images-1.medium.com/max/800/1*I1j33t95cfiQdksVMaZmWA.png)
+{{< fig src="/_images/a-tale-of-bfs/compact-adjacency-list.png" caption="Compact Adjacency List" >}}
 
 Effectively, each node holds his neighbors in an array. We have a slice that holds index to that neighbors array.
 
@@ -79,19 +78,52 @@ func (set NodeSet) Contains(node graph.Node) bool {
 }
 ```
 
-![](https://cdn-images-1.medium.com/max/800/1*eFadDLKxUCLBOkPvKLAVYQ.png)
+{{< fig src="/_images/a-tale-of-bfs/visited-nodes-set.png" caption="Visited Nodes Set" >}}
 
 For each node there is a corresponding bit in a large array of `uint32`s.
 
 The implementation itself looks like this:
 
-![](https://cdn-images-1.medium.com/max/800/1*xPPdECa5HHqxmdz-cdlwlQ.png)
+```go
+func BreadthFirst(g *graph.Graph, source graph.Node, level []int) {
+	if len(level) != g.Order() {
+		panic("invalid level length")
+	}
+
+	visited := NewNodeSet(g.Order())
+
+	currentLevel := make([]graph.Node, 0, g.Order())
+	nextLevel := make([]graph.Node, 0, g.Order())
+
+	level[source] = 1
+	visited.Add(source)
+	currentLevel = append(currentLevel, source)
+
+	levelNumber := 2
+
+	for len(currentLevel) > 0 {
+		for _, node := range currentLevel {
+			for _, neighbor := range g.Neighbors(node) {
+				if !visited.Contains(neighbor) {
+					nextLevel = append(nextLevel, neighbor)
+					level[neighbor] = levelNumber
+					visited.Add(neighbor)
+				}
+			}
+		}
+
+		levelNumber++
+		currentLevel = currentLevel[:0:cap(currentLevel)]
+		currentLevel, nextLevel = nextLevel, currentLevel
+	}
+}
+```
 
 I was running all measurements on a Windows 10 i7–2820QM machine. But for comparison I also include results from my Mac i5–5257U and the big machine Linux Xeon-E5–2670v3.
 
 _All measurements are in milliseconds._
 
-![](https://cdn-images-1.medium.com/max/800/1*CW2_GQIhMQfr_zL0IS6xcQ.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-01.png" >}}
 
 ## Introduction
 
@@ -151,9 +183,9 @@ Bounds checks can be a significant overhead, but luckily there often are ways to
 
 Let’s see what it does:
 
-![](https://cdn-images-1.medium.com/max/800/1*eixvbk8-rbyHRGuuIMfOIw.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-02.png" >}}
 
-Hmm ... absolutely nothing. Except on the big machine, where it made things worse. I have no clue why, except guessing it’s machine noise.
+Hmm... absolutely nothing. Except on the big machine, where it made things worse. I have no clue why, except guessing it’s machine noise.
 
 When we are not getting any performance gain, this means that the bottleneck is not in bounds checks.
 
@@ -171,24 +203,32 @@ In this case there aren’t many allocations in the core-loop, so we can effecti
 
 One of the first thing I noticed that `level` contains all the necessary information to detect whether a node has been visited or not. Effectively, lets remove `visited` set completely:
 
-![](https://cdn-images-1.medium.com/max/800/1*qOctr9UDVTNblYj7K1_1qQ.png)
+``` go
+for _, node := range currentLevel {
+	for _, neighbor := range g.Neighbors(node) {
+		if level[neighbor] == 0 {
+			nextLevel = append(nextLevel, neighbor)
+			level[neighbor] = levelNumber
+		}
+	}
+}
+```
 
 And, the results speak for themselves:
 
-![](https://cdn-images-1.medium.com/max/800/1*Dwzv2mOZ-Ad9RL-2t704Og.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-03-reuse.png" >}}
 
 Yay, ~10% improvement ... hmm ... kind of:
 
-![](https://cdn-images-1.medium.com/max/800/1*0px6qftOnu7uaR1CnmQQpg.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-03-reuse-large.png" >}}
 
 Although we managed to make code for the small graph faster, the large dataset became 2x slower.
 
 The problem is that while we did make less memory accesses, they were slower. `visited` was a nice data-structure that mostly fit into cache and hence it was much faster compared to accessing `level`.
 
-![Cache is a limited resource.](https://cdn-images-1.medium.com/max/800/1*DyQUVfnS6L5-W32TjF3aSg.png)
-Cache is a limited resource.
+{{< fig src="/_images/a-tale-of-bfs/cache-is-limited.png" caption="Cache hierarchy" >}}
 
-This also highlights an important thing about optimizing  --  it is highly dependent on the data. We cannot win in all scenarios. Try to use representative data for your problem, otherwise you will come to the wrong conclusions.
+This also highlights an important thing about optimizing -- it is highly dependent on the data. We cannot win in all scenarios. Try to use representative data for your problem, otherwise you will come to the wrong conclusions.
 
 ## Loading faster
 
@@ -204,28 +244,40 @@ After switching from parsing a text file to `mmap`, the loading time went from 2
 
 One of the things that profiling highlights is accessing both visited slice and getting neighbors list and actual neighbors.
 
-![](https://cdn-images-1.medium.com/max/800/1*lEu-LhTy2ZLmqGSahWr_aA.png)
+{{< fig src="/_images/a-tale-of-bfs/profiling-sorting-vertices.png" >}}
 
 When accessing slices is slow, one good suspect is waiting behind memory. Effectively, processor isn’t able to predict what you are accessing and it won’t be in cache.
 
-![](https://cdn-images-1.medium.com/max/800/1*ycMZv-IOuszsboM3swuE2A.png)
+{{< fig src="/_images/a-tale-of-bfs/memory-prediction.png" >}}
 
 One way to make accesses predictable, is to sort the data. While we can still miss a lot caches for some specific graphs, but it will be significantly better.
 
-![](https://cdn-images-1.medium.com/max/800/1*Cum4iAFOn8V30-uOlsmrEw.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-04-a.png" >}}
 
 So, just throwing in a `sort.Slice` only made 1% difference, but that actually made me optimistic, because I knew that the default sorting is not great for tight loops. So a quick search and switch over to a version with hardcoded `uint32` gives us ...
 
-![](https://cdn-images-1.medium.com/max/800/1*HnSHXjQekvndhrScRsSLkA.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-04-b.png" >}}
 
 ~20% improvement. After posting the improvement results, [Damian Gryski](https://twitter.com/dgryski) reminded me of Radix sort ... so that gave another boost.
 
-![](https://cdn-images-1.medium.com/max/800/1*PWjJ3jCg1asUAOJ59BuUnA.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-04-c.png" >}}
 
 After that our code looks like this:
 
-![Note that we are able to use currentLevel as a scratch buffer.](https://cdn-images-1.medium.com/max/800/1*Z6O49cCz2iaFuhddgLb3Nw.png)
-Note that we are able to use currentLevel as a scratch buffer.
+```go
+for _, node := range currentLevel {
+    for _, neighbor := range g.Neighbors(node) {
+        if !visited.Contains(neighbor) {
+            nextLevel = append(nextLevel, neighbor)
+            level[neighbor] = levelNumber
+            visited.Add(neighbor)
+        }
+    }
+}
+
+zuint32.SortBYOB(nextLevel, currentLevel[:cap(currentLevel)])
+```
+{{< codetitle caption="Note that we are able to use currentLevel as a scratch buffer." >}}
 
 Keeping data sorted or even almost sorted can have many benefits: faster data accesses, better branching and better data compression.
 
@@ -233,31 +285,76 @@ Keeping data sorted or even almost sorted can have many benefits: faster data ac
 
 One thing that I noticed was that, while the frontier itself is iterated in sorted order, the neighbors themselves can still be all over the place. But, we can lift `level` assignments outside the iteration loop and do it after sorting.
 
-![](https://cdn-images-1.medium.com/max/800/1*Z87SGHaP69DS8mOzfrPz6g.png)
+```
+for _, node := range currentLevel {
+    for _, neighbor := range g.Neighbors(node) {
+        if !visited.Contains(neighbor) {
+            nextLevel = append(nextLevel, neighbor)
+            visited.Add(neighbor)
+        }
+    }
+}
+
+zuint32.SortBYOB(nextLevel, currentLevel[:cap(currentLevel)])
+
+for _, neighbor := range nextLevel {
+    level[neighbor] = levelNumber
+}
+```
 
 Although, we will do a second pass over `nextLevel`, the faster access to `level` makes up for it.
 
-![](https://cdn-images-1.medium.com/max/800/1*D8WqUw716QiIAvNbfumLJw.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-05.png" >}}
 
 ## Slow visiting
 
 We are still slow in calls to “visited” so I tried a few things. I had a few other ideas as well.
 
-![](https://cdn-images-1.medium.com/max/800/1*VWszDShrIsozUSi8LNCQGQ.png)
+{{< fig src="/_images/a-tale-of-bfs/profiling-slow-visiting.png" >}}
 
 ### Reordering things
 
 We have those IsSet and Set functions, maybe if we move them around, we can make things faster.
 
-![](https://cdn-images-1.medium.com/max/800/1*Yw4SL_D3ORIi-nJFqy5faA.png)
+``` go
+if !visited.Contains(neighbor) {
+    nextLevel = append(nextLevel, neighbor)
+    visited.Add(neighbor)
+}
+
+// vs.
+
+if !visited.Contains(neighbor) {
+    visited.Add(neighbor)
+    nextLevel = append(nextLevel, neighbor)
+}
+```
 
 One thought would be to fuse IsSet and Set into a single method. One approach would be always to write the value, the other to only write when the value has changed.
 
-![](https://cdn-images-1.medium.com/max/800/1*6hziwZZQGXs1vasKn72NqA.png)
+```go
+func (set NodeSet) TryAdd(node graph.Node) bool {
+	bucket, bit := set.Offset(node)
+	empty := set[bucket]&bit == 0
+	set[bucket] |= bit
+	return empty
+}
+
+// vs.
+
+func (set NodeSet) TryAdd(node graph.Node) bool {
+	bucket, bit := set.Offset(node)
+	empty := set[bucket]&bit == 0
+	if empty {
+		set[bucket] |= bit
+	}
+	return empty
+}
+```
 
 I guessed that the version without the if, would be faster, but ... nope. I reasoned that the version with “if” is faster, because then the computer doesn’t have to later move the changed value back into main memory.
 
-![](https://cdn-images-1.medium.com/max/800/1*_Pb-d1kL0apUjdls0kaFlg.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-06.png" >}}
 
 ### Deduplicate later?
 
@@ -269,7 +366,7 @@ This ended up horribly, because on each level we have 10x more neighbors, and so
 
 One common solution when checking something is slow, is to put a cuckoo or bloom filter in front of it.
 
-![](https://cdn-images-1.medium.com/max/800/1*lK1os_bXJoUZ1pG1vFWxaw.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-07.png" >}}
 
 This was a complete failure. I even didn’t implement the whole thing. Just adding things into the Cuckoo filter, so in practice it might be even slower.
 
@@ -277,16 +374,44 @@ This was a complete failure. I even didn’t implement the whole thing. Just add
 
 In very tight code the overhead of a loop can be quite significant. The common fix for that is to handle multiple items per loop iteration or more commonly known as [loop unrolling](https://en.wikipedia.org/wiki/Loop_unrolling). It’s common enough that many compilers know how to do it. Unfortunately, Go compiler doesn’t know much about unrolling. But, even compilers that know how to do it, such as C, can be sometimes helped with adding [pragmas](https://en.wikipedia.org/wiki/Directive_%28programming%29).
 
-![Unrolling mainly helps because there is less loop construct overhead.](https://cdn-images-1.medium.com/max/800/1*xGxHih0vUdSzBF2yRrb7Vw.png)
-Unrolling mainly helps because there is less loop construct overhead.
+
+{{< fig src="/_images/a-tale-of-bfs/unrolling-overhead.png" caption="Unrolling mainly helps because there is less loop construct overhead.">}}
 
 After unrolling, the code looks like this:
 
-![](https://cdn-images-1.medium.com/max/800/1*NdkOhKFUeIode0pe-NXp4A.png)
+```
+i := 0
+for ; i < len(neighbors)-3; i += 4 {
+    n1, n2, n3, n4 := neighbors[i], neighbors[i+1], neighbors[i+2], neighbors[i+3]
+    if !visited.Contains(n1) {
+        visited.Add(n1)
+        nextLevel = append(nextLevel, n1)
+    }
+    if !visited.Contains(n2) {
+        visited.Add(n2)
+        nextLevel = append(nextLevel, n2)
+    }
+    if !visited.Contains(n3) {
+        visited.Add(n3)
+        nextLevel = append(nextLevel, n3)
+    }
+    if !visited.Contains(n4) {
+        visited.Add(n4)
+        nextLevel = append(nextLevel, n4)
+    }
+}
+
+for _, n := range neighbors[i:] {
+    if !visited.Contains(n) {
+        visited.Add(n)
+        nextLevel = append(nextLevel, n)
+    }
+}
+```
 
 There are of course many ways to unroll. You could pick 8 at a time and then do the single loop. Or pick 8 at a time, and then 4 at a time or just 4 at a time.
 
-![](https://cdn-images-1.medium.com/max/800/1*zENfC9w4zkgcN_3qzs9xQQ.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-08.png" >}}
 
 For my Windows computer the best results were for unrolling 4 at a time, so I rolled with that solution.
 
@@ -303,9 +428,9 @@ Maybe there’s some other goroutine setting itself up in init? A panic in an in
 
 Let’s use `perf` to record some information:
 
-![Fast](https://cdn-images-1.medium.com/max/800/1*hqRm_EEIRTjSFBOz-KURbA.png)
-Fast![Slow](https://cdn-images-1.medium.com/max/800/1*9Lz2LVbAAdQ7pGDy5sAaxA.png)
-Slow
+{{< fig src="/_images/a-tale-of-bfs/perf-fast.png" caption="Fast" >}}
+
+{{< fig src="/_images/a-tale-of-bfs/perf-slow.png" caption="Slow" >}}
 
 Due to cpu-migrations, maybe a `runtime.LockOSThread` will help? But, nope.
 
@@ -325,7 +450,7 @@ Lesson learned  --  sometimes the core you are running on makes your code signif
 
 So we went from 50 seconds to 25 seconds. Which beat their C++ version, at that time. I’m not saying that C++ is slow, on the contrary I would expect the same code be faster in C++. But it does show how far mechanical sympathy and basic algorithmics knowledge can go.
 
-![](https://cdn-images-1.medium.com/max/800/1*zpydMHsCWrOopySqB5dodA.png)
+{{< fig src="/_images/a-tale-of-bfs/measurement-09.png" >}}
 
 While this may look like a lot of work, in reality ... I spent more time writing this whole post than doing these improvements.
 

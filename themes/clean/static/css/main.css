@@ -102,6 +102,11 @@ article p {
 	font-weight: 100;
 }
 
+.reviewers {
+	margin: 1.5em 0;
+	font-style: italic;
+}
+
 .toc { 
 	list-style: none;
 	margin: 0;
@@ -165,7 +170,7 @@ figure {
 	width: 100%;
 	height: 100%;
 	text-align: center;
-	display: flex;
+	/*display: flex;*/
 	margin-left: 0;
 	margin-right: 0;
 }
