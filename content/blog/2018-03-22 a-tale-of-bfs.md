@@ -10,7 +10,7 @@ _This is the first part of optimizing Breadth First Search. All of the code for 
 
 Breadth First Search is one of those fundamental graphs algorithms and also is foundation to many other problems. The basic idea is to move through a graph starting from a source node and visit everything one layer at a time.
 
-{{< fig src="/_images/a-tale-of-bfs/breadth-first-traversal.png" caption="Breadth-First Traversal" >}}
+{{< figure src="/_images/a-tale-of-bfs/breadth-first-traversal.png" caption="Breadth-First Traversal" >}}
 
 So, [Seth Bromberger](http://www.bromberger.com/) posted a question in Go slack #performance channel:
 
@@ -42,7 +42,7 @@ func (graph *Graph) Neighbors(n Node) []Node {
 }
 ```
 
-{{< fig src="/_images/a-tale-of-bfs/compact-adjacency-list.png" caption="Compact Adjacency List" >}}
+{{< figure src="/_images/a-tale-of-bfs/compact-adjacency-list.png" caption="Compact Adjacency List" >}}
 
 Effectively, each node holds his neighbors in an array. We have a slice that holds index to that neighbors array.
 
@@ -78,7 +78,7 @@ func (set NodeSet) Contains(node graph.Node) bool {
 }
 ```
 
-{{< fig src="/_images/a-tale-of-bfs/visited-nodes-set.png" caption="Visited Nodes Set" >}}
+{{< figure src="/_images/a-tale-of-bfs/visited-nodes-set.png" caption="Visited Nodes Set" >}}
 
 For each node there is a corresponding bit in a large array of `uint32`s.
 
@@ -123,7 +123,7 @@ I was running all measurements on a Windows 10 i7–2820QM machine. But for comp
 
 _All measurements are in milliseconds._
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-01.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-01.png" >}}
 
 ## Introduction
 
@@ -183,7 +183,7 @@ Bounds checks can be a significant overhead, but luckily there often are ways to
 
 Let’s see what it does:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-02.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-02.png" >}}
 
 Hmm... absolutely nothing. Except on the big machine, where it made things worse. I have no clue why, except guessing it’s machine noise.
 
@@ -216,17 +216,17 @@ for _, node := range currentLevel {
 
 And, the results speak for themselves:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-03-reuse.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-03-reuse.png" >}}
 
 Yay, ~10% improvement ... hmm ... kind of:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-03-reuse-large.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-03-reuse-large.png" >}}
 
 Although we managed to make code for the small graph faster, the large dataset became 2x slower.
 
 The problem is that while we did make less memory accesses, they were slower. `visited` was a nice data-structure that mostly fit into cache and hence it was much faster compared to accessing `level`.
 
-{{< fig src="/_images/a-tale-of-bfs/cache-is-limited.png" caption="Cache hierarchy" >}}
+{{< figure src="/_images/a-tale-of-bfs/cache-is-limited.png" caption="Cache hierarchy" >}}
 
 This also highlights an important thing about optimizing -- it is highly dependent on the data. We cannot win in all scenarios. Try to use representative data for your problem, otherwise you will come to the wrong conclusions.
 
@@ -244,23 +244,23 @@ After switching from parsing a text file to `mmap`, the loading time went from 2
 
 One of the things that profiling highlights is accessing both visited slice and getting neighbors list and actual neighbors.
 
-{{< fig src="/_images/a-tale-of-bfs/profiling-sorting-vertices.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/profiling-sorting-vertices.png" >}}
 
 When accessing slices is slow, one good suspect is waiting behind memory. Effectively, processor isn’t able to predict what you are accessing and it won’t be in cache.
 
-{{< fig src="/_images/a-tale-of-bfs/memory-prediction.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/memory-prediction.png" >}}
 
 One way to make accesses predictable, is to sort the data. While we can still miss a lot caches for some specific graphs, but it will be significantly better.
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-04-a.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-04-a.png" >}}
 
 So, just throwing in a `sort.Slice` only made 1% difference, but that actually made me optimistic, because I knew that the default sorting is not great for tight loops. So a quick search and switch over to a version with hardcoded `uint32` gives us ...
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-04-b.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-04-b.png" >}}
 
 ~20% improvement. After posting the improvement results, [Damian Gryski](https://twitter.com/dgryski) reminded me of Radix sort ... so that gave another boost.
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-04-c.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-04-c.png" >}}
 
 After that our code looks like this:
 
@@ -304,13 +304,13 @@ for _, neighbor := range nextLevel {
 
 Although, we will do a second pass over `nextLevel`, the faster access to `level` makes up for it.
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-05.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-05.png" >}}
 
 ## Slow visiting
 
 We are still slow in calls to “visited” so I tried a few things. I had a few other ideas as well.
 
-{{< fig src="/_images/a-tale-of-bfs/profiling-slow-visiting.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/profiling-slow-visiting.png" >}}
 
 ### Reordering things
 
@@ -354,7 +354,7 @@ func (set NodeSet) TryAdd(node graph.Node) bool {
 
 I guessed that the version without the if, would be faster, but ... nope. I reasoned that the version with “if” is faster, because then the computer doesn’t have to later move the changed value back into main memory.
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-06.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-06.png" >}}
 
 ### Deduplicate later?
 
@@ -366,7 +366,7 @@ This ended up horribly, because on each level we have 10x more neighbors, and so
 
 One common solution when checking something is slow, is to put a cuckoo or bloom filter in front of it.
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-07.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-07.png" >}}
 
 This was a complete failure. I even didn’t implement the whole thing. Just adding things into the Cuckoo filter, so in practice it might be even slower.
 
@@ -375,7 +375,7 @@ This was a complete failure. I even didn’t implement the whole thing. Just add
 In very tight code the overhead of a loop can be quite significant. The common fix for that is to handle multiple items per loop iteration or more commonly known as [loop unrolling](https://en.wikipedia.org/wiki/Loop_unrolling). It’s common enough that many compilers know how to do it. Unfortunately, Go compiler doesn’t know much about unrolling. But, even compilers that know how to do it, such as C, can be sometimes helped with adding [pragmas](https://en.wikipedia.org/wiki/Directive_%28programming%29).
 
 
-{{< fig src="/_images/a-tale-of-bfs/unrolling-overhead.png" caption="Unrolling mainly helps because there is less loop construct overhead.">}}
+{{< figure src="/_images/a-tale-of-bfs/unrolling-overhead.png" caption="Unrolling mainly helps because there is less loop construct overhead.">}}
 
 After unrolling, the code looks like this:
 
@@ -411,7 +411,7 @@ for _, n := range neighbors[i:] {
 
 There are of course many ways to unroll. You could pick 8 at a time and then do the single loop. Or pick 8 at a time, and then 4 at a time or just 4 at a time.
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-08.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-08.png" >}}
 
 For my Windows computer the best results were for unrolling 4 at a time, so I rolled with that solution.
 
@@ -428,9 +428,9 @@ Maybe there’s some other goroutine setting itself up in init? A panic in an in
 
 Let’s use `perf` to record some information:
 
-{{< fig src="/_images/a-tale-of-bfs/perf-fast.png" caption="Fast" >}}
+{{< figure src="/_images/a-tale-of-bfs/perf-fast.png" caption="Fast" >}}
 
-{{< fig src="/_images/a-tale-of-bfs/perf-slow.png" caption="Slow" >}}
+{{< figure src="/_images/a-tale-of-bfs/perf-slow.png" caption="Slow" >}}
 
 Due to cpu-migrations, maybe a `runtime.LockOSThread` will help? But, nope.
 
@@ -450,7 +450,7 @@ Lesson learned  --  sometimes the core you are running on makes your code signif
 
 So we went from 50 seconds to 25 seconds. Which beat their C++ version, at that time. I’m not saying that C++ is slow, on the contrary I would expect the same code be faster in C++. But it does show how far mechanical sympathy and basic algorithmics knowledge can go.
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-09.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-09.png" >}}
 
 While this may look like a lot of work, in reality ... I spent more time writing this whole post than doing these improvements.
 

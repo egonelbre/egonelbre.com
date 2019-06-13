@@ -6,7 +6,7 @@ tags: ["Software Concepts"]
 reviewers: ["Peter Seebach"]
 ---
 
-{{< fig src="/_images/value/tree-swing.png" >}}
+{{< figure src="/_images/value/tree-swing.png" >}}
 
 Beginners often overwhelm their brain with decisions and things they need to do. Which usually turns into a mess of trying to implement everything at once. Alternatively, programmers end up making very short-sighted decisions that end up becoming problematic later.
 
@@ -82,23 +82,23 @@ We dedicated a lot of time explaining what Value is and why it is important. To 
 
 When we roughly know what we are building, then we can find the next step by trying to eliminating things. We can visualize the project as a graph of dependencies and associations:
 
-{{< fig src="/_images/value/decomposition-01.png" >}}
+{{< figure src="/_images/value/decomposition-01.png" >}}
 
 We ignore things we cannot implement right now, can mock out, can achieve with other means or live without. Implementing data repositories don’t make sense without actually knowing what we need to store so that we can cross them out:
 
-{{< fig src="/_images/value/decomposition-02.png" >}}
+{{< figure src="/_images/value/decomposition-02.png" >}}
 
 Since Projects without Issues are less valuable than Issues themselves, we can cross it out.
 
-{{< fig src="/_images/value/decomposition-03.png" >}}
+{{< figure src="/_images/value/decomposition-03.png" >}}
 
 Since we can use Issues without Users and tracking Issues are more valuable than tracking Users, we can cross out users.
 
-{{< fig src="/_images/value/decomposition-04.png" >}}
+{{< figure src="/_images/value/decomposition-04.png" >}}
 
 Since View requires the existence of an Issue, we can also cross it out.
 
-{{< fig src="/_images/value/decomposition-05.png" >}}
+{{< figure src="/_images/value/decomposition-05.png" >}}
 
 Of course, different people may reach different conclusions on what is the most valuable thing, but it’s more consistent than inconsistent. If you are in doubt, ask another person what would they rather have “Issues” or “Issues View.”
 

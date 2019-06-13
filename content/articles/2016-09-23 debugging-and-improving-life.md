@@ -57,13 +57,13 @@ Here’s one of the simplest example I can think of:
 1. This **exhaustion** can lead to poorer performance and worse results. It also makes it difficult to talk to people. Essentially, it causes **confidence** drop further.
 1. Then, people might use alcohol or any other destructive behavior to boost the mood. This in turn can lead to more **exhaustion** or even bigger drop in **confidence**.
 
-{{< fig src="/_images/debugging-life/basic-loop.jpeg" >}}
+{{< figure src="/_images/debugging-life/basic-loop.jpeg" >}}
 
 Here we have the oversimplified cycle feeding back on itself holding itself in place. In a sense, each step are quite harmless in isolation, but by being in a stable system, they end up causing depression.
 
 Now in reality the cycles and things are much bigger:
 
-{{< fig src="/_images/debugging-life/extended-loop.jpeg" >}}
+{{< figure src="/_images/debugging-life/extended-loop.jpeg" >}}
 
 Or more likely, even bigger... however the necessary size will vary from person to person.
 

@@ -101,7 +101,7 @@ zuint32.SortBYOB(nextLevel, currentLevel[:cap(currentLevel)])
 
 First, we split the `currentLevel` into equal chunks and spun up the processes. Let’s see how well we did:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-10.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-10.png" >}}
 
 So, we managed to make the code over 10x slower.
 
@@ -221,7 +221,7 @@ for len(currentLevel) > 0 {
 
 Unfortunately, we had to throw out our sorting optimization. Let’s see how it does:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-11.png" caption="i7–2820QM with -B" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-11.png" caption="i7–2820QM with -B" >}}
 
 _I have only measurement for the Windows computer, because I implemented this after all other measurements._
 
@@ -243,7 +243,7 @@ The other lesson I learned was that non-uniform work amounts can easily stall yo
 
 Let’s assume we have three goroutines G1, G2 and G3. We give each 4 items to work with. G1 and G2 run approximately at the same speed. However G3 is 2.5x slower than G1 and G2.
 
-{{< fig src="/_images/a-tale-of-bfs/load-balancing.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/load-balancing.png" >}}
 
 Effectively G3 ends up stalling everything else and G1 and G2 are starving for new work.
 
@@ -270,7 +270,7 @@ func (front *Frontier) NextRead() (low, high uint32) {
 }
 ```
 
-{{< fig src="/_images/a-tale-of-bfs/frontier.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/frontier.png" >}}
 
 Every worker can call `NextRead` for their next block to process. We also use the length of `Nodes` to track when we have finished reading the whole array.
 
@@ -388,7 +388,7 @@ func BreadthFirst(g *graph.Graph, source graph.Node, level []int, procs int) {
 
 After all of this work, the results are:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-12.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-12.png" >}}
 
 Finally, improvement over the single-core version.
 
@@ -406,7 +406,7 @@ Often it’s used in contexts where you managed to screw up an algorithm to make
 
 Remember that we used the sorting to optimize our cache accesses. Maybe it’s sufficient to sort it partially.
 
-{{< fig src="/_images/a-tale-of-bfs/partial-sorting.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/partial-sorting.png" >}}
 
 Of course, now we can end up with the sentinels in the middle of our read buffer ... but we can just skip them in all places.
 
@@ -446,7 +446,7 @@ async.BlockIter(int(nextLevel.Head), procs, func(low, high int) {
 
 The results:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-13.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-13.png" >}}
 
 Just making the sorting parallel seems to slow things down with fewer cores on smaller machines. Also, it seems that this optimization doesn’t play that well with bounds-checks.
 
@@ -462,7 +462,7 @@ One extremely useful technique for coming up with ideas is taking a break.
 
 While I was walking around in Tartu. I was thinking, “We are still stalling on accessing data and visiting data ... maybe the processor isn’t properly [pipe-lining these accesses](https://en.wikipedia.org/wiki/Instruction_pipelining)?” I would like the processor to start getting the values before actually using them. In principle, we would like to ask the processor to start fetching things before we actually use them.
 
-{{< fig src="/_images/a-tale-of-bfs/pipelining.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/pipelining.png" >}}
 
 There are prefetching instructions, but Go has (at least as of now) a significant overhead when calling them. So I just thought of fetching the visited bit-vector early. Because we have the buckets already, we can reuse that value later.
 
@@ -542,7 +542,7 @@ for ; i < len(neighbors)-3; i += 4 {
 
 The results were the following:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-14.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-14.png" >}}
 
 We got a minor speed-up on the smaller machines ... however for the Xeon E5–2670, it was ~1.5x speed-up.
 
@@ -596,7 +596,7 @@ func (set NodeSet) TryAdd(node graph.Node) bool {
 
 The idea seemed promising. When we fill a bucket, also store a bit at higher level, about filling the bucket:
 
-{{< fig src="/_images/a-tale-of-bfs/multilevel-bitmap.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/multilevel-bitmap.png" >}}
 
 Putting in an extra-level over bit vector.
 
@@ -804,7 +804,7 @@ worker := func(gid int) {
 
 After integrating that piece of logic with [rest of the code](https://github.com/egonelbre/a-tale-of-bfs/blob/master/15_worker/search.go#L120), we get results:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-15.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-15.png" >}}
 
 Unfortunately not much luck.
 
@@ -827,7 +827,7 @@ func (bg *BusyGroup) Wait() {
 
 But I wouldn’t recommend this, as it can completely lock Go code. _(I’ve ensured that it wouldn’t happen in the experiment code.)_
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-16.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-16.png" >}}
 
 And this made things even worse. Oh, well ... you cannot win with all of your experiments.
 
@@ -835,9 +835,9 @@ And this made things even worse. Oh, well ... you cannot win with all of your ex
 
 So we went from ~50 seconds to (roughly, because we didn’t do too many runs on the big graph) ~3.6 seconds. And the full table of experiments looks like this:
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-final-0.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-final-0.png" >}}
 
-{{< fig src="/_images/a-tale-of-bfs/measurement-final-1.png" >}}
+{{< figure src="/_images/a-tale-of-bfs/measurement-final-1.png" >}}
 
 I’m almost certain that I forgot a lot of tiny experiments, moving computations around and so forth. I usually don’t keep the intermediate results around, unless I know it has to be run in multiple situations. _In this case I reimplemented all the intermediate steps for educational purposes._
 

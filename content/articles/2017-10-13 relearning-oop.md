@@ -95,7 +95,7 @@ All of these ideas lead to a first implementation -- [Smalltalk](https://en.wiki
 
 However when people got hold of Smalltalk they saw the new ideas, but instead of adapting, they brought their habits from Simula and FORTRAN. The focus became Abstract Data Types, not communicating things and building a humane mental model.
 
-{{< fig src="/_images/oop-vs-class-oriented.png" title="OOP vs Class-Oriented" >}}
+{{< figure src="/_images/oop-vs-class-oriented.png" title="OOP vs Class-Oriented" >}}
 
 The class-oriented thinking was rooted by C++ and Java. Of course, the ADT-s and Class-oriented thinking already started in Smalltalk-72, when people wanted to make Smalltalk “production ready”. An idea that was in beta stage was put into production before it had been iterated on.
 
@@ -117,7 +117,7 @@ The goal of Object Oriented thinking is about giving substance to thoughts. It�
 
 Implementation of Object Oriented Paradigm doesn’t have to be a language either. Many game engines implement an OO editor:
 
-{{< fig src="/_images/oop-unreal-engine.jpeg" title="Unreal Engine" >}}
+{{< figure src="/_images/oop-unreal-engine.jpeg" title="Unreal Engine" >}}
 
 You place objects in the scene and make them interact. They might hold some state and you can modify their behaviour ... It’s much closer to the OO vision than many class-oriented languages. It could have been written in C and the Editor would still be Object Oriented. _Sure, it is not general-purpose OO._
 

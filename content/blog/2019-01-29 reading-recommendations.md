@@ -7,7 +7,7 @@ tags: []
 
 I often get asked for recommendations. Here is a list of books and resources I vouch for because I’ve found them invaluable in my journey as a software engineer or have seen them greatly help others.
 
-{{< fig src="/_images/reading-recommendations.jpeg" >}}
+{{< figure src="/_images/reading-recommendations.jpeg" >}}
 
 ---
 

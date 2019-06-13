@@ -30,13 +30,13 @@ _Before proceeding I recommend to think about it a little, because I’m interes
 
 ---
 
-{{< fig src="/_images/what-is-layer/simplified.png" >}}
+{{< figure src="/_images/what-is-layer/simplified.png" >}}
 
 My first realization was that there really isn’t a fixed line between layers. It is something which is chosen by a programmer. There is always a gradient from one layer to another. For example Data Access Object is partly related to a domain and partly to a database.
 
 Considering that there is a gradient from one layer to another, it’s not that surprising that we misclassify things or have trouble classifying. Sometimes these “misclassifications” end up as [leaky abstractions](https://en.wikipedia.org/wiki/Leaky_abstraction), or in other words, things that leak leak hidden implementation details.
 
-{{< fig src="/_images/what-is-layer/blurred.png" >}}
+{{< figure src="/_images/what-is-layer/blurred.png" >}}
 
 This might seem like we are getting further away from a measurable “layer”, but it gives one important insight:
 
@@ -73,7 +73,7 @@ After understanding these concepts, I think _layer_ is a bad name and evokes bad
 
 I think visualizing these things as bubbles of ideas that we want to keep as clear as possible is more useful than trying to stack things on top of each other. It’s important to note that in reality the classification has many more dimensions than would fit on a single flat image.
 
-{{< fig src="/_images/what-is-layer/actual.png" caption="Cohesion of Ideas." >}}
+{{< figure src="/_images/what-is-layer/actual.png" caption="Cohesion of Ideas." >}}
 
 There are few important parts to layers / abstractions:
 

@@ -204,7 +204,7 @@ response.Spec().Decode(node)
 
 The basic idea is to create a separate spec structure that has pointers to the target structure and then let the “spec” type handle all the marshaling/parsing, but write the result into the “target” structure.
 
-{{< fig src="/_images/composed-serialization-spec-tree.png" >}}
+{{< figure src="/_images/composed-serialization-spec-tree.png" >}}
 
 This of course can be made to handle very complicated structures:
 

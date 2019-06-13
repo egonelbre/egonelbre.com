@@ -24,11 +24,11 @@ But if you are too lazy, the following will hopefully give the essence of patter
 
 Let’s start with something easier, a single rule: “When X then do Y”. One of such nice rule is the [Dragon curve](https://en.wikipedia.org/wiki/Dragon_curve): “Make a 90 ° bend in each line segment”. Here is how it will evolve:
 
-{{< fig src="/_images/dragon-curve.gif" title="Dragon curve construction by Guillaume Jacquenot / Wikipedia" >}}
+{{< figure src="/_images/dragon-curve.gif" title="Dragon curve construction by Guillaume Jacquenot / Wikipedia" >}}
 
 It is quite amazing that such a single rule can create such intricate complexity. Obviously there are more rules that can create interesting effects. Mandelbrot set falls into the same category. The equation _Z[n+1] = Z[n]²+c_ can be used to generate the following:
 
-{{< fig src="/_images/mandelbrot-animation.gif" title="Mandelbrot animation by Michael James Dean / Wikipedia" >}}
+{{< figure src="/_images/mandelbrot-animation.gif" title="Mandelbrot animation by Michael James Dean / Wikipedia" >}}
 
 By repeatedly applying the one rule we get amazing results. It makes you wonder, what can we do with multiple rules?
 
@@ -38,7 +38,7 @@ By repeatedly applying the one rule we get amazing results. It makes you wonder,
 
 Since now we have multiple rules, we can talk about a rule system, where rules complement each other. [L-System](https://en.wikipedia.org/wiki/L-system) is one fascinating example of such systems.
 
-{{< fig src="/_images/l-system-example.jpeg" title="Dragon trees / Wikipedia" >}}
+{{< figure src="/_images/l-system-example.jpeg" title="Dragon trees / Wikipedia" >}}
 
 It allows us to describe an infinite set of plants by selecting the right rules. And all the rules are simple -- _“When X then do Y and Z; When Y then do Z and X”_. By repeatedly applying the rules we create very complex structures.
 
