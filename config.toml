@@ -17,6 +17,18 @@ googleAnalytics = ""
 
 pluralizeListTitles = false
 
+[params.social.config]
+  platforms = ["twitter","github","email","linkedin","instagram","gallery", "rss"]
+[params.social]
+  twitter   = "egonelbre"
+  github    = "egonelbre"
+  # email     = "egonelbre@gmail.com"
+  linkedin  = "egonelbre"
+  instagram = "egonelbre"
+  gallery   = "https://gallery.egonelbre.com"
+  rss       = "index.xml"
+
+
 [menu]
   [[menu.main]]
     identifier = "articles"

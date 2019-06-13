@@ -49,6 +49,40 @@ footer.main {
 	border-top: 1px solid #eee;
 }
 
+.social {
+	text-align: center;
+}
+.social a {
+	color: inherit;
+	text-decoration: none;
+}
+.icon {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	height: 2rem;
+	width: 2rem;
+	font-size: inherit;
+	line-height: inherit;
+	background: #eee;
+	padding: 1rem;
+	border-radius: 3rem;
+	transform: scale(0.7);
+	transition: 
+		background 0.2s ease-in-out,
+		transform 0.2s ease-in-out;
+}
+.social a:hover .icon {
+	transform: scale(1);
+	background: #ddd;
+}
+
+.social a .icon svg {
+	fill: none;
+	stroke: #666;
+	stroke-width: 1.5px;
+}
+
 copyright {
 	display: block;
 	text-align: center;

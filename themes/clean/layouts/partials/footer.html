@@ -1,14 +1,16 @@
 <footer class="main">
     <div class="center">
-        <ul>
-            <a href="{{ .Site.BaseURL }}index.xml"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-            <a href="/tags">All Tags</a><br /><br />
-            <a href="https://gallery.egonelbre.com">gallery.egonelbre.com</a><br />
-            <a href="https://github.com/egonelbre">github.com</a><br />
-            <a href="https://twitter.com/egonelbre">twitter.com/egonelbre</a><br />
-            <a href="https://www.linkedin.com/in/egonelbre">linkedin.com/in/egonelbre</a><br />
-            <a href="https://www.instagram.com/egonelbre/">instagram.com/egonelbre</a><br />
-        </ul>
+        <div class="social">
+            {{- $ := . -}}
+            {{- $social := .Site.Params.social -}}
+            {{- range $platform := $social.config.platforms -}}
+                {{- with $username := ( index $social $platform ) -}}
+                <a title="{{$platform}}" href="{{index $.Site.Data.social.base $platform}}{{$username}}">
+                    <span class="icon"><i class>{{- partial "svg/icons" $platform -}}</i></span>
+                </a>
+                {{- end -}}
+            {{- end -}}
+        </div>
     </div>
     <div class="center">
         <copyright>{{ .Site.Copyright | safeHTML}}</copyright>
