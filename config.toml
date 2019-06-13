@@ -11,7 +11,7 @@ pygmentsCodeFences = true
 pygmentsUseClasses = true
 pygmentsoptions = "linenos=true"
 
-copyright = "&copy; Egon Elbre 2019"
+copyright = "&#169; Egon Elbre 2019"
 disqusShortname = ""
 googleAnalytics = ""
 
@@ -27,7 +27,8 @@ pluralizeListTitles = false
   instagram = "egonelbre"
   gallery   = "https://gallery.egonelbre.com"
   rss       = "index.xml"
-
+[params.rss]
+  authorName = "Egon Elbre"
 
 [menu]
   [[menu.main]]
