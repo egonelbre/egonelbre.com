@@ -11,6 +11,10 @@ pygmentsCodeFences = true
 pygmentsUseClasses = true
 pygmentsoptions = "linenos=true"
 
+copyright = "&copy; <a href=\"https://egonelbre.com\">Egon Elbre</a> 2019"
+disqusShortname = ""
+googleAnalytics = ""
+
 [permalinks]
 	article = "/:title/"
 	blog = "/:title/"
