@@ -118,7 +118,7 @@ Implementing ideas one-by-one would eventually cause problems since we might mak
 
 If we try to break the previously discovered “Value” into 2–4 changes, we minimize the chance of the changes fitting into our working memory. We outline these changes as rough drafts called Spikes. For Spikes, you can use method declarations, type definitions, comments, or anything else that helps to get a feel for how things fit together. We could even do the spiking on a whiteboard or CRC cards.
 
-_Spiking in software development has its roots in_ [_Extreme Programming_](http://www.extremeprogramming.org/rules/spike.html) _for getting a feel for and understanding whether we are on the right track and notice potential problems. The spiking idea comes from architecture, where architects would put spikes into the ground to get a better feeling of the building and the environment._
+_Spiking in software development has its roots in [Extreme Programming](http://www.extremeprogramming.org/rules/spike.html) for getting a feel for and understanding whether we are on the right track and notice potential problems. The spiking idea comes from architecture, where architects would put spikes into the ground to get a better feeling of the building and the environment._
 
 ### Gradual Stiffening & Cleanup
 

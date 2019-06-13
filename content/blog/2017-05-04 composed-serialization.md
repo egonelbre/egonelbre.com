@@ -114,7 +114,7 @@ func (node *Node) Encode() ([]byte, error) {
 {{< codetitle caption="Implementing the core." >}}
 
 
-Here we define a `Node` for parsing arbitrary xml structures. We have `Spec` types that can encode and decode from this `Node` structure. _Strictly speaking_ `_Node_` _isn’t actually required. We could just as well implement the Spec types as Marshalers. In this case having a separate Node tree made things easier._
+Here we define a `Node` for parsing arbitrary xml structures. We have `Spec` types that can encode and decode from this `Node` structure. _Strictly speaking `Node` isn’t actually required. We could just as well implement the Spec types as Marshalers. In this case having a separate Node tree made things easier._
 
 Here are two types `TagSpec` and `StringSpec`. One for walking the `Node` tree and the other for marshaling a string.
 

@@ -74,7 +74,7 @@ type Info struct {
 
 We must have an `issue.ID` to identify an issue uniquely. Each issue usually has an `issue.Status` associated with it. We need something to bring all the attributes together `issue.Info`. Keep in mind that we are sketching the code and are not committed to this structure. We are not looking perfection, but rather a global view of how things will work together.
 
-_Notice that I don’t use long names such as IssueStatus, IssueInfo because the package for them already contains_ `_issue_`_._
+_Notice that I don’t use long names such as IssueStatus, IssueInfo because the package for them already contains `issue`._
 
 We also need some way to store and load those `issues`. The way we store and load them can change. Hence we should abstract this knowledge away. We create an interface `issue.Manager` for it. We put it into `issue/manager.go`:
 

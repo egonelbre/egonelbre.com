@@ -6,7 +6,7 @@ tags: ["Go", "Performance"]
 ---
 
 
-_All code variations can be found at_ [_https://github.com/egonelbre/exp/blob/master/permutation/code.go_](https://github.com/egonelbre/exp/blob/master/permutation/code.go)_._
+_All code variations can be found at [https://github.com/egonelbre/exp/blob/master/permutation/code.go](https://github.com/egonelbre/exp/blob/master/permutation/code.go)._
 
 Given a permutation what is the best way to convert it into a smaller data-structure?
 

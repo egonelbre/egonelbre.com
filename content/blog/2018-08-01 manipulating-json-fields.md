@@ -5,7 +5,7 @@ summary: Different ways to handle JSON.
 tags: ["Go"]
 ---
 
-_All the code can be found here_ [_https://github.com/egonelbre/exp/tree/master/fields_](https://github.com/egonelbre/exp/tree/master/fields)
+_All the code can be found here [https://github.com/egonelbre/exp/tree/master/fields](https://github.com/egonelbre/exp/tree/master/fields)_
 
 On reddit there was a question:
 

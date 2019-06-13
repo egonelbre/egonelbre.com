@@ -6,7 +6,7 @@ tags: ["Go", "Performance"]
 reviewers: ["Taavi Kivisik", "Seth Bromberger", "Damian Gryski"]
 ---
 
-_This is the first part of optimizing Breadth First Search. All of the code for this post is available at_ [_https://github.com/egonelbre/a-tale-of-bfs_](https://github.com/egonelbre/a-tale-of-bfs)_._
+_This is the first part of optimizing Breadth First Search. All of the code for this post is available at [https://github.com/egonelbre/a-tale-of-bfs](https://github.com/egonelbre/a-tale-of-bfs)._
 
 Breadth First Search is one of those fundamental graphs algorithms and also is foundation to many other problems. The basic idea is to move through a graph starting from a source node and visit everything one layer at a time.
 
@@ -143,15 +143,15 @@ Knowledge helps you come up with solutions and hypotheses. Experience helps you 
 
 The common things to do are:
 
-**Use better algorithms:** it’s obvious that when you do less work, it will be faster. To use better algorithms you must know about them. _For more details look at books like_ [_Algorithm Design Manual_](https://www.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1849967202) _or search_ [_arxiv_](http://arxiv.org/) _for the relevant subject._
+**Use better algorithms:** it’s obvious that when you do less work, it will be faster. To use better algorithms you must know about them. _For more details look at books like_ [Algorithm Design Manual](https://www.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1849967202) or search [arxiv](http://arxiv.org/) for the relevant subject._
 
-**Make it predictable:** processors try to speculatively execute and optimize your code for execution, but they cannot do that when it’s unable to predict what is going to happen. A good example of this is to ensure that in your loops your _if_\-s don’t toggle back and forth randomly. _For details see_ [_Fast and Slow if Statements_](http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/)_._
+**Make it predictable:** processors try to speculatively execute and optimize your code for execution, but they cannot do that when it’s unable to predict what is going to happen. A good example of this is to ensure that in your loops your _if_\-s don’t toggle back and forth randomly. _For details see [Fast and Slow if Statements](http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/)._
 
-**Use less memory:** the more memory you use, the more processor has to communicate with the RAM or Disk. Sometimes it’s faster to decompress data than to wait for the memory. _For details see_ [_Latency numbers every programmer should know_](https://gist.github.com/hellerbarde/2843375)_._
+**Use less memory:** the more memory you use, the more processor has to communicate with the RAM or Disk. Sometimes it’s faster to decompress data than to wait for the memory. _For details see [Latency numbers every programmer should know](https://gist.github.com/hellerbarde/2843375)._
 
 **Use fewer pointers:** pointers mean it’s harder to predict what is going to happen. Pointers also mean that the data-structures may use more memory than necessary. For languages with Garbage Collection, it also affects scanning times.
 
-**Keep computations close:** processors have many levels of caches and accessing recently used things means you will more likely hit a cache. _For details see_ [_A Gallery of Processor Cache Effects_](http://igoro.com/archive/gallery-of-processor-cache-effects/)_._
+**Keep computations close:** processors have many levels of caches and accessing recently used things means you will more likely hit a cache. _For details see [A Gallery of Processor Cache Effects](http://igoro.com/archive/gallery-of-processor-cache-effects/)._
 
 There are many more machine specific things and heuristics that can help you, but I guess these will do for now. [Damian Gryski](https://twitter.com/dgryski) is writing a book [go-perfbook](https://github.com/dgryski/go-perfbook) that contains a much more extensive review.
 
