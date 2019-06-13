@@ -28,9 +28,9 @@ When does database layer transition over into domain layer? Could you write a pr
 
 _Before proceeding I recommend to think about it a little, because I’m interested in other opinions on it as well._
 
----
-
 {{< figure src="/_images/what-is-layer/simplified.png" >}}
+
+## Fuzzy Layers
 
 My first realization was that there really isn’t a fixed line between layers. It is something which is chosen by a programmer. There is always a gradient from one layer to another. For example Data Access Object is partly related to a domain and partly to a database.
 
@@ -52,7 +52,7 @@ With the high-performance numeric library using machine level details, such as S
 
 For all intents and purposes, switching between layers has all the same downsides as multitasking.
 
----
+## Purpose
 
 We see a layer encouraging:
 
@@ -67,7 +67,7 @@ We could learn a [word embedding](https://en.wikipedia.org/wiki/Word_embedding) 
 
 Having learned the embedding, we can see whether the code at hand has terminology from different clustered areas. When a name which is not strongly aligned with the other words in a scope, then it may indicate a bad name, and possibly mixed layers. _Of course, there are many tiny things that need to be considered to make this model useful. If you do end up implementing it, I’m definitely interested in the results._
 
----
+## Summary
 
 After understanding these concepts, I think _layer_ is a bad name and evokes bad imagery when used to describe the problems.
 

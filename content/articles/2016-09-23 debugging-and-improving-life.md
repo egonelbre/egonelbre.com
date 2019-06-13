@@ -176,8 +176,6 @@ For me, I realized there were few ideas:
 
 Finding purpose may not be easy and may take time, but when you do ... your life starts to make more sense.
 
----
-
 ## That's it
 
 Well, I really don’t know what else to say other than:

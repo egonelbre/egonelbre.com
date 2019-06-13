@@ -64,9 +64,7 @@ The code usually will reflect this as well. Since these are the things we implem
 
 It’s important to figure out what is more valuable than something else; otherwise, we may end up back with Analysis Paralysis. Even, if we later discover we were wrong, it’s essential for figuring out what to do.
 
----
-
-## The _Simplified_ Process
+## The Simplified Process
 
 [_Christopher Alexander in “The Process of Creating Life”_](https://en.wikipedia.org/wiki/The_Nature_of_Order) _describes a fundamental process, how life and things we consider living, evolve. The process of creating complex structures, like software, does not differ._
 
