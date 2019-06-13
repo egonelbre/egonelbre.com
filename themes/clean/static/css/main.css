@@ -140,6 +140,27 @@ article p {
 	margin-left: 1em;
 }
 
+.pagination  {
+	margin-top: 2rem;
+	text-align: center;
+}
+.pagination a {
+	display: inline-block;
+	padding: 0.2rem 2rem;
+	margin: 0 1rem;
+	color: inherit;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+.pagination a:hover {
+	background: #eee;
+}
+.pagination a.disabled {
+	color: #ccc;
+	background: inherit;
+	border-color: #eee;
+}
+
 .highlight {
 	font-size: 0.9em;
 	line-height: 1.2em;

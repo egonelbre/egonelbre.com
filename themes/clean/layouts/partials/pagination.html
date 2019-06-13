@@ -1,0 +1,6 @@
+{{ if or .Paginator.HasPrev .Paginator.HasNext }}
+<div class="pagination">
+    <a {{ if .Paginator.HasPrev }}href="{{ .Paginator.Prev.URL }}"{{else}}class="disabled"{{end}}>Newer</a>
+    <a {{ if .Paginator.HasNext }}href="{{ .Paginator.Next.URL }}"{{else}}class="disabled"{{end}}>Older</a>
+</div>
+{{ end }}
