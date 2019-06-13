@@ -42,6 +42,12 @@ footer.main {
 	border-top: 1px solid #eee;
 }
 
+copyright {
+	display: block;
+	text-align: center;
+	font-size: 0.8rem;
+}
+
 header.main h1 {
 	float: left;
 	margin: 0;
@@ -108,8 +114,9 @@ article p {
 }
 
 .reviewers {
-	margin: 1.5em 0;
+	margin: 2em 0 0 0;
 	font-style: italic;
+	color: #444;
 }
 
 .toc { 
@@ -182,4 +189,5 @@ figure {
 
 figure > img, figure > video {
 	margin: auto;
+	max-width: 100%;
 }

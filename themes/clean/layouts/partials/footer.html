@@ -1,6 +1,5 @@
 <footer class="main">
     <div class="center">
-        <copyright>{{ .Site.Copyright | safeHTML}}</copyright>
         <ul>
             <a href="{{ .Site.BaseURL }}index.xml"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
             <a href="/tags">All Tags</a><br /><br />
@@ -10,6 +9,9 @@
             <a href="https://www.linkedin.com/in/egonelbre">linkedin.com/in/egonelbre</a><br />
             <a href="https://www.instagram.com/egonelbre/">instagram.com/egonelbre</a><br />
         </ul>
+    </div>
+    <div class="center">
+        <copyright>{{ .Site.Copyright | safeHTML}}</copyright>
     </div>
 </footer>
 {{ if .Site.GoogleAnalytics }}

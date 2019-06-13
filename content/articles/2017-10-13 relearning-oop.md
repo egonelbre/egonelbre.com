@@ -156,9 +156,9 @@ Well you can further extend these questions as far as you like.
 
 ## For more information
 
-* [_“The Early History of Smalltalk” by Alan Kay_](http://worrydream.com/EarlyHistoryOfSmalltalk)
-* [_”A Personal Computer for Children of All Ages” by Alan Kay_](https://mprove.de/diplom/gui/kay72.html)
-* [_“The DCI Paradigm” by Coplien and Reenskaug_](http://fulloo.info/Documents/CoplienReenskaugASA2012.pdf)
-* [_Programming Languages and Piaget’s Stages of Cognitive Development_](http://www.lispcast.com/programming-language-stages-of-development)
-* [_“Sketchpad: A man-machine graphical communication system” by Ivan Sutherland_](https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.pdf)
+* [“The Early History of Smalltalk” by Alan Kay](http://worrydream.com/EarlyHistoryOfSmalltalk)
+* [”A Personal Computer for Children of All Ages” by Alan Kay](https://mprove.de/diplom/gui/kay72.html)
+* [“The DCI Paradigm” by Coplien and Reenskaug](http://fulloo.info/Documents/CoplienReenskaugASA2012.pdf)
+* [Programming Languages and Piaget’s Stages of Cognitive Development](http://www.lispcast.com/programming-language-stages-of-development)
+* [“Sketchpad: A man-machine graphical communication system” by Ivan Sutherland](https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.pdf)
 * [https://www.reddit.com/r/oopisbad](https://www.reddit.com/r/oopisbad/)/

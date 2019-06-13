@@ -4,14 +4,14 @@ title = "Egon Elbre"
 canonifyURLs = false
 theme = "clean"
 
-paginate = 40
+paginate = 10
 
 pygmentsCodefencesGuessSyntax = true
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 pygmentsoptions = "linenos=true"
 
-copyright = "&copy; <a href=\"https://egonelbre.com\">Egon Elbre</a> 2019"
+copyright = "&copy; Egon Elbre 2019"
 disqusShortname = ""
 googleAnalytics = ""
 

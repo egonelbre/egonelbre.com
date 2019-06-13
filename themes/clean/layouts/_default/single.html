@@ -9,11 +9,12 @@
 			{{.Content}}
 		</div>
 		<footer>
+			{{ if .Params.tags }}<div class="tags">{{ partial "tags" .Params.tags }}</div>{{ end }}
+			{{ if (not .Date.IsZero) }}<div class="date">{{.Date.Format "Jan 2006"}}</div>{{ end }}
+
 			{{ with .Params.reviewers }}
 			<div class="reviewers">Thanks to {{ delimit . ", " ", and " }} for reviewing and suggesting improvements.</div>
 			{{ end }}
-			{{ if .Params.tags }}<div class="tags">{{ partial "tags" .Params.tags }}</div>{{ end }}
-			{{ if (not .Date.IsZero) }}<div class="date">{{.Date.Format "Jan 2006"}}</div>{{ end }}
 		</footer>
 	</article>
 </div>
