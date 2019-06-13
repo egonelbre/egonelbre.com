@@ -132,16 +132,28 @@ article p {
 	padding: 0;
 }
 
+.toc .section {
+	display: inline-block;
+	font-size: 0.7em;
+	width: 4em;
+	padding-right: 1em;
+	margin-left: -5em;
+	color: #888;
+	text-align: right;
+}
+
 .toc li {
 	margin: 0;
 	margin-bottom: 0.5em;
 }
 
-.toc-date {
+.toc-extra {
 	font-size: 0.7em;
+	font-style: italic;
 	font-weight: 800;
-	color: #999
+	color: #999;
 }
+.toc-extra a { color: #999; }
 
 .toc li .toc-summary {
 	margin-left: 1em;

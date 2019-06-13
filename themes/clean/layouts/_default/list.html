@@ -10,7 +10,7 @@
 			{{ range sort .Paginator.Pages }}
 			<li>
 				<a href="{{ .Permalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}
-				{{ if (not .Date.IsZero) }}<span class="toc-date">{{.Date.Format "Jan 2006"}}</span>{{ end }}
+				<span class="toc-extra">{{ if (not .Date.IsZero) }}<span class="date">{{.Date.Format "Jan 2006"}}</span>{{ end }}</span>
 				<div class="toc-summary">{{ .Summary | plainify | safeHTML }}</div>
 			</li>
 			{{ end }}
