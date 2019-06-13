@@ -106,14 +106,14 @@ For example you might have a component that relies on Windows or Linux system ca
 
 Separating things by dependency often makes it easier to do compilation where you don’t pull in a particular dependency. Similarly, separating by dependency allows you to focus more on the “abstraction” that the different dependencies need to implement.
 
-This clear separation might end up with more lines of code compared to using things like [C-macros](https://en.wikipedia.org/wiki/C_preprocessor#Conditional_compilation) `[IFDEF](https://en.wikipedia.org/wiki/C_preprocessor#Conditional_compilation)`[s](https://en.wikipedia.org/wiki/C_preprocessor#Conditional_compilation). Similarly, the “abstraction” that describes both adds more code.
+This clear separation might end up with more lines of code compared to using things like [C-macros IFDEF](https://en.wikipedia.org/wiki/C_preprocessor#Conditional_compilation). Similarly, the “abstraction” that describes both adds more code.
 
 {{< figure src="/_images/code-organization/by-team.png" >}}
 
 ## Group by Team
 
 > “organizations which design systems  ... are constrained to produce designs which are copies of the communication structures of these organizations.”  
-> \- M. Conway
+> -- M. Conway
 
 Grouping by team makes it clearer when coordination between teams is needed. For example `ui`, `backend` and `db` need expertise from different teams. Hence, it becomes more obvious who is responsible for which part of the codebase.
 

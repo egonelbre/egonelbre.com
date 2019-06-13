@@ -63,7 +63,7 @@ Output:
    3       1       1       1       3       3       1       1       "㈎"
    5       2       1       1       1       1       1       1       "ẛ̣"
 ```
-{{< codetitle caption="play.golang.org/p/X6k-\_9uy2ec" link="https://play.golang.org/p/X6k-\_9uy2ec">}}
+{{< codetitle caption="play.golang.org/p/X6k-_9uy2ec" link="https://play.golang.org/p/X6k-_9uy2ec">}}
 
 _I’m aware that some of these give the same answer, but usually you want to do something else with the string, not just count the characters._
 

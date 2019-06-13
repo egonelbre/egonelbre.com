@@ -278,12 +278,12 @@ One example would be:
 
 ```
 x = 4;  
-y = (++x)\*x;
+y = (++x)*x;
 
 // compared to  
 x = 4;  
 x += 1;  
-y = x\*x;
+y = x*x;
 ```
 
 If we use inconsistent style our code will become hard to read similarly to a book that is written in different languages and in mid-sentence goes over to a poem. Keeping a consistent style is easy and has great benefits.
