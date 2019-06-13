@@ -15,8 +15,41 @@ copyright = "&copy; <a href=\"https://egonelbre.com\">Egon Elbre</a> 2019"
 disqusShortname = ""
 googleAnalytics = ""
 
+pluralizeListTitles = false
+
+[menu]
+  [[menu.main]]
+    identifier = "articles"
+    name = "Articles"
+    title = "Longer and more thought out writing."
+    url = "/articles/"
+	weight = 1
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    title = "Writing on easy topics."
+    url = "/blog/"
+	weight = 2
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    title = "Fleshed out projects."
+    url = "/projects/"
+	weight = 3
+  [[menu.main]]
+    identifier = "code"
+    name = "Code"
+    title = "Interesting code snippets and experiments."
+    url = "/code/"
+	weight = 4
+
+[taxonomies]
+	tag  = "tags"
+	blog = "blog"
+	code = "code"
+
 [permalinks]
-	article = "/:title/"
+	articles = "/:title/"
 	blog = "/:title/"
-	project = "/:title/"
+	projects = "/:title/"
 	code = "/code/:title/"

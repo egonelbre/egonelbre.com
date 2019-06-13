@@ -8,6 +8,8 @@ html {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	tab-size: 4;
+
+	overflow-y: scroll;
 }
 header, h1, h2, h3, h4, h5, h6, .header {
 	font-family: sans-serif;
@@ -56,7 +58,7 @@ header.main a {
 	color: inherit;
 	padding: 0.8rem;
 	font-size: 0.8rem;
-	line-height: 0.8rem;
+	line-height: 1rem;
 }
 
 header.main nav {
@@ -65,11 +67,14 @@ header.main nav {
 
 header.main nav a {
 	display: inline-block;	
-	margin-right: 0.5em;
+	margin-left: 0.2em;
 }
 
 header.main a:hover {
-	background: rgba(0,0,0,0.1);
+	background: #eee;
+}
+header.main a.active {
+	background: #fdf0df;
 }
 
 article {
