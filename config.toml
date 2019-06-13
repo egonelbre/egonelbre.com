@@ -30,6 +30,12 @@ pluralizeListTitles = false
 [params.rss]
   authorName = "Egon Elbre"
 
+[permalinks]
+	articles = "/:title/"
+	blog = "/:title/"
+	projects = "/project/:title/"
+	code = "/code/:title/"
+
 [menu]
   [[menu.main]]
     identifier = "articles"
@@ -55,14 +61,3 @@ pluralizeListTitles = false
     title = "Interesting code snippets and experiments."
     url = "/code/"
     weight = 4
-
-[taxonomies]
-	tag  = "tags"
-	blog = "blog"
-	code = "code"
-
-[permalinks]
-	articles = "/:title/"
-	blog = "/:title/"
-	projects = "/project/:title/"
-	code = "/code/:title/"
