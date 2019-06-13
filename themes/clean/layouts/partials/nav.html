@@ -1,6 +1,6 @@
 <header class="main">
     <div class="center">
-        <h1><a href="/" class="{{ if eq .URL "/" }}active{{end}}">Egon Elbre</a></h1>
+        <h1><a href="/" class="{{ if eq .RelPermalink "/" }}active{{end}}">Egon Elbre</a></h1>
         <nav>
             {{ $currentPage := . }}
             {{ range .Site.Menus.main }}
