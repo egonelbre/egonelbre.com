@@ -22,7 +22,7 @@ The question is -- how do we pick the pieces we develop? How do we ensure that o
 
 I covered some of the aspects of understanding value already in Value in Software.
 
-{{< biglink link="/value-in-software" title="Value in Software" >}}
+{{< biglink link="/value-in-software" title="Value in Software" description="Understanding what is valuable." >}}
 
 When we are starting out writing some software, there is so much we could implement. There are also so many ways we could organize and implement things. This overwhelming amount of concerns can quickly push people into Analysis Paralysis.
 

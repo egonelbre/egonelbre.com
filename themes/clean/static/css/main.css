@@ -168,6 +168,24 @@ article p {
 	font-weight: 100;
 }
 
+a.biglink {
+	display: block;
+
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 1.2em;
+	color: #333;
+	text-decoration: none;
+}
+a.biglink:hover {
+	background: #f8f8f8;
+}
+
+a.biglink .description {
+	color: #666;
+	font-size: 0.8em;
+}
+
 .reviewers {
 	margin: 2em 0 0 0;
 	font-style: italic;

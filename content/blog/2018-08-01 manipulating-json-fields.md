@@ -9,7 +9,7 @@ _All the code can be found here_ [_https://github.com/egonelbre/exp/tree/master/
 
 On reddit there was a question:
 
-{{< biglink link="https://www.reddit.com/r/golang/comments/8y2zfc/looking_for_idiomatic_way_to_do_this/" title="Looking for idiomatic way to do this" >}}
+{{< biglink link="https://www.reddit.com/r/golang/comments/8y2zfc/looking_for_idiomatic_way_to_do_this/" title="Looking for idiomatic way to do this" description="I've been trying to figure out the best way to do this but always seem to fall short..." >}}
 
 Before diving into answering it’s always useful to first dive into the question. It’s easy to lose track on what the actual problem is. Often by creating a better underlying model we can simplify or eliminate the problem altogether.
 

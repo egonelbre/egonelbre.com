@@ -90,4 +90,4 @@ Understanding Value should be at the core of our decision making. It helps to gi
 
 In the next blog post, we’ll take a look at how we put this understanding into practice.
 
-{{< biglink link="/building-with-value" title="Building With Value" >}}
+{{< biglink link="/building-with-value" title="Building With Value" description="How to use value as primary driver for developing." >}}

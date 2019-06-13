@@ -10,7 +10,7 @@ reviewers: ["Peter Seebach"]
 
 Previously I described a process for developing software while trying to provide as much value and create understanding as early as possible.
 
-{{< biglink link="/building-with-value" title="Building with Value" >}}
+{{< biglink link="/building-with-value" title="Building with Value" description="How to use value as primary driver for developing." >}}
 
 How would one iteration of this process look like?
 
