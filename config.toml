@@ -64,5 +64,5 @@ pluralizeListTitles = false
 [permalinks]
 	articles = "/:title/"
 	blog = "/:title/"
-	projects = "/:title/"
+	projects = "/project/:title/"
 	code = "/code/:title/"
