@@ -83,6 +83,14 @@ footer.main {
 	stroke-width: 1.5px;
 }
 
+hr {
+	border: dotted #ddd;
+	border-width: 2px 0 0;
+	clear: both;
+	margin: 2em 0;
+	height: 0;
+}
+
 copyright {
 	display: block;
 	text-align: center;
@@ -138,6 +146,12 @@ article h2 {
 	margin-top: 2em;
 	font-size: 1.4 em;
 	font-weight: 100;
+}
+
+article footer {
+	border-top: 1px solid #eee;
+	margin-top: 2em;
+	padding-top: 1em;
 }
 
 article .date {
