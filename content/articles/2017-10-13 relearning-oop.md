@@ -117,7 +117,7 @@ The goal of Object Oriented thinking is about giving substance to thoughts. It�
 
 Implementation of Object Oriented Paradigm doesn’t have to be a language either. Many game engines implement an OO editor:
 
-{{< figure src="/_images/oop-unreal-engine.jpeg" title="Unreal Engine" >}}
+{{< figure src="/_images/oop-unreal-engine.jpg" title="Unreal Engine" >}}
 
 You place objects in the scene and make them interact. They might hold some state and you can modify their behaviour ... It’s much closer to the OO vision than many class-oriented languages. It could have been written in C and the Editor would still be Object Oriented. _Sure, it is not general-purpose OO._
 

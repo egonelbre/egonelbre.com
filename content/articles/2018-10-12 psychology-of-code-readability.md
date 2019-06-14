@@ -22,17 +22,17 @@ But some would still confidently say that they can handle problems involving mor
 
 _Dates and phone-numbers are good examples of this:_
 
-{{< figure src="/_images/psychology-of-code/date-chunking.png" caption="Two levels of chunking a date." >}}
+{{< figure src="/_images/psychology-of-code/date-chunking.jpg" caption="Two levels of chunking a date." >}}
 
 From these **chunks** we build up our **long term memory**. I like to imagine it as a large web of consisting many chunks, chunk sequences and groupings.
 
-{{< figure src="/_images/psychology-of-code/memory-web.png" caption="Memory Web" >}}
+{{< figure src="/_images/psychology-of-code/memory-web.jpg" caption="Memory Web" >}}
 
 You might guess from this image that moving from one place to another in memory is slow. And you would be right. In UX there’s a concept called singular [**focus of attention**](https://en.wikipedia.org/wiki/Attention). Which means that we can focus at a single thing at a time. It also has a friend called [**locus of attention**](http://www.usabilityfirst.com/glossary/locus-of-attention/), which says that our attention is also localized in space.
 
 You might think this is the same thing as working memory limit, however there is a slight difference. **Working memory capacity** talks how big our focusing area is, the **focus/locus of attention** say that we can only do that when there is a place in our brain that contains the ideas.
 
-{{< figure src="/_images/psychology-of-code/focus-of-attention.png" caption="Focus of Attention and Working Memory Capacity" >}}
+{{< figure src="/_images/psychology-of-code/focus-of-attention.jpg" caption="Focus of Attention and Working Memory Capacity" >}}
 
 The **focus and locus of attention** are important to know, because [switching cost](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3197943/) is significant. It is even slower when we need to create new **chunks** and **groupings**. It also goes the other way, the more familiar something is the less time it takes to make it our focus.
 
@@ -40,11 +40,11 @@ We also remember things better when we are in a similar context. This is called 
 
 > [In an experiment](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.2044-8295.1975.tb01468.x) divers were assigned to memorize words on land and under water. Then recall them on land or in water. The best results were for people who memorized and recalled on land. Surprisingly the second best were the people that memorized and recalled on water. This showed that the context where you learn things has an impact on how well you can remember things.
 
-{{< figure src="/_images/psychology-of-code/encoding-specificity.png" caption="Encoding Specificity Principle" >}}
+{{< figure src="/_images/psychology-of-code/encoding-specificity.jpg" caption="Encoding Specificity Principle" >}}
 
 To make things shorter, I’ll use **context** to refer to “focus and locus of attention” and how it relates to other chunks and loci. Effectively our brain is moving from one **context** to another. When we move our focus of attention we also remember what our previous contexts were, until our memory fades.
 
-{{< figure src="/_images/psychology-of-code/related-context.png" caption="Related Contexts" >}}
+{{< figure src="/_images/psychology-of-code/related-context.jpg" caption="Related Contexts" >}}
 
 From these contexts and chunks we build up [**mental representations**](https://en.wikipedia.org/wiki/Mental_representation) and a [**mental model**](https://en.wikipedia.org/wiki/Mental_model). There’s a slight difference between these two things. **Mental representation** is our internal cognitive symbol for representing the external world or a mental processes. **Mental model** can be thought of as a explanation of a mental representation. Often these terms are used interchangeably.
 
@@ -329,7 +329,7 @@ Overall we can summarize the code readability as trying to balance different asp
 2.  To minimize the cost of **shifting attention**, we try to write all related code close together. To minimize the burden to our **working memory**, we try to split the code into smaller and more fathomable units.
 3.  Using **common vocabulary** allows the author as well as the team to rely on previous code-reading experience. That means reading, understanding and contributing to code is easier. Using unique solutions in place where a common one would do, can slow down new readers of that code.
 
-{{< figure src="/_images/psychology-of-code/balance.jpeg" >}}
+{{< figure src="/_images/psychology-of-code/balance.jpg" >}}
 
 In practice there is no “perfect” way of organizing code, but there are many trade-offs. While I focused on readability, it is never the end goal, there are many other things to consider like reliability, maintainability, performance, speed of prototyping.
 

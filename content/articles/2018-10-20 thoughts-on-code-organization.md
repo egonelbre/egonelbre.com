@@ -16,7 +16,7 @@ This number also suggests that you cannot draw any significant conclusions from 
 
 _Note: the actual size is actually more related to how much variance and how many ideas the implementation has. For example, on a website you probably would need 5 different domain ideas, where each is represented by 5 entities, all of them being manipulated and inter-connected. The 30K LOC cutoff serves more as a heuristic._
 
-{{< figure src="/_images/code-organization/dictionary.png" caption="Vocabulario en lengua de Mechuacan" link="https://archive.org/details/vocabularioenlen00gilb" >}}
+{{< figure src="/_images/code-organization/dictionary.jpg" caption="Vocabulario en lengua de Mechuacan" link="https://archive.org/details/vocabularioenlen00gilb" >}}
 
 ## Alphabet
 
@@ -32,7 +32,7 @@ When organizing we need to think:
 
 One important implication of this is, that when we make something easier, something else becomes more difficult. The code structure should cater to our problems and needs.
 
-{{< figure src="/_images/code-organization/pieces-pile.png" >}}
+{{< figure src="/_images/code-organization/pieces-pile.jpg" >}}
 
 ## No Organization
 
@@ -55,11 +55,11 @@ So, when we talk about no organization, it often means one of the following:
 
 It’s important to notice that it’s about “understanding” and “clarity”. When you look at a reverse word dictionary, the usefulness probably won’t be visible immediately. It might be easy to say it’s unorganized or useless. However, when you understand the usefulness it “magically” becomes organized.
 
-{{< figure src="/_images/code-organization/reverse-dictionary.png" caption="A Rhyming, Spelling, and Pronouncing dictionary" link="https://archive.org/details/rhymingspellingp00walkrich/" >}}
+{{< figure src="/_images/code-organization/reverse-dictionary.jpg" caption="A Rhyming, Spelling, and Pronouncing dictionary" link="https://archive.org/details/rhymingspellingp00walkrich/" >}}
 
 In most cases we also need to consider ease-of-learning the organization. Complicated approaches can become an overhead when trying to modify artifacts. A simplistic approach may not give useful benefits. More on that later.
 
-{{< figure src="/_images/code-organization/smalltalk-76.png" caption="Smalltalk-76 Code Browser" link="https://github.com/livingcomputermuseum/ContrAlto" >}}
+{{< figure src="/_images/code-organization/smalltalk-76.jpg" caption="Smalltalk-76 Code Browser" link="https://github.com/livingcomputermuseum/ContrAlto" >}}
 
 ## Code
 
@@ -80,7 +80,7 @@ However, there are other ways to describe structures:
 
 It might be easy to forget that types serve as a way to organize code. Things derived from the same base-class (or object) are explicitly related. Using another type as a field in a structure is an implicit link to understanding that structure as well. The following descriptions applies to any or combination of these.
 
-{{< figure src="/_images/code-organization/canonical-layout.png" >}}
+{{< figure src="/_images/code-organization/canonical-layout.jpg" >}}
 
 ## Canonical Layout
 
@@ -96,7 +96,7 @@ My own rule is that when I cannot argue for more than 5% better results by namin
 
 Often there are reasons why something ended up being named like the way it did. Usually they are human reasons. Someone thought that “this is clear to me” and other people picked it up. The benefit comes from familiarity rather than anything else.
 
-{{< figure src="/_images/code-organization/by-technology.png" >}}
+{{< figure src="/_images/code-organization/by-technology.jpg" >}}
 
 ## Group by Dependency or Technology
 
@@ -108,7 +108,7 @@ Separating things by dependency often makes it easier to do compilation where yo
 
 This clear separation might end up with more lines of code compared to using things like [C-macros IFDEF](https://en.wikipedia.org/wiki/C_preprocessor#Conditional_compilation). Similarly, the “abstraction” that describes both adds more code.
 
-{{< figure src="/_images/code-organization/by-team.png" >}}
+{{< figure src="/_images/code-organization/by-team.jpg" >}}
 
 ## Group by Team
 
@@ -121,7 +121,7 @@ However such separation can break locality of information of how something works
 
 A change in the model often propagates through all of the groups. This increases communication or it may require more effort to define stable interfaces.
 
-{{< figure src="/_images/code-organization/by-use.png" >}}
+{{< figure src="/_images/code-organization/by-use.jpg" >}}
 
 ## Group by Use
 
@@ -131,7 +131,7 @@ Most languages have some sort of `math` or `string` manipulation package, with f
 
 Effectively these groups are _toolboxes_ that you can use. The problem with such toolboxes is that they can easily degrade into _kitchen sinks_, where all sorts of arbitrary things end up together. You need to clearly figure out what belongs or doesn’t belong in there to avoid such problems.
 
-{{< figure src="/_images/code-organization/by-connections.png" >}}
+{{< figure src="/_images/code-organization/by-connections.jpg" >}}
 
 ## Group by Connections
 
@@ -143,7 +143,7 @@ This is not limited to class oriented languages, all languages have a preference
 
 The problem with this approach is similar to grouping by use. Commonly used structures can start accumulating features from all of the places it’s being used. This can make the structure itself less clear. Good examples are data-structures ([Scala](https://www.scala-lang.org/api/current/scala/collection/Seq.html), [C#](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=netframework-4.7.2#methods)). Of course, you do get a lot of convenience from this approach.
 
-{{< figure src="/_images/code-organization/by-classification.png" >}}
+{{< figure src="/_images/code-organization/by-classification.jpg" >}}
 
 ## Group by Classification
 
@@ -151,7 +151,7 @@ Grouping by classification is about organizing things based on the function that
 
 One of the most recognizable ones would be [Ruby on Rails folder structure](https://github.com/jwipeout/rails-directory-structure-guide).
 
-{{< figure src="/_images/code-organization/ruby-on-rails.png" >}}
+{{< figure src="/_images/code-organization/ruby-on-rails.jpg" >}}
 
 Many frameworks force a particular folder structure. It’s common to see folders such as `models`, `views`, `controllers` and `components`. For games you would see folders such as `textures`, `scripts`, `materials` and `meshes`.
 
@@ -165,7 +165,7 @@ However the bigger the project the more likely it is that you need [exceptions i
 
 The classification problem can also happen with inheritance. [“Evolve Your Hierarchy”](http://cowboyprogramming.com/2007/01/05/evolve-your-heirachy/) describes this problem in game programming context. For example having a base class “Movable” and then a derived “Vehicle”. However, when we add a “Trebuchet”, which needs to be deployed, it makes the object “Unmovable”. We would then move all the different behaviors up to the base class or create a new base-class “MostlyMovable”. We can manage it, but the fundamental problem is about treating it as a classification problem rather than composition of properties.
 
-{{< figure src="/_images/code-organization/by-feature.png" >}}
+{{< figure src="/_images/code-organization/by-feature.jpg" >}}
 
 ## Group by Feature
 
@@ -185,7 +185,7 @@ With performance oriented projects it might become much more difficult to ensure
 
 This approach also has problems when prototyping, when you are still figuring out what “features” you need.
 
-{{< figure src="/_images/code-organization/by-value.png" >}}
+{{< figure src="/_images/code-organization/by-value.jpg" >}}
 
 ## Group by Value
 
@@ -193,7 +193,7 @@ In all of the previous groupings we have discussed pros and cons of different ap
 
 You start by figuring out what is “valuable” and important in your project. This can vary in different sections, classification or features. Then derive the organization.
 
-{{< figure src="/_images/code-organization/go-project.png" >}}
+{{< figure src="/_images/code-organization/go-project.jpg" >}}
 
 This kind of organization can be seen in many projects that do not have an idiomatic way of writing things. You can look at [Kubernetes](https://github.com/kubernetes/kubernetes/tree/master/pkg) as an example that uses many of these. Similarly many other command-line utilities, database implementations.
 
@@ -205,7 +205,7 @@ Grouping by value requires a good understanding of why and how your software is 
 
 ---
 
-{{< figure src="/_images/code-organization/ready.png" >}}
+{{< figure src="/_images/code-organization/ready.jpg" >}}
 
 I try to think less about organizing code and more about organizing ideas about the software. Then again, it’s about finding a good balance between different approaches. There is no “right way”, but they do give more clarity to different aspects of a project.
 

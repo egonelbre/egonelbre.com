@@ -6,7 +6,7 @@ tags: ["Software Concepts"]
 reviewers: ["Peter Seebach", "Taavi Kivisik"]
 ---
 
-{{< figure src="/_images/value/seedling.png" >}}
+{{< figure src="/_images/value/seedling.jpg" >}}
 
 Why do we write programs in the first place? It’s easy to get lost in the technological details, but this is not the primary goal. This might sound obvious but, **w_e need to provide value to people._**
 
@@ -17,7 +17,7 @@ Why do we write programs in the first place? It’s easy to get lost in the tech
 Understanding _Value_ helps us understand why we are doing things in the first place. If you are not creating something of value, then you are creating waste.
 
 
-{{< figure src="/_images/value/tree.png" >}}
+{{< figure src="/_images/value/tree.jpg" >}}
 
 ## Valuable
 
@@ -34,7 +34,7 @@ The definition is not rocket science:
 We know and feel when something is valuable to us, and we can empathize when something is valuable to someone else.
 
 
-{{< figure src="/_images/value/context.png" >}}
+{{< figure src="/_images/value/context.jpg" >}}
 
 ## The Context
 
@@ -58,7 +58,7 @@ The goal of “logging in” is to protect value, rather than to be of value. If
 
 It’s never as simple as _“Does something have value?”_ because we need to take the context into account.
 
-{{< figure src="/_images/value/looking.png" >}}
+{{< figure src="/_images/value/looking.jpg" >}}
 
 ## Evaluator
 
@@ -76,7 +76,7 @@ How is the box valuable to the end-user, how will they use it? Does he hold very
 
 Understanding what we create and why it is valuable to people is essential to making the right decisions.
 
-{{< figure src="/_images/value/tree-swing.png" >}}
+{{< figure src="/_images/value/tree-swing.jpg" >}}
 
 ## Outside the box
 

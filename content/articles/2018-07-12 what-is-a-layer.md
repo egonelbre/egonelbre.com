@@ -28,7 +28,7 @@ When does database layer transition over into domain layer? Could you write a pr
 
 _Before proceeding I recommend to think about it a little, because I’m interested in other opinions on it as well._
 
-{{< figure src="/_images/what-is-layer/simplified.png" >}}
+{{< figure src="/_images/what-is-layer/simplified.jpg" >}}
 
 ## Fuzzy Layers
 
@@ -36,7 +36,7 @@ My first realization was that there really isn’t a fixed line between layers. 
 
 Considering that there is a gradient from one layer to another, it’s not that surprising that we misclassify things or have trouble classifying. Sometimes these “misclassifications” end up as [leaky abstractions](https://en.wikipedia.org/wiki/Leaky_abstraction), or in other words, things that leak leak hidden implementation details.
 
-{{< figure src="/_images/what-is-layer/blurred.png" >}}
+{{< figure src="/_images/what-is-layer/blurred.jpg" >}}
 
 This might seem like we are getting further away from a measurable “layer”, but it gives one important insight:
 
@@ -73,7 +73,7 @@ After understanding these concepts, I think _layer_ is a bad name and evokes bad
 
 I think visualizing these things as bubbles of ideas that we want to keep as clear as possible is more useful than trying to stack things on top of each other. It’s important to note that in reality the classification has many more dimensions than would fit on a single flat image.
 
-{{< figure src="/_images/what-is-layer/actual.png" caption="Cohesion of Ideas." >}}
+{{< figure src="/_images/what-is-layer/actual.jpg" caption="Cohesion of Ideas." >}}
 
 There are few important parts to layers / abstractions:
 

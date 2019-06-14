@@ -6,7 +6,7 @@ tags: ["Go", "Software Concepts"]
 reviewers: ["Peter Seebach"]
 ---
 
-{{< figure src="/_images/value/basic-tree.png" >}}
+{{< figure src="/_images/value/basic-tree.jpg" >}}
 
 Previously I described a process for developing software while trying to provide as much value and create understanding as early as possible.
 
