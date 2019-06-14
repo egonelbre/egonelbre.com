@@ -59,7 +59,7 @@ The problem with friction is that it makes people feel stressed and stupid —
 
 Let us consider what happens if a person “cheats” while learning.
 
-{{< figure src="/_images/ programming-model-02.png" >}}
+{{< figure src="/_images/programming-model-02.png" >}}
 
 Imagine you are solving sudoku and at stage 2, where you hit your first difficult problem, someone else comes and solves the sudoku for you. This would mean that you won’t feel the “high” and are less likely to try solving sudoku again. The perceived reward has also decreased. More importantly, you fail to learn the skills required to overcome obstacles 2 and 3.
 
