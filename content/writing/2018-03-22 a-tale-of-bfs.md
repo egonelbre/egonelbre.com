@@ -2,6 +2,7 @@
 date: "2018-03-22T12:00:00+03:00"
 title: "A Tale of BFS"
 summary: Optimizing a breadth first search
+star: true
 tags: ["Go", "Performance"]
 reviewers: ["Taavi Kivisik", "Seth Bromberger", "Damian Gryski"]
 ---

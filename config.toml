@@ -31,33 +31,26 @@ pluralizeListTitles = false
   authorName = "Egon Elbre"
 
 [permalinks]
-	articles = "/:title/"
-	blog = "/:title/"
+	writing = "/:title/"
 	projects = "/project/:title/"
 	code = "/code/:title/"
 
 [menu]
   [[menu.main]]
-    identifier = "articles"
-    name = "Articles"
-    title = "Longer and more thought out writing."
-    url = "/articles/"
+    identifier = "writing"
+    name = "Writing"
+    title = "My writing on various topics."
+    url = "/writing/"
     weight = 1
-  [[menu.main]]
-    identifier = "blog"
-    name = "Blog"
-    title = "Writing on easy topics."
-    url = "/blog/"
-    weight = 2
   [[menu.main]]
     identifier = "projects"
     name = "Projects"
     title = "Fleshed out projects."
     url = "/projects/"
-    weight = 3
+    weight = 2
   [[menu.main]]
     identifier = "code"
     name = "Code"
     title = "Interesting code snippets and experiments."
     url = "/code/"
-    weight = 4
+    weight = 3

@@ -2,6 +2,7 @@
 date: "2018-10-12T12:00:00+03:00"
 title: "Psychology of Code Readability"
 summary: Analysis on how programmers perceive code.
+star: true
 tags: ["Psychology"]
 reviewers: ["Taavi Kivisik"]
 ---

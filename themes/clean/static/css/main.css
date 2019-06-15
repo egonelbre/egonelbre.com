@@ -209,8 +209,20 @@ a.biglink .description {
 }
 
 .toc li {
+	position: relative;
 	margin: 0;
 	margin-bottom: 0.5em;
+}
+
+.toc .star {
+	position: absolute;
+	display: inline-block;
+	font-size: 0.7em;
+	width: 1em;
+	margin-left: -1.5em;
+	color: #f7b430;
+	-webkit-text-stroke: 1px #daa131;
+	text-align: right;
 }
 
 .toc-extra {

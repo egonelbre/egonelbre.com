@@ -2,6 +2,7 @@
 date: "2016-09-23T12:00:00+03:00"
 title: "Debugging and Improving Life"
 summary: "Ideas and perspectives that have helped me."
+star: true
 tags: ["Psychology"]
 reviewers: ["Reena Purret"]
 ---

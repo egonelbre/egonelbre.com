@@ -2,6 +2,7 @@
 date: "2019-06-04T14:00:00+03:00"
 title: "Building with Value: An Example"
 summary: Example on how to develop software with little effort.
+star: true
 tags: ["Go", "Software Concepts"]
 reviewers: ["Peter Seebach"]
 ---
