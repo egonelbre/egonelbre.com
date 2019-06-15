@@ -9,7 +9,6 @@
 		<ul class="toc">
 			{{ range sort .Paginator.Pages }}
 			<li>
-				{{if .Params.star }}<div class="star">★</div>{{ end }}
 				<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}
 				<span class="toc-extra">{{ if (not .Date.IsZero) }}<span class="date">{{.Date.Format "Jan 2006"}}</span>{{ end }}</span>
 				<div class="toc-summary">{{ .Summary | plainify | safeHTML }}</div>

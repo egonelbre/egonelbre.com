@@ -36,12 +36,12 @@ pluralizeListTitles = false
 	code = "/code/:title/"
 
 [menu]
-  [[menu.main]]
-    identifier = "writing"
-    name = "Writing"
-    title = "My writing on various topics."
-    url = "/writing/"
-    weight = 1
+#  [[menu.main]]
+#    identifier = "writing"
+#    name = "Writing"
+#    title = "My writing on various topics."
+#    url = "/writing/"
+#    weight = 1
   [[menu.main]]
     identifier = "projects"
     name = "Projects"
