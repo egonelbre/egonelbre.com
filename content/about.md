@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "Egon Elbre"
 summary: About Me
 ---
 
