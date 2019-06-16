@@ -5,10 +5,12 @@ summary: About Me
 
 <img class="profile" src="/images/profile.jpg">
 
-Software Engineer with a keen eye on code architecture, algorithmics and performance.
+I'm a Software Engineer in Tartu with a keen eye on code architecture, algorithmics and performance.
 I work mostly in Go, but have also done extensive work using Delphi and JavaScript.
 
 I started professionally working in 2007, but I've been poking code even more.
+
+One of my goals is to find and understand the fundamentals of programming. Things that can be used to derive all other ideas in software design, code writing and software engineering in general. Hopefully, these ideas will help other people develop more valueable software.
 
 In my free time I like to [draw](https://gallery.egonelbre.com/), [make music](https://soundcloud.com/egon-elbre/) and [dance](http://tokra.ee/).
 
