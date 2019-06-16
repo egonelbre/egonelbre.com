@@ -138,18 +138,31 @@ article {
 
 article h1 {
 	font-size: 1.6em;
-	font-weight: 100;
+	font-weight: 400;
 	letter-spacing: 0.02em;
 }
 
 article h2 {
+	border-bottom: 2px solid #ddd;
 	margin-top: 2em;
-	font-size: 1.4 em;
-	font-weight: 100;
+	font-size: 1.4em;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+}
+
+article h3 {
+	border-bottom: 2px dotted #ddd;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+}
+article h4 {
+	border-bottom: 1px dotted #ddd;
+	font-weight: 400;
+	letter-spacing: 0.02em;
 }
 
 article footer {
-	border-top: 1px solid #eee;
+	border-top: 1px solid #ddd;
 	margin-top: 2em;
 	padding-top: 1em;
 }
@@ -278,6 +291,11 @@ a.biglink .description {
 
 .chroma {
 	min-width: 2.3em;
+}
+
+.property {
+	padding-left: 1em;
+	font-size: 0.8em;
 }
 
 p code {
