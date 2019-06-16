@@ -54,3 +54,9 @@ pluralizeListTitles = false
     title = "Interesting code snippets and experiments."
     url = "/code/"
     weight = 3
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    title = "About Me"
+    url = "/about/"
+    weight = 4

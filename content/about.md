@@ -3,34 +3,24 @@ title: "About"
 summary: About Me
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<img class="profile" src="/images/profile.jpg">
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Software Engineer with a keen eye on code architecture, algorithmics and performance.
+I work mostly in Go, but have also done extensive work using Delphi and JavaScript.
 
+I started professionally working in 2007, but I've been poking code even more.
+
+<div class="clear"></div>
 
 ## Work
 
-
-### Storj Labs Inc.
+### Storj
 
 <div class="property">2018 - ????, Software Engineer</div>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+In Storj project I'm helping build a distributed data storage solution.
+
+[Storj](https://storj.io/), [Tardigrade](https://tardigrade.io/)
 
 ### Raintree Estonia
 
@@ -38,7 +28,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 In Raintree Estonia I helped maintain an electronic medical records software which was started in 1983. During my time there I handled quite a different set of responsibilities. Few of the more interesting projects were:
 
-* adopting terminal-server architecture for web,
+* adopting terminal-server architecture for web, which contained collaborative editing in an enterprise system,
 * designing high-performance and low-memory reporting engine,
 * building a [knowledge base](https://github.com/raintreeinc/knowledgebase/) for easier information navigation,
 * building tooling for automated UI testing, and

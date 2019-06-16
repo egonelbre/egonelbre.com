@@ -327,3 +327,18 @@ figure > img, figure > video {
 	margin: auto;
 	max-width: 100%;
 }
+
+.profile {
+	float: right;
+	max-width: 15em;
+	margin-left: 2em;
+	box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+}
+
+@media only screen and (max-width: 600px) {
+	.profile{
+		display: block;
+		margin: 0 auto;
+		float: none;
+	}
+}
