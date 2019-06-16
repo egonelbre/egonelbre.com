@@ -18,7 +18,7 @@ googleAnalytics = ""
 pluralizeListTitles = false
 
 [params.social.config]
-  platforms = ["twitter","github","email","linkedin","instagram","gallery", "rss"]
+  platforms = ["twitter","github","email","linkedin","instagram","gallery","soundcloud","rss"]
 [params.social]
   twitter   = "egonelbre"
   github    = "egonelbre"
@@ -26,6 +26,7 @@ pluralizeListTitles = false
   linkedin  = "egonelbre"
   instagram = "egonelbre"
   gallery   = "https://gallery.egonelbre.com"
+  soundcloud = "egon-elbre"
   rss       = "index.xml"
 [params.rss]
   authorName = "Egon Elbre"

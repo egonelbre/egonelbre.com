@@ -10,6 +10,8 @@ I work mostly in Go, but have also done extensive work using Delphi and JavaScri
 
 I started professionally working in 2007, but I've been poking code even more.
 
+In my free time I like to [draw](https://gallery.egonelbre.com/), [make music](https://soundcloud.com/egon-elbre/) and [dance](http://tokra.ee/).
+
 <div class="clear"></div>
 
 ## Work
