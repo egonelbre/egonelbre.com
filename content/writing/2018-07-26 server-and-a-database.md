@@ -10,7 +10,7 @@ I have seen quite a few questions on how to setup a basic server and database in
 
 We are going to take a really small website, where you can submit comments and it will display them. We will cover interaction with the server and database, however we will mostly ignore the different ways of rendering the content and writing business logic. _Also, you should probably have some familiarity with Go databases and servers._
 
-_You can imagine this as an example of_ [_“Infinite Possibilities”_](/article/learning-code-readability#exercise-cut-the-red-wire) _exercise._
+_You can imagine this as an example of_ [_“Infinite Possibilities”_](/learning-code-readability#exercise-cut-the-red-wire) _exercise._
 
 ### YOLO
 

@@ -334,4 +334,4 @@ Overall we can summarize the code readability as trying to balance different asp
 
 In practice there is no “perfect” way of organizing code, but there are many trade-offs. While I focused on readability, it is never the end goal, there are many other things to consider like reliability, maintainability, performance, speed of prototyping.
 
-_See the next part [Learning Code Readability](/article/learning-code-readability) for suggestions on how to improve your skills. And thoughts on [What is a Layer](/article/what-is-a-layer)._
+_See the next part [Learning Code Readability](/learning-code-readability) for suggestions on how to improve your skills. And thoughts on [What is a Layer](/what-is-a-layer)._

@@ -7,7 +7,7 @@ tags: ["Software Concepts"]
 
 Sometimes conversations push you into a new direction which gives a fundamental shift in understanding. One of these things for me was OOP and what the paradigm was founded on.
 
-_Before continuing, it is recommended to read [“Paradigm is not the Implementation”](/article/paradigm-is-not-the-implementation)._
+_Before continuing, it is recommended to read [“Paradigm is not the Implementation”](/paradigm-is-not-the-implementation)._
 
 There is a lot of talk about how [OOP is bad](https://www.reddit.com/r/oopisbad/). It’s not that I disagree with the statements; what bothers me, is the imprecision when people discuss the drawbacks. Often there is “inheritance is bad” without analysis, why it’s bad, what are the forces at play. _And I do not mean here “look how terrible this code is”._
 

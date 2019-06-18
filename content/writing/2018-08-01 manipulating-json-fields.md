@@ -324,7 +324,7 @@ This solution is nice and neat to use, however extending it with new types would
 
 ## Composed serialization
 
-We can avoid reflection by using a thing I call [composed serialization](/blog/composed-serialization). This is how we would write the `Field` interface:
+We can avoid reflection by using a thing I call [composed serialization](/composed-serialization). This is how we would write the `Field` interface:
 
 ```
 type Field interface {

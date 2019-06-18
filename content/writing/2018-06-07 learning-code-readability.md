@@ -7,7 +7,7 @@ reviewers: ["Taavi Kivisik"]
 ---
 
 
-_While I’m procrastinating the harder articles, I thought about writing a followup to “_[_Psychology of Code Readability_](/article/psychology-of-code-readability)_”._
+_While I’m procrastinating the harder articles, I thought about writing a followup to “_[_Psychology of Code Readability_](/psychology-of-code-readability)_”._
 
 One of the questions I got was how do you actually learn or become better in writing readable code.
 

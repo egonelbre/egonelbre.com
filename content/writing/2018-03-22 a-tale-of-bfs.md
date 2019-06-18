@@ -455,4 +455,4 @@ So we went from 50 seconds to 25 seconds. Which beat their C++ version, at that 
 
 While this may look like a lot of work, in reality ... I spent more time writing this whole post than doing these improvements.
 
-For the second part take a look at [A Tale of BFS: Going Parallel](/blog/a-tale-of-bfs-going-parallel) where we get that big graph down to ~3.6 seconds.
+For the second part take a look at [A Tale of BFS: Going Parallel](/a-tale-of-bfs-going-parallel) where we get that big graph down to ~3.6 seconds.
