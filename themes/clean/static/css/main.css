@@ -168,29 +168,26 @@ article {
 	padding: 1rem;
 }
 
-article h1 {
-	font-size: 1.6em;
+article h1, article h2, article h3, article h4 {
 	font-weight: 400;
 	letter-spacing: 0.02em;
+}
+
+article h1 {
+	font-size: 1.6em;
 }
 
 article h2 {
 	border-bottom: 2px solid #ddd;
 	margin-top: 2em;
 	font-size: 1.4em;
-	font-weight: 400;
-	letter-spacing: 0.02em;
 }
 
 article h3 {
 	border-bottom: 2px dotted #ddd;
-	font-weight: 400;
-	letter-spacing: 0.02em;
 }
 article h4 {
 	border-bottom: 1px dotted #ddd;
-	font-weight: 400;
-	letter-spacing: 0.02em;
 }
 
 article footer {
@@ -207,10 +204,6 @@ article .date {
 article .tags {
 	color: #666;
 	font-style: italic;
-}
-
-article p {
-	font-weight: 100;
 }
 
 a.biglink {
