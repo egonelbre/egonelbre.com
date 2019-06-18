@@ -2,20 +2,22 @@ backend:
   name: github
   repo: egonelbre/egonelbre.com
 
-media_folder: "images/uploads"
+media_folder: "content/_images"
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "content/blog"
+  - name: "writing"
+    label: "Writing"
+    folder: "content/writing"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}} {{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
+      - {label: "Summary", name: "subtitle", widget: "string", required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: true }
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Aliases", name: "aliases", widget: "list", required: false}
+      - {label: "Reviewers", name: "reviewers", widget: "list", required: false}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
@@ -24,12 +26,14 @@ collections:
     label: "Code"
     folder: "content/code"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}} {{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
+      - {label: "Summary", name: "subtitle", widget: "string", required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: true }
       - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Reviewers", name: "reviewers", widget: "list", required: false}
       - {label: "Aliases", name: "aliases", widget: "list", required: false}
       - {label: "Publish Date", name: "date", widget: "datetime", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
@@ -38,10 +42,11 @@ collections:
     label: "Project"
     folder: "content/project"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}} {{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
+      - {label: "Summary", name: "subtitle", widget: "string", required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: true }
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Aliases", name: "aliases", widget: "list", required: false}
