@@ -62,6 +62,6 @@ pluralizeListTitles = false
   [[menu.main]]
     identifier = "about"
     name = "About"
-    title = "About Me"
+    title = "About"
     url = "/about/"
     weight = 4

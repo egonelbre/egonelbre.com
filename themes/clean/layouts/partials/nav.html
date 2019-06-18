@@ -4,7 +4,7 @@
         <nav>
             {{ $currentPage := . }}
             {{ range .Site.Menus.main }}
-            <a class="{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) (eq $currentPage.Section .Identifier )  }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+            <a class="{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) (eq $currentPage.RelPermalink .URL) (eq $currentPage.Section .Identifier )  }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
             {{ end }}
         </nav>
         <div class="clear" />
