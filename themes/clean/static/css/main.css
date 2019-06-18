@@ -49,6 +49,12 @@ footer.main {
 	border-top: 1px solid #eee;
 }
 
+footer .find-me {
+	text-align: center;
+	font-size: 0.8rem;
+	color: #888;
+}
+
 .social {
 	text-align: center;
 }
