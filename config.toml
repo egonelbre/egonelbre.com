@@ -11,7 +11,7 @@ pygmentsCodeFences = true
 pygmentsUseClasses = true
 pygmentsoptions = "linenos=true"
 
-copyright = "&#169; Egon Elbre 2019"
+copyright = "Egon Elbre 2019"
 disqusShortname = ""
 googleAnalytics = ""
 

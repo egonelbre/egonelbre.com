@@ -12,9 +12,11 @@
             {{- end -}}
         </div>
     </div>
+    {{with .Site.Copyright -}}
     <div class="center">
-        <copyright>{{ .Site.Copyright | safeHTML}}</copyright>
+        <copyright>&copy; {{ . | safeHTML}}</copyright>
     </div>
+    {{- end}}
 </footer>
 {{ if .Site.GoogleAnalytics }}
 {{ template "_internal/google_analytics_async.html" . }}
