@@ -1,5 +1,6 @@
 ---
-title: "Egon Elbre"
+title: "About"
+overrideTitle: "Egon Elbre"
 summary: About Me
 date: "2019-06-18T12:00:00+03:00"
 ---

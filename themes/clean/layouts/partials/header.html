@@ -2,11 +2,8 @@
 <html {{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
 <head>
 	<meta charset="utf-8">
-	{{ if eq .IsHome false -}}
-	<title>{{ .Title }} | {{ .Site.Title }}</title>
-	{{- else -}}
-	<title>{{ .Site.Params.Info.homeTitle }}</title>
-	{{- end }}
+
+	<title>{{ .Title }} {{ if not .IsHome }}| {{ .Site.Title }}{{end}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	{{ if .Site.Params.rss }}
