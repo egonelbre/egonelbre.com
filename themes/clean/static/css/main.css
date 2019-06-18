@@ -327,6 +327,15 @@ a.biglink .description {
 	min-width: 2.3em;
 }
 
+.hanchor {
+	color: #ccc;
+	text-decoration: none;
+	transition: color 0.2s ease-in-out;
+}
+.hanchor:hover {
+	color: #72b5d0;
+}
+
 .property {
 	padding-left: 1em;
 	font-size: 0.8em;

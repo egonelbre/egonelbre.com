@@ -7,9 +7,7 @@
 		<h1 class="title">{{ .Title }}{{ if .Draft }} ::Draft{{ end }}</h1>
 		{{with .Params.subtitle}}<h2>{{.}}</h2>{{end}}
 
-		<div class="content">
-			{{.Content}}
-		</div>
+		<div class="content">{{ partial "anchor" .Content }}</div>
 
 		<footer>
 			{{ if .Params.tags }}<div class="tags">{{ partial "tags" .Params.tags }}</div>{{ end }}
