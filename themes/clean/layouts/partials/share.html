@@ -1,0 +1,3 @@
+<div class="social">
+    {{ if .Site.Params.share -}}<a title="Share this on Twitter." href="https://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{ .Site.Params.Social.twitter }}" target="_blank"><span class="icon">{{ partial "svg/icons" "twitter"}}</span></a>{{- end }}
+</div>

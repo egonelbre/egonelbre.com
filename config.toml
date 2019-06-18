@@ -20,8 +20,6 @@ pluralizeListTitles = false
 [params.assets]
   customCSS = []
 
-[params.social.config]
-  platforms = ["twitter","github","email","linkedin","instagram","gallery","soundcloud","rss"]
 [params.social]
   twitter   = "egonelbre"
   github    = "egonelbre"
@@ -31,6 +29,9 @@ pluralizeListTitles = false
   gallery   = "https://gallery.egonelbre.com"
   soundcloud = "egon-elbre"
   rss       = "index.xml"
+[params.social.config]
+  platforms = ["twitter","github","email","linkedin","instagram","gallery","soundcloud","rss"]
+
 [params.rss]
   authorName = "Egon Elbre"
 

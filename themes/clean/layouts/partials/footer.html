@@ -2,7 +2,7 @@
     <div class="center">
         <div class="social">
             {{- $ := . -}}
-            {{- $social := .Site.Params.social -}}
+            {{- $social := .Site.Params.Social -}}
             {{- range $platform := $social.config.platforms -}}
                 {{- with $username := ( index $social $platform ) -}}
                 <a title="{{$platform}}" href="{{index $.Site.Data.social.base $platform}}{{$username}}">

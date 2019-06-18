@@ -82,6 +82,15 @@ footer.main {
 	stroke: #666;
 	stroke-width: 1.5px;
 }
+article .social {
+	float: right;
+}
+article .social {
+	margin-top: 0.5rem;
+}
+article .social a .icon {
+	padding: 0.5rem;
+}
 
 hr {
 	border: dotted #ddd;
