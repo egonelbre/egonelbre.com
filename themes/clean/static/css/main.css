@@ -122,7 +122,24 @@ header.main nav {
 
 header.main nav a {
 	display: inline-block;	
-	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+header.main nav a:last-child {
+	margin-right: 0;
+}
+
+@media only screen and (max-width: 500px) {
+	header.main h1, header.main nav {
+		float: none;
+		text-align: center;
+	}
+	header.main nav {
+		margin-top: 0.3em;
+	}
+	header.main a {
+		display: inline-block;
+		padding: 0.4rem;
+	}
 }
 
 header.main a:hover {
