@@ -17,6 +17,9 @@ googleAnalytics = ""
 
 pluralizeListTitles = false
 
+[params.assets]
+  customCSS = []
+
 [params.social.config]
   platforms = ["twitter","github","email","linkedin","instagram","gallery","soundcloud","rss"]
 [params.social]

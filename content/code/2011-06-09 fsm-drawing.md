@@ -15,7 +15,9 @@ Simple finite state machine used to implement a drawing tool.
         padding: 0;
     }
 </style>
+
 <canvas id="canvas"></canvas>
+
 <script>
 // canvas setup
 var d=document,
@@ -64,7 +66,7 @@ function CFSM(defaultUpdate){
     this.currentState = new State(this, { update: defaultUpdate || EmptyFunc });
 }
 
-CFSM.prototype.Update: function(){
+CFSM.prototype.Update = function(){
     if( this.newState ){
         this.currentState.ExecuteEndState();
         this.currentState = this.newState;
