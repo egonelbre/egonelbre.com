@@ -17,6 +17,9 @@ googleAnalytics = ""
 
 pluralizeListTitles = false
 
+[social]
+  twitter = "egonelbre"
+
 [params.assets]
   customCSS = []
 
