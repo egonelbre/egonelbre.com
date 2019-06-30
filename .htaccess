@@ -1,0 +1,16 @@
+
+RewriteEngine on
+
+# Redirect files/* to public.egonelbre.com/*
+RewriteCond %{HTTP_HOST} ^egonelbre\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.egonelbre\.com$
+RewriteRule ^files\/?(.*)$ "https\:\/\/public\.egonelbre\.com\/$1" [R=301,L]
+
+# Redirect www.egonelbre.com to egonelbre.com
+RewriteCond %{HTTP_HOST} ^www\.egonelbre\.com [NC]
+RewriteRule ^(.*)$ https://egonelbre.com/$1 [L,R=301]
+
+# Redirect http to https
+RewriteCond %{HTTP_HOST} ^egonelbre\.com [NC]
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://egonelbre.com/$1 [R,L]
