@@ -4,7 +4,7 @@ title: "Building with Value: An Example"
 summary: Example on how to develop software with little effort.
 star: true
 tags: ["Go", "Software Concepts"]
-reviewers: ["Peter Seebach"]
+reviewers: ["Peter Seebach", "Taavi Kivisik"]
 ---
 
 {{< figure src="/_images/value/basic-tree.jpg" >}}
@@ -15,20 +15,20 @@ Previously I described a process for developing software while trying to provide
 
 How would one iteration of this process look like?
 
-_We use Go as our example language and avoid using things that do too much for us, so that we can observe the process more clearly. In practice, many tools and approaches can help speed up development._
+_I'll use Go as our example language and avoid using things that do too much for us, so that we can observe the process more clearly. In practice, many tools and approaches can help speed up development._
 
-We’ll continue with the example from the previous post, an Issue Tracker.
+I’ll continue with the example from the previous post, an Issue Tracker.
 
 ### The Simplified Process
 
-1.  Structure Follows Value: we try to figure out what is the most valuable thing we could implement right now.
-2.  Spiking: we create a rough draft of 2–4 changes.
-3.  Gradual Stiffening: we incrementally build up the changes,
-4.  Cleanup: and observe the wholeness and try to notice any small mistakes.
+1.  Structure Follows Value: find out what is the most valuable thing to implement right now.
+2.  Spiking: we create a draft of 2–4 changes.
+3.  Gradual Stiffening: build these changes incrementally,
+4.  Cleanup: observe the wholeness and try to notice any small mistakes.
 
 ## Structure Follows Value
 
-Here is our first important question. “What provides most Value in an Issue Tracker that we can implement right now?”
+“What provides most Value in an Issue Tracker that we can implement right now?”
 
 We may notice the essential pieces from the language used.
 
@@ -48,7 +48,7 @@ Issue is definitely a valuable part. Hence we must capture it in code.
 
 To ensure that we can adequately represent the complexity of an Issue, we should create a package for it. That way, we make it significant and clear. At the same time, we create a locus of attention which allows to understand and examine the feature wholly and whether it is complete.
 
-Of course, packages are not the only way to group things -- there are also packages, classes, functions, methods, constraints, etc. What you use to represent the idea will depend on how large, detailed, or important the contained thing is.
+Of course, packages are not the only way to group things -- there are also classes, functions, methods, constraints, etc. What you use to represent the idea will depend on how large, detailed, or important the contained thing is.
 
 _It is better to start with a notch larger grouping than is needed, and it is not difficult to make it smaller. However, the reverse, moving from smaller container to larger, is usually more complicated. e.g. Going from multiple packages to a single package vs. going from a single package to multiple._
 
@@ -73,7 +73,7 @@ type Info struct {
 }
 ```
 
-We must have an `issue.ID` to identify an issue uniquely. Each issue usually has an `issue.Status` associated with it. We need something to bring all the attributes together `issue.Info`. Keep in mind that we are sketching the code and are not committed to this structure. We are not looking perfection, but rather a global view of how things will work together.
+We must have an `issue.ID` to identify an issue uniquely. Each issue usually has an `issue.Status` associated with it. We need something to bring all the attributes together like `issue.Info`. Keep in mind that we are sketching the code and are not committed to this structure. We are not looking perfection, but rather a global view of how things will work together.
 
 _Notice that I don’t use long names such as IssueStatus, IssueInfo because the package for them already contains `issue`._
 
@@ -166,9 +166,9 @@ Now we have a good idea about the feature and how to put it into code, we shall 
 
 Here we could add a in-memory implementation of the tracker and then write some tests for it.
 
-The other thing what we want to do here is to make it easier to understand and ensure whether the code behaves as it should. In most cases, you would wish to unit or behavior tests, but they are not the only way. You could also write property tests. Or write output that could be verified by hand, if the correct behavior is difficult to describe in code.
+The other thing what we want to do here is to make it easier to understand and ensure whether the code behaves as it should. In most cases, you would wish to unit or behavior test, but they are not the only way. You could also write property tests. Or write output that could be verified by hand, if the correct behavior is difficult to describe in code.
 
-Few interesting bits while solidifying code. When you come across questions, mark them as such. For example, while writing the tracker test case, I made a mistake while writing:
+Few interesting bits to pay attention to while solidifying code. When you come across questions, mark them as such. For example, while writing the tracker test case, I made a mistake while writing:
 
 ```
 tracker.Close(id)  
@@ -192,14 +192,10 @@ const (
 )
 ```
 
-I could try to figure out this immediately, but I really don’t think I have the necessary information right now and I will probably find out the details while implementing other things. In a similar vein we might reconsider Tracker method names.
+I could try to figure out this immediately, but I really don’t think I have the necessary information right now and I will probably find out the details while implementing other things. In a similar vein, we might reconsider Tracker method names.
 
 ---
 
-Now we have captured something of value in the code. It can’t be used easily right now, but we have something that someone would like to use.
+Now we have captured something of value in the code. There is plenty of things we can do to improve the ease of use that code, but we have something that someone would like to use already.
 
-It might look that it was an involved process that created only these few lines of code. In reality, it’s pretty fluid and moves quite quickly.
-
----
-
-Hopefully, this will give a rough idea of how to work on a project of any scale. This process doesn’t change with scale, however, you might have more things you can consider valuable.
+Using this process helps to keep focus on what matters and at the same time, bring together a bigger picture.
