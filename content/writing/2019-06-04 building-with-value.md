@@ -4,7 +4,7 @@ title: "Building with Value"
 summary: How to use value as primary driver for developing.
 star: true
 tags: ["Software Concepts"]
-reviewers: ["Peter Seebach"]
+reviewers: ["Peter Seebach", "Taavi Kivisik"]
 ---
 
 {{< figure src="/_images/value/tree-swing.jpg" >}}
@@ -27,13 +27,13 @@ I covered some of the aspects of understanding value already in Value in Softwar
 
 When we are starting out writing some software, there is so much we could implement. There are also so many ways we could organize and implement things. This overwhelming amount of concerns can quickly push people into Analysis Paralysis.
 
-One approach would be to start from what is easy to implement; however, if we do that, we may implement many things that are not valuable or even worse, not get to implementing valuable stuff at all. 
+One approach would be to start from what is easy to implement; however, if we do that, we may implement many things that are not valuable or even worse, not get to implementing what is valuable at all. 
 
 Let’s take an Issue Tracker as our example to investigate the problems.
 
-Let’s say we start by implementing login to the system as the first thing. As discussed in another article, it’s not that valuable to people. As a programmer, you might think -- I’ve done this many times, it’s easy, and I already have a lot of that code necessary. No doubt, you get something that looks nice and can interact with the page, but what are the downsides?
+Let’s say we start by implementing login to the system as the first thing. As discussed in another article, it’s not that valuable to people. As a programmer, you might think -- I’ve done this many times, it’s easy, and I have a lot of necessary code available already. No doubt, you get something that looks nice and can interact with the page, but what are the downsides?
 
-For one, we would need to login to the site before we can interact with the actual things; this slows down every step of our development. Similarly, our code base will end up more substantial. Hence, we have more distractions and more things that could break. We also might get new requests for login, e.g., password recovery, user management, user groups. Triaging extra features sinks time from other vital parts of the code.
+For one, we would need to login to the site before we can interact with the actual product; this slows down every step of our development. Similarly, our code base will end up more substantial. Hence, we have more distractions and more parts that could break. We also might get new requests for login, e.g., password recovery, user management, user groups. Triaging extra features sinks time from other vital parts of the code.
 
 We could also start implementing the end goal. For issue tracking, this might be managing large projects with several teams. However, a big goal can take too much time before it can become practically useful.
 
@@ -48,6 +48,8 @@ How do we avoid making mistakes in the Valuable parts of the system and at the s
 It somehow seems obvious and not-so-obvious at the same time to start with the most valuable thing we can complete right now.
 
 For an issue tracker, the most valuable thing we can quickly complete is the Issue. We can detect the importance already from our conversation about the product. To do anything in the system, we need to be able to manage Issues. The rest of the system has no significant value without it.
+
+After implementing the Issue as the first thing, we can already start using it in code and people can may start getting value from it.
 
 The benefit we gain from this is that when we implement “Issue” as the first thing the thing support, we can already start using it in code and people may get a little value from it.
 
@@ -115,7 +117,7 @@ You might think that when you start a new project, there is no system to enhance
 
 Implementing ideas one-by-one would eventually cause problems since we might make mistakes from integrating with the rest of the system. We also shouldn’t try to implement too much, since our working memory cannot handle it.
 
-If we try to break the previously discovered “Value” into 2–4 changes, we minimize the chance of the changes fitting into our working memory. We outline these changes as rough drafts called Spikes. For Spikes, you can use method declarations, type definitions, comments, or anything else that helps to get a feel for how things fit together. We could even do the spiking on a whiteboard or CRC cards.
+If we try to break the previously discovered “Value” into 2–4 changes, we minimize the chance of the changes fitting into our working memory. We outline these changes as rough drafts called Spikes. For Spikes, you can use method declarations, type definitions, comments, or anything else that helps to get a feel for how things fit together. We could even do the spiking on a whiteboard or [CRC cards](https://en.wikipedia.org/wiki/Class-responsibility-collaboration_card).
 
 _Spiking in software development has its roots in [Extreme Programming](http://www.extremeprogramming.org/rules/spike.html) for getting a feel for and understanding whether we are on the right track and notice potential problems. The spiking idea comes from architecture, where architects would put spikes into the ground to get a better feeling of the building and the environment._
 
