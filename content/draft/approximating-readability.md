@@ -142,7 +142,6 @@ v.X = z.X + r.X
 v.Y = r.Y + z.Y
 ```
 
-
 ### Context Stacking
 
 ```
@@ -184,4 +183,22 @@ for i := 0; i < N; i++ {
     ...
     i++
 }
+```
+
+### Naming
+
+```
+var lfjncauk int
+
+vs.
+
+var total int
+
+vs.
+
+var ttl int
+
+vs.
+
+var t int
 ```
