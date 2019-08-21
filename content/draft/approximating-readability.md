@@ -192,6 +192,10 @@ var lfjncauk int
 
 vs.
 
+var totalOfTheValuesInList int
+
+vs.
+
 var total int
 
 vs.
@@ -201,4 +205,33 @@ var ttl int
 vs.
 
 var t int
+```
+
+
+### Mixing of abstraction layers
+
+```
+func (server *Server) call() {
+	...
+	AddInvoice(db, invoice)
+}
+
+func AddInvoice(db DB, invoice *Invoice) {
+	invoice.Tax = invoice.Total * 0.23
+	err := db.Exec(`insert into invoices values (...)`)
+	...
+}
+
+vs.
+
+func (server *Server) call() {
+	...
+	invoice.Tax = invoice.Total * 0.23
+	AddInvoice(db, invoice)
+}
+
+func AddInvoice(db DB, invoice *Invoice) {
+	err := db.Exec(`insert into invoices values (...)`)
+	...
+}
 ```
