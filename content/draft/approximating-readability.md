@@ -86,3 +86,102 @@ context stacking
 distance
 
 ## Mental Models
+
+
+## Case Studies
+
+### Whitespace
+
+```
+a := b + c
+
+vs.
+
+a := b                 +
+				 c
+```
+
+```
+u.X = z.X - r.X
+u.Y = z.Y - r.Y
+v.X = z.X + r.X
+v.Y = z.Y + r.Y
+
+vs.
+
+u.X = z.X - r.X
+u.Y = z.Y - r.Y
+
+v.X = z.X + r.X
+v.Y = z.Y + r.Y
+```
+
+### Idioms
+
+```
+for i := 0; i < len(items); i++ {
+	...
+}
+
+vs.
+
+for i := 0; len(items) > i; i++ {
+	...
+}
+```
+
+### Pattern Matching
+
+```
+v.X = z.X + r.X
+v.Y = z.Y + r.Y
+
+vs.
+
+v.X = z.X + r.X
+v.Y = r.Y + z.Y
+```
+
+
+### Context Stacking
+
+```
+a := open()
+b := open()
+b.Close()
+a.Close()
+
+vs.
+
+a := open()
+b := open()
+a.Close()
+b.Close()
+```
+
+```
+a := open()
+b := open()
+b.Close()
+a.Close()
+
+vs.
+
+a := open()
+b := open()
+a.Close()
+b.Close()
+```
+
+```
+for i := 0; i < N; i += 2 {
+    ...
+}
+
+vs.
+
+for i := 0; i < N; i++ {
+    ...
+    i++
+}
+```
