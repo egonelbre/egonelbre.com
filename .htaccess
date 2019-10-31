@@ -1,6 +1,9 @@
 
 RewriteEngine on
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^\.well-known/.+ - [END]
+
 # Redirect files/* to public.egonelbre.com/*
 RewriteCond %{HTTP_HOST} ^egonelbre\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.egonelbre\.com$
