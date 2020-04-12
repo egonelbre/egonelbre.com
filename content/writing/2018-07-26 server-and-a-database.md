@@ -45,6 +45,7 @@ http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		ShowErrorPage(w, http.StatusInternalServerError, "Unable to access DB", err)
 		return
 	}
+	defer rows.Close()
 
 	comments := []Comment{}
 	for rows.Next() {
@@ -83,6 +84,7 @@ func listComments(db *sql.DB) ([]Comment, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
 	comments := []Comment{}
 	for rows.Next() {
@@ -173,6 +175,7 @@ func (repo *Comments) List() ([]Comment, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
 	comments := []Comment{}
 	for rows.Next() {
