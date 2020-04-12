@@ -23,6 +23,7 @@ db, err := sql.Open("postgres", "user=dbdemo password=dbdemo dbname=dbdemo sslmo
 if err != nil {
 	log.Fatal(err)
 }
+defer db.Close()
 
 _, err = db.Exec(`
 	CREATE TABLE IF NOT EXISTS Comments (
@@ -108,6 +109,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer db.Close()
 
 	if err := initDatabse(db); err != nil {
 		log.Fatal(err)
@@ -145,6 +147,7 @@ commentsRepo, err := NewComments("user=dbdemo password=dbdemo dbname=dbdemo sslm
 if err != nil {
 	log.Fatal(err)
 }
+defer commentsRepo.Close()
 
 http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
@@ -209,6 +212,7 @@ comments, err := NewComments("user=dbdemo password=dbdemo dbname=dbdemo sslmode=
 if err != nil {
 	log.Fatal(err)
 }
+defer comments.Close()
 
 server := NewServer(comments)
 
