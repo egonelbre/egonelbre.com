@@ -6,50 +6,50 @@ date: ''
 tags: []
 ---
 
-There are many things I would have liked to be said explicitly while I was learning to program. Here are these fundamental understandings that anyone programming should know and anyone experienced knows, but cannot explain.
+There are many things that are not explicitly taught in beginner programming courses that many people do pick them up "automatically". But I've also seen people who struggle understanding these.
+
+If you have been programming over a year, then you probably know all of this.
 
 ## A model of problem-solving
 
-In the simplest terms programmer is a problem solver. There are some things that make reaching a solution easier, some that make it harder. Programming can also create quite extreme emotional states — therefore to understand the whole picture we must take it into account.
+In the simplest terms programmer is a problem solver. As with any problem solving, there are things that make reaching a solution easier, some that make it harder. Similarly to problem solving, it creates interesting emotional states. There's excitment, frustration, curiosity and more.
 
-Here’s how these things work together:
+This emotional aspect is rather important. Let's use a diagram to describe this:
 
 {{< figure src="/_images/programming-model-01.png" >}}
 
-Let’s call the things that affect programmer forces and give them some names:
+The "mood" dimension is rather abstract, but it roughly describes how good you feel. We're going to split this into few ideas:
 
 *   movement: things that make you move towards your goal
 *   friction: things that make your movement harder and hinder you from reaching your goal
 *   uppers: things that make you feel good
 *   downers: things that make you feel bad
 
-Keep in mind that the “mood” axis is an abstract concept.
+Let's take a Sudoku puzzle to explain how all of these work together.
 
-It’s much easier to explain the model with Sudoku since more people are familiar with it. Also, the time frame where you experience all of these steps are much shorter.
+When we start solving the Sudoku we have some eagerness or excitement to solve it (assuming you actually like Sudokus).
 
-When we start solving the Sudoku we have some eagerness
+1. We realize the actual difficulty of the problem and become focused. We also start filling the easier parts.
+2. We have some difficult step, where we need to have more effort to move forward. Once we break this problem, we get a small hit of dopamine.
+3. Eventually, we realize the full solution and quickly fill in the missing parts.
+4. We finished it, finally, we have this “high” from reaching the goal and feeling smart.
 
-1.  stage, we realize the actual difficulty of the problem and become focused. We also start filling the easier parts.
-2.  stage, we have some difficult step, where we need to have more effort to move forward. Once we break this difficult stage, we get this small high of solving a small problem.
-3.  stage, we realize that we know how to solve the puzzle and quickly fill in the missing parts.
-4.  stage, we finished it, finally, we have this “high” from reaching the goal and feeling smart.
+This same emotional fluctuation and final dopamine high are what causes the addictiveness of Sudokus. This might also be the reason why programmers can easily get into this state flow and lose track of time. _Flow as described by Mihaly Csikszentmihalyi._
 
-This same emotional fluctuation and final high are what causes the addictiveness of Sudokus. This is also the reason why programmers can easily get into this state flow and lose track of time. _Flow as described by Mihaly Csikszentmihalyi._
+We can decompose the movement ideas into smaller ideas:
 
-Let’s see how to decompose these forces into simpler ideas:
+* uppers = progress + solving subgoals + acquiring new skills + understanding + serendipity
+* downers = no progress + failures + perceived difficulty + feeling stupid + pressure
+* friction = difficulty + bad tools + bad mood
+* movement = perceived reward \* ( skills + knowledge + good tools + good mood )
 
-*   uppers := progress + solving subgoals + acquiring new skills + understanding + serendipity
-*   downers = no progress + failures + perceived difficulty + feeling stupid + pressure
-*   friction = difficulty + bad tools + bad mood
-*   movement = perceived reward \* ( skills + knowledge + good tools + good mood )
+With sudokus, `difficulty` is the complexity of deriving the next number. If we use a bad tool such as a ballpoint pen compared to a pencil, the required skill level will be higher. If we have a pencil we can do try out different things and erase them as necessary. `Skills` help us derive new numbers. We might have some `knowledge` about "dancing links".
 
-In sudoku, difficulty means how easy it is to derive the next number. If we use a bad tool such as a pen or nothing at all the required skill level must be higher. If we have a pencil we can do try out different things and erase them as necessary. Skills are things that help us derive new numbers and knowledge is how a number looks like.
+`Perceived reward` makes us want to apply our `knowledge` and struggle against `friction` more, hence it affects all other parts of the `movement`. This suggests that learning theory without a goal requires more effort than trying to solve a problem while learning theory as a solution. Hence, learning should start from a problem, not from theory.
 
-Perceived reward makes us want to apply our knowledge and struggle against friction more, hence it affects all other parts of the movement. This suggests that learning theory without a goal requires more effort than trying to solve a problem while learning theory as a solution. This means learning must start from a problem, not from theory.
+With programming the main ideas are the same.
 
-We can see that by learning we can affect knowledge, tools, and skills. This also means that learning must affect all of them.
-
-If we consider programming the force decomposition stays the same. One area that is often discussed when starting to learn programming is what language, framework, toolchain to use. The force that these things affect is friction — and to some smaller degree required knowledge.
+For example, one area that is often discussed when starting to learn programming is what language, framework, toolchain to use. The force that these things affect is friction — and to some smaller degree required knowledge.
 
 So the question is actually how much friction is necessary for learning. If we lower friction we are also lowering the skill required to accomplish a task — which may not be the best solution for learning. Programmers must be able to deal with the friction — how to keep going towards the goal, even if everything is working against you. So there is a necessity for skills that deal with friction.
 
@@ -79,11 +79,11 @@ So what are the programming skills that are the main drivers of movement? What i
 
 ## Meaning of things
 
-The first important insight about computers is that
+The first important insight about computers is:
 
-> Computers are stupid ... very, very stupid.
+> Computers are stupid... very, very stupid.
 
-This insight may feel weird if a person moves from using computers to programming. The computer seems intelligent to a user, we use language to convey instructions to the computer and it also looks like it can understand. Now with AI, even more so.
+This insight may feel weird if a person moves from using computers to programming. The computer seems intelligent to a user, we use language to google things and it looks like it can understand.
 
 As humans, we have a lot of assumptions about things. For example when I say “elephant is pink”, you probably will imagine a pink elephant, with a trunk, a few ears, legs, and a tail. Even the color pink is a thing we assume to exist.
 
@@ -93,7 +93,7 @@ When we do the same thing in some programming language:
 elephant = "pink"
 ```
 
-We still read the code “elephant is pink”, but the actual underlying context is totally different. The `elephant` isn’t an animal anymore, it’s a reference in memory, and “=” is not a descriptive term, but an assignment. “pink” is not a color anymore but just a string. Computer language is different from natural language since everything has a single well-defined meaning, usually at least.
+We would read the code as “elephant is pink”, however the actual underlying context is completely different. The `elephant` isn’t an animal anymore, it’s a reference in memory, and “=” is not a descriptive term, but an assignment. “pink” is not a color anymore but just a string. Computer language is different from natural language since everything has a single well-defined meaning... usually at least.
 
 To make this concept more understandable let’s consider this program:
 
@@ -115,11 +115,11 @@ What is the value of `x` at the end? Here are the options:
 
 If you are a good programmer you probably realized that the correct answer is “all of the above”.
 
-In the imperative language “=” means assignment, i.e. we assign this value to that variable. In a functional language “=” means we declare a symbol for this value and any further reassignment is forbidden. In semantic meaning “=” could specify a condition and that it must be held in the future unless it’s redefined. Any of these is a valid assumption to have, but as a programmer, you must realize that all of those contexts are possible.
+In an imperative language “=” means assignment, i.e. we assign this value to that variable. In a functional language “=” means we declare a symbol for this value and any further reassignment is forbidden. In semantic meaning “=” could specify a condition and that it must be held in the future unless it’s redefined. Any of these is a valid assumption to have, but as a programmer, you must realize that all of those contexts are possible.
 
-None of these behaviors is “wrong” (remember computers are stupid and they don’t care what the “=” thing means), but some of these behaviors may be more intuitive and favorable depending on the context.
+None of these behaviors are “wrong” (remember computers are stupid and they don’t care what the “=” thing means), but some of these behaviors may be more intuitive and favorable depending on the context.
 
-In the same way, if we have a program drawing a rectangle on the screen, then making a new variable and writing:
+In the same way, if we have a program drawing a rectangle on the screen, then adding a new variable and writing:
 
 ```
 y = 50
