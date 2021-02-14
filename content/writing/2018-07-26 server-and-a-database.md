@@ -10,7 +10,7 @@ I have seen quite a few questions on how to setup a basic server and database in
 
 We are going to take a really small website, where you can submit comments and it will display them. We will cover interaction with the server and database, however we will mostly ignore the different ways of rendering the content and writing business logic. _Also, you should probably have some familiarity with Go databases and servers._
 
-_You can imagine this as an example of_ [_“Infinite Possibilities”_](/learning-code-readability#exercise-cut-the-red-wire) _exercise._
+_This is an example of_ [_“Infinite Possibilities”_](/learning-code-readability#exercise-cut-the-red-wire) _exercise._
 
 ### YOLO
 
@@ -19,13 +19,13 @@ _Code at_ [_https://github.com/egonelbre/db-demo/tree/master/00\_yolo_](https://
 This is the version, that takes the least effort. This approach can be described as “throw everything together”.
 
 ``` go
-db, err := sql.Open("postgres", "user=dbdemo password=dbdemo dbname=dbdemo sslmode=disable")
+db, err := pgxpool.Connect(ctx, "user=dbdemo password=dbdemo dbname=dbdemo sslmode=disable")
 if err != nil {
 	log.Fatal(err)
 }
 defer db.Close()
 
-_, err = db.Exec(`
+_, err = db.Exec(ctx, `
 	CREATE TABLE IF NOT EXISTS Comments (
 		"User"    TEXT,
 		"Comment" TEXT
@@ -36,12 +36,14 @@ if err != nil {
 }
 
 http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+
 	if r.Method != http.MethodGet {
 		ShowErrorPage(w, http.StatusMethodNotAllowed, "Invalid method", nil)
 		return
 	}
 
-	rows, err := db.Query(`SELECT "User", "Comment" FROM Comments`)
+	rows, err := db.Query(ctx, `SELECT "User", "Comment" FROM Comments`)
 	if err != nil {
 		ShowErrorPage(w, http.StatusInternalServerError, "Unable to access DB", err)
 		return
@@ -80,8 +82,8 @@ _Code at_ [_https://github.com/egonelbre/db-demo/tree/master/01\_funcs_](https:/
 The first step towards separating HTTP from data storage is to use functions. We create functions for different interactions and then provide the database connection as the first parameter.
 
 ``` go
-func listComments(db *sql.DB) ([]Comment, error) {
-	rows, err := db.Query(`SELECT "User", "Comment" FROM Comments`)
+func listComments(ctx context.Context, db *pgxpool.Pool) ([]Comment, error) {
+	rows, err := db.Query(ctx, `SELECT "User", "Comment" FROM Comments`)
 	if err != nil {
 		return nil, err
 	}
@@ -116,12 +118,13 @@ func main() {
 	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		ctx := r.Context()
 		if r.Method != http.MethodGet {
 			ShowErrorPage(w, http.StatusMethodNotAllowed, "Invalid method", nil)
 			return
 		}
 
-		comments, err := listComments(db)
+		comments, err := listComments(ctx, db)
 		if err != nil {
 			ShowErrorPage(w, http.StatusInternalServerError, "Unable to access DB", err)
 			return
@@ -143,19 +146,20 @@ _Code at_ [_https://github.com/egonelbre/db-demo/tree/master/02\_repo_](https://
 Instead of keeping separate functions we can attach them to a type.
 
 ``` go
-commentsRepo, err := NewComments("user=dbdemo password=dbdemo dbname=dbdemo sslmode=disable")
+commentsRepo, err := NewComments(ctx, "user=dbdemo password=dbdemo dbname=dbdemo sslmode=disable")
 if err != nil {
 	log.Fatal(err)
 }
 defer commentsRepo.Close()
 
 http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
 	if r.Method != http.MethodGet {
 		ShowErrorPage(w, http.StatusMethodNotAllowed, "Invalid method", nil)
 		return
 	}
 
-	comments, err := commentsRepo.List()
+	comments, err := commentsRepo.List(ctx)
 	if err != nil {
 		ShowErrorPage(w, http.StatusInternalServerError, "Unable to access DB", err)
 		return
@@ -170,11 +174,11 @@ Where the comments repository looks like:
 
 ``` go
 type Comments struct {
-	db *sql.DB
+	db *pgxpool.Pool
 }
 
-func (repo *Comments) List() ([]Comment, error) {
-	rows, err := repo.db.Query(`SELECT "User", "Comment" FROM Comments`)
+func (repo *Comments) List(ctx context.Context) ([]Comment, error) {
+	rows, err := repo.db.Query(ctx, `SELECT "User", "Comment" FROM Comments`)
 	if err != nil {
 		return nil, err
 	}
@@ -208,7 +212,7 @@ _Code at_ [_https://github.com/egonelbre/db-demo/tree/master/03\_server_](https:
 Before we refactor the database more, we need to make the server clearer. The endpoint wiring in main didn’t look that nice. Instead let’s try this:
 
 ``` go
-comments, err := NewComments("user=dbdemo password=dbdemo dbname=dbdemo sslmode=disable")
+comments, err := NewComments(ctx, "user=dbdemo password=dbdemo dbname=dbdemo sslmode=disable")
 if err != nil {
 	log.Fatal(err)
 }
@@ -242,6 +246,7 @@ func (server *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (server *Server) HandleList(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
 	if r.Method != http.MethodGet {
 		ShowErrorPage(w, http.StatusMethodNotAllowed, "Invalid method", nil)
 		return
@@ -253,7 +258,7 @@ func (server *Server) HandleList(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ShowCommentsPage(w, comments)
+	ShowCommentsPage(ctx, w, comments)
 }
 ```
 {{< codetitle caption="03_server/server.go" link="https://github.com/egonelbre/db-demo/blob/master/03_server/server.go" >}}
@@ -268,8 +273,8 @@ It’s usually nice not to depend on the database implementation directly as it 
 
 ``` go
 type Comments interface {
-	Add(user, comment string) error
-	List() ([]Comment, error)
+	Add(ctx context.Context, user, comment string) error
+	List(ctx context.Context) ([]Comment, error)
 }
 
 type Server struct {
@@ -312,8 +317,8 @@ type DB interface {
 }
 
 type Comments interface {
-	Add(user, comment string) error
-	List() ([]Comment, error)
+	Add(ctx context.Context, user, comment string) error
+	List(ctx context.Context) ([]Comment, error)
 }
 
 type Server struct {
@@ -321,12 +326,13 @@ type Server struct {
 }
 
 func (server *Server) HandleList(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
 	if r.Method != http.MethodGet {
 		ShowErrorPage(w, http.StatusMethodNotAllowed, "Invalid method", nil)
 		return
 	}
 
-	comments, err := server.db.Comments().List()
+	comments, err := server.db.Comments().List(ctx)
 	if err != nil {
 		ShowErrorPage(w, http.StatusInternalServerError, "Unable to access DB", err)
 		return
@@ -365,7 +371,7 @@ type Comments struct {
 	user user.ID
 }
 
-func (repo *Comments) Add(user, comment string) error {
+func (repo *Comments) Add(ctx context.Context, user, comment string) error {
 	// check whether repo.user has rights to add a comment
 	// add comment
 }
@@ -382,8 +388,8 @@ type DB interface {
 type AdminDB interface { 
 	DB
 	// only for admins
-	RunMigrations() error
-	DropDatabase() error
+	RunMigrations(context.Context) error
+	DropDatabase(context.Context) error
 }
 ```
 
