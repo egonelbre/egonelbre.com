@@ -3,7 +3,7 @@
 
 <div class="center">
 	<article>
-		{{ $paginator := .Paginate (where (where .Pages "Params.hidden" "ne" true) "Section" "writing") }}
+		{{ $paginator := .Paginate (where .Site.RegularPages "Section" "writing") }}
 		<h1>Writing</h1>
 		<ul class="toc">
 			{{ range sort .Paginator.Pages }}
