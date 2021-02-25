@@ -17,6 +17,9 @@ googleAnalytics = ""
 
 pluralizeListTitles = false
 
+[markup.goldmark.renderer]
+  unsafe=true
+
 [social]
   twitter = "egonelbre"
 
