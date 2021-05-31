@@ -1,18 +1,18 @@
 ---
 draft: true
-title: The Nature of Technical Debt
+title: Demystifying Technical Debt
 description: "Trying to pin down technical debt."
 date: ""
 tags: ["physics-of-software"]
 ---
 
-"Techincal debt" has been bothering me for a while. It's seems somehow a catchall for different design mistakes, code worsening over time and legacy code bases or you can take a loan that you need to repay later. You can take a look the list of causes in [Wikipedia](https://en.wikipedia.org/wiki/Technical_debt#Causes) if you don't believe me.
+"Techincal debt" has been bothering me for a while. It's seems somehow a catchall for different design mistakes, code worsening over time and legacy code bases or you can take a loan that you need to repay later. You can take a look the list of causes in [Wikipedia](https://en.wikipedia.org/wiki/Technical_debt#Causes) if you don't believe me. Often it feels like it'the code is collecting dust when it's not being maintained.
 
 Let's take FORTRAN as an example. There's still a lot of numerical code that was and is written with it. Let's say there's a piece of code that hasn't changed for 20 years, however, the "debt" of that code has risen. What is the "thing" that actually caused that difference?
 
 On the other side, how do you measure technical debt, how large is the "interest" in a code-base? How much do I need to "pay" to pay it off? If I have plenty of "money", can I loan it to someone else?
 
-But I digress, I think this unclear "technical debt" has caused bad decisions in codebases and trying to fixing things that don't need fixing. 
+But I digress, I think this unclear "technical debt" has caused bad decisions in codebases and trying to fixing things that don't need fixing.
 
 Before we get to tackle "technical debt" we need to take a small detour.
 
