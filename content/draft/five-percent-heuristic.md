@@ -151,23 +151,234 @@ Similarly, sending a value over channels can be around \~150ns (your milage may 
 
 > Avoid branches/calls that have mispredictions above 5%.
 
+One common reason for slowness is mispredictions in the CPU pipeline. CPU-s work really hard to avoid working one instruction at a time, but intead work at multiple things at a time. There's a great write up on branching effects http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/.
 
-> Removing the  branch or interface is better.
-> But, often takes more effort.
+Similar effects are also present with func/method calls. If the compiler doesn't know ahead which code it should run.
+
+Of course, removing the branch, interface or dynamic call would be even better, however this can often take much more effort, compared to sorting.
+
+## Example: sorting values
+
+A classic example of this problem is effects you observe from sorting your data.
+
+```go
+var input = func() []int {
+	input := make([]int, 1e4)
+	for i := range input {
+		input[i] = rand.Intn(100)
+	}
+	return input
+}
+
+func count50(vs []int) (total int) {
+	for _, v := range vs {
+		total += fn(v)
+	}
+	return total
+}
+
+//go:noinline
+func fn(v int) int {
+	if v < 50 {
+		return 0
+	} else {
+		return 1
+	}
+}
+
+func BenchmarkCount50(b *testing.B) {
+	total := 0
+	for k := 0; k < b.N; k++ {
+		total += count50(input)
+	}
+}
+```
+
+_The `go:noinline` pragma is necessary to prevent some compilation optimizations from happening._
+
+If we benchmark this with sorted and unsorted data, we'll get that the unsorted runs at `~69000ns/op` and the sorted runs at `~23500ns/op`, this is a 3x performance difference from just sorting the data.
+
+We can see similar effects when sorting [graph nodes for traversal](todolinktoBFS).
+
+## Example: sorting types
+
+We can observe similar effects from method call overhead:
+
+```go
+type Shape interface {
+	Area() float32
+}
+
+type Circle struct { Radius float32 }
+type Square struct { Side float32 }
+
+func (s Circle) Area() float32 {
+	return math.Pi * s.Radius * s.Radius
+}
+func (s Square) Area() float32 {
+	return s.Side * s.Side
+}
+
+func TotalArea(shapes []Shape) (total float32) {
+	for _, shape := range shapes {
+		total += shape.Area()
+	}
+	return total
+}
+
+var shapes = func() []Shape {
+	shapes := make[[]Shape, 1e4]
+	for i := range shapes {
+		if rand.Intn(2) == 0 {
+			shapes[i] = Circle{rand.Float32()}
+		} else {
+			shapes[i] = Square{rand.Float32()}
+		}
+	}
+	return shapes
+}
+
+func BenchmarkShapes(b *testing.B) {
+	total := float32(0)
+	for k := 0; k < b.N; k++ {
+		total += TotalArea(shapes)
+	}
+}
+```
+
+If we keep the `shapes` unsorted we'll end up with `~88000ns/op`, however if we sort the slice based on the types it'll run at `~39000ns/op`, or \~2x faster.
 
 # Computation Closeness
 
 > Pay attention when you have over 5% memory accesses outside 5MB range.
 
+One other common thing is to consider the cache hierachy. You can roughly assume that, if your memory accesses only use 5MB of memory, then they will be in L2 cache -- most of the time. The specifics will vary from processor to processor.
+
+You can read more on the effects of memory hierarchy in http://igoro.com/archive/gallery-of-processor-cache-effects/.
+
+Many of the cache-oblivious are designed to take into account the memory hierarchy. Effectively, they design data-structures to look at fewer cache-lines, but maybe at the cost of more cpu instructions.
+
+# Data Closeness
+
+> If you only access 5% of the data most of the time, then add a cache.
+
+You can also reinterpret the "5% heuristic" for data slightly differently. There are quite a few data-structures to bring data the closer. It's quite widely known that data access patterns are not randomly uniform.
+
+I roughly divide these data structures that bring "data closer" into two categories:
+
+* Caches - things that keep some of the data somewhere closer.
+* Reductions - things that aggregate the data together to speed up calculating the answer.
+
+Both of these ideas can be combined together to make custom data-structures.
+
+## Caches
+
+Caches in principle copy the data or parts of the data into something that's faster to accesss. The cache might keep frequently accessed copies of data in RAM instead of accessing them from the database all the time. Of course, caches introduce a new problem -- they need to be kept up-to-date.
+
+There are many variations on [caching policies](https://en.wikipedia.org/wiki/Cache_replacement_policies), but, usually it's good to try either:
+
+* LRU - least recently used
+* RR / 2-random - random replacement
+
+_Of course, these shouldn't be implemented using linked lists._
+
+The main reason to start with these two, is that they are relatively easy to implement and understand. Similarly, they perform well in a variety of settings.
+
+## Reductions
+
+I'm sure there's a more formal name for these, but I name these "reductions". Their main idea is that you combine (i.e. "reduce") the data into "summaries". Things that help you either find the data you are looking for or answer questions about the data.
+
+* Trees
+* Bloom/Cuckoo filters
+* (Multilevel) bitmaps
+
 # Memory Usage
 
 > Reduce memory usage for things that vary less than 5% of the time.
+
+There's a lot of struct fields that don't vary that much, so it can be really helpful to treat the other 95% in a special manner.
+
+## Example: an ID
+
+_I have forgotten some of the exact details about the problem, but hopefully it gets the idea across._
+
+At some point I had an ID type, ehere the possible character values were `a`-`z`, `0`-`9`, `-`, `_`, and few more. Total of 41 different characters.
+
+```
+type ID [12]byte
+```
+
+There were quite a lot of them needed to be kept in-memory for lookups. To reduce memory usage it would be nice to replace these with a smaller data-type, e.g. uint64. However, the data doesn't trivially fit into it.
+
+One easy solution would be to use a lookup table, e.g. `type Lookup map[ID]uint64`. However, this added a lot of overhead to the lookup itself, negating the win from smaller datatype.
+
+At some point, I realized, that I don't need to treat all the ID-s in the same way. ID-s starting with some symbols, such as `-` and `_`, were much rarer.
+
+To fit the ID to an uint64 it would require `log2(pow(41,12)) = 64.290 bits`. I noticed that if the ID were smaller, you could directly use uint64: `log2(pow(41,11)) = 58.933`. I wasn't able to change the ID type, but what if I treated some of the values differently `log2(33 * pow(41, 11)) = 63.977`.
+
+So I came up with this solution:
+
+```
+// MaxEncoding = 24 * pow(41, 11)
+const MaxEncoding = 24 * 41 * 41 * 41 * 41 * 41 * 41 * 41 * 41 * 41 * 41 * 41
+
+func Encode(id ID) (encoded uint64, ok bool) {
+	if id[0] < 'a' || id[0] > 'z' {
+		return 0, false
+	}
+
+	for _, p := range id {
+		encoded = encoded * 41 + encoding[p]
+	}
+	return encoded, true
+}
+```
+
+This still left me quite a lot of uint64-s to have a separate lookup table for those values that this scheme wouldn't encode. In the end, this scheme allowed to encode 99% of the ID-s with an uint64.
 
 # Pointers
 
 > Reduce pointer usage if they take over 5% of the memory.
 
-# Putting all the ideas together
+There are quite a few drawbacks to using a "pointery" data-structure:
+
+* pointers use up memory,
+* data is indirect (harder to predict),
+* data is usually not one the same cache line,
+* it makes GC slower (for languages that have it)
+
+For example, we can take a really simple linked-list:
+
+```go
+type Node struct {
+	Value int
+	Next  *Node
+}
+```
+
+We can calculate that 50% of this data structure is made of pointers. To remedy the situation we can try increasing number of "data points per pointer":
+
+```go
+type Node struct {
+	Count byte
+	Value [64]int
+	Next  *Node
+}
+```
+
+Alternatively, we can try using indexing instead of pointers. This won't get rid of the indirection overhead, however it does reduce memory usage.
+
+```
+type Nodes []Node
+type Node struct {
+	Value  uint16
+	Offset uint16
+}
+```
+
+Many tree and graph algorithms can be optimized in a similar manner. These optimization can lead to a 2x performance improvement.
+
+# Case Study: Trie
 
 # Conclusion: 5% Heuristic
 
