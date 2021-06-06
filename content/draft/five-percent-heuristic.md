@@ -248,7 +248,7 @@ func BenchmarkShapes(b *testing.B) {
 
 If we keep the `shapes` unsorted we'll end up with `~88000ns/op`, however if we sort the slice based on the types it'll run at `~39000ns/op`, or \~2x faster.
 
-# Computation Closeness
+# Memory Closeness
 
 > Pay attention when you have over 5% memory accesses outside 5MB range.
 
@@ -380,12 +380,134 @@ Many tree and graph algorithms can be optimized in a similar manner. These optim
 
 # Case Study: Trie
 
+Here's a final example where all of these ideas have been put together into optimizing a trie data-structure.
+
+The most basic formulation of trie is:
+
+```go
+type Node struct {
+	Label rune
+	Term  bool
+	Edges []Node
+}
+```
+
+One common optimization is to avoid single-node chains and combine them into a single string.
+
+```go
+type Node struct {
+	Label  rune
+	Term   bool
+	Suffix string
+	Edges  []Node
+}
+```
+
+The next thing is to avoid fragmenting the memory and avoiding the pointer in edges slice:
+
+```go
+type Trie []Node
+
+type Node struct {
+	Label  rune
+	Term   bool
+	Suffix string
+
+	EdgeCount  byte
+	EdgeOffset uint32
+}
+
+func (t Trie) Edges(n Node) []Node {
+	off := int(n.EdgeOffset)
+	count := int(n.EdgeCount)
+	return t[off:off+count]
+}
+```
+
+Similarly, since most text doesn't use runes we can replace it with a single byte. _This is not the case for all languages, they would need a different optimization._
+
+```go
+type Node struct {
+	Label  byte
+	Term   bool
+	Suffix string
+
+	EdgeCount  byte
+	EdgeOffset uint32
+}
+```
+
+We still have a hidden pointer in `string` that we would like to get rid of.
+
+```go
+const MaxSuffix = 2
+
+type Node struct {
+	Label  byte
+	Term   bool
+	Suffix [MaxSuffix]byte
+
+	EdgeCount  byte
+	EdgeOffset uint32
+}
+```
+
+In the particular usecase it didn't have `0` runes, so we can use that to terminate the suffix. We can benchmark to find the appropriate value for `MaxSuffix`.
+
+Finally Term and EdgeCount both use a byte, however, for the bool only 1 bit out of 8 are being used. For EdgeCount it's using more, but still not the full 8. Lets combine them:
+
+```go
+type Node struct {
+	Label  byte
+	Flags  byte // (EdgeCount << 1) | Term
+	Suffix [MaxSuffix]byte
+
+	EdgeOffset uint32
+}
+```
+
+Overall the data-structure performance difference:
+
+```go
+// Naive version
+type Basic struct {
+	Label  rune
+	Term   bool
+	Suffix string
+	Edges  []Node
+}
+
+// Optimized version
+const MaxSuffix = 2
+
+type Nodes []Node
+
+type Node struct {
+	Label  byte
+	Flags  byte // (EdgeCount << 1) | Term
+	Suffix [MaxSuffix]byte
+
+	EdgeOffset uint32
+}
+```
+
+|  | Sorted Strings | Basic | Optimized |
+|-|-|-|-|
+| Search | 196ns per key | 198ns per key | 95ns per key |
+| Size | 1.9MB |  | 2.3MB |
+|  |  |  |  |
+
+Overall, this ended up making things much faster. Also that specific trie implementation ended up being trivial to mmap to disk.
+
 # Conclusion: 5% Heuristic
+
+Hopefully this gives a quick tool to figure out different ideas on what to optimize when you notice something being slow.
 
 * The Big Picture - less than 5% doesn’t matter.
 * Communication - overhead should be less than 5% of work.
 * Predictability - don’t mispredict over 5% of the time.
-* Computation Closeness - keep computations to 5MB range.
+* Memory Closeness - keep computations to 5MB range.
+* Data Closeness - add a cache when you need 5% of data most of the time.
 * Memory Usage - compact data with less than 5% variance.
 * Pointers - should take less than 5% of your memory.
 
