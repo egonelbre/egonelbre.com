@@ -7,7 +7,7 @@ tags: ["Go", "Performance", "Concurrency"]
 reviewers: ["Taavi Kivisik", "Seth Bromberger", "Damian Gryski"]
 ---
 
-_This is the second part of optimizing Breadth First Search, please go take a look at_ [A Tale of BFS](/a-tale-of-bfs)_, otherwise this won’t make much sense.  
+_This is the second part of optimizing Breadth First Search, please go take a look at_ [A Tale of BFS](/a-tale-of-bfs)_, otherwise this won’t make much sense.
 All the code is at_ [https://github.com/egonelbre/a-tale-of-bfs](https://github.com/egonelbre/a-tale-of-bfs)
 
 When we reached the end of single core optimizations, we were about 2x faster than the original. However, we still have multiple cores unused.

@@ -82,7 +82,7 @@ Here are a few recommendations, rules-of-thumb and paradigms analyzed in the con
 Let’s take a simple `for` loop:
 
 ```
-A. for(i=0 to N)  
+A. for(i=0 to N)
 B. for(theElementIndex=0 to theNumberOfElementsInTheList)
 ```
 
@@ -93,9 +93,9 @@ Most programmers would recommend **A**. Why?
 However, let’s imagine different ways of writing packages / units / modules / namespaces:
 
 ```
-A. strings.IndexOf(x, y)  
-B. s.IndexOf(x, y)  
-C. std.utils.strings.IndexOf(x, y)  
+A. strings.IndexOf(x, y)
+B. s.IndexOf(x, y)
+C. std.utils.strings.IndexOf(x, y)
 D. IndexOf(x, y)
 ```
 
@@ -112,46 +112,46 @@ It’s important to mention that, if all of code is dealing with strings it will
 With variables it would be easy to conclude that “modification is bad, because it makes harder to track what is happening”. But, lets take these examples:
 
 ```
-// A.  
-func foo() (int, int) {  
-    sum, sumOfSquares := 0, 0  
-    for _, v := range values {  
-        sum += v   
-        sumOfSquares += v * v  
-    }  
-    return sum, sumOfSquares  
+// A.
+func foo() (int, int) {
+    sum, sumOfSquares := 0, 0
+    for _, v := range values {
+        sum += v
+        sumOfSquares += v * v
+    }
+    return sum, sumOfSquares
 }
 
-// B.  
-func GCD(a, b int) int {  
-      for b != 0 {  
-              a, b = b, a % b  
-      }  
-      return a  
+// B.
+func GCD(a, b int) int {
+      for b != 0 {
+              a, b = b, a % b
+      }
+      return a
 }
 
-// C.  
-func GCD(a, b int) int {  
-    if b == 0 {  
-        return a  
-    }  
-    return GCD(b, a % b)  
+// C.
+func GCD(a, b int) int {
+    if b == 0 {
+        return a
+    }
+    return GCD(b, a % b)
 }
 ```
 
 Here `foo` is probably easiest to understand. Why? The problem isn’t modifying the variables, but rather how they are modified. **A** doesn’t have any complex interactions, which both **B** and **C** do. I would also guess, that even though **C** doesn’t have modifications, our brain still processes it as such.
 
 ```
-// D.  
-sum = sum + v.x  
-sum = sum + v.y  
-sum = sum + v.z  
+// D.
+sum = sum + v.x
+sum = sum + v.y
+sum = sum + v.z
 sum = sum + v.w
 
-// E.  
-sum1 = v.x  
-sum2 := sum1 + v.y  
-sum3 := sum2 + v.z  
+// E.
+sum1 = v.x
+sum2 := sum1 + v.y
+sum3 := sum2 + v.z
 sum4 := sum3 + v.w
 ```
 
@@ -162,9 +162,9 @@ Here is another example where the modification based version (**D**) is easier t
 Let’s take another `for` loop:
 
 ```
-A. for(i = 0; i < N; i++)  
-B. for(i = 0; N > i; i++)  
-D. for(i = 0; i <= N-1; i += 1)  
+A. for(i = 0; i < N; i++)
+B. for(i = 0; N > i; i++)
+D. for(i = 0; i <= N-1; i += 1)
 C. for(i = 0; N-1 >= i; i += 1)
 ```
 
@@ -213,10 +213,10 @@ Ambiguity and similarity is not a problem just at the source level. Eric Evans n
 We have all seen the “stupid beginner examples” of commenting:
 
 ```
-// makes variable i go from 0 to 99  
+// makes variable i go from 0 to 99
 for(var i = 0; i < 100; i++) {
 
-// sets value 4 to variable a  
+// sets value 4 to variable a
 var a = 4;
 ```
 
@@ -239,23 +239,23 @@ The other side of contexts is moving between function calls. Each call is a “c
 One way to reduce the depth of our mental model contexts is to clearly separate them. One of such examples is early return:
 
 ```
-public void SomeFunction(int age)  
-{  
-    if (age >= 0) {  
-        // Do Something  
-    } else {  
-        System.out.println("invalid age");  
-    }  
+public void SomeFunction(int age)
+{
+    if (age >= 0) {
+        // Do Something
+    } else {
+        System.out.println("invalid age");
+    }
 }
 
-public void SomeFunction(int age)  
-{  
-    if (age < 0){  
-        System.out.println("invalid age");  
-        return;  
-    }  
-      
-    // Do Something  
+public void SomeFunction(int age)
+{
+    if (age < 0){
+        System.out.println("invalid age");
+        return;
+    }
+
+    // Do Something
 }
 ```
 
@@ -273,48 +273,48 @@ Single responsibility principle (SRP) is easy to understand with these concepts.
 
 ```
 // A
-void MinorFunction1( void ) {  
-}  
-   
-void MinorFunction2( void ) {  
-}  
-   
-void MinorFunction3( void ) {  
-}  
-   
-void MajorFunction( void ) {  
-    MinorFunction1();  
-    MinorFunction2();  
-    MinorFunction3();  
-}  
-   
+void MinorFunction1( void ) {
+}
+
+void MinorFunction2( void ) {
+}
+
+void MinorFunction3( void ) {
+}
+
+void MajorFunction( void ) {
+    MinorFunction1();
+    MinorFunction2();
+    MinorFunction3();
+}
+
 // B
-void MajorFunction( void ) {  
-    MinorFunction1();  
-    MinorFunction2();  
-    MinorFunction3();  
-}  
-   
-void MinorFunction1( void ) {  
-}  
-   
-void MinorFunction2( void ) {  
-}  
-   
-void MinorFunction3( void ) {  
-}  
-   
-   
+void MajorFunction( void ) {
+    MinorFunction1();
+    MinorFunction2();
+    MinorFunction3();
+}
+
+void MinorFunction1( void ) {
+}
+
+void MinorFunction2( void ) {
+}
+
+void MinorFunction3( void ) {
+}
+
+
 // C
-void MajorFunction( void ) {  
-    { // MinorFunction1  
-    }  
-   
-    { // MinorFunction2  
-    }  
-      
-    { // MinorFunction3  
-    }  
+void MajorFunction( void ) {
+    { // MinorFunction1
+    }
+
+    { // MinorFunction2
+    }
+
+    { // MinorFunction3
+    }
 }
 ```
 

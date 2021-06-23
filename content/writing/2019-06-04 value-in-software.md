@@ -9,7 +9,7 @@ reviewers: ["Peter Seebach", "Taavi Kivisik"]
 
 {{< figure src="/_images/value/seedling.jpg" >}}
 
-Why do we write programs in the first place? It’s easy to get lost in the technological details, but this is not the primary goal. This might sound obvious but, **w_e need to provide value to people._**
+Why do we write programs in the first place? It’s easy to get lost in the technological details, but this is not the primary goal. This might sound obvious but, **we need to provide value to people**.
 
 > There is a central quality which is the root criterion of life and spirit in a man, a town, a building, or a wilderness. This quality is objective and precise, but it cannot be named.
 >

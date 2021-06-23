@@ -32,14 +32,14 @@ There are many ways of storing graphs. Most of the basic ways involve tons of po
 ```
 type Node = uint32
 
-type Graph struct {  
-    List []Node  
-    Span []uint64  
+type Graph struct {
+    List []Node
+    Span []uint64
 }
 
-func (graph *Graph) Neighbors(n Node) []Node {  
-    start, end := graph.Span[n], graph.Span[n+1]  
-    return graph.List[start:end]  
+func (graph *Graph) Neighbors(n Node) []Node {
+    start, end := graph.Span[n], graph.Span[n+1]
+    return graph.List[start:end]
 }
 ```
 
@@ -50,32 +50,32 @@ Effectively, each node holds his neighbors in an array. We have a slice that hol
 For implementing breadth first traversal we also need something to store the visited nodes. That node set is implemented with a bit vector:
 
 ```
-const (  
-    bucket_bits = 5  
-    bucket_size = 1 << 5  
-    bucket_mask = bucket_size - 1  
+const (
+    bucket_bits = 5
+    bucket_size = 1 << 5
+    bucket_mask = bucket_size - 1
 )
 
 type NodeSet []uint32
 
-func NewNodeSet(size int) NodeSet {  
-    return NodeSet(make([]uint32, (size+31)/32))  
+func NewNodeSet(size int) NodeSet {
+    return NodeSet(make([]uint32, (size+31)/32))
 }
 
-func (set NodeSet) Offset(node graph.Node) (bucket, bit uint32) {  
-    bucket = uint32(node >> bucket_bits)  
-    bit = uint32(1 << (node & bucket_mask))  
-    return bucket, bit  
+func (set NodeSet) Offset(node graph.Node) (bucket, bit uint32) {
+    bucket = uint32(node >> bucket_bits)
+    bit = uint32(1 << (node & bucket_mask))
+    return bucket, bit
 }
 
-func (set NodeSet) Add(node graph.Node) {  
-    bucket, bit := set.Offset(node)  
-    set[bucket] |= bit  
+func (set NodeSet) Add(node graph.Node) {
+    bucket, bit := set.Offset(node)
+    set[bucket] |= bit
 }
 
-func (set NodeSet) Contains(node graph.Node) bool {  
-    bucket, bit := set.Offset(node)  
-    return set[bucket]&bit != 0  
+func (set NodeSet) Contains(node graph.Node) bool {
+    bucket, bit := set.Offset(node)
+    return set[bucket]&bit != 0
 }
 ```
 
@@ -420,7 +420,7 @@ For my Windows computer the best results were for unrolling 4 at a time, so I ro
 
 While Seth Bromberger was testing the last result on the big machine, he noticed a huge difference between runs on the big machine:
 
-BFS done: 56.323602893s  
+BFS done: 56.323602893s
 BFS done: 32.353618877s
 
 Usual suspect in such cases would be that there are other processes running on the system, but it definitely wasn’t that. There aren’t any other processes running on the system.

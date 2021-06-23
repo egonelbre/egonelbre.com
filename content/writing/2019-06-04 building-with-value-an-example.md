@@ -57,19 +57,19 @@ We’ll add our first Spike to `issue/info.go`:
 ```
 package issue
 
-type ID int  
+type ID int
 type Status string
 
-const (  
-    Created Status = "Created"  
-    Closed         = "Closed"  
+const (
+    Created Status = "Created"
+    Closed         = "Closed"
 )
 
-type Info struct {  
-    ID      ID  
-    Caption string  
-    Desc    string  
-    Status  Status  
+type Info struct {
+    ID      ID
+    Caption string
+    Desc    string
+    Status  Status
 }
 ```
 
@@ -80,11 +80,11 @@ _Notice that I don’t use long names such as IssueStatus, IssueInfo because the
 We also need some way to store and load those `issues`. The way we store and load them can change. Hence we should abstract this knowledge away. We create an interface `issue.Manager` for it. We put it into `issue/manager.go`:
 
 ```
-type Manager interface {  
-    Create(info Info) (ID, error)  
-    Load(id ID) (Info, error)  
-    Close(id ID) (error)  
-    List() (issues []Info, error)  
+type Manager interface {
+    Create(info Info) (ID, error)
+    Load(id ID) (Info, error)
+    Close(id ID) (error)
+    List() (issues []Info, error)
 }
 ```
 
@@ -93,36 +93,36 @@ To get an overview how we will use it, we write some usage code into main.go:
 ```
 package main
 
-import (  
+import (
     "fmt"
 
-    "example.com/tracker/issue"  
+    "example.com/tracker/issue"
 )
 
-func check(err error) {  
-    if err != nil {  
-        panic(err)  
-    }  
+func check(err error) {
+    if err != nil {
+        panic(err)
+    }
 }
 
-func main() {  
+func main() {
     var manager issue.Manager
 
-    id, err := manager.Create(issue.Info{  
-        Caption: "Hello",  
-        Desc: "World",  
-        Status: issue.Created,  
-    })  
+    id, err := manager.Create(issue.Info{
+        Caption: "Hello",
+        Desc: "World",
+        Status: issue.Created,
+    })
     check(err)
 
-    info, err := manager.Load(id)  
+    info, err := manager.Load(id)
     check(err)
 
     fmt.Println(info)
 
-    infos, err := manager.List()  
-    check(err)  
-    fmt.Println(infos)  
+    infos, err := manager.List()
+    check(err)
+    fmt.Println(infos)
 }
 ```
 
@@ -139,9 +139,9 @@ Now we will step-by-step start to flesh out the actual structure, until we have 
 The first thing we may notice is `issue.Created`. What would `info.Status == issue.Created` mean? This suggests that we haven’t captured the intent as well as we should have. Let’s refine our sketch, `info.Status == issue.Open` sounds much better. Hence we change `issue/info.go`:
 
 ```
-const (  
-    Open Status = "Open"  
-    Done        = "Done"  
+const (
+    Open Status = "Open"
+    Done        = "Done"
 )
 ```
 
@@ -150,11 +150,11 @@ In `main.go` the `manager` doesn’t feel clear; it feels like a fuzzy concept w
 What does the `manager` do? “It manages and tracks issues.” Here is a clue for a nicer name `Tracker`. We shall refine `issue/manager.go` into `issue/tracker.go` and change:
 
 ```
-type Tracker interface {  
-    Create(info Info) (ID, error)  
-    Load(id ID) (Info, error)  
-    Close(id ID) (error)  
-    List() (issues []Info, error)  
+type Tracker interface {
+    Create(info Info) (ID, error)
+    Load(id ID) (Info, error)
+    Close(id ID) (error)
+    List() (issues []Info, error)
 }
 ```
 
@@ -171,24 +171,24 @@ The other thing what we want to do here is to make it easier to understand and e
 Few interesting bits to pay attention to while solidifying code. When you come across questions, mark them as such. For example, while writing the tracker test case, I made a mistake while writing:
 
 ```
-tracker.Close(id)  
-// ...  
-expect := Info{  
-    ID:      id,  
-    Caption: "Caption",  
-    Desc:    "Desc",  
-    Status:  Closed,     // compilation error, should be Done  
+tracker.Close(id)
+// ...
+expect := Info{
+    ID:      id,
+    Caption: "Caption",
+    Desc:    "Desc",
+    Status:  Closed,     // compilation error, should be Done
 }
 ```
 
 I mixed up two things: the method is called `Close` , and the resulting status is `Done`. Because I made a mistake while writing this, it suggests to me that the code is not clear enough, but I’m not sure how to improve it. It probably isn’t that important, so I’ll mark it as a **TODO** and move on to other things:
 
 ```
-const (  
-    // TODO: should tracker.Create renamed to "Open"  
-    Open = Status("Open") // Open means that issue is in progress  
-    // TODO: should "Done" be renamed to "Closed"  
-    Done = Status("Done") // Done means that issue is completed and delivered  
+const (
+    // TODO: should tracker.Create renamed to "Open"
+    Open = Status("Open") // Open means that issue is in progress
+    // TODO: should "Done" be renamed to "Closed"
+    Done = Status("Done") // Done means that issue is completed and delivered
 )
 ```
 

@@ -13,8 +13,8 @@ Beginners often overwhelm their brain with decisions and things they need to do.
 
 The most important part of programming is that you cannot do everything at once. The human mind is very limited in how much it can process at a time. To combat this limitation, we need to build things piece-by-piece to ensure that everything will fit together nicely.
 
-> Speaking as a builder, if you start something, you must have a vision of the thing which arises from your instinct about preserving and enhancing what is there ... If you’re working correctly, the feeling doesn’t wander about.  
->    
+> Speaking as a builder, if you start something, you must have a vision of the thing which arises from your instinct about preserving and enhancing what is there ... If you’re working correctly, the feeling doesn’t wander about.
+>
 > -- Christopher Alexander
 
 The question is -- how do we pick the pieces we develop? How do we ensure that our mind and feeling doesn’t wander around?
@@ -27,7 +27,7 @@ I covered some of the aspects of understanding value already in Value in Softwar
 
 When we are starting out writing some software, there is so much we could implement. There are also so many ways we could organize and implement things. This overwhelming amount of concerns can quickly push people into Analysis Paralysis.
 
-One approach would be to start from what is easy to implement; however, if we do that, we may implement many things that are not valuable or even worse, not get to implementing what is valuable at all. 
+One approach would be to start from what is easy to implement; however, if we do that, we may implement many things that are not valuable or even worse, not get to implementing what is valuable at all.
 
 Let’s take an Issue Tracker as our example to investigate the problems.
 
@@ -145,9 +145,9 @@ You don’t start drawing like a matrix printer; starting from the top-left corn
 
 More often, the process looks like:
 
-1. First, you figure out what you are drawing and what are the things you are going to draw _(structure follows value)_ and the purpose of the drawing.  
-2. Then you do a few rough sketches until you see that the picture will work nicely _(spiking)_.  
-3. Then you start to refine the sketches and draw more delicately _(gradual stiffening)_.  
+1. First, you figure out what you are drawing and what are the things you are going to draw _(structure follows value)_ and the purpose of the drawing.
+2. Then you do a few rough sketches until you see that the picture will work nicely _(spiking)_.
+3. Then you start to refine the sketches and draw more delicately _(gradual stiffening)_.
 4. Finally, you clean all the sketch lines and color it _(cleanup)_.
 
 The basic process of programming is the same. The process also may unfold recursively on different levels of abstraction. In a company, you will have multiple people doing similar processes in parallel.

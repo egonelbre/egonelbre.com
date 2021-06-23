@@ -11,12 +11,12 @@ This question was bothering me a long time. I mean there are often suggestions f
 
 On the surface, it seems like an easy question, and it looks like there are answers to that question:
 
-> In object-oriented design, a layer is a group of classes that have the same set of link-time module dependencies to other modules. In other words, a layer is a group of reusable components that are reusable in similar circumstances. In programming languages, the layer distinction is often expressed as “import” dependencies between software modules.  
+> In object-oriented design, a layer is a group of classes that have the same set of link-time module dependencies to other modules. In other words, a layer is a group of reusable components that are reusable in similar circumstances. In programming languages, the layer distinction is often expressed as “import” dependencies between software modules.
 > --  [Wikipedia](https://en.wikipedia.org/wiki/Layer_%28object-oriented_design%29)
 
 and
 
-> In computing, an abstraction layer or abstraction level is a way of hiding the implementation details of a particular set of functionality, allowing the separation of concerns to facilitate interoperability and platform independence.\[snip\] An abstraction layer is a generalization of a conceptual model or algorithm, away from any specific implementation.  
+> In computing, an abstraction layer or abstraction level is a way of hiding the implementation details of a particular set of functionality, allowing the separation of concerns to facilitate interoperability and platform independence.\[snip\] An abstraction layer is a generalization of a conceptual model or algorithm, away from any specific implementation.
 > --  [Wikipedia](https://en.wikipedia.org/wiki/Abstraction_layer)
 
 However, this really doesn’t fully answer the question.

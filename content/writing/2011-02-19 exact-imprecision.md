@@ -31,7 +31,7 @@ Anyway here's the full <a href="https://gist.github.com/egonelbre/261a0e093a4c90
 	x < 2 ? 1 : x < 4 ? 2 : x < 8 ? 3 : x < 16 ? 4 : \
 	x < 32 ? 8 : x < 64 ? 9 : x < 128 ? 10 : x < 256 ? 11 : \
 	x < 512 ? 12 : 13
-	
+
 // imprecision macro P4 ( 4 bytes for float )
 // (0.00 .. 1.99) avg err = 0.00375, max err = 0.0075
 // (2.00 .. 3.99) avg err = 0.0075, max err = 0.0150
@@ -44,7 +44,7 @@ Anyway here's the full <a href="https://gist.github.com/egonelbre/261a0e093a4c90
 // P5 (0.00 .. 1.99) avg 0.00023, max 0.00046
 #define P5(x) _P(x,4096.0f)
 // for global precision changes
-#define P(x) P4(x) 
+#define P(x) P4(x)
 ```
 
 

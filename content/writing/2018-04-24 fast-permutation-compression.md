@@ -19,24 +19,24 @@ type Permutation [12]byte
 It’s easy to see that the maximum number we need to store is 12, but the byte can store 256 entries. By fitting it into 4 bits, it would be possible to store it in `12*4 = 48 bits`.
 
 ```
-func PackNybble(perm Permutation) uint64 {  
-    r := uint64(0)  
-    for _, v := range perm {  
-        r = r<<4 + uint64(v)  
-    }  
-    return r  
+func PackNybble(perm Permutation) uint64 {
+    r := uint64(0)
+    for _, v := range perm {
+        r = r<<4 + uint64(v)
+    }
+    return r
 }
 ```
 
 We can actually do better, by encoding using base 12 directly, instead of rounding it to 16.
 
 ```
-func PackBase12(perm Permutation) uint64 {  
-    r := uint64(0)  
-    for _, v := range perm {  
-        r = r*12 + uint64(v)  
-    }  
-    return r  
+func PackBase12(perm Permutation) uint64 {
+    r := uint64(0)
+    for _, v := range perm {
+        r = r*12 + uint64(v)
+    }
+    return r
 }
 ```
 
@@ -53,32 +53,32 @@ _We can imagine this as reducing the problem at each stage to a smaller problem.
 The implementation required a little tinkering, but wasn’t anything too complicated.
 
 ```
-func Code(perm [12]byte) uint64 {  
-    r := uint64(0)  
-    for min := byte(0); min < 11; min++ {  
-        z := 0  
-        n := base - min  
-        for i, v := range perm[:n] {  
-            if v == min {  
-                z = i  
-                break  
-            }  
-        }  
-        copy(perm[z:], perm[z+1:n])  
-        r += uint64(z) * fact(11 - min)  
-    }  
-    return r  
+func Code(perm [12]byte) uint64 {
+    r := uint64(0)
+    for min := byte(0); min < 11; min++ {
+        z := 0
+        n := base - min
+        for i, v := range perm[:n] {
+            if v == min {
+                z = i
+                break
+            }
+        }
+        copy(perm[z:], perm[z+1:n])
+        r += uint64(z) * fact(11 - min)
+    }
+    return r
 }
 ```
 
 It really gives the smallest encoding possible, but compared to the just packing we have worse performance. I implemented few variations, to see whether it would be possible to improve upon it. However the first variant was pretty good already.
 
 ```
-BenchmarkCopy                         199 ns/op  
-BenchmarkCount                        312 ns/op  
-BenchmarkTable                        284 ns/op  
-BenchmarkTable2                       524 ns/op  
-BenchmarkPackNybble                   17.3 ns/op  
+BenchmarkCopy                         199 ns/op
+BenchmarkCount                        312 ns/op
+BenchmarkTable                        284 ns/op
+BenchmarkTable2                       524 ns/op
+BenchmarkPackNybble                   17.3 ns/op
 BenchmarkPackNybbleUnroll2            4.94 ns/op
 ```
 
@@ -89,28 +89,28 @@ Notice that we are able to pack the whole permutation into a uint64 with very lo
 The core of the loop is the following:
 
 ```
-z := find the index of min in the permutation  
-remove z from the permutation  
+z := find the index of min in the permutation
+remove z from the permutation
 r += z * min!
 ```
 
 Bit-parallel search is a good way to find that index. Bit-parallel is easier to show in an example, let’s take a permutation `[1,2,3,0]` and lets search for number `2`.
 
 ```
-decimal               1    2    3    0  
-                      ---- ---- ---- ----  
-packed                0001 0010 0011 0000  
-mask                  1101 1101 1101 1101  
-  
-f1 := packed ^ mask   1101 1111 1110 1101  
-f2 := f1 >> 2           11 0111 1111 1111  
-f3 := f1 & f2         0001 0111 1110 1101  
-f4 := f3 >> 1          000 1011 1111 0110  
-f5 := f4 & f3         0000 0001 1110 0100  
-  
-f5 := f4 & f3         0000 0001 1110 0100  
-onemask                  1    1    1    1  
-s := f5 & onemask     0000 0001 0000 0000  
+decimal               1    2    3    0
+                      ---- ---- ---- ----
+packed                0001 0010 0011 0000
+mask                  1101 1101 1101 1101
+
+f1 := packed ^ mask   1101 1111 1110 1101
+f2 := f1 >> 2           11 0111 1111 1111
+f3 := f1 & f2         0001 0111 1110 1101
+f4 := f3 >> 1          000 1011 1111 0110
+f5 := f4 & f3         0000 0001 1110 0100
+
+f5 := f4 & f3         0000 0001 1110 0100
+onemask                  1    1    1    1
+s := f5 & onemask     0000 0001 0000 0000
                                 .... ....
 ```
 
@@ -121,19 +121,19 @@ Now we need to find the index, where all the numbers are one. For this we can an
 Our result is the number of zeros after the number. Note that this result still needs to be divided by 4 to get the final result. Once we translate this idea into code, it looks roughly like this:
 
 ```
-mask := masks[min]  
-filtered := perm ^ mask  
-filtered &= filtered >> 2  
-filtered &= filtered >> 1  
-filtered &= onemask  
+mask := masks[min]
+filtered := perm ^ mask
+filtered &= filtered >> 2
+filtered &= filtered >> 1
+filtered &= onemask
 z4 := byte(bits.TrailingZeros64(filtered))
 ```
 
 We can now need a way to remove that element from the sequence:
 
 ```
-upper := (perm >> (z4 + 4)) << z4  
-lower := perm &^ (^uint64(0) << z4)  
+upper := (perm >> (z4 + 4)) << z4
+lower := perm &^ (^uint64(0) << z4)
 perm = upper | lower
 ```
 
@@ -142,15 +142,15 @@ Here we construct the upper part, by cutting off the bottom part. And then get t
 Benchmarking the code gives us a speed up from ~200ns to ~120ns.
 
 ```
-BenchmarkCopy            199 ns/op  
+BenchmarkCopy            199 ns/op
 BenchmarkCopyBit         123 ns/op
 ```
 
 The final (uncensored) code was this:
 
 ```
-func CodeCopyBit(perm [base]byte) int {  
-    return codebit(uint64(PackNybbleUnroll(perm)))  
+func CodeCopyBit(perm [base]byte) int {
+    return codebit(uint64(PackNybbleUnroll(perm)))
 }
 
 func codebit(perm uint64) int {
@@ -181,9 +181,9 @@ _PS: When there are very few elements then this whole thing can be replaced by a
 Robert Clausecker suggested even better [approaches in Reddit](https://www.reddit.com/r/golang/comments/8ems5n/fast_permutation_compression/dxxm8et/). His descriptions in [StackOverflow](https://stackoverflow.com/questions/39623081/how-can-i-effectively-encode-decode-a-compressed-position-description/39706321#39706321) are quite nice. His benchmarks are here [https://github.com/fuzxxl/permcode](https://github.com/fuzxxl/permcode).
 
 ```
-BenchmarkCopy          205.0 ns/op  
-BenchmarkCopyBit       126.0 ns/op  
-BenchmarkShuffle        69.2 ns/op  
+BenchmarkCopy          205.0 ns/op
+BenchmarkCopyBit       126.0 ns/op
+BenchmarkShuffle        69.2 ns/op
 BenchmarkShuffleUnroll  39.2 ns/op
 ```
 

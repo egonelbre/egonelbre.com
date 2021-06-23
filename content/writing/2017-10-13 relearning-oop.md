@@ -47,7 +47,7 @@ _I try my best to be historically accurate and communicate the ideas, but since 
 
 There were two central motivations for OOP:
 
-> The large scale one was to find a better module scheme for complex systems involving hiding of details, and the small scale one was to find a more flexible version of assignment, and then to try to eliminate it altogether. As with most new ideas, it originally happened in isolated fits and starts.   
+> The large scale one was to find a better module scheme for complex systems involving hiding of details, and the small scale one was to find a more flexible version of assignment, and then to try to eliminate it altogether. As with most new ideas, it originally happened in isolated fits and starts.
 > -- [Early History of Smalltalk](http://worrydream.com/EarlyHistoryOfSmalltalk/#p4)
 
 It’s interesting to think that most of our current “OO” languages are just filled with assignments.

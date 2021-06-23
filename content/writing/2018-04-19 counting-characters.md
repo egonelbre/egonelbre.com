@@ -9,11 +9,11 @@ tags: ["Go", "Unicode"]
 Let’s start with a simple problem: “How many characters are in a string?”. Our first implementation:
 
 ```
-func CharacterCount1(s string) int {  
-    return len(s)  
+func CharacterCount1(s string) int {
+    return len(s)
 }
 
-fmt.Println(CharacterCount1`("hello"))  
+fmt.Println(CharacterCount1`("hello"))
 // Output: 5`
 ```
 
@@ -22,17 +22,17 @@ _Yay, all done, right?_
 Anyone who has encountered unicode strings, knows that this returns the number of bytes not the number of characters.
 
 ```
-fmt.Println(CharacterCount1("你好"))  
+fmt.Println(CharacterCount1("你好"))
 // Output: 6
 ```
 
 Let’s try again:
 
 ```
-func CharacterCount2(s string) int {  
-    return len(([]rune)(s))  
-}  
-fmt.Println(CharacterCount2("你好"))  
+func CharacterCount2(s string) int {
+    return len(([]rune)(s))
+}
+fmt.Println(CharacterCount2("你好"))
 // Output: 2
 ```
 
@@ -41,7 +41,7 @@ _Huh, is it now correct?_
 Not quite.
 
 ```
-fmt.Println(CharacterCount2("hĕllŏ"))  
+fmt.Println(CharacterCount2("hĕllŏ"))
 // Output: 7
 ```
 

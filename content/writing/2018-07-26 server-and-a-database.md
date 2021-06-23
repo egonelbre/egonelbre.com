@@ -385,7 +385,7 @@ type DB interface {
 	Comments() Comments
 }
 
-type AdminDB interface { 
+type AdminDB interface {
 	DB
 	// only for admins
 	RunMigrations(context.Context) error

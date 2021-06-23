@@ -92,14 +92,14 @@ func (channel *Channel) Disconnect(name string) {
 
 func (channel *Channel) disconnect(name string) {
 	channel.mu.MustOwn()
-  
+
 	delete(channel.clients, name)
 	channel.broadcast(name + " disconnected")
 }
 
 func (channel *Channel) broadcast(message string) {
 	channel.mu.MustOwn()
-  
+
 	for name, client := range channel.clients {
 		n, err := client.Write([]byte(message))
 		if err != nil || n != len(message) {
