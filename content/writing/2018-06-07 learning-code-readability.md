@@ -142,7 +142,7 @@ I realized that one kata described by [Carlo Pescio in “Cut the red wire!”](
 
 The concept is pretty simple:
 
-1. You take a non-trivial exercise (e.g. [Yathzee](http://codingdojo.org/kata/Yahtzee/)).
+1. You take a non-trivial exercise (e.g. [Yahtzee](http://codingdojo.org/kata/Yahtzee/)).
 2. You write a program to solve it.
 3. You run it.
 4. When it runs successfully, you have passed level one.
