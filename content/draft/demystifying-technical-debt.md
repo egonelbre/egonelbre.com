@@ -6,10 +6,9 @@ date: ""
 tags: ["physics-of-software"]
 ---
 
-"Techincal debt" has been bothering me for a while. It's seems somehow a catchall for different design mistakes, code worsening over time and legacy code bases and intentional design mistakes due to time constraints. You can take a look the list of causes in [Wikipedia](https://en.wikipedia.org/wiki/Technical_debt#Causes) if you don't believe me. It makes feel like the code is collecting dust when it's not being maintained, but clearly that cannot be the correct since the code might be unchanged.
+"Technical debt" has been bothering me for a while. It's seems somehow a catchall for different design mistakes, code worsening over time and legacy code bases and intentional design mistakes due to time constraints. You can take a look the list of causes in [Wikipedia](https://en.wikipedia.org/wiki/Technical_debt#Causes) if you don't believe me. It makes feel like the code is collecting dust when it's not being maintained, but clearly that cannot be the correct since the code might be unchanged.
 
-
-Let's take this piece of code from BOOK. It has bee unchanged since YEAR. Has the technical debt risen for this code? When we talk about things collecting dust, the book example would definitely have more chance being dusty than code stored digitally. However, most people wouldn't consider it technical debt, just old code.
+Let's take this piece of code from BOOK. It has bee unchanged since YEAR. Has the technical debt risen for this code? When we talk about things collecting dust, the book example would definitely have more chance being dusty than code stored digitally.
 
 TODO: image of code
 
@@ -18,6 +17,7 @@ To push the metaphore to breaking, how do you measure technical debt and how lar
 But I digress, I think this unclear "technical debt" metaphor has caused bad decisions in codebases that don't need fixing -- and also the other way around, not understanding it caused people to overlook actual problems.
 
 Before we get to tackle "technical debt" we need to take a small detour.
+
 
 # Quality and Effort
 
@@ -60,30 +60,31 @@ The third major category is about people. Rarely you are building a product alon
 
 Obviously we could dive deeper, but the main point is that *effort* is not one dimensional and involves a lot of human factors beside "typing code".
 
+
 # Change in effort
 
-One important observation is that the amount of effort needed to make changes changes over time. There are several tendencies.
+It's an obvious statement that this "effort" changes over time. The question is how?
 
-The **change in code modification effort** usually increases over time, because:
+*Code modification effort* roughly depends on a few factors: amount of code, complexity of code and understanding of the code. Based on these we can estimate that effort to modify code usually increases, because:
 
-* features are rarely removed
-* features are usually added
-* there's more code to handle the features
-* the user interface is larger
+* features are usually added -> more code and more things to understand
+* features are rarely removed -> amount of code doesn't decrease arbitrarily
+* the user interface is larger -> more things that can interact, hence more complexity
+* features accumulate more cases -> which means more complex and more code
 
-We can see similar tendencies in **understanding effort**. Usually:
+*Understanding effort* roughly depends on the complexity of mental model, project and user needs; but also on how much of the system we have in our long term memory. We can similarly estimate that it increases over time:
 
-* percentage of understood about the project decreases, because the projects get larger
-* understanding of the business needs increases
-* knowledge of older unmaintained parts are forgotten
-* decreases when people change companies
+* there are more features that interact -> more complex mental model and cases to consider
+* more business rules and concerns -> because we want to solve the user problems better
+* knowledge of code, that isn't being modified, is forgotten -> it's going to be harder to work with a system that you don't know
+* people come and go -> tacit knowledge is lost when a person leaves
 
-With **communication effort**, it's slightly more complex. The effort:
+*Communication effort* roughly depends on the amount of people you need to communicate with and clarity on whom you need to talk to. Here it's harder to pinpoint clear tendencies, but we can estimate that:
 
-* increases with company growth,
-* decreases with clarifying processes. 
+* communication effort increases when company grows
+* communication effort decreases when processes and company structure is clarified
 
-Overall, we can state that:
+Overall, we can estimate that:
 
 > The effort to maintain a project increases, without activities that actively reduce it.
 
@@ -91,45 +92,48 @@ It would be now easy to conclude that this "increase in effort" is the "technica
 
 TODO: code image
 
-This code has been years in a book without any new additions, noone communicating about it, however some would still consider it technical debt. There must be things that are missing from our understanding.
+This code has been years in a book without any new additions, noone communicating about it, however some would still consider it technical debt.
+
+There must be things that we don't take into account when thinking about "technical debt".
 
 
 # Perception
 
-One fundamental laws of software development is that you make mistakes. Technical debt is often associated with bad decisions in the past. So, how do we recognize mistakes?
+One of the fundamental laws of software development is that you make mistakes. Technical debt is often associated with bad decisions in the past. Let's get philosophical -- how do we recognize mistakes?
 
-When we notice a difference between:
+IMAGE
 
-* what we see
-* what we expect
+When we look at this equation we have two parts in our head:
 
-So, there's something that we "perceive" and realize that it's not in it's "ideal" state. This is the same for realizing a mistake in "effort" or "maintainability".
+TODO VERIFY PSYCHOLOGY ASPECT
 
-We can visualize this as:
+* We pereceive an equation
+* We have an expectation what that equation shuold be
+
+Or in other words, there's something that we "perceive" and realize that it's not in its "ideal" state. The larger this difference between our perception and expectation the larger the mistake seems.
+
+We can apply the same line of thinking to "effort" and "maintainability".
 
 TODO: image
 
-Our "ideal effort" decreases when we realize how things could be better and when we learn things. Of course, it also decreases, when we forget things.
+Our "ideal effort to modify" decreases when we learn how things could be better. So, there's a "potential improvement" that we evaluate. We could simplify this into an equation:
 
-So, there's "potential improvement" that we evaluate. Roughly speaking we can say that:
-
-> Technical Debt == Perceived Effort - Ideal Effort
-
-Obviously, you don't have to agree with my approach to it. If it makes you feel better, you can replace "Technical Debt" with "Effort Debt".
+> Technical Debt ~ Perceived Effort - Ideal Effort
 
 There are several interesting observations here.
 
-When there's a breakthrough in technology (e.g. go cross compilation, React model), people realize that there's a much better way to do something. Hence, they feel that their project has technical debt and they should fix it. Although, the actual effort to maintain the project hasn't changed.
+When there's a breakthrough in technology (e.g. ease of Go cross compilation, React model), people realize that there's a much better way to do something - hence, they feel that their project has technical debt and they should fix it. Although, the effort to maintain the project hasn't changed. Only the expectation has changed.
 
-When we "borrow technical effort", then we make a decision to implement a less maintainable solution in favor of finishing the job faster.
+Borrowing "technical debt" is also nicely explained with this way of thinking. Instead of perceived effort and ideal effort changing separately, they are changed together. Or in other words, we increase perceived effort while knowing that ideal effort is lower.
 
-It's also interesting to thing about what is "quality debt". That's outside of this blog post.
+This does seem to explain "technical debt" quite well and gives us a nice model to work with.
 
-However, it's important to realize that improving "quality" can sometimes increase "effort" to main software. The easiest example is that if you don't care about security it's much easier to implement than when you do.
+As a side note, it would be also interesting to consider what is "quality debt" or "security debt". However, it's important to realize that improving "quality" can sometimes increase "effort" to main software. The easiest example is that, when you don't care about security it's much easier to implement features.
 
-# Nobody's Perfect
 
-It might seem that these "perceived effort" and "ideal effort" are values that are easy to measure, but they have quite a lot of dimensions and different people may come to different conclusions.
+# Pobody's Nerfect
+
+It might seem that these "perceived effort" and "ideal effort" are easy to measure, however, they have a lot of dimensions and different people may come to different conclusions.
 
 The first question, whom effort? For "average developer", "average developer in the company", "average junior developer", "average game developer"?
 
