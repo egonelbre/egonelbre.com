@@ -122,7 +122,7 @@ Our "ideal effort to modify" decreases when we learn how things could be better.
 
 There are several interesting observations here.
 
-When there's a breakthrough in technology (e.g. ease of Go cross compilation, React model), people realize that there's a much better way to do something - hence, they feel that their project has technical debt and they should fix it. Although, the effort to maintain the project hasn't changed. Only the expectation has changed.
+When there's a breakthrough in technology (e.g. ease of Go cross compilation, React model), people realize that there's a much better way to do something - hence, they feel that their project has technical debt and they should fix it. Although, the effort to maintain the project hasn't changed. Only the expectation has changed. In principle, the technical debt increased because people learned something new.
 
 Borrowing "technical debt" is also nicely explained with this way of thinking. Instead of perceived effort and ideal effort changing separately, they are changed together. Or in other words, we increase perceived effort while knowing that ideal effort is lower.
 
@@ -130,95 +130,102 @@ This does seem to explain "technical debt" quite well and gives us a nice model 
 
 As a side note, it would be also interesting to consider what is "quality debt" or "security debt". However, it's important to realize that improving "quality" can sometimes increase "effort" to main software. The easiest example is that, when you don't care about security it's much easier to implement features.
 
+However, it's important to realize that improving "quality" can sometimes increase "effort" to maintain the software. The easiest example is that if you don't care about security or performance it's much easier to implement features than when you do.
 
 # Pobody's Nerfect
 
-It might seem that these "perceived effort" and "ideal effort" are easy to measure, however, they have a lot of dimensions and different people may come to different conclusions.
+It might seem that "perceived effort" and "ideal effort" are easy to measure, but they have quite a lot of dimensions. Similarly, different people may come to different conclusions.
 
-The first question, whom effort? For "average developer", "average developer in the company", "average junior developer", "average game developer"?
+The first question is "whose effort?" -- if we measure "hours spent on a change", then different people have different speed. We could consider the "average developer in the world", or "average developer in the company", or "the average junior devloper", or "average game developer". Additionally, people have different skills and knowledge in different areas.
 
-The second question, what change? Any change? Usual changes? Architectural changes?
+The second question, "which change?". Is it about an arbitrary change in the codebase, or the most common change or architectural changes? All of these are different and some are more likely than others.
 
-Besides these we also need to consider who is evaluating these. Every person has their own biases.
+Finally we need to consider the person doing the evaluating as well, because every person has some sort of biases. Especially when dealing with "perceived effort" and "ideal effort".
 
-If the person is hyped, working with systems they know very well and tools that they know very well. They can easily underestimate the "average effort".
+For example, if the person is hyped about a language or framework, or working with a system they know very well, they can easily underestimate the "average effort". This is partly due to knowing how to solve many of the common problems and also having ingrained rules in how to avoid problems in the first place.
 
-Similarly when the person has preference for other tools, the system has flaky behavior, the person doesn't understand the system... then they can overestimate the effort needed to maintain.
+On the other side, if the person has a strong preference for other tools, the tools have a flaky behavior, or the person doesn't understand the system -- then they can overestimate the effort needed to maintain a system. For example a flaky tests that fails once a month is annoying, however, realistically it doesn't affect the effort to maintain too much.
 
-It's interesting to note that people tend to not notice things that work well in a given system.
+We tend to overestimate the effort needed to maintain code written in old languages. Definitely there is more effort needed to maintain old code, but it's not as big as it might seem. Think how people learn a new JavaScript framework and library every week and are able to keep up with it. If you can learn new code you are able to learn old code.
 
-Similarly, we tend to overestimate the effort needed to maintain old languages. This is true to some degree, however, given that there's a new framework every month and people are able to keep up to date with that... then learning a old system should be easier.
+We also tend to overestimate the effort needed to use another language, when they seem familiar, but has a different set of features. A C++ programmer starting to use Go would feel overly restricted and hence conclude that they will be significantly slower when writing using that language. Similarly, a Go programmer feels they would be overwhelmed when starting to use Rust due to the amount of features available. Both are right to some degree, but the main reason for feeling the "speed of writing difference" is due to not knowing how to use the language effectively. After a few months of using a language the unfamiliarity will decrease. There are definitely differences in languages and their usability, but it's not as big as it seems on the first sight. Neertheless, there would be still a perception bias towards the language and community you like more.
 
-It's interesting that people tend to also overestimate the effort needed to use another language, when it's familiar enough, but has different language features. A C++ programmer starting to use Go would feel overly restricted and hence conclude that they will be significantly slower when writing that language. Similarly, a Go programmer feels they would be overwhelmed by when starting use Rust due to the amount of features available. Both are right in some regards, but mostly, because they need to relearn how to do some things, not due to the amount of features. After getting the basic down, the difference in effort isn't that significant. There would be still a perception bias towards the language you like more.
+Beginner programmers seem to overestimate the "ideal effort" for newer frameworks, because it might look like they solve all-the-problems. Veteran programmers either are realistic or more pessimistic, because they have been burnt before and know that most of the problems don't lie in the framework, but elsewhere.
 
-Of course, the less familiarity you have with a particular thing the larger the error in your estimation.
+Overall we can state that the less familiar you are with a codebase, system, tool the higher your bias can be. The bias can be either positive or negative.
 
 # Technical Debt by Ward Cunningham
 
-Initially when Ward Cunningham came up with the metaphor, he only had the "code mismatching business ideas" in mind.
-
-https://www.youtube.com/watch?v=pqeJFYwnkjE
-http://wiki.c2.com/?WardExplainsDebtMetaphor
+Initially when Ward Cunningham came up with the metaphor, he only had the "code mismatching business ideas" in mind. He was more precise in it's formulation than people know.
 
 > And that said that if we failed to make our program align with what we then understood to be the proper way to think about our financial objects, then we were gonna continually stumble over that disagreement and that would slow us down which was like paying interest on a loan.
 >
-> Ward Cunningham
+> Ward Cunningham (https://www.youtube.com/watch?v=pqeJFYwnkjE, http://wiki.c2.com/?WardExplainsDebtMetaphor)
+
+In other words, we improve our "ideal mental model of the system" and there's a difference in our code and the ideal mental model. There was no concept of "borrowing" and that would've been an error while developing.
 
 # What can you do about it?
 
-## Rewrite??
+After all of this discussion you might wonder how do you deal with technical debt.
 
-Rewriting should be last resort.
+## Rewrite???
 
-The larger the piece you are rewriting the more likely you will introduce new faults.
+First inclincation for people to get rid of "technical debt" is to rewrite the system. This carries a huge risk and the larger the piece you are rewriting the larger the chance of failure.
 
-Second system effect.
+There are few factors that contribute to rewriting ending up in a failure:
 
-People don't notice things that work well in the given system and mess it up.
+* People don't notice things that work well in the current system, because the things that don't work well are annoying. During rewrite it's easy to forget that they should keep working well. These parts are also often more important than the things that currently don't work well.
+* Size of the refactoring. Each line of code you change can introduce a bug, hence, the more lines and more systems the piece of code integrates, the more likely it is to have faults.
+* People focus on fixing the mistakes, sometimes at the cost of rest of the system. One aspect of this is "second system effect", where by including all the missing features, you end up overcomplicating the system.
+* Unclear understanding how the current system exactly works. It's quite common that people want to rewrite a system, because they don't understand it.
+
+Overall, a rewrite should be the last resort and try to minimize the problems above to ensure that the rewrite ends up as a success.
 
 ## Continuos Learning
 
-Set aside reading time for developers. The more they know, the less they learn later.
+One good way to prevent "technical debt" is to ensure that the developers have a scheduled time to learn, about coding and the business. The more the developers know how to do things, the less surprises they get about their system. There are many ways to implement these in a company - 20% projects, hack weeks, book clubs, regular presentations by other people.
 
-Experiment with multiple ideas. The more ways you know how to solve a problem, the more informed your decision is. See also infinite possibities exercise.
+Try to implement one feature in multiple ways. The more ways you know how to solve a problem, the more informed your decision is going to be.
 
-Ask for help and guidance. There are plenty of experienced programmers that can offer their services to review your code and suggest improvements.
+Finally a good strategy is to ask for help and guidance. There are plenty of experienced programmers that can do a review on your code and suggest improvements.
+
+When learning these things, it'll actually end up increasing "technical debt", because it lowers the "ideal effort"... but it will also mean that programmers are more likely to write code that is nearer to that "ideal effort".
 
 ## Code Reviews
 
-Similarly code reviews significantly help with both disseminating understanding about the system and learning early about things that could be done better.
+Code reviews significantly help with both disseminating understanding about the system and learning early about things that could be done better.
 
-First thing you should do, is to automate linting as much as possible and automate formatting. In general, code reviews should avoid style questions as much as possible to ensure that feedback is useful.
+First, automate linting as much as possible and automate formatting. In general, ideally when someone starts to review the code, then all the style questions have been already solved. The style questions can grab attention quite fast.
 
-Try to ensure that the quality of pull requests increases over time. Every next commit should be 1% better, for some definition of better.
+One target to set for every developer is to try to ensure your pull request quality is better every single PR. By trying to improve the quality of every PR people end up defaulting to a better baseline. There are many ways to define better, ideally try to improve in multiple dimensions.
 
-Strive for gradual improvement of the codebase rather than large improvements.
+Strive for gradual improvement of the codebase rather than large improvements. As mentioned previously, the larger the change, the more likely it is to contain mistakes.
 
-Ideally, target less than 400 LOC per change. When the change is over 400 loc, the reviewer fatigue kicks in and reviewers starts missing more bugs. Similarly, when commits are small, they get merged faster and are less likely to go stale. This is based on SmartBear study.
+Ideally, target less than 400 LOC per change. When the change is over 400 LOC, the reviewer fatigue kicks in and reviewers start missing more bugs. Similarly, when commits are small, they get merged faster and are less likely to go stale. [See this SmartBear study for more information](https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/).
 
-While reviewing you should always consider, whether 2 similar commits would make it difficult to maintain? If yes, then the next change into that codebase should be accompanied with an improvement to the structure.
+While reviewing you always consider, whether 2 similar commits would make it difficult to maintain? If yes, then the next change into that part of the code should be accompanied with an improvement to the structure.
 
 ## Maintenance
 
-Do regular reviews architecture reviews, whether everything feels right. Mark down places where people waste their effort and try to improve those places.
+It's easy to lose sight of the overall picture when implementing things one at a time. Hence, do regular architecture reviews. Think whether everything feels right. Note down places where people waste their effort and discuss how you can improve these parts.
 
-Sometimes a video explaining the whole system can be much more effective than a large refactor.
+As programmers the first inclination is to fix "maintenance effort" with fixing the code, there sometimes can be alternative means. For example, a good video explaining how the existing "bad system" works and why things ended up that way, can be much less effort and have a bigger effort than coded modification.
 
-Try to isolate problem areas. Some third-party packages and libraries are pervasive and can seriously affect the rest of the code base. By creating a wrapper for those systems, they can be made less benign. See anti corruption layer.
+For maintanance it's useful to isolate problem areas. Some third-party packages and libraries are pervasive and can seriously affect the rest of the code base. By creating a nice wrapper for those systems, they can be made less benign.
 
 ## Acceptance
 
-The final advice is about acceptance, there will be always places where you can improve the system:
+The final advice is about acceptance:
 
 > “Not all of a large system will be well designed...”
 >
 > Eric Evans
 
-You don't have to re-write your bash scripts in Haskell for the glory of purity. Time to develop systems are limited and try to figure out where you can make the most significant impact.
+While the inclination is to try fix all the problems you notice, it might not make a significant difference to the needed effort to maintain the system. You don't have to re-write your bash scripts in Haskell for the glory of purity. Your time to implement things is limited and try to figure out how you can make the most impact to the value stream.
 
 # Conclusion
 
-Technical debt is not "dust" that accumulates on your code, but rather it's an inherent part of code. Over time you learn and start noticing those mistakes. I think using "technical debt accumulates" is the wrong mentality, instead it should be "discovering technical debt".
+Technical debt is not "dust" that accumulates on your code, but rather it's an inherent part of code. Over time you learn and notice mistakes in your systems. I think using "technical debt accumulates" is the wrong mentality, instead it should be considered as "discovering technical debt".
 
 > Technical Debt is not a Monster.
 >
