@@ -12,9 +12,9 @@ Let's take this piece of code from BOOK. It has bee unchanged since YEAR. Has th
 
 TODO: image of code
 
-To push the metaphore to breaking, how do you measure technical debt and how large is the interest? How much code would I need to write to pay off all of the debt? If I have a lot of code, can I give a technical loan to other people?
+To push the metaphore to breaking, how do you measure technical debt and how large is the interest? How much code would I need to write to pay off all the debt? If I have a lot of code, can I give a technical loan to other people?
 
-But I digress, I think this unclear "technical debt" metaphor has caused bad decisions in codebases that don't need fixing -- and also the other way around, not understanding it caused people to overlook actual problems.
+But I digress, this unclear "technical debt" metaphor has caused bad decisions in codebases that don't need fixing. On the other side, not understanding it has caused people to overlook actual problems.
 
 Before we get to tackle "technical debt" we need to take a small detour.
 
@@ -30,7 +30,7 @@ First problem we need to tackle is "quality". When we are talking about code qua
 * Efficiency - how many trees we need to burn to run an operation
 * Maintainability - how many hours and lines of code we need to modify to add, fix or remove a feature
 
-When we talk about "technical debt", usually, we are concerned about maintainabilty. There definitely are hints of the other aspect in there as well, however maintainability does seem to be dominant.
+When we talk about "technical debt", usually, we are concerned about maintainabilty. There definitely are hints of the other aspect in there as well, but maintainability does seem to be dominant.
 
 One way to summarize "maintainability" is to treat it as "effort needed to make a change". We can dissect this effort into several pieces -- or in other words, places where we use up our energy:
 
@@ -44,7 +44,7 @@ The most obvious part is *effort in code modification*. We can modify many diffe
 * tooling, databases - changes to programs that the code needs to interact
 * makefiles, build system - changes in how we run, build the code
 
-By no means is that list exhaustive. The less obvious part in effort is *effort in understanding*. The understanding here doesn't necessarily mean just understanding, but also clarifying and modifying things that help understanding. We can dissect it into:
+By no means is that list exhaustive. The less obvious part in effort is *effort in understanding*. The understanding here doesn't mean only "understanding", but also clarifying and modifying things that help with understanding. We can dissect it into:
 
 * code structure - how clear is how things interact and how things are connected
 * mental model - how we think about the problem and how it relates to the product
@@ -58,7 +58,7 @@ The third major category is about people. Rarely you are building a product alon
 * product owners - discussing how the product should work
 * end-users - understanding their needs and where they would get most value
 
-Obviously we could dive deeper, but the main point is that *effort* is not one dimensional and involves a lot of human factors beside "typing code".
+We could dive deeper, but the main point is that *effort* is not one dimensional and involves a lot of human factors beside "typing code".
 
 
 # Change in effort
@@ -72,7 +72,7 @@ It's an obvious statement that this "effort" changes over time. The question is 
 * the user interface is larger -> more things that can interact, hence more complexity
 * features accumulate more cases -> which means more complex and more code
 
-*Understanding effort* roughly depends on the complexity of mental model, project and user needs; but also on how much of the system we have in our long term memory. We can similarly estimate that it increases over time:
+*Understanding effort* roughly depends on the complexity of mental model, project and user needs. It also depends on how much we know the system already. We can similarly estimate that it increases over time:
 
 * there are more features that interact -> more complex mental model and cases to consider
 * more business rules and concerns -> because we want to solve the user problems better
@@ -92,7 +92,7 @@ It would be now easy to conclude that this "increase in effort" is the "technica
 
 TODO: code image
 
-This code has been years in a book without any new additions, noone communicating about it, however some would still consider it technical debt.
+This code has been years in a book without any new additions and noone communicating about it, but some would still consider it technical debt.
 
 There must be things that we don't take into account when thinking about "technical debt".
 
@@ -122,7 +122,7 @@ Our "ideal effort to modify" decreases when we learn how things could be better.
 
 There are several interesting observations here.
 
-When there's a breakthrough in technology (e.g. ease of Go cross compilation, React model), people realize that there's a much better way to do something - hence, they feel that their project has technical debt and they should fix it. Although, the effort to maintain the project hasn't changed. Only the expectation has changed. In principle, the technical debt increased because people learned something new.
+When there's a breakthrough in technology (e.g. ease of Go cross compilation, React model), people realize that there's a much better way to do something. Hence, they feel that their project has technical debt and they should fix it. Although, the effort to maintain the project hasn't changed. Only the expectation has changed. In principle, the technical debt is higher because people learned something new.
 
 Borrowing "technical debt" is also nicely explained with this way of thinking. Instead of perceived effort and ideal effort changing separately, they are changed together. Or in other words, we increase perceived effort while knowing that ideal effort is lower.
 
