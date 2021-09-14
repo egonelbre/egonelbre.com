@@ -6,61 +6,59 @@ date: ""
 tags: ["physics-of-software"]
 ---
 
-"Techincal debt" has been bothering me for a while. It's seems somehow a catchall for different design mistakes, code worsening over time and legacy code bases or you can take a loan that you need to repay later. You can take a look the list of causes in [Wikipedia](https://en.wikipedia.org/wiki/Technical_debt#Causes) if you don't believe me. Often it feels like it'the code is collecting dust when it's not being maintained.
+"Techincal debt" has been bothering me for a while. It's seems somehow a catchall for different design mistakes, code worsening over time and legacy code bases and intentional design mistakes due to time constraints. You can take a look the list of causes in [Wikipedia](https://en.wikipedia.org/wiki/Technical_debt#Causes) if you don't believe me. It makes feel like the code is collecting dust when it's not being maintained, but clearly that cannot be the correct since the code might be unchanged.
 
-Let's take FORTRAN as an example. There's still a lot of numerical code that was and is written with it. Let's say there's a piece of code that hasn't changed for 20 years, however, the "debt" of that code has risen. What is the "thing" that actually caused that difference?
+
+Let's take this piece of code from BOOK. It has bee unchanged since YEAR. Has the technical debt risen for this code? When we talk about things collecting dust, the book example would definitely have more chance being dusty than code stored digitally. However, most people wouldn't consider it technical debt, just old code.
 
 TODO: image of code
 
-On the other side, how do you measure technical debt, how large is the "interest" in a code-base? How much do I need to "pay" to pay it off? If I have plenty of "money", can I loan it to someone else?
+To push the metaphore to breaking, how do you measure technical debt and how large is the interest? How much code would I need to write to pay off all of the debt? If I have a lot of code, can I give a technical loan to other people?
 
-But I digress, I think this unclear "technical debt" has caused bad decisions in codebases and trying to fixing things that don't need fixing.
+But I digress, I think this unclear "technical debt" metaphor has caused bad decisions in codebases that don't need fixing -- and also the other way around, not understanding it caused people to overlook actual problems.
 
 Before we get to tackle "technical debt" we need to take a small detour.
 
 # Quality and Effort
 
-When we are talking about software quality we are often having several things in mind:
+First problem we need to tackle is "quality". When we are talking about code quality, we usually have the following things in mind:
 
-* Fit for purpose
-* Reliability
-* Security
-* Flexibility
-* Efficiency
-* Maintainability
+* Fit for purpose - whether and how well the code does, what it is supposed to do
+* Reliability - does it break on every tuesday between 1AM - 2AM
+* Security - can we access, modify or break information that isn't meant for us
+* Flexibility - how well can the code accomodate new needs
+* Efficiency - how many trees we need to burn to run an operation
+* Maintainability - how many hours and lines of code we need to modify to add, fix or remove a feature
 
-Usually, when we think about "technical debt", it's mostly about maintainability. So what is maintainability?
+When we talk about "technical debt", usually, we are concerned about maintainabilty. There definitely are hints of the other aspect in there as well, however maintainability does seem to be dominant.
 
-One way to look at is to consider the "effort needed to make a change". There are many places where we need to put in this effort.
+One way to summarize "maintainability" is to treat it as "effort needed to make a change". We can dissect this effort into several pieces -- or in other words, places where we use up our energy:
 
-There's **effort in code** modification. Specifically dealing with
+The most obvious part is *effort in code modification*. We can modify many different aspects of the code:
 
-* types, structs, variables, methods
-* packages
-* tests
-* modules
-* documentation
-* tooling
-* build system
-* etc.
+* types, structs, variables, methods - the usual langugage primitives
+* packages, modules - the grouping and organization of code
+* tests - things that verify that the code works
+* frontend, ux - how things look and how you interact with the system
+* documentation - things that describe what the code or program does
+* tooling, databases - changes to programs that the code needs to interact
+* makefiles, build system - changes in how we run, build the code
 
-There's also **effort in understanding**:
+By no means is that list exhaustive. The less obvious part in effort is *effort in understanding*. The understanding here doesn't necessarily mean just understanding, but also clarifying and modifying things that help understanding. We can dissect it into:
 
-* code structure
-* mental model
-* product
-* business value
-* etc.
+* code structure - how clear is how things interact and how things are connected
+* mental model - how we think about the problem and how it relates to the product
+* product - how should the product work
+* business value - how does the product give value to its users
 
-Of course, usually, you are not building a project alone, so there's also **effort in communication**. There's communication with:
+The third major category is about people. Rarely you are building a product alone. Even if you are the solo coder and owner of the company, you probably still need to communicate with your users. So, there's *effort in communication*:
 
-* other developers
-* code reviewers
-* product owners
-* end-users
-* etc.
+* other developers - asking for help, discussing code design
+* code reviewers - giving and getting feedback on things that can be improved
+* product owners - discussing how the product should work
+* end-users - understanding their needs and where they would get most value
 
-Obviously we could dive deeper, but the main point is that the effort is not one dimensional and involves a lot of human factors beside "typing code".
+Obviously we could dive deeper, but the main point is that *effort* is not one dimensional and involves a lot of human factors beside "typing code".
 
 # Change in effort
 

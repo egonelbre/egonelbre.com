@@ -10,7 +10,7 @@ Mental Models
 
 Humans First
 
- — 
+-
 
 Objects
 
@@ -20,7 +20,7 @@ Use Cases
 
 Model Translation
 
- — 
+-
 
 Objects
 
@@ -30,7 +30,7 @@ Mapping to Code
 
 Impact
 
- — 
+-
 
 Problems implementing
 
