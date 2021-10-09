@@ -14,6 +14,19 @@ TODO: Physics of software
 
 TODO: GoF
 
+
+<!--
+I've been wondering about that for a while, because this also happened with Scrum, Lean, DDD (to some degree), Patterns... I suspect the issue is how programmers teach and learn.
+
+Things that may contribute to it:
+1. There's an aversion to anything psychological, which eliminates a lot of foundation from the previous subjects. Similarly, it focuses discussion to the mechanical aspects of things.
+2. Concepts are taught in relation to other things. Paradigm shifts require building up the understanding from ground up, otherwise the related concepts end up contaminating the new ideas.
+3. Trying to simplify things to their essence or barest minimimum. This ends up removing a lot nuance and context from the problems and solutions.
+4. Blogposts and articles end up repeating 1-3, because they are shorter and easier to write. Which ends up causing people to learn the limited version. Effectively, an echo chamber.
+
+Once the ideas have been completely distorted many of the benefits have been lost. Somebody will come up with a new idea X, which ends up going through the cycle again.
+-->
+
 ## Superficiality of discussion
 
 All of my own problems in trying to understand things were all due to one thing — superficial understanding. It’s easy to get stuck in the easy ideas. We learn the definitions, but never learn how they came to be. We only criticize the implementation, but ignore the vision. We may not even have noticed that _vision_ and _paradigm_ existed. This means, every next person learning will see watered down content.
