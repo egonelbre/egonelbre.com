@@ -1,26 +1,27 @@
 ---
 draft: true
-title: 'Five percent heuristic'
-description: Lazy approach to perofrmance optimization.
+title: 'Layman's guide to performance optimization'
+description: "5% Heuristic for performance"
 date: ""
 tags: ["Go", Performance", "Concurrency"]
 ---
 
-_This article is based on a talk I did at https://systemsconf.io/. If you prefer video, then the talk is available here https://www.youtube.com/watch?v=51ZIFNqgCkA._
+At some point I started thinking how to condense performance optimization into a bite-sized idea, that could be taught in 30 minutes. Obviously, such teaching wouldn't be comprehensive and had to take some shortcuts.
 
-At some point I started thinking how to condense performance optimization into a bite-sized idea, that can be taught in 30 minutes. Obviously it the simplification wouldn't be perfect, but hopefully it gives guidance to beginners.
+Nevertheless, there are quite a lot you can learn in 30 minutes and surprisingly they cover a lot of the ground. It's mostly about getting the 80% effect, but with 20% effort. This doesn't mean you'll immediately be 10x better after reading this, but it should give some understanding how it might be done.
 
-You might ask, "Why lazy?". I think there are many skills that can be learned in 30 minutes that can become really powerful. It's about getting the 80% of the effect, but with 20% of the effort. You won't immediately know how to apply them quickly, but there's no shortcut for that part.
+As with any heuristic, they are fallible. If you are thinking about special cases where these rules don't apply -- then, yes, they do exist. The examples are about Go, but they apply similarly to JavaScript, C and assembly.
 
-As with any heuristic, they are fallible in certain scenarios. If you are thinking about special cases where these rules don't apply -- then, yes, they do exist. I show the examples in Go, but the principles are pretty much the same in JavaScript, C and assembly.
 
-# Basic Process of Optimizing
+## Basic Process of Optimizing
 
+<!--
 Optimizing is quite a large topic and there are a lot of parts to it. I covered the basic process of optimizing in another post:
 
 {{< biglink link="/a-tale-of-bfs/#introduction" title="A Tale of BFS" >}}
+-->
 
-To recap, optimizing can be split into a few steps:
+Optimizing is quite a large topic and there are a lot of parts to it. The optimization as a practice can be split into a few steps:
 
 1. Measure - knowing what to optimize in the first place,
 2. **Make a few hypotheses - guessing why things might be slow,**
@@ -32,15 +33,16 @@ To recap, optimizing can be split into a few steps:
 
 This article is mostly about the "making the few hypotheses" step.
 
-# 5% Heuristic
 
-Now when I say `5%` heuristic, I actually don't mean `5%`. It's approximately `5%`, sometimes it's useful to replace that number with `10%` and sometimes with `2%`, however, I don't think it'll make a significant difference in the outcome.
+## 5% Heuristic
 
-The general heuristic can be stated as:
+Now when I say `5%` heuristic, I actually don't mean `5%`. It's approximately `5%`, sometimes it's useful to replace that number with `10%` and sometimes with `2%`. Whichever nubmer you'll choose, usually the outcome is similar.
+
+The general 5% heuristic is:
 
 > If `?` takes more than 5% then try to reduce it.
 
-This probably doesn't say much at the moment, but it can be applied in serveral scenarios:
+At the moment, it doesn't have much significance, but we'll show how to apply this in multiple scenarios:
 
 * The Big Picture
 * Communication
@@ -49,23 +51,20 @@ This probably doesn't say much at the moment, but it can be applied in serveral 
 * Memory Usage
 * Pointers
 
-We'll go over these one-by-one.
 
-# The Big Picture
+## The Big Picture
 
 > Focus in fixing performance on parts that take more than 5%.
 
-It's not hard to understand, that when something takes less than 5% in the whole picture, then at most you can gain in the large scale is 5%. It is much more effective to focus on things that take over 5%. You usually also want to avoid optimizing things that take less than 5%, because micro-optimization often reduces readability and maintainability.
+When something takes less than 5% in the whole picture, then at most you can gain in the large scale is 5%. It is much more effective to focus on things that take over 5%. You also want to avoid optimizing things that take less than 5%, because micro-optimization often reduces readability and maintainability.
 
-But, there's also an other side to this. When all of the things are less than 5%, then the effort to optimize a particular thing is much higher. Usually, you will need to rethink the whole problem, use different data-layout, restructure your whole RPC to be asynchronous or start using SIMD. While it's fun to try and squeeze out the last drop of performance, it does not always make sense.
+Finally, when everything is below the 5% threshold, then often the best way forward is not to try to micro-optimize, but make changes to the algorithms, data-structures, RPC, or go to SIMD altogether.
 
-It also gives a good target to aim while optimizing, when you get something to 5%, then it's more useful to find another place to optimize.
+The 5% is also a good target to aim for optimization. It's quite easy to get overly focused on a specific part. After reaching less 5% then switch to another part to optimize.
 
-## Example: Base 58
+### Storytime: Base 58
 
-One of the performance problems I noticed was "base58 decoding/encoding performance".
-
-The hot part of the code was something like:
+One of the performance problems I noticed was base58 decoding and encoding. The hot part of the code looked like:
 
 ```go
 var bigRadix = big.NewInt(58)
@@ -80,7 +79,7 @@ for x.Cmp(bigZero) > 0 {
 	...
 ```
 
-The issue here is comes from using `big.Int`, which is in infinite in precision and hence it is slow. We can calculate the required uint size to avoid overflow.
+The issue here is comes from using `big.Int`. For base calculations you don't need to have arbitrary-precision, if you can figure out the proper multiple then you can use that specific type instead. We can calculate the required number of bytes for the `uint` type:
 
 ```
 least_common_multiple(58, 256) / 58 = 128 bytes
@@ -90,17 +89,14 @@ This would suggest that we need to implement `uint1024` to represent these calcu
 
 > You don’t have to implement the perfect solution.
 
-It would be sufficient to make that function to take less than `~5%` time it did previously. So, instead of implementing `uint1024`, we can try to reduce calls to `big.Int.Div`. In principle we can do this, by dividing the big.Int by `58^10` to avoid individual divisions. Why `58^10`, because it's the largest number that still fits into `uint64`.
-
-The idea in pseudo-code is:
+It would be sufficient to make that function to take less than 5% time it did previously. Instead of implementing `uint1024`, we can try to reduce calls to `big.Int.Div`. Let's fit as much of the calculations into uint64 and then do the rest using `big.Int`. We can fit a 10 digit base58 number (`58^10`) into `uint64`. Hence, we can use a calculation:
 
 ```
 for x > 0 {
-	// Convert base 256 to base 58^10 using big.Int
+	// Convert base 256 to 10 digits base 58 using big.Int
 	mod10 := x % pow(radix, 10)
 	x = x / pow(radix, 10)
-	// Convert base 58^10 to base 58 using uint:
-
+	// Convert the 10 digits to single digits using uint:
 	for k := 0; k < 10; k++ {
 		answer = append(answer, encoding[mod10 % radix])
 		mod10 = mod10 / radix
@@ -108,11 +104,11 @@ for x > 0 {
 
 Of course, in practice you also need to handle the edge cases. You can take a look at [this commit](https://github.com/btcsuite/btcutil/pull/183/commits/9254c287db4f1a8034772f95cf6ac19331f34b6a) for the full change.
 
-Overall, this optimization gave \~10x performance improvement to that function.
+Overall, this optimization gave \~10x performance improvement to that function. If that function becomes a problem again, then we would need to implement the `uint1024` approach.
 
-## Example: Should I avoid using `...` for performance?
+### Storytime: Should I avoid using `...` for performance?
 
-There was a question in `#performance` whether avoiding variadics is a useful for performance optimization. As an example:
+There was a question in Gophers `#performance` Slack whether avoiding variadics is a useful for performance optimization. As an example:
 
 ```
 // The readable version:
@@ -123,15 +119,16 @@ func Example1(a int)
 func ExampleMultiple(a int, optional ...interface{})
 ```
 
-I've done this specific optimization with [great-effect](https://github.com/golang/go/commit/e85ffec784b867f016805873eec5dc91eec1c99a). However, the usefulness of the optimization depends on the context. Instead of flipping a coin, we can do a back of the envelope calculation to figure it out.
+I've implemented this specific optimization with [great-effect](https://github.com/golang/go/commit/e85ffec784b867f016805873eec5dc91eec1c99a). However, the usefulness of the optimization depends on the context. Instead of flipping a coin, we can do a back of the envelope calculation.
 
-Let's guess that creating an empty slice of interfaces takes 2ns. For the "slice creation" to matter, then it should take more than 5% of the total execution time -- or roughly 20x more, which we can guess at 400ns. Because we are dealing with estimates, we can say that func takes less than \~0.5us and it's in a hot path, then we can consider replacing variadics with two separate functions.
+Let's guess that creating an empty slice takes 2ns. For the "slice creation" to matter, then it should take more than \~5% of the total execution time -- or 20x more, which we can guess at 400ns. So we can say that if a func takes less than \~0.4us and it's in a hot path, then we should consider replacing variadics with two separate functions.
 
-# Communication
+
+## Communication
 
 > Communication should take less than 5% compared to work being done.
 
-Similarly to function calls we can apply the 5% calculation to communication overheads. There are plenty of places where there is communication overhead:
+There are plenty of places where there is communication overhead:
 
 * GPU calls
 * Disk access
@@ -139,25 +136,26 @@ Similarly to function calls we can apply the 5% calculation to communication ove
 * Network calls
 * CGO calls
 
-If there's over 5% spent on these then maybe it's possible to either make them non-blocking or batch multiple requests together.
+If there's over 5% spent on these then try to make them non-blocking, batch multiple requests or even better remove them altogether.
 
-## Example: Goroutines
+### Example: What should I use as goroutine batch size?
 
-Let's say you are trying to figure out an appropriate batch-size for goroutines to work on. There's a cost to starting a goroutine, let's guess it's \~500ns. This suggests that we should pick a batch-size that takes at least `500ns x 20 == 10000ns = 10us` to process.
+Let's say you are trying to figure out an appropriate batch-size for goroutines to work on. There's a cost to starting a goroutine, let's guess it's \~1us. This suggests that we should pick a batch-size that takes at least `1us x 20 == 20us` to process.
 
-Similarly, sending a value over channels can be around \~150ns (your milage may vary). This means that to produce or consume each item should be \~3000ns+.
+Similarly, sending a value over channels can be around \~150ns (your milage may vary). This means that both the producer or consumer should work at least \~3us.
 
-# Predictability
+
+## Predictability
 
 > Avoid branches/calls that have mispredictions above 5%.
 
-One common reason for slowness is mispredictions in the CPU pipeline. CPU-s work really hard to avoid working one instruction at a time, but intead work at multiple things at a time. There's a great write up on branching effects http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/.
+One common reason for slowness is mispredictions in the CPU pipeline. CPU-s work really hard to avoid working one instruction at a time and mispredictions are a common problem. There's a great write up on branching effects at http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/.
 
-Similar effects are also present with func/method calls. If the compiler doesn't know ahead which code it should run.
+There are similar effects with method calls. If the compiler doesn't know ahead which code it should run.
 
 Of course, removing the branch, interface or dynamic call would be even better, however this can often take much more effort, compared to sorting.
 
-## Example: sorting values
+### Example: Sorting Values
 
 A classic example of this problem is effects you observe from sorting your data.
 
@@ -172,13 +170,13 @@ var input = func() []int {
 
 func count50(vs []int) (total int) {
 	for _, v := range vs {
-		total += fn(v)
+		total += largerThan50(v)
 	}
 	return total
 }
 
 //go:noinline
-func fn(v int) int {
+func largerThan50(v int) int {
 	if v < 50 {
 		return 0
 	} else {
@@ -196,13 +194,13 @@ func BenchmarkCount50(b *testing.B) {
 
 _The `go:noinline` pragma is necessary to prevent some compilation optimizations from happening._
 
-If we benchmark this with sorted and unsorted data, we'll get that the unsorted runs at `~69000ns/op` and the sorted runs at `~23500ns/op`, this is a 3x performance difference from just sorting the data.
+If we benchmark this with sorted and unsorted data, we'll get that the unsorted runs at `~69us/op` and the sorted runs at `~23.5us/op`, this is a 3x performance difference from just sorting the data.
 
-We can see similar effects when sorting [graph nodes for traversal](todolinktoBFS).
+A practical example can be seen in [sorting nodes in graph traversal](https://egonelbre.com/a-tale-of-bfs/#sorting-vertices).
 
-## Example: sorting types
+### Example: Sorting Types
 
-We can observe similar effects from method call overhead:
+As mentioned, we can have similar effects in interface method overhead:
 
 ```go
 type Shape interface {
@@ -246,21 +244,23 @@ func BenchmarkShapes(b *testing.B) {
 }
 ```
 
-If we keep the `shapes` unsorted we'll end up with `~88000ns/op`, however if we sort the slice based on the types it'll run at `~39000ns/op`, or \~2x faster.
+If we keep the `shapes` unsorted we'll end up with `~88us/op`, however if we sort the slice based on the types it'll run at `~39us/op`, or \~2x faster.
 
-# Memory Closeness
+
+## Memory Closeness
 
 > Pay attention when you have over 5% memory accesses outside 5MB range.
 
-One other common thing is to consider the cache hierachy. You can roughly assume that, if your memory accesses only use 5MB of memory, then they will be in L2 cache -- most of the time. The specifics will vary from processor to processor.
+Another important CPU feature is cache hierarchy. CPU-s have multiple places of to store data closer to the CPU. The closer it is, then the less time CPU-s need to wait for RAM. As an approximation, if your memory accesses only use 5MB of memory, then they will be in L2 cache... most of the time. The specifics will vary from processor to processor.
 
 You can read more on the effects of memory hierarchy in http://igoro.com/archive/gallery-of-processor-cache-effects/.
 
-Many of the cache-oblivious are designed to take into account the memory hierarchy. Effectively, they design data-structures to look at fewer cache-lines, but maybe at the cost of more cpu instructions.
+Many of the cache-oblivious algorithms and data-strcutures are designed to take into account the memory hierarchy. Sometimes it's useful to redo some calculations than to fetch the result from a table.
 
-# Data Closeness
 
-> If you only access 5% of the data most of the time, then add a cache.
+## Data Closeness
+
+> If you only access 5% of the data, most of the time, then add a cache.
 
 You can also reinterpret the "5% heuristic" for data slightly differently. There are quite a few data-structures to bring data the closer. It's quite widely known that data access patterns are not randomly uniform.
 
@@ -271,7 +271,7 @@ I roughly divide these data structures that bring "data closer" into two categor
 
 Both of these ideas can be combined together to make custom data-structures.
 
-## Caches
+### Caches
 
 Caches in principle copy the data or parts of the data into something that's faster to accesss. The cache might keep frequently accessed copies of data in RAM instead of accessing them from the database all the time. Of course, caches introduce a new problem -- they need to be kept up-to-date.
 
@@ -284,7 +284,7 @@ _Of course, these shouldn't be implemented using linked lists._
 
 The main reason to start with these two, is that they are relatively easy to implement and understand. Similarly, they perform well in a variety of settings.
 
-## Reductions
+### Reductions
 
 I'm sure there's a more formal name for these, but I name these "reductions". Their main idea is that you combine (i.e. "reduce") the data into "summaries". Things that help you either find the data you are looking for or answer questions about the data.
 
@@ -292,13 +292,13 @@ I'm sure there's a more formal name for these, but I name these "reductions". Th
 * Bloom/Cuckoo filters
 * (Multilevel) bitmaps
 
-# Memory Usage
+## Memory Usage
 
 > Reduce memory usage for things that vary less than 5% of the time.
 
 There's a lot of struct fields that don't vary that much, so it can be really helpful to treat the other 95% in a special manner.
 
-## Example: an ID
+### Example: an ID
 
 _I have forgotten some of the exact details about the problem, but hopefully it gets the idea across._
 
@@ -336,7 +336,7 @@ func Encode(id ID) (encoded uint64, ok bool) {
 
 This still left me quite a lot of uint64-s to have a separate lookup table for those values that this scheme wouldn't encode. In the end, this scheme allowed to encode 99% of the ID-s with an uint64.
 
-# Pointers
+## Pointers
 
 > Reduce pointer usage if they take over 5% of the memory.
 
@@ -378,7 +378,7 @@ type Node struct {
 
 Many tree and graph algorithms can be optimized in a similar manner. These optimization can lead to a 2x performance improvement.
 
-# Case Study: Trie
+## Case Study: Trie
 
 Here's a final example where all of these ideas have been put together into optimizing a trie data-structure.
 
@@ -499,7 +499,7 @@ type Node struct {
 
 Overall, this ended up making things much faster. Also that specific trie implementation ended up being trivial to mmap to disk.
 
-# Conclusion: 5% Heuristic
+## Conclusion: 5% Heuristic
 
 Hopefully this gives a quick tool to figure out different ideas on what to optimize when you notice something being slow.
 
