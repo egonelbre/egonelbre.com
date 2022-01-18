@@ -6,3 +6,12 @@ date: ""
 tags: []
 ---
 
+File, connection leaks are bad
+
+Writing a nested tracker
+
+Hooking up fs.FS
+
+Hooking up grpc.Conn
+
+Hooking up database/sql
