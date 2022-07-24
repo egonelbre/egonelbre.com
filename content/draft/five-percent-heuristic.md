@@ -1,6 +1,6 @@
 ---
 draft: true
-title: 'Layman's guide to performance optimization'
+title: "Layman's guide to performance optimization"
 description: "5% Heuristic for performance"
 date: ""
 tags: ["Go", Performance", "Concurrency"]
