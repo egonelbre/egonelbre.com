@@ -616,12 +616,12 @@ type Cache struct {
 }
 
 func NewCache() {
-	content := make(chan *state)
+	content := make(chan *state, 1)
 	content <- &state{}
 	return Cache{content: content}
 }
 
-func (cache *Cache) Add(ctx context.Context, key, value string) {
+func (cache *Cache) Add(ctx context.Context, key, value string) error {
 	select {
 	case <-ctx.Done():
 		return ctx.Err()
@@ -682,14 +682,6 @@ err := db.IterateItems(ctx, func(item *Item) {
 ```
 
 This is probably one of the common ones... forgetting to close the channel. Channels also make the code harder to review compared to using higher-level primitives.
-
-### Primitive: `sync.Cond`
-
-TODO
-
-### Primitive: `atomic`
-
-TODO
 
 ### Few additional rules-of-thumb
 
@@ -978,7 +970,7 @@ err := Concurrently(
 
 ### Protecting State
 
-Similarly, we quite often need to protect the state and wait for it. We've seen how `sync.Mutex` is sometimes error-prone and doesn't consider context cancellation. Let's write a helper for such a scenario.
+Similarly, we quite often need to protect the state when concurrently modifying it. We've seen how `sync.Mutex` is sometimes error-prone and doesn't consider context cancellation. Let's write a helper for such a scenario.
 
 ```go
 type Locked[T any] struct {
