@@ -6,12 +6,11 @@ date: ""
 tags: []
 ---
 
-Forgetting to close a file, a connection or some other resource is rather common issue. Fortunately, there's an approach to find such leaks. We covered finding leaked goroutines in https://www.storj.io/blog/finding-goroutine-leaks-in-tests.
-
+Forgetting to close a file, a connection, or some other resource is a rather common issue. Fortunately, there's an approach to finding such leaks. We covered finding leaked goroutines at https://www.storj.io/blog/finding-goroutine-leaks-in-tests.
 
 ## Problem: Connection Leak
 
-Let's take a simple example, which involves a TCP client. Of course, it applies to other protocols as well, such as GRPC, database or http. We'll omit the communication part, because it's not relevant to the problem.
+Let's take a simple example that involves a TCP client. Of course, it applies to other protocols, such as GRPC, database, or HTTP. We'll omit the communication implementation because it's irrelevant to the problem.
 
 ``` go
 type Client struct {
@@ -27,22 +26,12 @@ func Dial(ctx context.Context, address string) (*Client, error) {
 	return &Client{conn: conn}, nil
 }
 
-func (client *Client) Send(ctx context.Context, data []byte) error {
-	// not relevant
-	return nil
-}
-
-func (client *Client) Recv(ctx context.Context) ([]byte, error) {
-	// not relevant
-	return nil, nil
-}
-
 func (client *Client) Close() error {
 	return client.conn.Close()
 }
 ```
 
-Let's look at a one way we can forget to call Close.
+Let's look at one way we can forget to call Close.
 
 ``` go
 func ExampleDial(ctx context.Context) error {
@@ -73,7 +62,7 @@ func ExampleDial(ctx context.Context) error {
 }
 ```
 
-Notice, if we fail to dial the second client, we have forgotten to close the source connection.
+Notice if we fail to dial the second client, we have forgotten to close the source connection.
 
 ## Problem: File Leak
 
@@ -100,11 +89,11 @@ func ExampleFile(ctx context.Context, fs fs.FS) error {
 
 ## Tracking Resources
 
-How do we track and figure out those leaks? One thing we can do, is to keep track of every single open file and connection and ensure that everything is closed when either the tests have finished or the program stops.
+How do we track and figure out those leaks? One thing we can do is to keep track of every single open file and connection and ensure that everything is closed when the tests finish.
 
-We need to build something that keeps a list of all open things and keeps track where it was opened.
+We need to build something that keeps a list of all open things and tracks where we started using a resource.
 
-To figure out where things were opened from, we can use [`runtime.Callers`](https://pkg.go.dev/runtime#Callers). You can look at the [Frames example](https://pkg.go.dev/runtime#example-Frames) to learn more how to use it. Let's call the struct we use to hold this information a `Tag`.
+To figure out where our "leak" comes from, we can use [`runtime.Callers`](https://pkg.go.dev/runtime#Callers). You can look at the [Frames example](https://pkg.go.dev/runtime#example-Frames) to learn how to use it. Let's call the struct we use to hold this information a `Tag`.
 
 ``` go
 // Tag is used to keep track of things we consider open.
@@ -207,7 +196,7 @@ func (tracker *Tracker) openResources() string {
 }
 ```
 
-Let's look how it works:
+Let's look at how it works:
 
 ``` go
 func TestTracker(t *testing.T) {
@@ -224,12 +213,11 @@ func TestTracker(t *testing.T) {
 }
 ```
 
-You can test it over https://go.dev/play/p/8AkKrzYVFH5.
-
+You can test it over at https://go.dev/play/p/8AkKrzYVFH5.
 
 ## Hooking up the tracker to a `fs.FS`
 
-Let's look at how to hook it up to a `fs.FS` interface. We can create wrappers, which creates a tag for each opened file.
+We need to integrate it into the initially problematic code. We can create a wrapper for `fs.FS` that creates a tag for each opened file.
 
 ``` go
 type TrackedFS struct {
@@ -270,7 +258,7 @@ func (file *trackedFile) Close() error {
 }
 ```
 
-Let's show how it works in a test:
+Finally, we can use this wrapper in a test and get some actual issues resolved:
 
 ``` go
 func TestFS(t *testing.T) {
@@ -306,7 +294,7 @@ You can play around with it here https://go.dev/play/p/VTKZUzWukTe.
 
 ## Hooking up the tracker via a `Context`
 
-Now, passing this `tracker` everywhere we want to use it, can be rather cumbersome.
+Passing this `tracker` everywhere would be rather cumbersome. However, we can write some helpers to put the tracker inside a `Context`.
 
 ``` go
 type trackerKey struct{}
@@ -322,7 +310,7 @@ func TrackerFromContext(ctx context.Context) *Tracker {
 }
 ```
 
-We then can adjust our `Client` implementation with:
+Of course, we need to adjust our `Client` implementation as well:
 
 ``` go
 type Client struct {
@@ -346,7 +334,7 @@ func (client *Client) Close() error {
 }
 ```
 
-We can also add some helpers for testing:
+To make our testing code even shorter, we can make a tiny helper:
 
 ``` go
 func TestingTracker(ctx context.Context, tb testing.TB) context.Context {
@@ -360,7 +348,7 @@ func TestingTracker(ctx context.Context, tb testing.TB) context.Context {
 }
 ```
 
-To put all of this together:
+Finally, we can put it all together:
 
 ``` go
 func TestClient(t *testing.T) {
@@ -383,17 +371,16 @@ You can see it working over here https://go.dev/play/p/B6qI6xgij1m.
 
 ## Making it zero cost for production
 
-Now, all of this `runtime.Callers` calling comes with a significant cost, however, we can reduce it by conditionally compiling the code. Luckily there's a similar "opt-in runtime tracking" feature in go that we can hook into.
-
-We can have our "tracker" only compiled when `-race` is specified:
+Now, all of this `runtime.Callers` calling comes with a high cost. However, we can reduce it by conditionally compiling the code. Luckily we can use tags to only compile it only for testing. I like to use `race` tag for it because it is added anytime you run your tests with `-race`.
 
 ```
-// go:build race
+//go:build race
+
 package tracker
 ```
 
 ## Conclusion
 
-By all means, this is probably not a final solution for your problem, but hopefully it is a good starting point. You can add more helpers or maybe track the filename inside a `Tag` or only print unique caller frames in the test failure. Maybe try implementing this for SQL driver and track each thing separately -- you can take a peek [at our implementation](https://github.com/storj/private/tree/main/tagsql), if you get stuck.
+This is probably not a final solution for your problem, but hopefully, it is a good starting point. You can add more helpers, maybe track the filename inside a `Tag`, or only print unique caller frames in the test failure. Maybe try implementing this for SQL driver and track each thing separately -- you can take a peek [at our implementation](https://github.com/storj/private/tree/main/tagsql), if you get stuck.
 
 May all your resource leaks be discovered.
