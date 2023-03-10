@@ -8,17 +8,16 @@ tags: []
 
 # Go Integration Tests with Postgres
 
-When writing server side projects in Go, at some point you will also need to do some integration testing for the database.
+When writing server side projects in Go, at some point you will also need to test against a database. Let's take a look different ways of using Postgres with different performance characteristics. The final approach shows how you can setup a clean database in 30ms (there are a few caveats).
 
-In many cases there's a benefit in using a database interface and write mocks (or stubs, fakes) instead. However, there are quite a lot of cases where writing a mock wouldn't give a significant benefit or the database side is sufficiently complex and needs to be tested anyways.
+We're not going to cover the "how should you use real database in your tests" debate. At some point you'll need to test your database layer, so, we'll cover those cases.
 
-Let's take a look at different ways of achieving this.
 
-## Using `dockertest`
+## Using containers
 
-If you search around a bit, you'll eventually stumble upon https://github.com/ory/dockertest. It allows to quickly setup an isolated Postgres instance.
+If you have searched a bit on how to setup a clean test environment, you've probably come across [github.com/ory/dockertest](https://github.com/ory/dockertest) package. There's also [testcontainers](https://golang.testcontainers.org/) for setting up containers. Alternatively, you could even invoke `docker` as a command and use that. Whichever your poision, the approach will look similar. We'll use `dockertest` for our examples.
 
-Let's see how to set it up. First, we need to create a `dockertest.Pool` for managing our resources. And we need to set it up in our `TestMain`:
+Usually, the first thing you do, is setup something to act as the client. With `dockertest` it means creating a a `dockertest.Pool`. And we need to set it up in our `TestMain`:
 
 ```
 var dockerPool *dockertest.Pool
@@ -38,28 +37,60 @@ func TestMain(m *testing.M) {
 }
 ```
 
-Then we'll need a helper for creating such database:
+If we are writing tests, then using a specific helper is going to be very convenient.
 
 ```
 func TestCreateTable(t *testing.T) {
 	ctx := context.Background()
 	WithDatabase(ctx, t, func(t *testing.TB, db *pgx.Conn) {
-		_, err := db.Exec(ctx, `CREATE TABLE accounts ( user_id serial PRIMARY KEY );`)
+		_, err := db.Exec(ctx, `
+			CREATE TABLE accounts ( user_id serial PRIMARY KEY );
+		`)
 		if err != nil {
 			t.Fatal(err)
 		}
 	})
 }
 
-func WithDatabase[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *pgx.Conn)) {
-	// snip
+func WithDatabase[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db *pgx.Conn)) {
+	// < snip >
 }
 ```
 
-Coming back to the dockertest new instance creation:
+This approach creates a docker image and calls `test` callback whenever it's ready.
+
+The callback based approach is especially helpful if you need to test with multiple backends such as Cockroach and Postgres. In your own codebase you probably would return the data layer interface rather than `*pgx.Conn` directly.
+
+In some scenarios using this can be nicer:
 
 ```
-func WithDatabase[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *pgx.Conn)) {
+func TestCreateTable(t *testing.T) {
+	ctx := context.Background()
+	db := NewDatabase(ctx, t)
+	_, err := db.Exec(ctx, `
+		CREATE TABLE accounts ( user_id serial PRIMARY KEY );
+	`)
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func NewDatabase(ctx context.Context, tb testing.TB) *pgx.Conn {
+	// create the database resource
+	tb.Cleanup(func() {
+		err := db.Close(ctx)
+		if err != nil {
+			tb.Logf("failed to close db: %v", err)
+		}
+	})
+	return conn
+}
+```
+
+Let's get back on track and see how you can implement the first approach. It's should be trivial to convert one to the other:
+
+```
+func WithDatabase[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db *pgx.Conn)) {
 
 	// First we need to specify the image we wish to use.
 
@@ -91,8 +122,6 @@ func WithDatabase[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *p
 	hostAndPort := resource.GetHostPort("5432/tcp")
 	databaseConnstr := fmt.Sprintf("postgres://user:secret@%s/main?sslmode=disable", hostAndPort)
 
-	tb.Logf("Postgres listening on %q", databaseConnstr)
-
 	err = resource.Expire(2 * 60) // hard kill the container after 2 minutes, just in case.
 	if err != nil {
 		tb.Fatalf("Unable to set container expiration: %v", err)
@@ -113,36 +142,37 @@ func WithDatabase[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *p
 		tb.Fatal("unable to connect to Postgres", err)
 	}
 
-	defer func() { 
-		err := db.Close(ctx) 
+	defer func() {
+		err := db.Close(ctx)
 		if err != nil {
 			tb.Logf("failed to close db: %v", err)
 		}
 	}()
 
 	// Finally call our test code.
-	fn(tb, db)
+	test(tb, db)
 }
 ```
 
 Let's look at the performance:
 
-```
-Mac     2s
-Windows 3s
-```
+This is pretty expensive, let's see how we can do better.
+
 
 ## Using `CREATE DATABASE`
 
-In most cases creating a new postgres instance per test isn't necessary. Instead, let's try an alternative approach, a new database in the same postgres instance per test.
+In most cases, creating a new postgres instance per test isn't necessary. It'll be entirely sufficient to have a database per test. If we have SUPERUSER permissions in postgres we can create them dynamically.
+
+To contrast with the previous approach, let's use a locally installed Postgres instance. This can be helpful, if you want to run tests against a remote database or want to avoid the container startup time.
 
 ```
-// pgaddr is the main database we try to connect to.
-// This allows to use a locally installed postgres instead of needing to rely on Docker.
-// We could still create a docker database, if this flag is not provided.
 var pgaddr = flag.String("database", os.Getenv("DATABASE_URL"), "database address")
+```
 
-func WithDatabase[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *pgx.Conn)) {
+Let's rewrite the function to create a new database per test:
+
+```
+func WithDatabase[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db *pgx.Conn)) {
 	if *pgaddr == "" {
 		tb.Skip("-database flag not defined")
 	}
@@ -183,14 +213,14 @@ func WithDatabase[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *p
 	defer func() { _ = db.Close(ctx) }()
 
 	// Run our test code.
-	fn(tb, db)
+	test(tb, db)
 }
 ```
 
 Now for the small utility funcs that we used:
 
 ```
-// connstrWithDatabase changes the connstr to use a different database.
+// connstrWithDatabase changes the main database in the connection string.
 func connstrWithDatabase(connstr, database string) (string, error) {
 	u, err := url.Parse(connstr)
 	if err != nil {
@@ -219,20 +249,18 @@ func sanitizeDatabaseName(schema string) string {
 }
 ```
 
-The performance for this approach is better:
+The performance already looks better:
 
-```
-Mac      ~90ms
-Windows  ...
-```
 
 ## Using `CREATE SCHEMA`
 
-Of course, 90ms is still a lot of time per single test. There's one interesting approach I discovered. It's possible to use a schema to create a relatively clean environment, which does not carry the same cost as creating a database.
+But, 90ms is still a lot of time per single test. There's one lesser-known approach we discovered in Storj. It's possible to use a [schema](https://www.postgresql.org/docs/current/ddl-schemas.html) create isolated namespace that can be dropped together.
 
-TODO link to postgres schemas
+Creating a new schema is as straightforward as executing `CREATE SCHEMA example;` and dropping `DROP SCHEMA example CASCADE;`. When connecting to the database it's possible to add a connstr parameter `search_path=example` to execute all queries by default in that schema.
 
-Of course, this means that using schemas for any other purpose becomes more difficult. Similarly it might limit some features that you can use. Nevertheless, if it suits you:
+Of course, if you use schemas for other purposes in your system, then this approach may complicate rest of your code. Similarly, schemas are not as isolated as separate database.
+
+Now that the disclaimer is out of the way, let's take a look at some code:
 
 ```
 
@@ -254,8 +282,7 @@ func WithSchema[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *pgx
 	}
 	db, err := pgx.Connect(ctx, connstr)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
-		tb.Fatal(err)
+		tb.Fatalf("Unable to connect to database: %v", err)
 	}
 	defer func() { _ = db.Close(ctx) }()
 
@@ -276,7 +303,7 @@ func WithSchema[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *pgx
 The smaller utilities that make it work:
 
 ```
-// connstrWithSchema sets the schema for the connections.
+// connstrWithSchema adds search_path argument to the connection string.
 func connstrWithSchema(connstr, schema string) (string, error) {
 	u, err := url.Parse(connstr)
 	if err != nil {
@@ -288,13 +315,13 @@ func connstrWithSchema(connstr, schema string) (string, error) {
 
 // createSchema creates a new schema in the database.
 func createSchema(ctx context.Context, db *pgx.Conn, schema string) error {
-	_, err := db.Exec(ctx, `create schema if not exists `+sanitizeSchemaName(schema)+`;`)
+	_, err := db.Exec(ctx, `CREATE SCHEMA IF NOT EXISTS `+sanitizeSchemaName(schema)+`;`)
 	return err
 }
 
 // dropSchema drops the specified schema and associated data.
 func dropSchema(ctx context.Context, db *pgx.Conn, schema string) error {
-	_, err := db.Exec(ctx, `drop schema `+sanitizeSchemaName(schema)+` cascade;`)
+	_, err := db.Exec(ctx, `DROP SCHEMA `+sanitizeSchemaName(schema)+` CASCADE;`)
 	return err
 }
 
@@ -304,25 +331,45 @@ func sanitizeSchemaName(schema string) string {
 }
 ```
 
-So, the benchmark shows:
+After running some benchmarks we can see that we've reached ~20ms:
 
 ```
 Mac      ~14ms
 Windows  ...
 ```
 
-## Configuring Postgres
+## Final tweaks
 
-There are few things you can tweak in your database that allows some extra performance.
+There's one important flag that you can adjust in Postgres to make it run faster... of course, this should only be used for testing. It's disabling [fsync](https://www.postgresql.org/docs/current/runtime-config-wal.html).
 
-TODO
+The final results of the comparison look like:
 
-## Conclusion
+| Test      | fsync | time         |
+| --------- | ----- | ------------ |
+| Windows / Threadripper 2950X   |||
+| Container | on    | 2.86s ± 6%   |
+| Container | off   | 2.82s ± 4%   |
+| Database  | on    | 136ms ±12%   |
+| Database  | off   | 105ms ±30%   |
+| Schema    | on    | 26.7ms ± 3%  |
+| Schema    | off   | 20.5ms ± 5%  |
+| --------- | ----- | ------------ |
+| MacOS / M1 Pro                 |||
+| Container | on    | 1.63s ±16%   |
+| Container | off   | 1.64s ±13%   |
+| Database  | on    | 136ms ±12%   |
+| Database  | off   | 105ms ±30%   |
+| Schema    | on    | 19.7ms ±20%  |
+| Schema    | off   | 18.5ms ±31%  |
+| --------- | ----- | ------------ |
+| Linux / XXXXXXXXX              |||
+| Container | on    | 1.63s ±16%   |
+| Container | off   | 1.64s ±13%   |
+| Database  | on    | 136ms ±12%   |
+| Database  | off   | 105ms ±30%   |
+| Schema    | on    | 19.7ms ±20%  |
+| Schema    | off   | 18.5ms ±31%  |
 
-We looked three different approaches to creating a "clean postgres environment" for integration testing. They aren't completely equivalent, but the fastest one that you can:
+All the tests were run in a container that didn't have persistent disk mounted. You should see a bigger improvement if that's the case.
 
-```
-new instance per test 2s
-new database per test 80ms
-new schema   per test 15ms
-```
+We looked three different approaches to creating a clean Postgres environment. The approaches aren't completely equivalent, but use the fastest one that you can.
