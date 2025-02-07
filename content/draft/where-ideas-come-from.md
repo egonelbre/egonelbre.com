@@ -16,6 +16,8 @@ There are also different methodologies for coming up with ideas such as SCAMPER,
 
 Collecting ideas should also include from unrelated places. e.g. seeing a tree in the wind and rain; and thinking how that would translate to music.
 
+**TODO** curiosity, open minded
+
 ## Transforming ideas
 
 * Second skill: transforming these ideas, with substituting, combining, adjusting, adding, removing.
@@ -23,6 +25,8 @@ Collecting ideas should also include from unrelated places. e.g. seeing a tree i
 Different artforms have their own set of specific transformations; for example modal transformation in music. There also seem to be general transformations that can be applied in all contexts; for example Christopher Alexanders "Fifteen Properties in Nature".
 
 An interesting approach to practicing different transformations is using things like "Oblique strategies" cards. An other way to learn this skill is by imposing constraints. Constraints require you to transform your existing ideas to fit a specific box.
+
+**TODO** random association
 
 Practicing this skill is about finding fluency in manipulating ideas collected by first skill.
 
@@ -38,11 +42,23 @@ One way to learn it is to try and express a specific emotion and doing it as str
 
 Without this skill the result can be beautiful and novel; however without clear feeling and impact. At this moment AI art seems to be lacking this part, but it's pretty good with the first and second skills.
 
+**TODO** Science vs art. Impact dimensions, e.g. mechanical or psychological.
+
 ## Freedom in experimentation
 
 * Fourth skill: freedom to be bad and wrong.
 
 This is less about learning a new skill and more about unlearning "need to be right" mentality. Criticising yourself while coming up with ideas seems to stop the flow of ideas. Many good ideas are a result of combining/transforming multiple bad ideas. If you stop the bad ideas from forming, then they can never grow up to be good ideas.
+
+**TODO** rather than no, embrace "yes and".
+
+**TODO** stress.
+
+## Polishing an idea
+
+**TODO** is this a fundamental skill?
+
+Eliminate unnecessary.
 
 ## Conclusion
 
