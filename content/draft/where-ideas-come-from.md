@@ -3,22 +3,71 @@ draft: true
 title: Where do ideas come from?
 description: "How to learn creativity"
 date: ""
-tags: []
+tags: ["Psychology", "Creativity"]
 ---
 
-My opinion with regards to where ideas come from. It does seem to be learnable.
+I recently had few discussions around creativity and a question seemed to pop up "Where do ideas come from?". For example how do you come up with melodies, or how do you come up with ideas in a game jam. It might seem like something that you are born with or not. After thinking about it, I came to a conclusion that it should be a learnable skill.
 
-There are also different methodologies for coming up with ideas such as SCAMPER, TRIZ... But, all of them roughly seem to boil down to a few skills.
+Let's jump right to it and break it down. I've come with few sub-skills that should be mastered:
+
+1. Collecting ideas
+2. Organizing ideas
+3. Transforming ideas
+4. Understanding impact
+5. Freedom in experimentation
+6. Polishing an idea
+
+I'm not certain this is the full list; but it should be a great starting point.
 
 ## Collecting ideas
 
-* First skill: collecting (writing down) and memorizing a significant amount of ideas. In music it would be melodies, harmonies, chords, voicings, forms, sounds... in stories it would be characters, story/character archetypes, settings, people, motivations, places, psychology, words... in painting it could be brush technique, color combinations, composition, distortions... This is all about learning the vocabulary of an artform.
+First thing that needs mastering is collecting ideas. This will create a "vocabulary" of things we can manipulate in our head to create new ideas.
 
-Collecting ideas should also include from unrelated places. e.g. seeing a tree in the wind and rain; and thinking how that would translate to music.
+In music you might collect melodies, harmonies, chord progressions, voicings, song forms, instrument sounds, composers. In story-telling you might collect characters, story/character archetypes, settings, people, motivations, places, words. In painting you might collect brush technique, color combinations, compositional ideas, different mediums, styles, perspective approaches, art movements. In programming you might collect architecture ideas, programming patterns, algorithms, naming of things, libraries, different ways of writing the same thing, methodologies of modeling. In dance it could be different folk dances, movements, interpretation, syncing to musical elements.
 
-**TODO** curiosity, open minded
+You should try to figure out what kinds of things can be collected in your specific subject.
+
+Every artform and science will have many things you can collect; at different sizes and different levels of abstraction. They will all serve as a source of inspiration and a small nugget of information that can transform into something else.
+
+**How do we collect?**
+
+* Recreating something
+* Memorization
+* Writing down in a notebook
+* Recording a voice note
+* Taking a video or picture of something
+* Copy-paste from the internet
+
+Roughly speaking, the more effort you put into processing and collecting an idea, the more readily available it is for later.
+
+An important note is that you don't necessarily have to be literal in collecting ideas, but also try to collect from unrelated subjects. For example, you might see a leaf blowing in the wind on a tree; then try to interpret based on the subject you are trying to be creative at. You might wonder which instruments would suit representing this leaf musically and how would it sound. Or how would you interpret that same leaf as a dance.
+
+One common mistake while trying to collect ideas, is to set the quality bar too high for ideas that you collect. If you don't collect bad ideas, they never get a chance to grow up a good idea. Similarly, a idea in one context might be horrible, but brilliant in another. Of course, don't spend over 3mins to write down a bad idea, just write a few words on it.
+
+Be curious and open minded about ideas, even if you don't feel a connection.
+
+How do you start this process?
+
+I would recommend starting to collect 20 ideas per day for a month straight. This will get your brain into the habit of seeing, noticing and writing down ideas all the time. The important part isn't really the 600 ideas that you collect, however they are helpful; it's more about noticing interesting ideas in the world.
+
+### Organizing ideas
+
+Once you have collected ideas you should also try to organize them. This helps your brain build abstractions and find similarities between the ideas.
+
+**How do we organize?**
+
+* Review
+* Consolidate similar ideas
+* Expand and elaborate
+* Tagging with labels
+
+By creating systems and similarities we end up with a better understanding of the collected ideas. Interestingly, organizing will also make collecting new ideas easier, because it takes less effort to remember and understand them.
 
 ## Transforming ideas
+
+The next skill you should master is transforming and manipulating ideas.
+
+TRIZ / SCAMPER
 
 * Second skill: transforming these ideas, with substituting, combining, adjusting, adding, removing.
 
@@ -64,3 +113,13 @@ Eliminate unnecessary.
 
 There could be a few more skills that I've yet to identify, but these do seem a necessity for fluently coming up with new ideas. These skills need to be practiced to the point where you don't need to think about them consciously.
 
+
+## Further resources
+
+Weinberg on writing
+How to solve it
+The Phenomenon of Life
+
+https://pipdecks.com/
+https://schellgames.com/art-of-game-design
+https://en.wikipedia.org/wiki/Oblique_Strategies
