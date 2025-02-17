@@ -10,12 +10,11 @@ I recently had few discussions around creativity and a question seemed to pop up
 
 Let's jump right to it and break it down. I've come with few sub-skills that should be mastered:
 
-1. Collecting ideas
-2. Organizing ideas
-3. Transforming ideas
-4. Understanding impact
-5. Freedom in experimentation
-6. Polishing an idea
+1. Collecting and organizing ideas
+2. Transforming ideas
+3. Understanding impact
+4. Freedom in experimentation
+5. Polishing an idea
 
 I'm not certain this is the full list; but it should be a great starting point.
 
@@ -23,7 +22,7 @@ I'm not certain this is the full list; but it should be a great starting point.
 
 First thing that needs mastering is collecting ideas. This will create a "vocabulary" of things we can manipulate in our head to create new ideas.
 
-In music you might collect melodies, harmonies, chord progressions, voicings, song forms, instrument sounds, composers. In story-telling you might collect characters, story/character archetypes, settings, people, motivations, places, words. In painting you might collect brush technique, color combinations, compositional ideas, different mediums, styles, perspective approaches, art movements. In programming you might collect architecture ideas, programming patterns, algorithms, naming of things, libraries, different ways of writing the same thing, methodologies of modeling. In dance it could be different folk dances, movements, interpretation, syncing to musical elements.
+In music you might collect melodies, harmonies, chord progressions, voicings, song forms, instrument sounds, composers. In story-telling you might collect characters, story/character archetypes, settings, people, motivations, places, words. In painting you might collect brush technique, color combinations, compositional ideas, different mediums, styles, perspective approaches, art movements. In programming you might collect architecture ideas, programming patterns, algorithms, ßnaming of things, libraries, different ways of writing the same thing, methodologies of modeling. In dance it could be different folk dances, movements, interpretation, syncing to musical elements.
 
 You should try to figure out what kinds of things can be collected in your specific subject.
 
@@ -62,24 +61,66 @@ Once you have collected ideas you should also try to organize them. This helps y
 * Tagging with labels
 
 By creating systems and similarities we end up with a better understanding of the collected ideas. Interestingly, organizing will also make collecting new ideas easier, because it takes less effort to remember and understand them.
+Eventually this organization and analysis of existing ideas can give rise to insight into best practices or intution how different ideas fit together.
 
 ## Transforming ideas
 
-The next skill you should master is transforming and manipulating ideas.
+The next skill you should master is transforming and manipulating ideas. The more skilled you are withregards to modifying the ideas in your head, the faster you can iterate on new approaches.
 
-TRIZ / SCAMPER
+There are quite a few frameworks that teach you how to transform ideas, for example [SCAMPER](https://en.wikipedia.org/wiki/SCAMPER) approach describes a few transformations:
 
-* Second skill: transforming these ideas, with substituting, combining, adjusting, adding, removing.
+* Substitute - What if I replace one part of an idea with another?
+* Combine - What if I combine two things into a single thing?
+* Adapt - What are other ideas that would fit into my problem?
+* Modify, magnify, minify - What if I change the meaning, color, sound etc. of an idea?
+* Put to another use - What are other ways this idea can be used?
+* Eliminate - What if I remove some element of an idea?
+* Reverse - What if I change the relationship or order between the parts?
 
-Different artforms have their own set of specific transformations; for example modal transformation in music. There also seem to be general transformations that can be applied in all contexts; for example Christopher Alexanders "Fifteen Properties in Nature".
+They are effectively directed questions that transform one idea to another -- hence the name "transformation". Such transformations are the building blocks of ideation.
+
+Of course, specific artforms and science disciplines may have their own transformation. For example in technical systems [TRIZ](https://en.wikipedia.org/wiki/TRIZ) technique can be used. In music you can have things like "modal transformation". In art you might try to imagine what if an artwork was done in a different style. 
+
+### Fifteen Properties in Nature
+
+https://web.sfc.keio.ac.jp/~iba/papers/PURPLSOC14_Properties.pdf
+
+### Oblique strategies
+
+https://stoney.sb.org/eno/oblique.html
 
 An interesting approach to practicing different transformations is using things like "Oblique strategies" cards. An other way to learn this skill is by imposing constraints. Constraints require you to transform your existing ideas to fit a specific box.
 
-**TODO** random association
+### Organizational Patterns and ScrumPLOP
 
-Practicing this skill is about finding fluency in manipulating ideas collected by first skill.
 
-If you haven't collected ideas, then you won't have vocabulary to say much... if you haven't learned transforming ideas, then you end up repeating what others have said.
+### Game Design: The Deck of Lenses
+
+https://deck.artofgamedesign.com/#/?lang=en
+
+### Pip Decks
+
+https://pipdecks.com
+
+
+### Constraints
+
+Setting limitations to the ideas can foster creativity, because you have less choice, but also you cannot use your usual strategies.
+
+### Summary
+
+Overall mastering transformations is about two things:
+
+* Finding and building a knowledge of as many transformations as possible
+* Practicing the transformations, so you become fluent in them
+
+### So, how do you get started
+
+Collect a list of 50 transformations for your domain. You don't need to do it in one day, but aim for a significant number. Over time you can add as you encounter them.
+
+Practice one or more transformations on a few ideas that you have collected.
+
+Remember, it's an exploration and practice - most of the new ideas you come up with are going to be terrible and that's fine.
 
 ## Understanding impact
 
@@ -108,6 +149,12 @@ This is less about learning a new skill and more about unlearning "need to be ri
 **TODO** is this a fundamental skill?
 
 Eliminate unnecessary.
+
+
+## What if missing
+
+If you haven't collected ideas, then you won't have vocabulary to say much... if you haven't learned transforming ideas, then you end up repeating what others have said.
+
 
 ## Conclusion
 
