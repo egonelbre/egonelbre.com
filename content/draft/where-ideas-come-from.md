@@ -30,7 +30,7 @@ Every artform and science will have many things you can collect; at different si
 
 **How do we collect?**
 
-* Recreating something
+* Recreating something, imitation
 * Memorization
 * Writing down in a notebook
 * Recording a voice note
@@ -41,6 +41,8 @@ Roughly speaking, the more effort you put into processing and collecting an idea
 
 An important note is that you don't necessarily have to be literal in collecting ideas, but also try to collect from unrelated subjects. For example, you might see a leaf blowing in the wind on a tree; then try to interpret based on the subject you are trying to be creative at. You might wonder which instruments would suit representing this leaf musically and how would it sound. Or how would you interpret that same leaf as a dance.
 
+**TODO** Converting sound from space to music.
+
 One common mistake while trying to collect ideas, is to set the quality bar too high for ideas that you collect. If you don't collect bad ideas, they never get a chance to grow up a good idea. Similarly, a idea in one context might be horrible, but brilliant in another. Of course, don't spend over 3mins to write down a bad idea, just write a few words on it.
 
 Be curious and open minded about ideas, even if you don't feel a connection.
@@ -48,6 +50,10 @@ Be curious and open minded about ideas, even if you don't feel a connection.
 How do you start this process?
 
 I would recommend starting to collect 20 ideas per day for a month straight. This will get your brain into the habit of seeing, noticing and writing down ideas all the time. The important part isn't really the 600 ideas that you collect, however they are helpful; it's more about noticing interesting ideas in the world.
+
+**TODO** Pure random.
+
+**TODO** Figure out categories to collect.
 
 ### Organizing ideas
 
@@ -61,6 +67,9 @@ Once you have collected ideas you should also try to organize them. This helps y
 * Tagging with labels
 
 By creating systems and similarities we end up with a better understanding of the collected ideas. Interestingly, organizing will also make collecting new ideas easier, because it takes less effort to remember and understand them.
+
+**Does it matter how we organize?**
+
 Eventually this organization and analysis of existing ideas can give rise to insight into best practices or intution how different ideas fit together.
 
 ## Transforming ideas
@@ -79,6 +88,8 @@ There are quite a few frameworks that teach you how to transform ideas, for exam
 
 They are effectively directed questions that transform one idea to another -- hence the name "transformation". Such transformations are the building blocks of ideation.
 
+**TODO** Take an existing idea and improve upon it.
+
 Of course, specific artforms and science disciplines may have their own transformation. For example in technical systems [TRIZ](https://en.wikipedia.org/wiki/TRIZ) technique can be used. In music you can have things like "modal transformation". In art you might try to imagine what if an artwork was done in a different style. 
 
 ### Fifteen Properties in Nature
@@ -91,7 +102,11 @@ https://stoney.sb.org/eno/oblique.html
 
 An interesting approach to practicing different transformations is using things like "Oblique strategies" cards. An other way to learn this skill is by imposing constraints. Constraints require you to transform your existing ideas to fit a specific box.
 
-### Organizational Patterns and ScrumPLOP
+Many interpretations.
+
+Abstract and absurd questions.
+
+### Patterns, e.g. Organizational Patterns and ScrumPLOP
 
 
 ### Game Design: The Deck of Lenses
@@ -128,6 +143,8 @@ Remember, it's an exploration and practice - most of the new ideas you come up w
 
 This is about learning how to recognize that the art is having an impact on people, how it impacts them and how it changes them. It's mostly about learning your own emotions and how different "collected ideas" change those emotions.
 
+Effect on people vs. resonating with myself.
+
 One way to learn it is to try and express a specific emotion and doing it as strongly as possible; using an emotion wheel as a list. Second is trying to understand how different things resonate with you; for example using Mirror of Self test.
 
 Without this skill the result can be beautiful and novel; however without clear feeling and impact. At this moment AI art seems to be lacking this part, but it's pretty good with the first and second skills.
@@ -150,6 +167,11 @@ This is less about learning a new skill and more about unlearning "need to be ri
 
 Eliminate unnecessary.
 
+Kill your darlings.
+
+Emotional resonance.
+
+## Getting things done
 
 ## What if missing
 
