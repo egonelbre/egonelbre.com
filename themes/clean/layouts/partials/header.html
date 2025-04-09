@@ -6,9 +6,8 @@
 	<title>{{ .Title }} {{ if not .IsHome }}| {{ .Site.Title }}{{end}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	{{ if .Site.Params.rss }}
-	<link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-	{{ end }}
+	{{ $site := .Site -}}
+	{{ if .Site.Params.rss }}{{ with $rss := .OutputFormats.Get "RSS" }}<link href="{{ $rss.RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $site.Title }}" />{{ end }}{{ end }}
 
 	{{ template "_internal/twitter_cards.html" . }}
 	{{ template "_internal/opengraph.html" . }}

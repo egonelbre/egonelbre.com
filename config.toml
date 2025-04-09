@@ -4,7 +4,7 @@ title = "Egon Elbre"
 canonifyURLs = false
 theme = "clean"
 
-paginate = 10
+pagination.pagerSize = 20
 
 pygmentsCodefencesGuessSyntax = true
 pygmentsCodeFences = true
@@ -13,7 +13,6 @@ pygmentsoptions = "linenos=true"
 
 copyright = "Egon Elbre 2019"
 disqusShortname = ""
-googleAnalytics = ""
 
 pluralizeListTitles = false
 

@@ -16,6 +16,10 @@
 			{{ with .Params.reviewers }}
 			<div class="reviewers">Thanks to {{ delimit . ", " ", and " }} for reviewing and suggesting improvements.</div>
 			{{ end }}
+
+			{{ with .Params.notes }}
+			<div class="reviewers">{{ . | markdownify }}</div>
+			{{ end }}
 		</footer>
 	</article>
 </div>
