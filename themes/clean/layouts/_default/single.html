@@ -7,6 +7,12 @@
 		<h1 class="title">{{with .Params.OverrideTitle}}{{.}}{{else}}{{ .Title }}{{end}}{{ if .Draft }} ::Draft{{ end }}</h1>
 		{{with .Params.subtitle}}<h2>{{.}}</h2>{{end}}
 
+		{{ with .Params.notes }}
+		<header>
+			<div class="reviewers">{{ . | markdownify }}</div>
+		</header>
+		{{ end }}
+
 		<div class="content">{{ partial "anchor" .Content }}</div>
 
 		<footer>
@@ -17,9 +23,7 @@
 			<div class="reviewers">Thanks to {{ delimit . ", " ", and " }} for reviewing and suggesting improvements.</div>
 			{{ end }}
 
-			{{ with .Params.notes }}
-			<div class="reviewers">{{ . | markdownify }}</div>
-			{{ end }}
+
 		</footer>
 	</article>
 </div>

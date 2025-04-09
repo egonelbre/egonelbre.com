@@ -1,9 +1,9 @@
 ---
-draft: false
 title: Production Ready Go Concurrency
-description: "How to write concurrent code in Go."
-date: ""
-tags: []
+summary: "How to write concurrent code in Go."
+date: "2022-08-29T12:00:00+03:00"
+tags: ["Go"]
+notes: "Originally posted on [Storj Blog](https://storj.dev/blog/production-concurrency) and presented at [GopherCon Europe 2022](https://www.youtube.com/watch?v=qq3gu0JQ0yU)."
 ---
 
 <style>
@@ -33,9 +33,9 @@ Before we start, I should mention that many of these recommendations will have c
 
 There are a few rules that direct you to implement things correctly and avoid many mistakes. As previously mentioned, they don't apply everywhere, but you definitely should have a good reason not to follow these.
 
-### Use only when required
+### Avoid Concurrency
 
-I've seen this code relatively often where people use concurrency where they don't need to. For example, I've seen this exact code:
+I've seen many times people using concurrency where you should not use it. It should go without saying, don't add concurrency unless you have a good reason.
 
 <div class="side-by-side">
 
@@ -55,12 +55,13 @@ serve()
 
 </div>
 
-The concurrency here is entirely unnecessary. It should go without saying, don't add concurrency unless you have a good reason.
+The concurrency here is entirely unnecessary, but I've seen this exact code in a repository. System without concurrency is much easier to debug, test and understand.
 
+People also add concurrency because they think it will speed up their program. In a production environment, you are handling many concurrent requests anyways, so making one part concurrent doesn't necessarily make the whole system faster.
 
 ### Prefer Synchronous API
 
-A friend of the previous rule is to prefer synchronous API. Non-concurrent code is usually shorter and easier to test and debug.
+A friend of the previous rule is to prefer synchronous API. As mentioned, non-concurrent code is usually shorter and easier to test and debug.
 
 <div class="side-by-side">
 
@@ -95,7 +96,7 @@ func TestServer(t *testing.T) {
 	// ...
 ```
 
-This makes your tests run in parallel, which can speed them up, but it also means you are more likely to find a hidden shared state that doesn't work correctly in concurrent code.
+This makes your tests run in parallel, which can speed them up, but it also means you are more likely to find a hidden shared state that doesn't work correctly in concurrent code. In addition to finding bugs in our codebases, we've also found them in third-party libraries.
 
 
 ### No global variables
@@ -138,7 +139,7 @@ Notice how the "Alpha" and "Beta" are out of place. The code under test should c
 
 ### Know when things stop
 
-Similarly, it's relatively common for people to start goroutines without waiting for them to finish. It's a thing that people first do when they begin with Go because `go` keyword makes it very easy.
+Similarly, it's relatively common for people to start goroutines without waiting for them to finish. *go* keyword makes starting goroutines very easy; however, it's not apparent that you also must wait for them to stop.
 
 <div class="side-by-side">
 
@@ -174,7 +175,7 @@ Similarly, when you wait for all goroutines to finish, you can detect scenarios 
 
 ### Context aware code
 
-The next common issue is not handling context cancellation. At the same time, it will not be a problem in the production system itself. It's more of an annoyance during testing and development. Let's imagine you have a `time.Sleep` somewhere in your code:
+The next common issue is not handling context cancellation. It usually won't be a problem in the production system itself. It's more of an annoyance during testing and development. Let's imagine you have a `time.Sleep` somewhere in your code:
 
 <div class="side-by-side">
 
@@ -355,8 +356,7 @@ for _, item := range items {
 
 </div>
 
-Similarly, it will be harder to introduce a bug by adding a `return` somewhere.
-
+Even if your initial code is correct, then code modification can introduce a bug. For example, adding a return inside the loop after the mu.Lock() would leave the mutex locked.
 
 ### Don’t expose your locks
 
@@ -395,13 +395,13 @@ pprof.Do(ctx, labels,
 	})
 ```
 
-You can read more about them at https://rakyll.org/profiler-labels/.
+There's an excellent article "[Profiler labels in Go](https://rakyll.org/profiler-labels/)", which explains how to use them.
 
 
 
 ## Concurrency Primitives
 
-When it comes to writing production code, it's a bad idea to use some concurrency primitives directly in your code. They can be error-prone and make code much easier to reason about.
+When it comes to writing production code, it's a bad idea to use some concurrency primitives directly in your code. They can be error-prone and make code much harder to reason about.
 
 When choosing primitives, prefer them in this order:
 
@@ -586,7 +586,7 @@ err := g.Wait()
 
 </div>
 
-You can read [golang.org/x/sync/errgroup documentation](https://pkg.go.dev/golang.org/x/sync/errgroup#Group) for additional information.
+You can read [golang.org/x/sync/errgroup documentation](https://pkg.go.dev/golang.org/x/sync/errgroup#Group) for additional information. _Note, errgroup allows to limit the number of goroutines that can be started concurrently._
 
 
 ### Primitive: `sync.Mutex`
@@ -612,13 +612,13 @@ Instead, you can use a `chan *state`, which allows you to handle context cancell
 
 ```go
 type Cache struct {
-	content chan *state
+	state chan *state
 }
 
 func NewCache() {
 	content := make(chan *state, 1)
 	content <- &state{}
-	return Cache{content: content}
+	return Cache{state: content}
 }
 
 func (cache *Cache) Add(ctx context.Context, key, value string) error {
@@ -683,6 +683,8 @@ err := db.IterateItems(ctx, func(item *Item) {
 
 This is probably one of the common ones... forgetting to close the channel. Channels also make the code harder to review compared to using higher-level primitives.
 
+Using chan for communicating between different "goroutine processes" in your application is fine; however, ensure that you handle context cancellations and shut down properly. Otherwise, it's easy to introduce a deadlock.
+
 ### Few additional rules-of-thumb
 
 I've come to the conclusion that you should avoid these in your domain logic:
@@ -695,14 +697,13 @@ They are error-prone, and there are better approaches. It's clearer to write you
 
 I should separately note that using `select {` is usually fine.
 
-
-## Your own concurrency toolkit
+## Your own artisanal concurrency primitives
 
 I told you to avoid many things in domain code, so what should you do instead?
 
 If you cannot find an appropriate primitive from `golang.org/x/sync` or other popular libraries... you can write your own.
 
-It will be easier to get them right than ad-hoc concurrency primitive in your domain code. So there isn't a good reason not to write them.
+> Writing a separate concurrency primitive is easier to get right than writing ad hoc concurrency logic in domain code.
 
 There are many ways you can write such primitives. The following are merely examples of different ways how you can write them.
 
@@ -795,10 +796,14 @@ for _, item := range items {
 }
 ```
 
+Of course, if your limited goroutines are dependent on each other, then it can introduce a deadlock.
+
+> Note that there's a potential "bug" with using such a Limiter. You must not call limiter.Go after you have called limiter.Wait, otherwise the goroutine can be started after limiter.Wait has returned. This can also happen with sync.WaitGroup and errgroup.Group. One way to avoid this problem is to disallow starting goroutines after limiter.Wait has been called. It probably makes sense to rename it to "limiter.Close" in that case.
 
 #### Batch processing a slice
 
 Let's say you want to process a slice concurrently. We can use this limiter to start multiple goroutines with the specified batch sizes:
+
 
 ```go
 type Parallel struct {
@@ -1142,21 +1147,12 @@ Additionally, consider where one would be better than the other.
 
 ## Additional resources
 
-* Storj concurrency primitives:
-	* storj.io/common/sync2 - common primitives
-	* [Combiner](https://github.com/storj/storj/blob/main/satellite/metainfo/piecedeletion/combiner.go#L15) and [Queue](https://github.com/storj/storj/blob/6df867bb3d06240da139de145aaf88077572b4b8/satellite/metainfo/piecedeletion/queue.go#L10), for solving a very specific problem. This allowed to separate most of the "connection" management from the "concurrency" management.
+There are many resources that can help you delve deeper.
 
-* Bryan C. Mills - Rethinking Classical Concurrency Patterns:
+You can find quite a lot of our own custom primitives at [`storj.io/common/sync2`](https://pkg.go.dev/storj.io/common/sync2). This package contains most of our synchronization primitives. It contains things like `Sleep` and `Concurrently`, but also more advanced things like `Cycle`, `ReadCache` and `Throttle`. We also have problem specific implementations of [`Combiner`](https://github.com/storj/storj/blob/main/satellite/metainfo/piecedeletion/combiner.go#L15) and [`Queue`](https://github.com/storj/storj/blob/6df867bb3d06240da139de145aaf88077572b4b8/satellite/metainfo/piecedeletion/queue.go#L10) that implement a combiner queue. This primitive allows to dial storage nodes, coalesce multiple deletion requests into a single request.
 
-	* https://www.youtube.com/watch?v=5zXAHh5tJqQ
-	* https://drive.google.com/file/d/1nPdvhB0PutEJzdCq5ms6UI58dp50fcAN/view
+One of the best talks about Go concurrency is "[Rethinking Classical Concurrency Patterns](https://www.youtube.com/watch?v=5zXAHh5tJqQ)" by Bryan C. Mills. He discusses problems with worker pools and `sync.Cond` in-depth.
 
-* Allen B. Downey - Little Book of Semaphores
+When you struggle with understanding data-races, then "[Little Book of Semaphores](https://greenteapress.com/wp/semaphores/)" by Allen B. Downey is an excellent resource. It contains many classic problems and exercises to get your brain noticing them.
 
-	* https://greenteapress.com/wp/semaphores/
-
-* Understanding Real-World Concurrency Bugs in Go
-
-	* https://songlh.github.io/paper/go-study.pdf
-
-* `#bestpractices` in Gophers Slack
+There has been also some research on the topic "[Real-World Concurrency Bugs in Go](https://songlh.github.io/paper/go-study.pdf)" by Tengfei Tu et. al. It contains many additional issues not mentioned in this post.
