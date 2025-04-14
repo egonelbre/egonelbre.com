@@ -11,67 +11,117 @@ I recently had a few discussions about creativity, and a question kept coming up
 Let's break down the skills into manageable sub-skills:
 
 - **Idea Collection:** Gathering ideas effectively.
-- **Idea Organisation:** Analyising and structuring ideas.
+- **Idea Analysis:** Inspecting and organising ideas.
 - **Idea Transformation:** Modify one idea to another one.
-- **Impact Understanding:** Analysing the effect of ideas.
-- **Experimentation Freedom:** Embracing experimentation and exploration instead of critique.
+- **Context Understanding:** Understanding the bigger picture and being able to articulate problems.
+- **Impact Understanding:** Analysing and intuitiing the effect of ideas.
 - **Idea Polishing:** Refining and enhancing ideas to achieve their full potential.
+- **Experimentation Freedom:** Embracing experimentation and exploration instead of critique.
 
 I'm not entirely sure if this is the complete list, but it should serve as an excellent starting point.
 
-## Idea Collection and Organisation
+## Idea Collection
 
-The first thing that needs mastering is collecting ideas. This will create a "vocabulary" of things we can manipulate in our head to create new ideas.
+The first step in mastering any art form or subject is to collect ideas. This will create a "vocabulary" of concepts that you can manipulate in your mind to generate new ideas.
 
-In music, you might collect melodies, harmonies, chord progressions, voicings, song forms, instrument sounds, composers. In story-telling, you might collect characters, story/character archetypes, settings, people, motivations, places, words. In painting, you might collect brush technique, color combinations, compositional ideas, different mediums, styles, perspective approaches, art movements. In programming, you might collect architecture ideas, programming patterns, algorithms, ßnaming of things, libraries, different ways of writing the same thing, methodologies of modeling. In dance, it could be different folk dances, movements, interpretation, syncing to musical elements.
+For instance:
 
-You should try to figure out what kinds of things can be collected in your specific subject.
+- In **music**, you might collect melodies, harmonies, chord progressions, voicings, song forms, instrument sounds, and composer styles.
+- In **storytelling**, you might collect characters, story archetypes, settings, people, motivations, places, words, and more
+- In **painting**, you might collect brush techniques, colour combinations, compositional ideas, different mediums, styles, perspective approaches, and art movements.
+- In **programming**, you might collect architecture ideas, programming patterns, algorithms, naming conventions, libraries, common mistakes, and various ways of coding the same problem.
+- In **dance**, you might collect different folk dances, movements, interpretations, and synchronisation with musical elements.
 
-Every art form and science will have many things you can collect; at different sizes and different levels of abstraction. They will all serve as a source of inspiration and a small nugget of information that can transform into something else.
+Figure out what categories of ideas can be collected in your specific subject. Some categories are really concrete things, some are abstract, some are processes, some are weird. They all serve as a source of inspiration and sources for transformations.
 
-**How do we collect?**
+### How do we collect?
 
-* Recreating something, imitation
-* Memorization
-* Writing down in a notebook
-* Recording a voice note
-* Taking a video or picture of something
-* Copy-pasting from the internet
+There are several methods to gather ideas:
 
-Roughly speaking, the more effort you put into processing and collecting an idea, the more readily available it is for later.
+- Recreating something, which is essentially imitation.
+- Memorising information.
+- Writing down ideas in a notebook.
+- Recording voice notes.
+- Taking photographs or videos of something.
+- Copy-pasting information from the internet.
 
-An important note is that you don't necessarily have to be literal in collecting ideas, but also try to collect from unrelated subjects. For example, you might see a leaf blowing in the wind on a tree; then try to interpret based on the subject you are trying to be creative at. You might wonder which instruments would suit representing this leaf musically and how would it sound. Or how would you interpret that same leaf as a dance?
+Roughly speaking, the more effort you invest in processing and collecting an idea, the more accessible it becomes for future use.
 
-**TODO** Converting sound from space to music.
+An important note is that you don't necessarily have to be literal when collecting ideas. You can also try to collect from unrelated subjects. For instance, you might see a leaf blowing in the wind on a tree and try to interpret it based on the subject you're trying to be creative at. You might wonder which instruments would be suitable for representing this leaf musically and how it would sound. Or, you could interpret that same leaf as a dance.
 
-One common mistake while trying to collect ideas is to set the quality bar too high for ideas that you collect. If you don't collect bad ideas, they never get a chance to grow into a good idea. Similarly, an idea in one context might be horrible, but brilliant in another. Of course, don't spend over 3 minutes to write down a bad idea, just write a few words on it.
+One common mistake while collecting ideas is to set the quality bar too high for the ideas you collect. If you don't collect bad ideas, they never get a chance to develop into good ones. Similarly, an idea might be terrible in one context but brilliant in another. Of course, don't waste more than 3 minutes writing down a bad idea; just jot down a few words.
 
-Be curious and open-minded about ideas, even if you don't feel a connection.
+Be curious and open-minded about ideas, even if you don't feel a strong connection to them.
 
-How do you start this process?
+### Random ideas
 
-I would recommend starting to collect 20 ideas per day for a month straight. This will get your brain into the habit of seeing, noticing, and writing down ideas all the time. The important part isn't really the 600 ideas that you collect; however, they are helpful; it's more about noticing interesting ideas in the world.
+One source of inspiration can be randomness. While the quality of randomness is often poor, it can help you step outside your usual range of ideas. The key is to allow yourself to be inspired by these random ideas or transform them into something constrained.
 
-**TODO** Pure random.
+Here are a few variations on randomness:
 
-**TODO** Figure out categories to collect.
+- **Randomness from a strict set:** For instance, you have a deck of cards, each with a unique word, and you draw three cards to form your song title.
+- **Randomness from nature:** For example, you use raindrop sounds as your rhythm.
+- **Randomness from playing:** For instance, you put mittens on your hands and attempt to play something on the piano.
 
-## Organizing ideas
+I'm sure there are many more ways to incorporate these.
 
-Once you have collected ideas, you should also try to organize them. This helps your brain build abstractions and find similarities between the ideas.
+### Ideas from our own thoughts
 
-**How do we organize?**
+One of the growing challenges is the incessant environmental noise. Distractions from social media, news, traffic, and notifications can drown out our own thoughts, making it difficult to clear our minds and hear our ideas. In some cases, it can take hours of silence for our thoughts to become sufficiently clear.
 
-* Review
-* Consolidate similar ideas
-* Expand and elaborate
-* Tagging with labels
+Therefore, it's important to practice being present with your own thoughts without distractions or external sounds.
 
-By creating systems and similarities, we end up with a better understanding of the collected ideas. Interestingly, organizing will also make collecting new ideas easier because it takes less effort to remember and understand them.
+### Getting Started
 
-**Does it matter how we organize?**
+#### Exercise 1. Collect Categories
 
-Eventually, this organization and analysis of existing ideas can give rise to insight into best practices or intuition about how different ideas fit together.
+Write down 20 categories of ideas you can collect.
+
+By having a list of categories of ideas you can collect makes it easier to notice them. Similarly, it helps to broaden your idea collection.
+
+Every time you encounter or think of a new category, write it down.
+
+#### Exercise 2. Collect Ideas
+
+Gather 20 ideas, every day for a month straight.
+
+This exercise cultivates the habit and skill of noticing ideas. Many people walk around, in a sense, blindfolded to the countless ideas that surround them. While the primary objective isn't to accumulate these 600 ideas; they will still be beneficial in the subsequent exercises.
+
+Remember, the purpose of this exercise is to practice collecting ideas, not necessarily collecting the best ones. Let the world serve as an inspiration.
+
+## Idea Analysis
+
+Once we've collected a bunch of ideas, we should try to analyse and organise them. This process helps us gain deeper insights and a clearer understanding of them.
+
+Analysis is the process of breaking down an idea into manageable parts that are easier to comprehend. Although the term "parts" may not be suitable in all contexts, the underlying principle is to avoid looking at the whole idea at the same time. Let's consider a few different approaches to this:
+
+- **Divide into parts:** divide the idea into subideas.
+- **Examine aspects:** pay attention to only a single attribute or property of the idea.
+- **Change the environment:** look at the idea in another situation.
+- **Change the perspective:** look at the idea from another persons perspective.
+
+Dividing something into parts is the easiest to understand. Discard some part of the idea and then look at it in isolation. For example, if you have a song to analyse you first look at the introduction, then the verse, then the chorus. In painting you might focus on how part of the painting was done. In programming, you might focus at a subdomain rather than trying to understand the whole application.
+
+Examining aspects involves analysing a specific property or attribute. For instance, in music, you can examine harmonic progression, dynamics, rhythmic density, instrumentation density, or pitch. In painting, you might focus on brush technique, colour usage, composition, theme, storytelling, or eye guidance. In programming, you could concentrate on performance, memory usage, code readability, or usability. There is definitely an overlap with the previously mentioned idea categories.
+
+Changing the environment is about understanding how an idea changes based on what surrounds it. For example, in music, a song will sound widely different in church acoustics compared to car acoustics. A painting will look different in dark compared to a well lit room. A program will feel and behave differently when used from a computer or a mobile phone.
+
+Changing perspectives involves comprehending how diverse individuals perceive ideas. For instance, death metal might be noise to some people while providing comfort to others. Individuals with colour blindness perceive paintings differently. Similarly, highly technical professionals and casual software users employ software in vastly different ways.
+
+Overall, analysis provides a way to understand which elements of an idea can be changed. It also makes the understanding of ideas more detailed.
+
+### Idea Organization
+
+Another way to gain insight is organization. While analysis provides more concrete understanding of an idea, organisation provides a general understanding about a collection of ideas. Organising as the process also helps to repeat and re-examine the gathered ideas.
+
+Organising ideas can be done in a few ways:
+
+- **Reviewing ideas:** looking over the ideas as a collection.
+- **Adding labels:** adding labels based on either idea categories or aspects.
+- **Consolidate similar ideas:** grouping and writing similar ideas together.
+- **Contrasting ideas:** comparing ideas based on different aspects.
+
+Eventually this organising, finding similarities and differences helps us create intuition and "best practices". This in turn will make our ability to process, remember and understand ideas easier.
 
 ## Transforming ideas
 
@@ -123,6 +173,10 @@ https://pipdecks.com
 
 Setting limitations on the ideas can foster creativity because you have less choice, but also you cannot use your usual strategies.
 
+### Develop Transformations
+
+
+
 ### Summary
 
 Overall, mastering transformations is about two things:
@@ -145,6 +199,8 @@ Remember, it's an exploration and practice - most of the new ideas you come up w
 This is about learning how to recognize that the art is having an impact on people, how it impacts them, and how it changes them. It's mostly about learning your own emotions and how different "collected ideas" change those emotions.
 
 Effect on people vs. resonating with myself.
+
+Ego removal
 
 One way to learn it is to try and express a specific emotion and doing it as strongly as possible; using an emotion wheel as a list. The second is trying to understand how different things resonate with you; for example, using the Mirror of Self test.
 
@@ -174,7 +230,9 @@ Emotional resonance.
 
 ## Getting things done
 
+Flow
 
+Habits
 
 ## What if missing
 
@@ -188,10 +246,9 @@ There could be a few more skills that I've yet to identify, but these do seem a 
 
 ## Further resources
 
-Weinberg on writing
-How to solve it
-The Phenomenon of Life
-
-https://pipdecks.com/
-https://schellgames.com/art-of-game-design
-https://en.wikipedia.org/wiki/Oblique_Strategies
+* Weinberg on writing
+* How to solve it
+* The Phenomenon of Life
+* https://pipdecks.com/
+* https://schellgames.com/art-of-game-design
+* https://en.wikipedia.org/wiki/Oblique_Strategies
