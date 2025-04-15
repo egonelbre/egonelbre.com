@@ -45,4 +45,4 @@ jobs:
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
       - name: Upload to Server
-        run: rsync -avh -e "ssh -p 38307"  ./public/ egonelbr@egonelbre.com:/home/egonelbr/public_html --delete
+        run: rsync -avh -e "ssh -p 38307" --rsync-path=/home/egonelbr/bin/rsync ./public/ egonelbr@egonelbre.com:/home/egonelbr/public_html --delete
