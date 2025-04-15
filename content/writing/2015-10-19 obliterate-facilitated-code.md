@@ -124,7 +124,7 @@ Also ... real-world examples can help with your design, a lot. You will notice p
 
 Quick short references for examples are fine as long as you have a real-world application demonstrating its use.
 
-Few real-world things that you could show: Hotel Booking, ToDo List, Issue Tracker, Twitter (or similar), Chat, Reddit
+Few real-world things that you could show: Hotel Booking, ToDo List, Issue Tracker (or similar), Chat, Reddit
 
 * Real-World Examples: [goldi](https://github.com/fgrosse/goldi/blob/8bb09dd2be1b6e592353f4a02532860835d771fa/README.md#usage)
 * How It Should Be: [Revel: Booking](https://github.com/revel/examples), [TodoMVC](http://todomvc.com/)

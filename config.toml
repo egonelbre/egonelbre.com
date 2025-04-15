@@ -20,13 +20,13 @@ pluralizeListTitles = false
   unsafe=true
 
 [social]
-  twitter = "egonelbre"
+  bluesky = "egonelbre"
 
 [params.assets]
   customCSS = []
 
 [params.social]
-  twitter   = "egonelbre"
+  bluesky   = "egonelbre"
   github    = "egonelbre"
   # email     = "egonelbre@gmail.com"
   linkedin  = "egonelbre"
@@ -35,7 +35,7 @@ pluralizeListTitles = false
   soundcloud = "egon-elbre"
   rss       = "index.xml"
 [params.social.config]
-  platforms = ["twitter","github","email","linkedin","instagram","gallery","soundcloud","rss"]
+  platforms = ["bluesky","github","email","linkedin","instagram","gallery","soundcloud","rss"]
 
 [params.rss]
   authorName = "Egon Elbre"

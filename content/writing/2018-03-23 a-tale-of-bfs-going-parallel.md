@@ -20,7 +20,7 @@ Even if we manage to avoid some of the common mistakes, such as data-races. We m
 
 For anyone adventuring to using atomics and mutexes, I highly recommend [The Little Book of Semaphores](http://greenteapress.com/wp/semaphores/). It has many examples of how you can get them wrong.
 
-For more advanced algorithms I don’t know a better resource than the awesome [Dmitry Vyukov](https://twitter.com/dvyukov/) [http://www.1024cores.net/](http://www.1024cores.net/). He has explanations on lockfreedom, waitfreedom, HPC among many others.
+For more advanced algorithms I don’t know a better resource than the awesome [Dmitry Vyukov](https://github.com/dvyukov/) [http://www.1024cores.net/](http://www.1024cores.net/). He has explanations on lockfreedom, waitfreedom, HPC among many others.
 
 ## First Try
 
@@ -551,7 +551,7 @@ This idea seemed good, so I also tried it with the single-core version, but that
 
 ## Multilevel bitmaps
 
-I also lamented that I was running out of ideas regarding what to do with the bit vector in the #performance channel. [Damian](https://twitter.com/dgryski) mentioned that he thought about multilevel bitmaps.
+I also lamented that I was running out of ideas regarding what to do with the bit vector in the #performance channel. [Damian](https://github.com/dgryski) mentioned that he thought about multilevel bitmaps.
 
 ```
 func (set NodeSet) TryAdd(node graph.Node) bool {

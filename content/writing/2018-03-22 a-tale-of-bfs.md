@@ -154,7 +154,7 @@ The common things to do are:
 
 **Keep computations close:** processors have many levels of caches and accessing recently used things means you will more likely hit a cache. _For details see [A Gallery of Processor Cache Effects](http://igoro.com/archive/gallery-of-processor-cache-effects/)._
 
-There are many more machine specific things and heuristics that can help you, but I guess these will do for now. [Damian Gryski](https://twitter.com/dgryski) is writing a book [go-perfbook](https://github.com/dgryski/go-perfbook) that contains a much more extensive review.
+There are many more machine specific things and heuristics that can help you, but I guess these will do for now. [Damian Gryski](https://github.com/dgryski) is writing a book [go-perfbook](https://github.com/dgryski/go-perfbook) that contains a much more extensive review.
 
 These are most of the concepts I will be using in this post. Although the text may look like it was linear thoughtful process, in practice it was closer to the steps outlined before.
 
@@ -259,7 +259,7 @@ So, just throwing in a `sort.Slice` only made 1% difference, but that actually m
 
 {{< figure src="/_images/a-tale-of-bfs/measurement-04-b.png" >}}
 
-~20% improvement. After posting the improvement results, [Damian Gryski](https://twitter.com/dgryski) reminded me of Radix sort ... so that gave another boost.
+~20% improvement. After posting the improvement results, [Damian Gryski](https://github.com/dgryski) reminded me of Radix sort ... so that gave another boost.
 
 {{< figure src="/_images/a-tale-of-bfs/measurement-04-c.png" >}}
 

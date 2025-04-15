@@ -9,7 +9,6 @@
 	{{ $site := .Site -}}
 	{{ if .Site.Params.rss }}{{ with $rss := .OutputFormats.Get "RSS" }}<link href="{{ $rss.RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $site.Title }}" />{{ end }}{{ end }}
 
-	{{ template "_internal/twitter_cards.html" . }}
 	{{ template "_internal/opengraph.html" . }}
 
 	<link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}">
