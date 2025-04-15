@@ -384,3 +384,23 @@ figure > img, figure > video {
 		float: none;
 	}
 }
+
+table {
+	border-collapse: collapse;
+}
+table, table th, table td {
+	border: 1px solid;
+}
+table th, table td {
+	padding: 0.1em 0.5em;
+}
+table th {
+	background: #ddd;
+}
+
+table tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+table tr:hover {
+	background-color: #ddd;
+}

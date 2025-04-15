@@ -1,25 +1,23 @@
 ---
-draft: true
 title: Testing Postgres with Go
-description: "Different ways of setting up a Postgres database."
-date: ""
-tags: []
+summary: "Different ways of setting up a Postgres database."
+date: "2023-03-20T12:00:00+03:00"
+tags: ["Go"]
+notes: "Originally posted on [Storj Blog](https://storj.dev/blog/go-integration-tests-with-postgres)."
 ---
 
-# Go Integration Tests with Postgres
+When writing server side projects in Go, at some point you will also need to test against a database. Let's take a look at different ways of using Postgres with different performance characteristics. The final approach shows how you can set up a clean database in 20ms (there are a few caveats).
 
-When writing server side projects in Go, at some point you will also need to test against a database. Let's take a look different ways of using Postgres with different performance characteristics. The final approach shows how you can setup a clean database in 30ms (there are a few caveats).
-
-We're not going to cover the "how should you use real database in your tests" debate. At some point you'll need to test your database layer, so, we'll cover those cases.
+We're not going to cover the "how should you use a real database in your tests" debate. At some point you'll need to test your database layer, so, we'll cover those cases.
 
 
 ## Using containers
 
 If you have searched a bit on how to setup a clean test environment, you've probably come across [github.com/ory/dockertest](https://github.com/ory/dockertest) package. There's also [testcontainers](https://golang.testcontainers.org/) for setting up containers. Alternatively, you could even invoke `docker` as a command and use that. Whichever your poision, the approach will look similar. We'll use `dockertest` for our examples.
 
-Usually, the first thing you do, is setup something to act as the client. With `dockertest` it means creating a a `dockertest.Pool`. And we need to set it up in our `TestMain`:
+Usually, the first thing you do, is setup something to act as the client. With `dockertest` it means creating a `dockertest.Pool`. And we need to set it up in our `TestMain`:
 
-```
+``` go
 var dockerPool *dockertest.Pool
 
 func TestMain(m *testing.M) {
@@ -39,7 +37,7 @@ func TestMain(m *testing.M) {
 
 If we are writing tests, then using a specific helper is going to be very convenient.
 
-```
+``` go
 func TestCreateTable(t *testing.T) {
 	ctx := context.Background()
 	WithDatabase(ctx, t, func(t *testing.TB, db *pgx.Conn) {
@@ -59,11 +57,9 @@ func WithDatabase[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db 
 
 This approach creates a docker image and calls `test` callback whenever it's ready.
 
-The callback based approach is especially helpful if you need to test with multiple backends such as Cockroach and Postgres. In your own codebase you probably would return the data layer interface rather than `*pgx.Conn` directly.
+The callback based approach is especially helpful if you need to test with multiple backends such as Cockroach and Postgres. In your own codebase you probably would return the data layer interface rather than `*pgx.Conn` directly. For example:
 
-In some scenarios using this can be nicer:
-
-```
+``` go
 func TestCreateTable(t *testing.T) {
 	ctx := context.Background()
 	db := NewDatabase(ctx, t)
@@ -87,9 +83,11 @@ func NewDatabase(ctx context.Context, tb testing.TB) *pgx.Conn {
 }
 ```
 
+A single table migration isn't indicative of a proper database layer, but it's sufficient for seeing the best-case scenario. Adding more tables didn't seem to affect things that much.
+
 Let's get back on track and see how you can implement the first approach. It's should be trivial to convert one to the other:
 
-```
+``` go
 func WithDatabase[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db *pgx.Conn)) {
 
 	// First we need to specify the image we wish to use.
@@ -156,8 +154,13 @@ func WithDatabase[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db 
 
 Let's look at the performance:
 
-This is pretty expensive, let's see how we can do better.
-
+```
+| Environment                  | Test       | Time         |
+| ---------------------------- | ---------- | ------------:|
+| Windows Threadripper 2950X   | Container  | 2.86s ± 6%   |
+| MacOS M1 Pro                 | Container  | 1.63s ± 16%  |
+| Linux Xeon Gold 6226R        | Container  | 2.24s ± 10%  |
+```
 
 ## Using `CREATE DATABASE`
 
@@ -165,13 +168,13 @@ In most cases, creating a new postgres instance per test isn't necessary. It'll 
 
 To contrast with the previous approach, let's use a locally installed Postgres instance. This can be helpful, if you want to run tests against a remote database or want to avoid the container startup time.
 
-```
+``` go
 var pgaddr = flag.String("database", os.Getenv("DATABASE_URL"), "database address")
 ```
 
 Let's rewrite the function to create a new database per test:
 
-```
+``` go
 func WithDatabase[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db *pgx.Conn)) {
 	if *pgaddr == "" {
 		tb.Skip("-database flag not defined")
@@ -219,7 +222,7 @@ func WithDatabase[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db 
 
 Now for the small utility funcs that we used:
 
-```
+``` go
 // connstrWithDatabase changes the main database in the connection string.
 func connstrWithDatabase(connstr, database string) (string, error) {
 	u, err := url.Parse(connstr)
@@ -249,8 +252,16 @@ func sanitizeDatabaseName(schema string) string {
 }
 ```
 
-The performance already looks better:
+The performance looks already significantly better:
 
+| Environment                  | Test       | Time         |
+| ---------------------------- | ---------- | ------------:|
+| Windows Threadripper 2950X   | Container  | 2.86s ± 6%   |
+| Windows Threadripper 2950X   | Database   | 136ms ± 12%  |
+| MacOS M1 Pro                 | Container  | 1.63s ± 16%  |
+| MacOS M1 Pro                 | Database   | 136ms ± 12%  |
+| Linux Xeon Gold 6226R        | Container  | 2.24s ± 10%  |
+| Linux Xeon Gold 6226R        | Database   | 135ms ± 10%  |
 
 ## Using `CREATE SCHEMA`
 
@@ -262,9 +273,9 @@ Of course, if you use schemas for other purposes in your system, then this appro
 
 Now that the disclaimer is out of the way, let's take a look at some code:
 
-```
+``` go
 
-func WithSchema[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *pgx.Conn)) {
+func WithSchema[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db *pgx.Conn)) {
 	if *pgaddr == "" {
 		tb.Skip("-database flag not defined")
 	}
@@ -296,13 +307,13 @@ func WithSchema[TB testing.TB](ctx context.Context, tb TB, fn func(t TB, db *pgx
 		}
 	}()
 
-	fn(tb, db)
+	test(tb, db)
 }
 ```
 
 The smaller utilities that make it work:
 
-```
+``` go
 // connstrWithSchema adds search_path argument to the connection string.
 func connstrWithSchema(connstr, schema string) (string, error) {
 	u, err := url.Parse(connstr)
@@ -333,10 +344,18 @@ func sanitizeSchemaName(schema string) string {
 
 After running some benchmarks we can see that we've reached ~20ms:
 
-```
-Mac      ~14ms
-Windows  ...
-```
+| Environment                  | Test       | Time          |
+| ---------------------------- | ---------- | -------------:|
+| Windows Threadripper 2950X   | Container  | 2.86s ± 6%    |
+| Windows Threadripper 2950X   | Database   | 136ms ± 12%   |
+| Windows Threadripper 2950X   | Schema     | 26.7ms ± 3%   |
+| MacOS M1 Pro                 | Container  | 1.63s ± 16%   |
+| MacOS M1 Pro                 | Database   | 136ms ± 12%   |
+| MacOS M1 Pro                 | Schema     | 19.7ms ± 20%  |
+| Linux Xeon Gold 6226R        | Container  | 2.24s ± 10%   |
+| Linux Xeon Gold 6226R        | Database   | 135ms ± 10%   |
+| Linux Xeon Gold 6226R        | Schema     | 29.2ms ± 16%  |
+
 
 ## Final tweaks
 
@@ -344,32 +363,30 @@ There's one important flag that you can adjust in Postgres to make it run faster
 
 The final results of the comparison look like:
 
-| Test      | fsync | time         |
-| --------- | ----- | ------------ |
-| Windows / Threadripper 2950X   |||
-| Container | on    | 2.86s ± 6%   |
-| Container | off   | 2.82s ± 4%   |
-| Database  | on    | 136ms ±12%   |
-| Database  | off   | 105ms ±30%   |
-| Schema    | on    | 26.7ms ± 3%  |
-| Schema    | off   | 20.5ms ± 5%  |
-| --------- | ----- | ------------ |
-| MacOS / M1 Pro                 |||
-| Container | on    | 1.63s ±16%   |
-| Container | off   | 1.64s ±13%   |
-| Database  | on    | 136ms ±12%   |
-| Database  | off   | 105ms ±30%   |
-| Schema    | on    | 19.7ms ±20%  |
-| Schema    | off   | 18.5ms ±31%  |
-| --------- | ----- | ------------ |
-| Linux / XXXXXXXXX              |||
-| Container | on    | 1.63s ±16%   |
-| Container | off   | 1.64s ±13%   |
-| Database  | on    | 136ms ±12%   |
-| Database  | off   | 105ms ±30%   |
-| Schema    | on    | 19.7ms ±20%  |
-| Schema    | off   | 18.5ms ±31%  |
+| Environment                  | Test       | fsync  | Time            |
+| ---------------------------- | ---------- | ------ | ---------------:|
+| Windows Threadripper 2950X   | Container  | on     | 2.86s ± 6%      |
+| Windows Threadripper 2950X   | Container  | off    | 2.82s ± 4%      |
+| Windows Threadripper 2950X   | Database   | on     | 136ms ± 12%     |
+| Windows Threadripper 2950X   | Database   | off    | 105ms ± 30%     |
+| Windows Threadripper 2950X   | Schema     | on     | 26.7ms ± 3%     |
+| Windows Threadripper 2950X   | Schema     | off    | 20.5ms ± 5%     |
+| MacOS M1 Pro                 | Container  | on     | 1.63s ± 16%     |
+| MacOS M1 Pro                 | Container  | off    | 1.64s ± 13%     |
+| MacOS M1 Pro                 | Database   | on     | 136ms ± 12%     |
+| MacOS M1 Pro                 | Database   | off    | 105ms ± 30%     |
+| MacOS M1 Pro                 | Schema     | on     | 19.7ms ± 20%    |
+| MacOS M1 Pro                 | Schema     | off    | 18.5ms ± 31%    |
+| Linux Xeon Gold 6226R        | Container  | on     | 2.24s ± 10%     |
+| Linux Xeon Gold 6226R        | Container  | off    | 1.97s ± 10%     |
+| Linux Xeon Gold 6226R        | Database   | on     | 135ms ± 10%     |
+| Linux Xeon Gold 6226R        | Database   | off    | 74.2ms ± 10%    |
+| Linux Xeon Gold 6226R        | Schema     | on     | 29.2ms ± 16%    |
+| Linux Xeon Gold 6226R        | Schema     | off    | 15.3ms ± 15%    |
 
-All the tests were run in a container that didn't have persistent disk mounted. You should see a bigger improvement if that's the case.
+All the tests were run in a container that didn't have persistent disk mounted. The fsync=off would probably have a bigger impact with an actual disk.
 
-We looked three different approaches to creating a clean Postgres environment. The approaches aren't completely equivalent, but use the fastest one that you can.
+So for the conclusion, we looked at three different approaches to creating a clean Postgres environment. The approaches aren't completely equivalent, but use the fastest one that you can.
+
+
+
