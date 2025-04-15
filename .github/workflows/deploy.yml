@@ -36,7 +36,7 @@ jobs:
           fetch-depth: 0
 
       - name: Build
-        run: hugo --gc --minify --cleanDestinationDir
+        run: hugo --gc --cleanDestinationDir
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
