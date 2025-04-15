@@ -1,12 +1,16 @@
 ---
-draft: true
 title: Finding Resource Leaks
-description: "How to find leaked files or connections."
-date: ""
-tags: []
+summary: "How to find leaked files or connections."
+date: "2022-10-13T12:00:00+03:00"
+tags: ["Go"]
+notes: "Originally posted on [Storj Blog](https://storj.dev/blog/finding-and-tracking-resource-leaks-in-go)."
 ---
 
-Forgetting to close a file, a connection, or some other resource is a rather common issue. Fortunately, there's an approach to finding such leaks. We covered finding leaked goroutines at https://www.storj.io/blog/finding-goroutine-leaks-in-tests.
+Forgetting to close a file, a connection, or some other resource is a rather common issue in Go. Usually you can spot them with good code review practices, but what if you wanted to automate it and you don't have a suitable linter at hand?
+
+How do we track and figure out those leaks?
+
+Fortunately, there's an approach to finding common resource leaks that we’ll explore below.
 
 ## Problem: Connection Leak
 
@@ -31,7 +35,7 @@ func (client *Client) Close() error {
 }
 ```
 
-Let's look at one way we can forget to call Close.
+It's easy to put the defer in the wrong place or forget to call Close altogether.
 
 ``` go
 func ExampleDial(ctx context.Context) error {
@@ -66,7 +70,7 @@ Notice if we fail to dial the second client, we have forgotten to close the sour
 
 ## Problem: File Leak
 
-Let's take another common mistake, a file leak.
+Another common resource management mistake is a file leak.
 
 ``` go
 func ExampleFile(ctx context.Context, fs fs.FS) error {
@@ -378,6 +382,8 @@ Now, all of this `runtime.Callers` calling comes with a high cost. However, we c
 
 package tracker
 ```
+
+The implementations are left as an exercise for the reader. :)
 
 ## Conclusion
 

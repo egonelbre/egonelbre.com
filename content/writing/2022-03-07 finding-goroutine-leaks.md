@@ -1,9 +1,9 @@
 ---
-draft: true
-title: Tracking Goroutine Leaks With Labels
-description: "How to find leaked goroutines in tests."
-date: ""
-tags: []
+title: Finding Goroutine Leaks
+summary: "How to find leaked goroutines in tests."
+date: "2022-03-07T12:00:00+03:00"
+tags: ["Go"]
+notes: "Originally posted on [Storj Blog](https://storj.dev/blog/finding-goroutine-leaks-in-tests)."
 ---
 
 A leaked goroutine at the end of a test can indicate several problems. Let's
