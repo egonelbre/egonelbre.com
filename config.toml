@@ -26,7 +26,7 @@ pluralizeListTitles = false
   customCSS = []
 
 [params.social]
-  bluesky   = "egonelbre"
+  bluesky   = "egonelbre.bsky.social"
   github    = "egonelbre"
   # email     = "egonelbre@gmail.com"
   linkedin  = "egonelbre"
