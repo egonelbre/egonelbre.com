@@ -154,13 +154,11 @@ func WithDatabase[TB testing.TB](ctx context.Context, tb TB, test func(t TB, db 
 
 Let's look at the performance:
 
-```
 | Environment                  | Test       | Time         |
 | ---------------------------- | ---------- | ------------:|
 | Windows Threadripper 2950X   | Container  | 2.86s ± 6%   |
 | MacOS M1 Pro                 | Container  | 1.63s ± 16%  |
 | Linux Xeon Gold 6226R        | Container  | 2.24s ± 10%  |
-```
 
 ## Using `CREATE DATABASE`
 

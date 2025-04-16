@@ -397,10 +397,6 @@ table th, table td {
 table th {
 	background: #ddd;
 }
-
 table tr:nth-child(even){
 	background-color: #f2f2f2;
-}
-table tr:hover {
-	background-color: #ddd;
 }
